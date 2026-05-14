@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript><link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/ads-landing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   
@@ -296,6 +297,55 @@
   gtag('js', new Date());
   gtag('config', 'G-10KW19QN9R');
 </script>
+<script src="/assets/js/ads-track.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is this different from a Hydrafacial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Same general approach — a vortex-suction device that cleanses, exfoliates, and infuses serums in one tool. The difference is the protocol and products. The Korean Aqua Peel uses serums formulated for hydration-first resurfacing — gentler exfoliation, deeper moisture infusion, and a glass-skin finish rather than the brighter-but-tighter Hydrafacial result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my skin be red afterward?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most clients see only a brief flush that settles within 30 minutes. No acids, no peeling, no downtime. You can go straight back to your day; skip makeup for a few hours so the antioxidant serums fully absorb."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I do this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For ongoing skin clarity, every 4 weeks. The hydration result fades as your skin cycles over; a consistent rhythm holds the glass-skin finish. For a specific event, a single session delivers immediate visible result — book it 24-72 hours before."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I combine this with other treatments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Aqua Peel pairs with the Restorative Facial or Soothe Lymphatic Drainage in the same visit, or as an add-on. It's also safe between microneedling sessions or as a clarity treatment between deeper structural work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who shouldn't book this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not recommended for active cystic acne, sunburned or wind-burned skin, open sores, contagious skin conditions, severe rosacea, or extremely fragile skin. If you've had facial surgery in the last 6-12 weeks, wait until fully healed."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav>
@@ -350,6 +400,7 @@
     <span class="page-header-badge">Resurface</span>
     <h1>Korean Aqua Peel:<br><em>Glass Skin</em> Resurfacing</h1>
     <p class="page-header-sub">Rooted in Korean skincare philosophy — where hydration, clarity, and long-term skin integrity are the foundation of every protocol — the Aqua Peel is Altru Radiance's signature resurfacing treatment.</p>
+    <p class="ad-promise">Korean glass-skin protocol. No acids, no downtime.</p>
     <div class="page-header-meta">
       <div class="meta-item"><strong>60 min</strong>Duration</div>
       <div class="meta-divider"></div>
@@ -358,9 +409,32 @@
       <div class="meta-item"><strong>Murray, Utah</strong>Location</div>
     </div>
     <br>
-    <a href="/book" class="header-cta">Book This Service</a>
+    <a href="/book" class="header-cta" data-book-cta data-service="aqua-peel">Book This Service</a>
   </div>
 </div>
+
+<section class="trust-strip" aria-label="What sets this service apart">
+  <div class="container">
+    <div class="trust-strip-inner">
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">M</span>
+        <span class="trust-text"><strong>Licensed Master Esthetician</strong>Mechelle — practitioner, owner</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">∅</span>
+        <span class="trust-text"><strong>No acids, no peeling</strong>Hydration-first resurfacing</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">✦</span>
+        <span class="trust-text"><strong>Zero downtime</strong>Glass-skin finish, same day</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">★</span>
+        <span class="trust-text"><strong>5-star reviewed</strong>Murray, Utah · Salt Lake County</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="service-body">
   <div class="container">
@@ -446,7 +520,7 @@
           <span class="sidebar-label">Investment</span>
           <div class="sidebar-price">$200</div>
           <div class="sidebar-duration">60 minutes</div>
-          <a href="/book" class="sidebar-cta">Book Now</a>
+          <a href="/book" class="sidebar-cta" data-book-cta data-service="aqua-peel-sidebar">Book Now</a>
           <a href="/contact" class="sidebar-ghost">Ask a Question</a>
         </div>
         <div class="sidebar-block">
@@ -466,6 +540,56 @@
 </section>
 
 
+<section class="faq-section" aria-label="Frequently asked questions">
+  <div class="container">
+    <span class="faq-eyebrow">Questions</span>
+    <h2 class="faq-heading">Common <em>Questions</em></h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>How is this different from a Hydrafacial?</summary>
+        <div class="faq-answer">
+          <p>Same general approach — a vortex-suction device that cleanses, exfoliates, and infuses serums in a single tool. The difference is the <strong>protocol and products</strong>.</p>
+          <p>The Korean Aqua Peel uses serums formulated for hydration-first resurfacing — gentler exfoliation, deeper moisture infusion, and a "glass skin" finish rather than the brighter-but-tighter result Hydrafacial is known for. The Aqua Peel is the right choice if your skin runs sensitive or dehydrated, or you want the Korean-skincare result specifically.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Will my skin be red afterward?</summary>
+        <div class="faq-answer">
+          <p>Most clients see only a brief flush that settles within 30 minutes. The treatment is genuinely non-irritating — no acids, no peeling, no downtime.</p>
+          <p>You can go straight back to your day. I recommend skipping makeup for a few hours so the antioxidant serums fully absorb.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How often should I do this?</summary>
+        <div class="faq-answer">
+          <p>For ongoing skin clarity, every <strong>4 weeks</strong>. The hydration result fades naturally as your skin cycles over; a consistent rhythm holds the glass-skin finish.</p>
+          <p>For an event or a specific concern, a single session delivers immediate visible result — book it 24–72 hours before to let any minor flush settle and let the serums fully integrate.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I combine this with other treatments?</summary>
+        <div class="faq-answer">
+          <p>Yes — the Aqua Peel pairs beautifully with the <a href="/services/restorative-buccal-massage">Restorative Facial</a> or <a href="/services/lymphatic-drainage-murray-utah">Soothe Lymphatic Drainage</a> in the same visit, or as an add-on.</p>
+          <p>It's also safe between microneedling sessions or as a clarity treatment between deeper structural work.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Who shouldn't book this?</summary>
+        <div class="faq-answer">
+          <p>The Aqua Peel is not recommended if you have active cystic acne, sunburned or wind-burned skin, open sores, contagious skin conditions, severe rosacea, or extremely fragile skin. If you've had facial surgery in the last 6–12 weeks, wait until you've fully healed.</p>
+          <p>Unsure whether it's right for you? <a href="/contact">Send a message</a> — I'll help you decide before you book.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <section class="journal-callout">
   <div class="container">
     <h3>In the Journal</h3>
@@ -480,7 +604,7 @@
     <h2>Ready to <em>Book?</em></h2>
     <p>Reserve your session online or reach out with questions — I'll help you find the right treatment for your goals.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="/book" class="cta-btn">Book Now</a>
+      <a href="/book" class="cta-btn" data-book-cta data-service="aqua-peel-footer">Book Now</a>
       <a href="/contact" style="display:inline-flex;align-items:center;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244, 240, 230, 0.65);border:1px solid rgba(244, 240, 230, 0.65);padding:0.9rem 2.5rem;text-decoration:none;min-height:48px;transition:border-color 0.25s,color 0.25s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(244, 240, 230, 0.65)';this.style.color='rgba(244, 240, 230, 0.65)'">Ask a Question</a>
     </div>
   </div>

@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript><link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/ads-landing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   
@@ -296,6 +297,55 @@
   gtag('js', new Date());
   gtag('config', 'G-10KW19QN9R');
 </script>
+<script src="/assets/js/ads-track.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is this different from a regular facial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A facial works on the surface. The Soothe works on the fluid system underneath. Most facial puffiness and jaw heaviness is a fluid problem, not a skin problem. Manual lymphatic drainage moves the fluid that's hiding your bone structure — no machines, no products, just methodical hand technique."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I book — is this good before an event?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Soothe is the ideal pre-event treatment for weddings, photoshoots, or any day where sharper definition matters. Book it 24-48 hours before the event for maximum visible result. For persistent puffiness, a series of weekly sessions builds an ongoing baseline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this the same as body lymphatic drainage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Same system, different work. Body lymphatic drainage focuses on limbs and torso, often for post-surgical recovery. The Soothe is a full-body protocol with emphasis on the cervical chain and facial lymphatics — the channels that drain the face and head."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the session feel like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Profoundly relaxing. Lymphatic technique uses light, rhythmic pressure — nothing deep-tissue. Many clients fall into a meditative state. You may feel a frequent need for the restroom in the hours after as the body processes the moved fluid — a good sign."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there reasons I shouldn't book this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contraindications include active infection or fever, blood clots, congestive heart failure, acute kidney failure, untreated cancer, post-surgical swelling, and lymphedema. Please disclose any of these at booking."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav>
@@ -350,6 +400,7 @@
     <span class="page-header-badge">Fundamental</span>
     <h1>Soothe Lymphatic Drainage:<br><em>Full-Body Fluid Reset</em><br>&amp; Structural Alignment</h1>
     <p class="page-header-sub">Your lymphatic system is your body's internal housekeeping network. When it becomes sluggish or congested, you feel it — in the heaviness of your limbs, the puffiness in your face, the sense of being stuck in your own body.</p>
+    <p class="ad-promise">Manual lymphatic drainage. Visibly depuff. No needles, no machines.</p>
     <div class="page-header-meta">
       <div class="meta-item"><strong>110 min</strong>Duration</div>
       <div class="meta-divider"></div>
@@ -358,9 +409,32 @@
       <div class="meta-item"><strong>Murray, Utah</strong>Location</div>
     </div>
     <br>
-    <a href="/book" class="header-cta">Book This Service</a>
+    <a href="/book" class="header-cta" data-book-cta data-service="soothe-lymphatic">Book This Service</a>
   </div>
 </div>
+
+<section class="trust-strip" aria-label="What sets this service apart">
+  <div class="container">
+    <div class="trust-strip-inner">
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">M</span>
+        <span class="trust-text"><strong>Licensed Master Esthetician</strong>Mechelle — practitioner, owner</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">∅</span>
+        <span class="trust-text"><strong>Manual technique only</strong>No machines, trained hands</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">✦</span>
+        <span class="trust-text"><strong>Same-day depuff</strong>Sharper definition you can see</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">★</span>
+        <span class="trust-text"><strong>5-star reviewed</strong>Murray, Utah · Salt Lake County</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="service-body">
   <div class="container">
@@ -449,7 +523,7 @@
           <span class="sidebar-label">Investment</span>
           <div class="sidebar-price">$250</div>
           <div class="sidebar-duration">110 minutes</div>
-          <a href="/book" class="sidebar-cta">Book Now</a>
+          <a href="/book" class="sidebar-cta" data-book-cta data-service="soothe-lymphatic-sidebar">Book Now</a>
           <a href="/contact" class="sidebar-ghost">Ask a Question</a>
         </div>
         <div class="sidebar-block">
@@ -468,6 +542,55 @@
 </section>
 
 
+<section class="faq-section" aria-label="Frequently asked questions">
+  <div class="container">
+    <span class="faq-eyebrow">Questions</span>
+    <h2 class="faq-heading">Common <em>Questions</em></h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>How is this different from a regular facial?</summary>
+        <div class="faq-answer">
+          <p>A facial works on the surface — cleansing, exfoliating, hydrating. The Soothe works on the fluid system underneath. Most facial puffiness, jaw heaviness, and morning swelling isn't a skin problem; it's a <strong>fluid</strong> problem.</p>
+          <p>Manual lymphatic drainage moves the fluid that's hiding your bone structure. No machines, no products — just specific, methodical hand technique applied along the cervical and facial lymphatic chains.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>When should I book — is this good before an event?</summary>
+        <div class="faq-answer">
+          <p>Yes. The Soothe is the ideal pre-event treatment for weddings, photoshoots, or any day where you want to look your sharpest. Book it <strong>24–48 hours before</strong> the event for maximum visible result.</p>
+          <p>For ongoing inflammation or persistent puffiness, a series of weekly sessions builds a system that flows on its own — the depuff result becomes your baseline rather than a special occasion.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is this the same as body lymphatic drainage?</summary>
+        <div class="faq-answer">
+          <p>It's part of the same system, but the work is different. Body lymphatic drainage focuses on limbs and torso — often used for post-surgical recovery.</p>
+          <p>The Soothe is a full-body protocol with emphasis on the cervical chain (neck) and facial lymphatics — the channels that drain the face and head. You feel it in your face, jaw, and breathing first.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does the session feel like?</summary>
+        <div class="faq-answer">
+          <p>Profoundly relaxing. Lymphatic technique uses light, rhythmic pressure — nothing deep-tissue. Many clients fall into a meditative state, some briefly asleep.</p>
+          <p>You may feel a frequent need to use the restroom in the hours after — that's your body processing the moved fluid. It's a good sign.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are there reasons I shouldn't book this?</summary>
+        <div class="faq-answer">
+          <p>Yes. Contraindications include active infection or fever, blood clots (DVT), congestive heart failure, acute kidney failure, untreated cancer, post-surgical swelling, and lymphedema. Please disclose any of these at booking and your session can be rescheduled or modified as needed.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <section class="journal-callout">
   <div class="container">
     <h3>In the Journal</h3>
@@ -483,7 +606,7 @@
     <h2>Ready to <em>Book?</em></h2>
     <p>Reserve your session online or reach out with questions — I'll help you find the right treatment for your goals.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="/book" class="cta-btn">Book Now</a>
+      <a href="/book" class="cta-btn" data-book-cta data-service="soothe-lymphatic-footer">Book Now</a>
       <a href="/contact" style="display:inline-flex;align-items:center;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244, 240, 230, 0.65);border:1px solid rgba(244, 240, 230, 0.65);padding:0.9rem 2.5rem;text-decoration:none;min-height:48px;transition:border-color 0.25s,color 0.25s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(244, 240, 230, 0.65)';this.style.color='rgba(244, 240, 230, 0.65)'">Ask a Question</a>
     </div>
   </div>

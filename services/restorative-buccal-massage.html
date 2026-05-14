@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript><link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/ads-landing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   
@@ -296,6 +297,55 @@
   gtag('js', new Date());
   gtag('config', 'G-10KW19QN9R');
 </script>
+<script src="/assets/js/ads-track.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is this different from Botox or fillers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Botox paralyzes the muscle. Fillers add volume that wasn't there. Buccal and fascia work release the connective tissue that's pulling the face down in the first place — it works with your facial architecture, not against it. The result is a face that looks more like itself, not stretched or frozen. No injections, no asymmetry risk, no recovery window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does intraoral work hurt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most clients describe it as deep but not painful — closer to firm bodywork than a dental procedure. I work at the pressure your tissue invites, not against it. The muscles of mastication often hold years of tension; releasing them feels intense on the first session and progressively softer with each one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When will I see results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A single session produces visible same-day change — most clients see a more open jawline, lifted cheek hollows, and reduced under-eye puffiness within minutes of finishing. For lasting change, a series of 6 weekly sessions is recommended, then monthly maintenance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I have TMJ — is this appropriate for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and it often helps significantly. The pterygoid muscles that drive most TMJ tension can only be reached intraorally. Please note your TMJ patterns at booking so the session can be tailored. If you have acute pain or recent dental surgery, wait until healed before booking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long do results last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One session lasts roughly 2–4 weeks depending on how much tension you carry day-to-day. A 6-session series builds lasting structural change that monthly maintenance keeps in place. This is cumulative work, like training muscle memory."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <nav>
@@ -350,6 +400,7 @@
     <span class="page-header-badge">Signature Service</span>
     <h1>The Restorative Facial:<br><em>Structural Anti-Aging</em><br>from the Inside Out</h1>
     <p class="page-header-sub">Most facial tension isn't visible on the surface — it lives in the muscles, the fascia, the soft tissue architecture of the jaw, neck, and cranium. The Restorative Facial works where conventional skincare can't reach.</p>
+    <p class="ad-promise">Regenerative facial work. Visible change without needles.</p>
     <div class="page-header-meta">
       <div class="meta-item"><strong>110 min</strong>Duration</div>
       <div class="meta-divider"></div>
@@ -358,9 +409,32 @@
       <div class="meta-item"><strong>Murray, Utah</strong>Location</div>
     </div>
     <br>
-    <a href="/book" class="header-cta">Book This Service</a>
+    <a href="/book" class="header-cta" data-book-cta data-service="restorative-buccal">Book This Service</a>
   </div>
 </div>
+
+<section class="trust-strip" aria-label="What sets this service apart">
+  <div class="container">
+    <div class="trust-strip-inner">
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">M</span>
+        <span class="trust-text"><strong>Licensed Master Esthetician</strong>Mechelle — practitioner, owner</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">∅</span>
+        <span class="trust-text"><strong>No needles, no machines</strong>Touch-led, fascia-first</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">✦</span>
+        <span class="trust-text"><strong>Same-day visible result</strong>Structural lift you can see</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-mark" aria-hidden="true">★</span>
+        <span class="trust-text"><strong>5-star reviewed</strong>Murray, Utah · Salt Lake County</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="service-body">
   <div class="container">
@@ -451,7 +525,7 @@
           <span class="sidebar-label">Investment</span>
           <div class="sidebar-price">$250</div>
           <div class="sidebar-duration">110 minutes</div>
-          <a href="/book" class="sidebar-cta">Book Now</a>
+          <a href="/book" class="sidebar-cta" data-book-cta data-service="restorative-buccal-sidebar">Book Now</a>
           <a href="/contact" class="sidebar-ghost">Ask a Question</a>
         </div>
         <div class="sidebar-block">
@@ -470,6 +544,56 @@
 </section>
 
 
+<section class="faq-section" aria-label="Frequently asked questions">
+  <div class="container">
+    <span class="faq-eyebrow">Questions</span>
+    <h2 class="faq-heading">Common <em>Questions</em></h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>How is this different from Botox or fillers?</summary>
+        <div class="faq-answer">
+          <p>Botox paralyzes the muscle. Fillers add volume that wasn't there before. Buccal and fascia work release the connective tissue that's pulling the face down in the first place — it works <strong>with</strong> your facial architecture, not against it.</p>
+          <p>The result is a face that looks more like itself, not stretched or frozen. No injections, no asymmetry risk, no recovery window.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does intraoral work hurt?</summary>
+        <div class="faq-answer">
+          <p>Most clients describe it as deep but not painful — closer to firm bodywork than a dental procedure. I work at the pressure your tissue invites, not against it.</p>
+          <p>The muscles of mastication (masseter, pterygoids) often hold years of held tension. Releasing them feels intense on the first session and progressively softer with each one as the tissue lets go.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>When will I see results?</summary>
+        <div class="faq-answer">
+          <p>A single session produces visible same-day change — most clients see a more open jawline, lifted cheek hollows, and reduced under-eye puffiness within minutes of finishing.</p>
+          <p>To build structural memory and lasting change, a series of 6 weekly sessions is recommended. After that, monthly maintenance holds the work.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I have TMJ — is this appropriate for me?</summary>
+        <div class="faq-answer">
+          <p>Yes, and it often helps significantly. The pterygoid muscles that drive most TMJ tension can only be reached intraorally — that's the whole reason buccal work exists.</p>
+          <p>Please note your TMJ patterns at booking so I can tailor the session. If you have acute pain, an active flare-up, or recent dental surgery, we'll wait until you've healed before booking.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How long do results last?</summary>
+        <div class="faq-answer">
+          <p>One session lasts roughly 2–4 weeks depending on how much tension you carry day-to-day. A 6-session series builds lasting structural change that monthly maintenance keeps in place.</p>
+          <p>This is cumulative work — like training muscle memory. Each session goes deeper than the last because the body has already let go of the surface layer.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <section class="journal-callout">
   <div class="container">
     <h3>In the Journal</h3>
@@ -485,7 +609,7 @@
     <h2>Ready to <em>Book?</em></h2>
     <p>Reserve your session online or reach out with questions — I'll help you find the right treatment for your goals.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="/book" class="cta-btn">Book Now</a>
+      <a href="/book" class="cta-btn" data-book-cta data-service="restorative-buccal-footer">Book Now</a>
       <a href="/contact" style="display:inline-flex;align-items:center;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244, 240, 230, 0.65);border:1px solid rgba(244, 240, 230, 0.65);padding:0.9rem 2.5rem;text-decoration:none;min-height:48px;transition:border-color 0.25s,color 0.25s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(244, 240, 230, 0.65)';this.style.color='rgba(244, 240, 230, 0.65)'">Ask a Question</a>
     </div>
   </div>
