@@ -25,18 +25,11 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="image" href="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --black:      #06100a;
-    --deep:       #0a1810;
-    --forest:     #162b1c;
-    --gold:       #c9a84c;
-    --gold-light: #e8cc88;
-    --cream:      #f4f0e6;
-    --mist:       #8aaa8a;
-  }
+  
 
   html { scroll-behavior: smooth; }
   body {
@@ -708,11 +701,20 @@
   }
   .philosophy-text .section-heading { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 1.5rem; }
   .philosophy-text p { font-size: 0.9rem; line-height: 1.8; color: rgba(244,240,230,0.7); margin-bottom: 1.25rem; }
-  .philosophy-pillars { margin: 1.75rem 0; display: flex; flex-direction: column; gap: 0.85rem; }
-  .pillar { display: flex; align-items: flex-start; gap: 0.85rem; }
-  .pillar-icon { width: 1px; min-height: 32px; background: var(--gold); opacity: 0.5; margin-top: 3px; flex-shrink: 0; }
-  .pillar-text { font-size: 0.78rem; line-height: 1.6; color: rgba(244,240,230,0.65); }
-  .pillar-text strong { font-weight: 500; color: var(--cream); display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.15rem; }
+  .philosophy-pillars { margin: 2.5rem 0 1rem; display: flex; flex-direction: column; gap: 2.25rem; }
+  .pillar { display: grid; grid-template-columns: 64px 1fr; align-items: start; gap: 1.5rem; max-width: 540px; }
+  .pillar.pillar-indent { margin-left: 2.5rem; max-width: 500px; }
+  .pillar.pillar-indent-deeper { margin-left: 4.5rem; max-width: 480px; }
+  .pillar-marker { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; font-style: italic; color: var(--gold-light); letter-spacing: 0.04em; line-height: 1; }
+  .pillar-heading { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201,168,76,0.18); }
+  .pillar-detail { font-size: 0.82rem; line-height: 1.7; color: rgba(244, 240, 230, 0.7); }
+  @media (max-width: 640px) {
+    .philosophy-pillars { gap: 1.75rem; }
+    .pillar { grid-template-columns: 48px 1fr; gap: 1rem; }
+    .pillar.pillar-indent { margin-left: 1rem; }
+    .pillar.pillar-indent-deeper { margin-left: 2rem; }
+    .pillar-marker { font-size: 2rem; }
+  }
 
   /* ══════════════════════════════════════════════════════════════
      §4 · RESULTS TEASER
@@ -925,21 +927,6 @@
   .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244, 240, 230, 0.65); }
   .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
   .footer-legal-links a { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244, 240, 230, 0.65); text-decoration: none; }
-
-  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
-  @media (max-width: 860px) and (min-width: 641px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-  }
-
-  /* Focus indicators for keyboard users (WCAG 2.4.7) */
-  :focus-visible {
-    outline: 2px solid var(--gold-light);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-  :focus:not(:focus-visible) { outline: none; }
-
   /* Honor users who request reduced motion */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -1571,9 +1558,27 @@
         <div class="gold-rule left"></div>
         <p>At Altru Radiance, we treat the body as a structural system — not a collection of isolated symptoms. Every line on the face, every tension pattern in the body, traces back to fascial restriction and nervous system compensation.</p>
         <div class="philosophy-pillars">
-          <div class="pillar"><div class="pillar-icon"></div><div class="pillar-text"><strong>Regenerative, Not Corrective</strong>We work with your body's intelligence, not against it — creating conditions for natural realignment.</div></div>
-          <div class="pillar"><div class="pillar-icon"></div><div class="pillar-text"><strong>Fascia-Centered</strong>Every modality we offer works through the fascial network — the connective tissue web that shapes how you look and feel.</div></div>
-          <div class="pillar"><div class="pillar-icon"></div><div class="pillar-text"><strong>Whole-System Thinking</strong>A lifted face and a balanced body are the same conversation. We address both.</div></div>
+          <div class="pillar">
+            <span class="pillar-marker" aria-hidden="true">I</span>
+            <div class="pillar-body">
+              <h4 class="pillar-heading">Regenerative, Not Corrective</h4>
+              <p class="pillar-detail">We work with your body's intelligence, not against it — creating conditions for natural realignment.</p>
+            </div>
+          </div>
+          <div class="pillar pillar-indent">
+            <span class="pillar-marker" aria-hidden="true">II</span>
+            <div class="pillar-body">
+              <h4 class="pillar-heading">Fascia-Centered</h4>
+              <p class="pillar-detail">Every modality we offer works through the fascial network — the connective tissue web that shapes how you look and feel.</p>
+            </div>
+          </div>
+          <div class="pillar pillar-indent-deeper">
+            <span class="pillar-marker" aria-hidden="true">III</span>
+            <div class="pillar-body">
+              <h4 class="pillar-heading">Whole-System Thinking</h4>
+              <p class="pillar-detail">A lifted face and a balanced body are the same conversation. We address both.</p>
+            </div>
+          </div>
         </div>
         <a href="/about" class="btn-ghost">Our Philosophy →</a>
       </div>

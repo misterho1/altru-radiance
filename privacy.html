@@ -16,9 +16,10 @@
 <meta name="description" content="Altru Radiance Privacy Policy — how we collect, use, and protect your personal information.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://altruradiance.com/privacy">
+<link rel="stylesheet" href="/assets/css/base.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --black:#06100a; --deep:#0a1810; --forest:#162b1c; --gold:#c9a84c; --gold-light:#e8cc88; --cream:#f4f0e6; --mist:#8aaa8a; }
+  
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
 
@@ -147,21 +148,6 @@
   .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244, 240, 230, 0.65); }
   .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
   .footer-legal-links a { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244, 240, 230, 0.65); text-decoration: none; }
-
-  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
-  @media (max-width: 860px) and (min-width: 641px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-  }
-
-  /* Focus indicators for keyboard users (WCAG 2.4.7) */
-  :focus-visible {
-    outline: 2px solid var(--gold-light);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-  :focus:not(:focus-visible) { outline: none; }
-
   /* Honor users who request reduced motion */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

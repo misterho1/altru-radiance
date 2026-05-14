@@ -16,18 +16,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --black:      #06100a;
-    --deep:       #0a1810;
-    --forest:     #162b1c;
-    --gold:       #c9a84c;
-    --gold-light: #e8cc88;
-    --cream:      #f4f0e6;
-    --mist:       #8aaa8a;
-  }
+  
 
   html { scroll-behavior: smooth; }
   body {
@@ -259,21 +252,6 @@
 
 .booking-note { font-size: 0.95rem; color: var(--mist); margin-bottom: 1.5rem; line-height: 1.6; }
 .booking-note a { color: var(--gold); text-decoration: underline; }
-
-  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
-  @media (max-width: 860px) and (min-width: 641px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-  }
-
-  /* Focus indicators for keyboard users (WCAG 2.4.7) */
-  :focus-visible {
-    outline: 2px solid var(--gold-light);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-  :focus:not(:focus-visible) { outline: none; }
-
   /* Honor users who request reduced motion */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -366,14 +344,14 @@
     <div class="prep-grid">
 
       <!-- Aqua Peel -->
-      <div class="prep-card" data-service="aqua-peel">
+      <div class="prep-card" data-service="aqua-peel" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-aqua-peel">
         <div class="prep-card-top">
           <span class="prep-service-badge">Resurface</span>
           <span class="prep-toggle-icon">+</span>
         </div>
         <div class="prep-service-name">Aqua Peel</div>
         <div class="prep-service-meta">60 min · $200</div>
-        <div class="prep-notes">
+        <div class="prep-notes" id="prep-notes-aqua-peel">
           <div class="prep-notes-inner">
             <span class="prep-notes-label">Preparation Guidelines</span>
             <ul>
@@ -386,14 +364,14 @@
       </div>
 
       <!-- Back Facial -->
-      <div class="prep-card" data-service="back-facial">
+      <div class="prep-card" data-service="back-facial" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-back-facial">
         <div class="prep-card-top">
           <span class="prep-service-badge">Clarify</span>
           <span class="prep-toggle-icon">+</span>
         </div>
         <div class="prep-service-name">Back Facial</div>
         <div class="prep-service-meta">50 min · $150</div>
-        <div class="prep-notes">
+        <div class="prep-notes" id="prep-notes-back-facial">
           <div class="prep-notes-inner">
             <span class="prep-notes-label">Preparation Guidelines</span>
             <p class="prep-no-notes">No specific preparation is required for this service. Simply arrive comfortable and ready to relax.</p>
@@ -402,14 +380,14 @@
       </div>
 
       <!-- Microneedling -->
-      <div class="prep-card" data-service="microneedling">
+      <div class="prep-card" data-service="microneedling" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-microneedling">
         <div class="prep-card-top">
           <span class="prep-service-badge">Regenerate</span>
           <span class="prep-toggle-icon">+</span>
         </div>
         <div class="prep-service-name">Microneedling<br>+ Skin Booster</div>
         <div class="prep-service-meta">100 min · $300</div>
-        <div class="prep-notes">
+        <div class="prep-notes" id="prep-notes-microneedling">
           <div class="prep-notes-inner">
             <span class="prep-notes-label">Preparation Guidelines</span>
             <ul>
@@ -426,14 +404,14 @@
       </div>
 
       <!-- Restorative Buccal -->
-      <div class="prep-card" data-service="buccal">
+      <div class="prep-card" data-service="buccal" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-buccal">
         <div class="prep-card-top">
           <span class="prep-service-badge">Signature</span>
           <span class="prep-toggle-icon">+</span>
         </div>
         <div class="prep-service-name">Restorative Facial<br>+ Buccal Massage</div>
         <div class="prep-service-meta">110 min · $250</div>
-        <div class="prep-notes">
+        <div class="prep-notes" id="prep-notes-buccal">
           <div class="prep-notes-inner">
             <span class="prep-notes-label">Preparation Guidelines</span>
             <ul>
@@ -448,14 +426,14 @@
       </div>
 
       <!-- Lymphatic Drainage -->
-      <div class="prep-card" data-service="lymphatic">
+      <div class="prep-card" data-service="lymphatic" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-lymphatic">
         <div class="prep-card-top">
           <span class="prep-service-badge">Fundamental</span>
           <span class="prep-toggle-icon">+</span>
         </div>
         <div class="prep-service-name">Soothe Lymphatic<br>Drainage</div>
         <div class="prep-service-meta">110 min · $250</div>
-        <div class="prep-notes">
+        <div class="prep-notes" id="prep-notes-lymphatic">
           <div class="prep-notes-inner">
             <span class="prep-notes-label">Preparation Guidelines</span>
             <ul>
@@ -470,14 +448,14 @@
       </div>
 
       <!-- Structural Integration -->
-      <div class="prep-card" data-service="structural">
+      <div class="prep-card" data-service="structural" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-structural">
         <div class="prep-card-top">
           <span class="prep-service-badge">Initiate</span>
           <span class="prep-toggle-icon">+</span>
         </div>
         <div class="prep-service-name">Structural<br>Integration Facial</div>
         <div class="prep-service-meta">50 min · $140</div>
-        <div class="prep-notes">
+        <div class="prep-notes" id="prep-notes-structural">
           <div class="prep-notes-inner">
             <span class="prep-notes-label">Preparation Guidelines</span>
             <ul>
@@ -605,12 +583,25 @@
 </footer>
 
 <script>
-/* Prep card accordion */
+/* Prep card accordion — keyboard + aria-expanded */
 document.querySelectorAll('.prep-card').forEach(card => {
-  card.addEventListener('click', () => {
+  function toggle() {
     const isActive = card.classList.contains('active');
-    document.querySelectorAll('.prep-card').forEach(c => c.classList.remove('active'));
-    if (!isActive) card.classList.add('active');
+    document.querySelectorAll('.prep-card').forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-expanded', 'false');
+    });
+    if (!isActive) {
+      card.classList.add('active');
+      card.setAttribute('aria-expanded', 'true');
+    }
+  }
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggle();
+    }
   });
 });
 

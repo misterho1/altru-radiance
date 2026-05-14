@@ -23,9 +23,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --black:#06100a; --deep:#0a1810; --forest:#162b1c; --gold:#c9a84c; --gold-light:#e8cc88; --cream:#f4f0e6; --mist:#8aaa8a; }
+  
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
 
@@ -179,21 +180,6 @@
 
   @media (max-width: 1024px) { .article-layout { grid-template-columns: 1fr; gap: 2.5rem; } .article-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; } .article-body { max-width: 100%; } .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; } }
   @media (max-width: 640px) { nav { padding: 0 1rem; height: 60px; } .nav-links { display: none; } .nav-brand-sub { display: none; } .article-hero { min-height: 380px; padding: 100px 0 0; } .article-hero-inner { padding: 0 1.25rem 2.5rem; } .article-hero-h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); } .article-layout { padding: 40px 1.25rem 0; } .article-sidebar { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .related-inner { padding: 0 1.25rem; } .footer-inner { grid-template-columns: 1fr; gap: 2rem; } .footer-bottom { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; } .compare-table { font-size: 0.75rem; } .compare-table td:first-child { white-space: normal; } }
-
-  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
-  @media (max-width: 860px) and (min-width: 641px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-  }
-
-  /* Focus indicators for keyboard users (WCAG 2.4.7) */
-  :focus-visible {
-    outline: 2px solid var(--gold-light);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-  :focus:not(:focus-visible) { outline: none; }
-
   /* Honor users who request reduced motion */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
