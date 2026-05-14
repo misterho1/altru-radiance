@@ -115,21 +115,13 @@
 
   /* ─── SESSION INCLUSIONS (numbered) ─── */
   .lp-session { background: var(--deep); border-top: 1px solid rgba(201, 168, 76, 0.08); }
-  .lp-session-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; }
-  @media (max-width: 860px) { .lp-session-grid { grid-template-columns: 1fr; gap: 2rem; } }
-  .lp-session-sidebar { position: sticky; top: 96px; padding: 1.75rem; background: var(--forest); border: 1px solid rgba(201, 168, 76, 0.15); }
-  @media (max-width: 860px) { .lp-session-sidebar { position: static; } }
-  .lp-session-price { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--gold-light); font-style: italic; line-height: 1; margin-bottom: 0.4rem; }
-  .lp-session-price small { font-size: 0.55rem; font-style: normal; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); display: block; margin-top: 0.6rem; }
-  .lp-step-list { display: flex; flex-direction: column; gap: 1.75rem; counter-reset: step; list-style: none; }
+  .lp-step-list { display: flex; flex-direction: column; gap: 1.75rem; counter-reset: step; list-style: none; max-width: 760px; }
   .lp-step { display: grid; grid-template-columns: 56px 1fr; gap: 1.4rem; align-items: start; counter-increment: step; }
   .lp-step::before { content: counter(step, decimal-leading-zero); font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 300; font-style: italic; color: var(--gold-light); line-height: 1; padding-top: 0.1rem; }
   .lp-step-body strong { display: block; font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.45rem; padding-bottom: 0.45rem; border-bottom: 1px solid rgba(201, 168, 76, 0.18); }
   .lp-step-body p { font-size: 0.88rem; line-height: 1.75; color: rgba(244, 240, 230, 0.72); }
-  .lp-included { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .lp-included-row { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.72rem; color: rgba(244, 240, 230, 0.72); padding: 0.45rem 0; border-bottom: 1px solid rgba(201, 168, 76, 0.08); }
-  .lp-included-row span:first-child { color: var(--gold-light); letter-spacing: 0.06em; }
-  .lp-included-row span:last-child { color: var(--cream); }
+  .lp-step-cta { margin-top: 1rem; padding-top: 2rem; border-top: 1px solid rgba(201, 168, 76, 0.12); max-width: 760px; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .lp-step-cta-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--gold-light); }
 
   /* ─── COMPARISON TABLE ─── */
   .lp-compare { background: var(--black); border-top: 1px solid rgba(201, 168, 76, 0.08); }
@@ -282,7 +274,7 @@
         {"@type": "Question", "name": "Does buccal massage hurt?", "acceptedAnswer": {"@type": "Answer", "text": "Buccal massage involves deliberate pressure on areas of held tension, which most clients describe as a profound sense of release rather than pain. The intraoral portion begins with very light pressure and increases gradually as tissue softens. Some clients carry significant tension in the masseter and pterygoids; these areas may feel tender, but at no point should the work be painful. The practitioner adjusts pressure throughout the session based on your feedback."}},
         {"@type": "Question", "name": "How many buccal massage sessions do I need to see results?", "acceptedAnswer": {"@type": "Answer", "text": "Most clients see visible lift and skin tone improvement after a single 110-minute session. For meaningful structural change, Altru Radiance recommends a series of 3 to 6 sessions over 6 to 10 weeks, followed by monthly maintenance. New clients often begin with the Welcome Bundle, which is two foundational sessions designed to establish a baseline and assess tissue response."}},
         {"@type": "Question", "name": "Is buccal massage safe?", "acceptedAnswer": {"@type": "Answer", "text": "Buccal massage performed by a trained, licensed esthetician using sterile gloves is a safe manual bodywork modality. Contraindications include active oral infections, cold sores, canker sores, recent oral surgery or dental work that has not fully healed, and clients within two weeks of injectable treatments. Mechelle reviews health history at intake and adjusts the session for any relevant conditions."}},
-        {"@type": "Question", "name": "What should I expect during my first buccal massage session?", "acceptedAnswer": {"@type": "Answer", "text": "Your session begins with a brief consultation and assessment. The treatment opens with external manual lymphatic drainage and warm-up massage to soften the tissue and calm the nervous system. The intraoral buccal portion follows, with sterile gloves and gradually increasing pressure. The session closes with structural facial integration and skincare. Expect approximately 110 minutes total. Some redness or flushing post-session is normal and resolves within 30 to 60 minutes."}},
+        {"@type": "Question", "name": "What should I expect during my first buccal massage session?", "acceptedAnswer": {"@type": "Answer", "text": "Your session begins with a brief consultation and assessment. External manual lymphatic drainage opens the work, softening tissue and calming the nervous system. Structural facial integration follows, releasing the surrounding myofascial layer through the brow, cheekbones, jaw, and neck to prepare for the deeper intraoral work. The intraoral buccal portion comes next, with sterile gloves and gradually increasing pressure on the buccinator, masseter, and medial and lateral pterygoid muscles. The session closes with clinical skincare. Expect approximately 110 minutes total. Some redness or flushing post-session is normal and resolves within 30 to 60 minutes."}},
         {"@type": "Question", "name": "Can buccal massage help TMJ pain?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The medial pterygoid muscle, which is one of the primary contributors to TMJ dysfunction, is only fully accessible from inside the mouth. Buccal massage directly addresses this muscle along with the masseter and lateral pterygoid. Clients with chronic jaw clenching, bruxism, or referred ear and headache pain often experience meaningful relief after a series of buccal massage sessions. This work pairs well with dental and orthodontic care."}},
         {"@type": "Question", "name": "How long do buccal massage results last?", "acceptedAnswer": {"@type": "Answer", "text": "Visible lift and decongestion from a single session typically remain noticeable for one to two weeks. Structural change builds cumulatively across a series of sessions and is sustained with monthly maintenance. Buccal massage does not create permanent change; it releases held tension and supports the body's natural lift, which the muscles and fascia will revert toward without ongoing care. Clients who maintain regular sessions consistently report a higher baseline of facial tone and reduced jaw tension."}},
         {"@type": "Question", "name": "Do you serve clients outside of Murray, Utah?", "acceptedAnswer": {"@type": "Answer", "text": "Altru Radiance is located in Murray, Utah, and serves clients from across the Salt Lake Valley including Salt Lake City, Holladay, Cottonwood Heights, Millcreek, Sandy, Draper, and South Jordan. The studio is located at 164 E 5900 S, Suite A108, near Fashion Place Mall."}},
@@ -420,51 +412,41 @@
     <span class="eyebrow">110 Min · $250</span>
     <h2 class="section-heading" id="lp-session-h">What's included in your <em>Restorative Facial</em></h2>
     <div class="gold-rule"></div>
-    <div class="lp-session-grid" style="margin-top:2.5rem;">
-      <aside class="lp-session-sidebar" aria-label="Session details">
-        <div class="lp-session-price">$250<small>110-minute session · By appointment</small></div>
-        <div class="lp-included">
-          <div class="lp-included-row"><span>Intake</span><span>10 min</span></div>
-          <div class="lp-included-row"><span>Lymphatic Prep</span><span>15 min</span></div>
-          <div class="lp-included-row"><span>Intraoral Buccal</span><span>40 min</span></div>
-          <div class="lp-included-row"><span>Structural Integration</span><span>25 min</span></div>
-          <div class="lp-included-row"><span>Skincare Closeout</span><span>20 min</span></div>
+    <ol class="lp-step-list" style="margin-top:2.5rem;">
+      <li class="lp-step">
+        <div class="lp-step-body">
+          <strong>Intake &amp; Skin Assessment</strong>
+          <p>Brief consultation about jaw tension, facial holding patterns, recent dental or injectable work, and any TMJ symptoms. Mechelle reviews your goals and customizes the session to your tissue and history.</p>
         </div>
-        <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" data-book-cta data-service="restorative-facial-sidebar" target="_blank" rel="noopener" style="margin-top:1.5rem; width:100%;">Book This Service</a>
-      </aside>
-
-      <ol class="lp-step-list">
-        <li class="lp-step">
-          <div class="lp-step-body">
-            <strong>Intake &amp; Skin Assessment</strong>
-            <p>Brief consultation about jaw tension, facial holding patterns, recent dental or injectable work, and any TMJ symptoms. Mechelle reviews your goals and customizes the session to your tissue and history.</p>
-          </div>
-        </li>
-        <li class="lp-step">
-          <div class="lp-step-body">
-            <strong>Manual Lymphatic Drainage Prep</strong>
-            <p>External lymphatic work opens cervical drainage channels, calms the nervous system, and softens tissue before the deeper work begins. This stage on its own is what most clients describe as the most relaxing massage they have experienced.</p>
-          </div>
-        </li>
-        <li class="lp-step">
-          <div class="lp-step-body">
-            <strong>Intraoral Buccal Massage</strong>
-            <p>With sterile gloves, Mechelle works inside the cheek to release the buccinator, masseter, medial and lateral pterygoids, and the fascial planes connecting them. Pressure builds gradually as tissue softens. This is the structural core of the session.</p>
-          </div>
-        </li>
-        <li class="lp-step">
-          <div class="lp-step-body">
-            <strong>Structural Facial Integration</strong>
-            <p>External myofascial work integrates the intraoral release with the rest of the face: brow line, cheekbones, jaw definition, and neck. This stage settles the new tissue state and supports symmetry restoration.</p>
-          </div>
-        </li>
-        <li class="lp-step">
-          <div class="lp-step-body">
-            <strong>Clinical Skincare Closeout</strong>
-            <p>Targeted serums and a calming mask matched to your skin type. Red light therapy is available as an add-on for clients prioritizing collagen support and surface vitality.</p>
-          </div>
-        </li>
-      </ol>
+      </li>
+      <li class="lp-step">
+        <div class="lp-step-body">
+          <strong>Manual Lymphatic Drainage Prep</strong>
+          <p>External lymphatic work opens cervical drainage channels, calms the nervous system, and softens tissue before the deeper work begins. This stage on its own is what most clients describe as the most relaxing massage they have experienced.</p>
+        </div>
+      </li>
+      <li class="lp-step">
+        <div class="lp-step-body">
+          <strong>Structural Facial Integration</strong>
+          <p>External myofascial work integrates the warm-up release with the rest of the face: brow line, cheekbones, jaw definition, and neck. This stage settles the surrounding tissue state and supports symmetry restoration, preparing the deeper structures for the intraoral work that follows.</p>
+        </div>
+      </li>
+      <li class="lp-step">
+        <div class="lp-step-body">
+          <strong>Intraoral Buccal Massage</strong>
+          <p>With sterile gloves, Mechelle works inside the cheek to release the buccinator, masseter, medial and lateral pterygoids, and the fascial planes connecting them. Pressure builds gradually as tissue softens. This is the structural core of the session.</p>
+        </div>
+      </li>
+      <li class="lp-step">
+        <div class="lp-step-body">
+          <strong>Clinical Skincare Closeout</strong>
+          <p>Targeted serums and a calming mask matched to your skin type. Red light therapy is available as an add-on for clients prioritizing collagen support and surface vitality.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="lp-step-cta">
+      <span class="lp-step-cta-note">110 minutes. $250. By appointment.</span>
+      <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" data-book-cta data-service="restorative-facial-session" target="_blank" rel="noopener">Book This Service</a>
     </div>
   </div>
 </section>
