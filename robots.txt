@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /.brainstorm/
+Disallow: /.claude/
+
+Sitemap: https://altruradiance.com/sitemap.xml

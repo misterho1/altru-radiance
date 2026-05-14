@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/avif" href="/assets/logoFinal.avif">
+<link rel="icon" type="image/webp" href="/assets/logoFinal.webp">
+<link rel="icon" type="image/png" href="/assets/logoFinal.png">
+<link rel="apple-touch-icon" href="/assets/logoFinal.png">
+<meta name="theme-color" content="#06100a">
+<title>Altru Journal · Structural Support · Murray, UT</title>
+<meta name="description" content="Insights on structural skin health, airway-informed aesthetics, and the science of fascia. Learn how habits shape your face from our Murray, UT studio.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://altruradiance.com/journal">
+<meta property="og:title" content="The Altru Journal — Altru Radiance | Murray, Utah">
+    <meta property="og:image" content="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/altru-radiance-regenerative-fascia-studio-murray-utah_eazl6k">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Altru Radiance studio — regenerative fascia and aesthetic wellness in Murray, Utah">
+<meta property="og:description" content="Expert perspectives on buccal massage, natural Botox alternatives, TMJ relief, and structural skin health from Murray, Utah's boutique aesthetic wellness studio.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://altruradiance.com/journal">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:      #06100a;
+    --deep:       #0a1810;
+    --forest:     #162b1c;
+    --gold:       #c9a84c;
+    --gold-light: #e8cc88;
+    --cream:      #f4f0e6;
+    --mist:       #8aaa8a;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* ─── NAV ─────────────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 900;
+    padding: 0 3rem; height: 68px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(6,16,10,0.97);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; flex-shrink: 0; }
+  .nav-logo-placeholder {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--forest); border: 1px solid rgba(201,168,76,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 1rem; font-style: italic;
+  }
+  .nav-brand-text { display: flex; flex-direction: column; gap: 0.08rem; }
+  .nav-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+  .nav-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); line-height: 1; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.25s; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; white-space: nowrap; flex-shrink: 0; }
+  .nav-cta:hover { background: var(--gold-light); }
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+    background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none;
+  }
+  .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
+  .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: rgba(244,240,230,0.85); text-decoration: none; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--gold-light); }
+  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; transition: background 0.3s; min-height: 48px; display: flex; align-items: center; }
+  .mobile-menu-cta:hover { background: var(--gold-light); }
+
+  @media (max-width: 640px) { .nav-hamburger { display: flex; } .nav-cta { display: none; } }
+
+  /* ─── SHARED ─────────────────────────────────────────────────── */
+  .eyebrow { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 0.75rem; display: block; }
+  .section-heading { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--cream); }
+  .section-heading em { font-style: italic; color: var(--gold-light); }
+  .gold-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; margin: 1.25rem auto; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+
+  /* ─── JOURNAL HERO ──────────────────────────────────────────── */
+  .journal-hero {
+    padding: 148px 0 88px; background: var(--black);
+    position: relative; text-align: center; overflow: hidden;
+  }
+  .journal-hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 70%, rgba(22,43,28,0.55) 0%, transparent 70%);
+  }
+  .journal-hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    opacity: 0.5; pointer-events: none;
+  }
+  .journal-hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5)); z-index: 1; }
+  .journal-hero-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+  .journal-hero-inner .section-heading { font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.25rem; }
+  .journal-hero-desc { font-size: 0.9rem; letter-spacing: 0.03em; line-height: 1.78; color: rgba(244,240,230,0.58); max-width: 520px; margin: 0 auto; }
+
+  /* ─── JOURNAL MAIN ──────────────────────────────────────────── */
+  .journal-main { background: var(--black); padding: 56px 0 100px; }
+
+  /* Featured card */
+  .journal-featured-card {
+    display: grid; grid-template-columns: 1.15fr 1fr;
+    border: 1px solid rgba(201,168,76,0.1);
+    background: var(--deep); margin-bottom: 1.5rem;
+    transition: border-color 0.35s;
+    text-decoration: none; color: inherit;
+  }
+  .journal-featured-card:hover { border-color: rgba(201,168,76,0.3); }
+
+  .journal-featured-image {
+    min-height: 440px; position: relative; overflow: hidden;
+    background: linear-gradient(145deg, #1c3a24 0%, #0e2218 55%, #06100a 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .journal-featured-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .journal-featured-image::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to right, transparent 55%, var(--deep) 100%);
+  }
+  .journal-featured-svg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.1; z-index: 0; }
+  .journal-image-tag {
+    position: absolute; top: 1.5rem; left: 1.5rem; z-index: 2;
+    font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.35);
+    padding: 0.3rem 0.85rem; background: rgba(6,16,10,0.72); backdrop-filter: blur(4px);
+  }
+  .journal-featured-body { padding: 3rem 2.75rem; display: flex; flex-direction: column; justify-content: center; gap: 1.1rem; }
+  .journal-tag { font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); display: block; }
+  .journal-featured-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 300; line-height: 1.25; color: var(--cream); }
+  .journal-featured-excerpt { font-size: 0.84rem; line-height: 1.78; color: rgba(244,240,230,0.58); }
+  .article-meta { display: flex; align-items: center; gap: 0.55rem; font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); flex-wrap: wrap; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(138,170,138,0.4); flex-shrink: 0; }
+  .journal-read-more { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; transition: letter-spacing 0.3s; }
+  .journal-featured-card:hover .journal-read-more { letter-spacing: 0.24em; }
+
+  /* Secondary grid */
+  .journal-secondary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+  .journal-card-secondary { background: var(--deep); border: 1px solid rgba(201,168,76,0.07); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color 0.3s; }
+  .journal-card-secondary:hover { border-color: rgba(201,168,76,0.24); }
+  .journal-card-image {
+    aspect-ratio: 16/9; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--forest) 0%, var(--deep) 100%);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .journal-card-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .journal-card-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,24,16,0.65) 0%, transparent 55%); }
+  .card-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.1; z-index: 0; }
+  .card-img-tag { position: absolute; bottom: 1rem; left: 1rem; z-index: 2; font-size: 0.45rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.25rem 0.7rem; background: rgba(6,16,10,0.72); backdrop-filter: blur(4px); }
+  .journal-card-body { padding: 1.75rem 1.75rem 2rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+  .journal-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; line-height: 1.3; color: var(--cream); }
+  .journal-card-excerpt { font-size: 0.78rem; line-height: 1.72; color: rgba(244,240,230,0.52); flex: 1; }
+  .journal-card-secondary:hover .journal-read-more { letter-spacing: 0.24em; }
+
+  /* ─── CTA STRIP ─────────────────────────────────────────────── */
+  .cta-strip { background: var(--forest); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); padding: 80px 0; position: relative; overflow: hidden; }
+  .cta-strip::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%); pointer-events: none; }
+  .cta-strip-inner { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 3rem; max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  .cta-eyebrow { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); margin-bottom: 0.5rem; display: block; }
+  .cta-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 300; line-height: 1.22; color: var(--cream); }
+  .cta-headline em { font-style: italic; color: var(--gold-light); }
+  .cta-divider { width: 1px; height: 80px; background: rgba(201,168,76,0.2); }
+  .cta-action { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .cta-sub { font-size: 0.82rem; line-height: 1.65; color: rgba(244,240,230,0.55); max-width: 280px; }
+  .btn-gold { display: inline-block; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 14px 32px; text-decoration: none; transition: background 0.25s; white-space: nowrap; }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ─────────────────────────────────────────────────── */
+  footer { background: var(--deep); border-top: 1px solid rgba(201,168,76,0.08); padding: 64px 0 0; }
+  .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 3rem 3rem; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 3rem; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .footer-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
+  .footer-desc { font-size: 0.78rem; line-height: 1.7; color: rgba(244,240,230,0.42); max-width: 260px; }
+  .footer-col-heading { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a { font-size: 0.72rem; color: rgba(244,240,230,0.48); text-decoration: none; transition: color 0.25s; letter-spacing: 0.03em; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-hours-row { display: flex; justify-content: space-between; font-size: 0.68rem; color: rgba(244,240,230,0.48); padding: 0.3rem 0; border-bottom: 1px solid rgba(201,168,76,0.06); letter-spacing: 0.02em; }
+  .hours-closed { color: rgba(244,240,230,0.22); }
+  .footer-bottom { max-width: 1180px; margin: 0 auto; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.06); }
+  .footer-copy { font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,240,230,0.22); }
+  .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-legal-links a { font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,240,230,0.22); text-decoration: none; transition: color 0.25s; }
+  .footer-legal-links a:hover { color: var(--gold); }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .journal-featured-card { grid-template-columns: 1fr; }
+    .journal-featured-image { min-height: 300px; }
+    .journal-featured-image::after { background: linear-gradient(to top, var(--deep) 0%, transparent 55%); }
+    .journal-secondary-grid { grid-template-columns: 1fr 1fr; }
+    .cta-strip-inner { grid-template-columns: 1fr; text-align: center; }
+    .cta-divider { display: none; }
+    .cta-action { align-items: center; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; height: 60px; }
+    .nav-links { display: none; }
+    .nav-brand-sub { display: none; }
+    .journal-hero { padding: 110px 0 60px; }
+    .journal-hero-inner .section-heading { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+    .container { padding: 0 1.25rem; }
+    .journal-secondary-grid { grid-template-columns: 1fr; }
+    .journal-featured-body { padding: 1.75rem 1.4rem; }
+    .cta-strip { padding: 60px 0; }
+    .cta-strip-inner { padding: 0 1.25rem; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-10KW19QN9R');
+</script>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Altru Radiance</span>
+      <span class="nav-brand-sub">Aesthetic Wellness · Murray, Utah</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <a href="/book" class="nav-cta">Book Now</a>
+
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileMenu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <ul class="mobile-menu-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/book" class="mobile-menu-cta">Book Now</a>
+</div>
+
+<!-- JOURNAL HERO -->
+<section class="journal-hero" aria-label="Journal introduction">
+  <div class="journal-hero-bg" aria-hidden="true"></div>
+  <div class="journal-hero-line" aria-hidden="true"></div>
+  <div class="container journal-hero-inner">
+    <span class="eyebrow">The Altru Journal</span>
+    <h1 class="section-heading">Insights on <em>Structural Skin Health</em></h1>
+    <div class="gold-rule" aria-hidden="true"></div>
+    <p class="journal-hero-desc">Education-first perspectives on buccal massage, facial architecture, and the science behind lasting skin health — from Murray, Utah's boutique aesthetic wellness studio.</p>
+  </div>
+</section>
+
+<!-- JOURNAL MAIN -->
+<section class="journal-main" aria-label="Journal articles">
+  <div class="container">
+
+    <!-- Featured Article: Article 1 -->
+    <a href="/journal/what-is-buccal-massage" class="journal-featured-card" aria-label="Read: What Is Buccal Massage? The Face-Lifting Technique That Works From the Inside Out">
+      <div class="journal-featured-image">
+        <!-- Swap for real Cloudinary URL: https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/... -->
+        <img src="" alt="Licensed esthetician performing buccal massage intraoral facial treatment at Altru Radiance in Murray, Utah" loading="lazy" onerror="this.style.display='none'">
+        <div class="journal-featured-svg" aria-hidden="true">
+          <svg width="240" height="240" viewBox="0 0 240 240" fill="none">
+            <circle cx="120" cy="120" r="100" stroke="#c9a84c" stroke-width="0.7"/>
+            <circle cx="120" cy="120" r="68" stroke="#c9a84c" stroke-width="0.5"/>
+            <ellipse cx="120" cy="102" rx="30" ry="42" stroke="#c9a84c" stroke-width="0.8"/>
+            <path d="M88 145 Q120 168 152 145" stroke="#c9a84c" stroke-width="0.8" fill="none"/>
+            <path d="M96 118 Q120 110 144 118" stroke="#c9a84c" stroke-width="0.5" fill="none"/>
+            <line x1="120" y1="60" x2="120" y2="20" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+            <line x1="120" y1="180" x2="120" y2="220" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+            <line x1="20" y1="120" x2="52" y2="120" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+            <line x1="188" y1="120" x2="220" y2="120" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+          </svg>
+        </div>
+        <span class="journal-image-tag">Buccal Massage</span>
+      </div>
+      <div class="journal-featured-body">
+        <span class="journal-tag">Featured · Technique Deep Dive</span>
+        <h2 class="journal-featured-title">What Is Buccal Massage? The Face-Lifting Technique That Works From the Inside Out</h2>
+        <p class="journal-featured-excerpt">Most facial treatments work on the surface. Buccal massage works from the inside — accessing the buccinator, masseter, and pterygoid muscles through the cheek to release tension, restore lift, and sculpt facial structure in ways no topical can reach.</p>
+        <div class="article-meta">
+          <span>April 2026</span>
+          <span class="meta-sep"></span>
+          <span>9 min read</span>
+          <span class="meta-sep"></span>
+          <span>By Mechelle · Licensed Esthetician</span>
+        </div>
+        <span class="journal-read-more">Read the article →</span>
+      </div>
+    </a>
+
+    <!-- Secondary Grid -->
+    <div class="journal-secondary-grid">
+
+      <!-- Article 2 -->
+      <a href="/journal/natural-alternatives-to-botox" class="journal-card-secondary" aria-label="Read: Natural Alternatives to Botox">
+        <div class="journal-card-image">
+          <img src="" alt="Non-invasive facial treatment at Altru Radiance — natural alternative to Botox in Murray, Utah" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+              <circle cx="80" cy="80" r="60" stroke="#c9a84c" stroke-width="0.7"/>
+              <path d="M50 50 Q80 30 110 50 Q130 80 110 110 Q80 130 50 110 Q30 80 50 50Z" stroke="#c9a84c" stroke-width="0.5" fill="none"/>
+              <line x1="80" y1="20" x2="80" y2="140" stroke="#c9a84c" stroke-width="0.5" opacity="0.6"/>
+              <line x1="20" y1="80" x2="140" y2="80" stroke="#c9a84c" stroke-width="0.5" opacity="0.6"/>
+            </svg>
+          </div>
+          <span class="card-img-tag">Non-Invasive Aesthetics</span>
+        </div>
+        <div class="journal-card-body">
+          <span class="journal-tag">Comparison Guide</span>
+          <h2 class="journal-card-title">Natural Alternatives to Botox: What Actually Works — and What Doesn't</h2>
+          <p class="journal-card-excerpt">Compare buccal massage, microneedling with skin boosters, red light therapy, and lymphatic drainage — an honest, science-grounded guide to lifting and tightening without injections.</p>
+          <div class="article-meta">
+            <span>April 2026</span>
+            <span class="meta-sep"></span>
+            <span>11 min read</span>
+          </div>
+          <span class="journal-read-more">Read the article →</span>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="/journal/tmj-relief-facial-massage" class="journal-card-secondary" aria-label="Read: TMJ Relief Through Facial Massage">
+        <div class="journal-card-image">
+          <img src="" alt="Intraoral jaw massage for TMJ relief at Altru Radiance, Murray Utah" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+              <path d="M35 60 Q80 35 125 60 L125 110 Q80 135 35 110 Z" stroke="#c9a84c" stroke-width="0.7" fill="none"/>
+              <path d="M55 75 Q80 65 105 75" stroke="#c9a84c" stroke-width="0.7" fill="none"/>
+              <path d="M55 92 Q80 102 105 92" stroke="#c9a84c" stroke-width="0.7" fill="none"/>
+              <circle cx="80" cy="55" r="4" fill="none" stroke="#c9a84c" stroke-width="0.7"/>
+              <line x1="80" y1="20" x2="80" y2="51" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+            </svg>
+          </div>
+          <span class="card-img-tag">TMJ &amp; Jaw Tension</span>
+        </div>
+        <div class="journal-card-body">
+          <span class="journal-tag">Clinical Education</span>
+          <h2 class="journal-card-title">TMJ Relief Through Facial Massage: How Intraoral Techniques Release Jaw Tension Naturally</h2>
+          <p class="journal-card-excerpt">Chronic jaw pain, headaches, or grinding? Learn why the muscles driving TMJ are only fully accessible intraorally — and how buccal massage reaches what a mouthguard alone never will.</p>
+          <div class="article-meta">
+            <span>April 2026</span>
+            <span class="meta-sep"></span>
+            <span>10 min read</span>
+          </div>
+          <span class="journal-read-more">Read the article →</span>
+        </div>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="/journal/how-breathing-shapes-your-face" class="journal-card-secondary" aria-label="Read: How Breathing Shapes Your Face">
+        <div class="journal-card-image">
+          <img src="" alt="Airway and facial structure education at Altru Radiance Murray Utah" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+              <path d="M80 30 Q110 50 115 80 Q110 110 80 125 Q50 110 45 80 Q50 50 80 30Z" stroke="#c9a84c" stroke-width="0.7" fill="none"/>
+              <path d="M80 50 Q95 65 95 80 Q95 95 80 108 Q65 95 65 80 Q65 65 80 50Z" stroke="#c9a84c" stroke-width="0.5" fill="none"/>
+              <line x1="80" y1="20" x2="80" y2="30" stroke="#c9a84c" stroke-width="0.8" opacity="0.7"/>
+              <line x1="80" y1="125" x2="80" y2="140" stroke="#c9a84c" stroke-width="0.8" opacity="0.7"/>
+              <path d="M55 55 Q40 60 35 75" stroke="#c9a84c" stroke-width="0.5" fill="none" opacity="0.5"/>
+              <path d="M105 55 Q120 60 125 75" stroke="#c9a84c" stroke-width="0.5" fill="none" opacity="0.5"/>
+            </svg>
+          </div>
+          <span class="card-img-tag">Airway &amp; Structure</span>
+        </div>
+        <div class="journal-card-body">
+          <span class="journal-tag">Regenerative Aesthetics</span>
+          <h2 class="journal-card-title">How Breathing Shapes Your Face: The Airway–Structure Connection</h2>
+          <p class="journal-card-excerpt">How you breathe determines how your face ages. Tongue posture, neck positioning, and breathing patterns leave a structural imprint that compounds over decades — here's how to become aware and change the code.</p>
+          <div class="article-meta">
+            <span>April 2026</span>
+            <span class="meta-sep"></span>
+            <span>10 min read</span>
+          </div>
+          <span class="journal-read-more">Read the article →</span>
+        </div>
+      </a>
+
+    </div><!-- /.journal-secondary-grid -->
+  </div><!-- /.container -->
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip" aria-label="Book a session">
+  <div class="cta-strip-inner">
+    <div>
+      <span class="cta-eyebrow">Ready to experience it?</span>
+      <h2 class="cta-headline">Knowledge is the first step.<br><em>Transformation</em> is the session.</h2>
+    </div>
+    <div class="cta-divider" aria-hidden="true"></div>
+    <div class="cta-action">
+      <p class="cta-sub">Altru Radiance is Murray, Utah's only boutique structural facial studio. New clients welcome — book online in minutes.</p>
+      <a href="/book" class="btn-gold">Book Your Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo-wrap">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <span class="footer-brand-name">Altru Radiance</span>
+        </div>
+        <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
+        <address class="footer-address">
+          <strong>164 E 5900 S, Suite A108 (near Fashion Place Mall)</strong><br>
+          Murray, Utah 84107<br>
+          <a href="tel:+18016608933" style="color:rgba(244,240,230,0.5);text-decoration:none;">(801) 660-8933</a><br>
+          <a href="/cdn-cgi/l/email-protection#ee838b8d868b82828bae8f829a9c9b9c8f8a878f808d8bc08d8183" style="color:rgba(244,240,230,0.5);text-decoration:none;"><span class="__cf_email__" data-cfemail="2d40484e45484141486d4c41595f585f4c49444c434e48034e4240">[email protected]</span></a>
+        </address>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="/services/restorative-buccal-massage">Buccal Massage</a></li>
+          <li><a href="/services/lymphatic-drainage-murray-utah">Lymphatic Drainage</a></li>
+          <li><a href="/services/structural-integration-salt-lake-city">Structural Integration</a></li>
+          <li><a href="/services/microneedling-murray-utah">Microneedling</a></li>
+          <li><a href="/services/aqua-peel-murray-utah">Aqua Peel</a></li>
+          <li><a href="/services">All Services →</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/policies">Policies</a></li>
+          <li><a href="/book">Book Now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Hours</div>
+        <div class="footer-hours-row"><span class="hours-closed">Sunday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span class="hours-closed">Monday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span>Tuesday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Wednesday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Thursday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Friday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Saturday</span><span>1 – 5pm</span></div>
+        <p style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-top:0.85rem;line-height:1.6;">By Appointment Only</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">Copyright © 2026 Altru Radiance</span>
+      <ul class="footer-legal-links">
+        <li><a href="/policies">Studio Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const btn  = document.getElementById('navHamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function openMenu()  { menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeMenu() { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function() { btn.getAttribute('aria-expanded')==='true' ? closeMenu() : openMenu(); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&menu.classList.contains('is-open')) closeMenu(); });
+  window.matchMedia('(min-width:641px)').addEventListener('change', function(e){ if(e.matches) closeMenu(); });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "The Altru Journal",
+  "description": "Expert insights on buccal massage, natural Botox alternatives, TMJ relief, and structural skin health from Altru Radiance in Murray, Utah.",
+  "url": "https://altruradiance.com/journal",
+  "publisher": { "@type": "BeautySalon", "name": "Altru Radiance", "url": "https://altruradiance.com", "address": { "@type": "PostalAddress", "addressLocality": "Murray", "addressRegion": "UT", "addressCountry": "US" } },
+  "blogPost": [
+    { "@type": "BlogPosting", "headline": "What Is Buccal Massage? The Face-Lifting Technique That Works From the Inside Out", "url": "https://altruradiance.com/journal/what-is-buccal-massage", "datePublished": "2026-04-01", "author": { "@type": "Person", "name": "Mechelle" } },
+    { "@type": "BlogPosting", "headline": "Natural Alternatives to Botox: What Actually Works — and What Doesn't", "url": "https://altruradiance.com/journal/natural-alternatives-to-botox", "datePublished": "2026-04-08", "author": { "@type": "Person", "name": "Mechelle" } },
+    { "@type": "BlogPosting", "headline": "TMJ Relief Through Facial Massage: How Intraoral Techniques Release Jaw Tension Naturally", "url": "https://altruradiance.com/journal/tmj-relief-facial-massage", "datePublished": "2026-04-15", "author": { "@type": "Person", "name": "Mechelle" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://altruradiance.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Journal", "item": "https://altruradiance.com/journal" }
+  ]
+}
+</script>
+
+</body>
+</html>

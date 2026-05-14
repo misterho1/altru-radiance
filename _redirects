@@ -1,0 +1,19 @@
+# Cloudflare Pages serves /foo when requesting /foo.html by default and
+# 301-redirects /foo.html -> /foo. Rules below cover only the cases that
+# default behavior does not handle.
+
+# Legacy / external inbound links that pre-date the canonical journal slugs
+/journal/what-is-buccal-massage-murray-utah        /journal/blog-what-is-buccal-massage    301
+/journal/lymphatic-drainage-benefits-salt-lake-city /journal/blog-natural-alternatives-to-botox 301
+/journal/myofascial-release-facial-salt-lake-city   /journal/blog-tmj-relief-facial-massage 301
+
+# Canonicalize trailing-slash variants on top-level pages
+/about/         /about          301
+/services/      /services       301
+/results/       /results        301
+/journal/       /journal        301
+/membership/    /membership     301
+/book/          /book           301
+/contact/       /contact        301
+/policies/      /policies       301
+/privacy/       /privacy        301

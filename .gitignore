@@ -1,0 +1,13 @@
+serve.py
+serve-brainstorm.py
+node.text
+.DS_Store
+__MACOSX/
+assets/results/NKSC_PARAM/
+assets/results/preedit-strucural-integration*
+*.pyc
+
+# Local agent / session workspaces — not for deploy
+.brainstorm/
+.claude/
+.superpowers/

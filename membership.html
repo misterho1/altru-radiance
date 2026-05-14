@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/avif" href="/assets/logoFinal.avif">
+<link rel="icon" type="image/webp" href="/assets/logoFinal.webp">
+<link rel="icon" type="image/png" href="/assets/logoFinal.png">
+<link rel="apple-touch-icon" href="/assets/logoFinal.png">
+<meta name="theme-color" content="#06100a">
+<title>Facial Structure &amp; Growth Membership · Murray, UT</title>
+<meta name="description" content="Support forward growth and structural aesthetics with monthly fascia therapy in Murray, UT. Exclusive savings on regenerative health and priority booking.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://altruradiance.com/membership">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #06100a; --deep: #0a1810; --forest: #162b1c;
+    --gold: #c9a84c; --gold-light: #e8cc88; --cream: #f4f0e6; --mist: #8aaa8a;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 900; padding: 0 3rem; height: 68px; display: flex; justify-content: space-between; align-items: center; background: rgba(6,16,10,0.97); border-bottom: 1px solid rgba(201,168,76,0.12); }
+  .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; flex-shrink: 0; }
+  .nav-logo { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+  .nav-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .nav-brand-text { display: flex; flex-direction: column; gap: 0.08rem; }
+  .nav-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+  .nav-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); line-height: 1; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; flex-shrink: 0; }
+  .nav-cta:hover { background: var(--gold-light); }
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem; border-top: 1px solid rgba(201,168,76,0.12); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none; }
+  .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
+  .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: rgba(244,240,230,0.85); text-decoration: none; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--gold-light); }
+  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; min-height: 48px; display: flex; align-items: center; }
+  @media (max-width: 640px) { nav { padding: 0 1rem; height: 60px; } .nav-links { display: none; } .nav-brand-sub { display: none; } .nav-cta { display: none; } .nav-hamburger { display: flex; } }
+
+  /* SHARED */
+  .eyebrow { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 0.75rem; display: block; }
+  .gold-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; margin: 1.25rem 0; }
+  .gold-rule.center { margin: 1.25rem auto; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  section { width: 100%; padding: 80px 0; }
+  @media (max-width: 640px) { section { padding: 56px 0; } .container { padding: 0 1.25rem; } }
+
+  /* HERO */
+  .hero {
+    min-height: 88vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(6,16,10,0.45) 0%, rgba(10,24,16,0.3) 40%, rgba(6,16,10,0.95) 100%),
+      radial-gradient(ellipse at 60% 30%, #1e3d28 0%, #0d2015 45%, #06100a 100%);
+    padding: 140px 0 80px;
+  }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); opacity: 0.4; pointer-events: none; }
+  .hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 68px; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.4)); }
+  .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+  .hero-badge { font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.3rem 0.9rem; display: inline-block; margin-bottom: 1.6rem; background: rgba(6,16,10,0.5); }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.08; color: var(--cream); margin-bottom: 1.4rem; letter-spacing: 0.01em; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-size: clamp(0.88rem, 1.8vw, 1rem); letter-spacing: 0.04em; color: rgba(244,240,230,0.62); line-height: 1.8; max-width: 560px; margin-bottom: 2.5rem; }
+  .hero-price-row { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .hero-price { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold-light); line-height: 1; }
+  .hero-price-detail { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244,240,230,0.45); }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.9rem 2.5rem; text-decoration: none; transition: background 0.25s; min-height: 48px; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,240,230,0.6); border: 1px solid rgba(244,240,230,0.2); padding: 0.9rem 2.5rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; min-height: 48px; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  @media (max-width: 640px) { .hero { padding: 110px 0 60px; min-height: auto; } }
+
+  /* WHAT'S INCLUDED */
+  .included-section { background: var(--deep); }
+  .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  @media (max-width: 860px) { .included-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  .included-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 1rem; }
+  .included-text h2 em { font-style: italic; color: var(--gold-light); }
+  .included-text p { font-size: 0.92rem; line-height: 1.85; color: rgba(244,240,230,0.65); margin-bottom: 1.25rem; }
+  .included-cards { display: flex; flex-direction: column; gap: 1.5px; }
+  .included-card { background: var(--black); padding: 1.75rem 2rem; border-left: 2px solid var(--gold); }
+  .included-card-label { font-size: 0.5rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+  .included-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: var(--cream); margin-bottom: 0.4rem; }
+  .included-card-desc { font-size: 0.8rem; line-height: 1.65; color: rgba(244,240,230,0.55); }
+  .included-card-value { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); margin-top: 0.6rem; }
+
+  /* WHY CONSISTENCY */
+  .consistency-section { background: var(--black); }
+  .consistency-inner { max-width: 760px; }
+  .consistency-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 1rem; }
+  .consistency-inner h2 em { font-style: italic; color: var(--gold-light); }
+  .consistency-inner p { font-size: 0.92rem; line-height: 1.85; color: rgba(244,240,230,0.65); margin-bottom: 1.25rem; }
+  .consistency-pillars { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+  .c-pillar { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .c-pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(201,168,76,0.2); line-height: 1; flex-shrink: 0; width: 2rem; }
+  .c-pillar-body strong { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); font-weight: 400; display: block; margin-bottom: 0.3rem; }
+  .c-pillar-body p { font-size: 0.88rem; line-height: 1.7; color: rgba(244,240,230,0.6); margin: 0; }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--forest); border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(201,168,76,0.08); margin-top: 2.5rem; }
+  @media (max-width: 760px) { .how-grid { grid-template-columns: 1fr; } }
+  .how-card { background: var(--deep); padding: 2rem; }
+  .how-step { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(201,168,76,0.2); line-height: 1; margin-bottom: 0.85rem; }
+  .how-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: var(--cream); margin-bottom: 0.65rem; }
+  .how-desc { font-size: 0.82rem; line-height: 1.7; color: rgba(244,240,230,0.55); }
+
+  /* FAQ */
+  .faq-section { background: var(--deep); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(201,168,76,0.08); margin-top: 2.5rem; }
+  @media (max-width: 760px) { .faq-grid { grid-template-columns: 1fr; } }
+  .faq-item { background: var(--black); padding: 1.75rem 2rem; }
+  .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--cream); margin-bottom: 0.65rem; line-height: 1.3; }
+  .faq-a { font-size: 0.82rem; line-height: 1.7; color: rgba(244,240,230,0.55); }
+  .faq-a a { color: rgba(201,168,76,0.7); text-decoration: none; }
+  .faq-a a:hover { color: var(--gold); }
+
+  /* COMMITMENT */
+  .commitment-section { background: var(--black); }
+  .commitment-inner { background: var(--deep); border: 1px solid rgba(201,168,76,0.12); border-top: 3px solid var(--gold); padding: 3rem; max-width: 760px; }
+  .commitment-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
+  .commitment-inner h2 em { font-style: italic; color: var(--gold-light); }
+  .commitment-inner p { font-size: 0.88rem; line-height: 1.8; color: rgba(244,240,230,0.6); margin-bottom: 0.85rem; }
+  .commitment-items { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.25rem 0; }
+  .commitment-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.84rem; line-height: 1.65; color: rgba(244,240,230,0.65); }
+  .commitment-item::before { content: '—'; color: rgba(201,168,76,0.5); flex-shrink: 0; }
+
+  /* CTA SECTION */
+  .cta-section { background: var(--forest); border-top: 1px solid rgba(201,168,76,0.1); padding: 80px 0; text-align: center; }
+  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
+  .cta-section h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-section p { font-size: 0.9rem; color: rgba(244,240,230,0.55); line-height: 1.75; max-width: 500px; margin: 0 auto 2.5rem; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 60px 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
+  .footer-logo-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--forest); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: 0.9rem; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+  .footer-brand-desc { font-size: 0.74rem; line-height: 1.7; color: rgba(244,240,230,0.45); margin-bottom: 1.5rem; }
+  .footer-address { font-size: 0.7rem; line-height: 1.75; color: rgba(244,240,230,0.5); font-style: normal; }
+  .footer-address strong { color: rgba(244,240,230,0.65); font-weight: 400; }
+  .footer-col-heading { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a { font-size: 0.72rem; color: rgba(244,240,230,0.5); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-hours-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; color: rgba(244,240,230,0.45); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .footer-hours-row span:first-child { color: rgba(244,240,230,0.6); }
+  .hours-closed { color: rgba(244,240,230,0.25) !important; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244,240,230,0.3); }
+  .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-legal-links a { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,240,230,0.3); text-decoration: none; }
+</style>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-10KW19QN9R');
+</script>
+
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Altru Radiance</span>
+      <span class="nav-brand-sub">Aesthetic Wellness · Murray, Utah</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <a href="/book" class="nav-cta">Book Now</a>
+
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileMenu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <ul class="mobile-menu-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/book" class="mobile-menu-cta">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-line"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <span class="hero-badge">Maintenance Membership · Murray, Utah</span>
+      <h1>Invest in Yourself.<br><em>Every Single Month.</em></h1>
+      <p class="hero-sub">Your face and body are not maintenance problems to be solved once. They are living systems — shaped by habit, stress, and time. The most meaningful results don't come from a single session. They come from consistent work, building on itself, month after month.</p>
+      <div class="hero-price-row">
+        <div class="hero-price">$225</div>
+        <div class="hero-price-detail">per month<br>3-month minimum commitment</div>
+      </div>
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary">Inquire About Membership</a>
+        <a href="/services/restorative-buccal-massage" class="btn-ghost">About the Service →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included-section">
+  <div class="container">
+    <div class="included-grid">
+      <div class="included-text">
+        <span class="eyebrow">What You Receive</span>
+        <h2>Everything You Need.<br><em>Nothing You Don't.</em></h2>
+        <div class="gold-rule"></div>
+        <p>The Maintenance Membership is designed to be simple. One meaningful session per month, priority access to my schedule, and a built-in discount that rewards your commitment to the process.</p>
+        <p>This is not a subscription for the sake of convenience. It is a structured commitment to the kind of consistent fascial work that creates real, lasting change in how your face and body hold themselves.</p>
+      </div>
+      <div class="included-cards">
+        <div class="included-card">
+          <span class="included-card-label">Monthly Session</span>
+          <div class="included-card-name">Restorative Facial + Buccal Massage</div>
+          <div class="included-card-desc">One 110-minute session per month — intraoral buccal technique, lymphatic drainage, and myofascial release. Your monthly structural reset.</div>
+          <div class="included-card-value">Value $250 · You pay $225</div>
+        </div>
+        <div class="included-card">
+          <span class="included-card-label">Member Discount</span>
+          <div class="included-card-name">10% Off Add-On Services</div>
+          <div class="included-card-desc">Any additional service booked during your monthly visit — Hydrodermabrasion, Salmon DNA Mask, Oxygen Infusion, and more — automatically discounted at checkout.</div>
+        </div>
+        <div class="included-card">
+          <span class="included-card-label">Member Discount</span>
+          <div class="included-card-name">10% Off Retail Products</div>
+          <div class="included-card-desc">All retail products available through Altru Radiance — OxygenCeuticals, GlyMed Plus, and other professional skincare — at 10% off for active members.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CONSISTENCY -->
+<section class="consistency-section">
+  <div class="container">
+    <div class="consistency-inner">
+      <span class="eyebrow">The Case for Consistency</span>
+      <h2>Your Body Learns.<br><em>Every Session Builds.</em></h2>
+      <div class="gold-rule"></div>
+      <p>Fascia has memory. The muscles of the face and jaw develop holding patterns over years — patterns reinforced by stress, screen time, sleep position, and emotional tension. A single session can release what's acute. Consistent work is what retrains the pattern entirely.</p>
+      <p>This is the same principle that underlies every lasting structural change: repetition creates new defaults. Monthly buccal and myofascial work builds on each previous session, progressively releasing deeper layers of restriction and helping your body establish a new baseline — one that is lighter, more symmetrical, and more aligned.</p>
+      <div class="consistency-pillars">
+        <div class="c-pillar">
+          <div class="c-pillar-num">1</div>
+          <div class="c-pillar-body">
+            <strong>Session 1–3: Establishing the Foundation</strong>
+            <p>Initial sessions focus on releasing acute tension patterns, activating lymphatic flow, and opening the fascial restrictions the body has accumulated. You will notice results immediately — and progressively.</p>
+          </div>
+        </div>
+        <div class="c-pillar">
+          <div class="c-pillar-num">2</div>
+          <div class="c-pillar-body">
+            <strong>Ongoing: Retraining the System</strong>
+            <p>With each monthly session, we work deeper into the tissue, reinforce the structural changes from previous sessions, and address new patterns as they emerge. Your face begins to hold itself differently between sessions.</p>
+          </div>
+        </div>
+        <div class="c-pillar">
+          <div class="c-pillar-num">3</div>
+          <div class="c-pillar-body">
+            <strong>Long-Term: A New Baseline</strong>
+            <p>Over time, monthly maintenance becomes the foundation of how you age. Not corrective — regenerative. The goal is a face and body that continually reorganize toward ease, symmetry, and vitality rather than accumulating tension.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="container">
+    <span class="eyebrow">The Process</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--cream);">Simple to Start.<br><em>Seamless Every Month.</em></h2>
+    <div class="gold-rule"></div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-step">01</div>
+        <div class="how-title">Inquire</div>
+        <div class="how-desc">Reach out through the contact form to express your interest. I'll send you the Membership Agreement and answer any questions before you commit.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">02</div>
+        <div class="how-title">Sign & Onboard</div>
+        <div class="how-desc">Review and sign your Membership Agreement digitally. Your first payment is processed to confirm your membership. Recurring billing runs on the 5th of each month from there.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">03</div>
+        <div class="how-title">Book Monthly</div>
+        <div class="how-desc">Each month, book your session through the standard Square booking link — your membership is on file and your 10% discount applies automatically at checkout.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <span class="eyebrow">Questions</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:300;color:var(--cream);">Everything You<br><em>Need to Know</em></h2>
+    <div class="gold-rule"></div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">What is the minimum commitment?</div>
+        <div class="faq-a">Three months. This is a structured commitment — not a month-to-month trial. The first three monthly charges are non-cancellable and non-refundable. After the initial term, the membership continues month-to-month until cancelled.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I cancel?</div>
+        <div class="faq-a">After your 3-month initial term, submit a written cancellation request via email to mechelle@altruradiance.com with a minimum of 30 days notice. Cancellations are confirmed in writing by Altru Radiance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I can't make it one month?</div>
+        <div class="faq-a">Sessions do not roll over — unused monthly sessions are forfeited. However, you may gift your session to a friend or family member. Notify me at least 24 hours in advance and ensure your guest has completed their intake form.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When am I billed?</div>
+        <div class="faq-a">Membership billing runs on the 5th of each month. If you join before the 5th, your first billing cycle begins immediately. If you join after the 5th, your first session is available right away at the membership rate — and your recurring billing begins on the following 5th. Either way, your session is confirmed once your first payment clears. You'll receive a receipt via email each billing cycle.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if my payment fails?</div>
+        <div class="faq-a">If a payment doesn't go through on the 5th, I'll reach out by email. You'll have 5 days to update your payment method — appointments are simply paused until everything is sorted. Once payment clears, you're back on schedule.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does the cancellation policy still apply?</div>
+        <div class="faq-a">Yes. All standard Altru Radiance Studio Policies apply to membership sessions, including the 24-hour cancellation window and no-show policy. <a href="/policies">View full policies →</a></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use my discount on any product?</div>
+        <div class="faq-a">The 10% discount applies to all retail products available through Altru Radiance and all add-on services booked during your monthly visit. It is applied automatically — no code needed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can the membership be paused?</div>
+        <div class="faq-a">The membership cannot be paused. If circumstances change, you may cancel with 30 days written notice after your initial term, or gift your monthly session to someone in your place.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENT NOTE -->
+<section class="commitment-section">
+  <div class="container">
+    <div class="commitment-inner">
+      <h2>A Note on <em>Commitment</em></h2>
+      <p>The Maintenance Membership is a formal agreement — not a casual subscription. Before you inquire, please review what you're signing up for:</p>
+      <div class="commitment-items">
+        <div class="commitment-item">3-month minimum commitment — non-cancellable, non-refundable during initial term</div>
+        <div class="commitment-item">$225 charged automatically each month on your billing date</div>
+        <div class="commitment-item">Cancellation requires 30 days written notice via email after the initial term</div>
+        <div class="commitment-item">Unused sessions are forfeited — they do not roll over</div>
+        <div class="commitment-item">All Altru Radiance Studio Policies apply to membership sessions</div>
+      </div>
+      <p>If you have questions about the terms before signing, reach out through the contact form. I want every member to enter this relationship with full clarity.</p>
+      <br>
+      <a href="/contact" class="btn-primary" style="display:inline-flex;">Ask a Question First →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow">Open Enrollment</span>
+    <h2>Ready to Begin Your<br><em>Monthly Practice?</em></h2>
+    <p>Reach out through the contact form to express your interest. I'll send you the Membership Agreement and get your first session scheduled.</p>
+    <div class="cta-actions">
+      <a href="/contact" class="btn-primary">Inquire About Membership</a>
+      <a href="/book" class="btn-ghost">Book a Single Session First</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo-wrap">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <span class="footer-brand-name">Altru Radiance</span>
+        </div>
+        <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
+        <address class="footer-address">
+          <strong>164 E 5900 S, Suite A108 (near Fashion Place Mall)</strong><br>
+          Murray, Utah 84107<br>
+          <a href="tel:+18016608933" style="color:rgba(244,240,230,0.5);text-decoration:none;">(801) 660-8933</a><br>
+          <a href="/cdn-cgi/l/email-protection#ee838b8d868b82828bae8f829a9c9b9c8f8a878f808d8bc08d8183" style="color:rgba(244,240,230,0.5);text-decoration:none;"><span class="__cf_email__" data-cfemail="2d40484e45484141486d4c41595f585f4c49444c434e48034e4240">[email protected]</span></a>
+        </address>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="/services/restorative-buccal-massage">Buccal Massage</a></li>
+          <li><a href="/services/lymphatic-drainage-murray-utah">Lymphatic Drainage</a></li>
+          <li><a href="/services/structural-integration-salt-lake-city">Structural Integration</a></li>
+          <li><a href="/services/microneedling-murray-utah">Microneedling</a></li>
+          <li><a href="/services/aqua-peel-murray-utah">Aqua Peel</a></li>
+          <li><a href="/services">All Services →</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/policies">Policies</a></li>
+          <li><a href="/book">Book Now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Hours</div>
+        <div class="footer-hours-row"><span class="hours-closed">Sunday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span class="hours-closed">Monday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span>Tuesday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Wednesday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Thursday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Friday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Saturday</span><span>1 – 5pm</span></div>
+        <p style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-top:0.85rem;line-height:1.6;">By Appointment Only</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">Copyright © 2026 Altru Radiance</span>
+      <ul class="footer-legal-links">
+        <li><a href="/policies">Studio Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const btn = document.getElementById('navHamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function openMenu() { menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+  btn.addEventListener('click', () => btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  window.matchMedia('(min-width: 641px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
+})();
+</script>
+</body>
+</html>

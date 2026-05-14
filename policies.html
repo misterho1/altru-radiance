@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/avif" href="/assets/logoFinal.avif">
+<link rel="icon" type="image/webp" href="/assets/logoFinal.webp">
+<link rel="icon" type="image/png" href="/assets/logoFinal.png">
+<link rel="apple-touch-icon" href="/assets/logoFinal.png">
+<meta name="theme-color" content="#06100a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Studio Policy | Altru Radiance · Murray, Utah</title>
+<meta name="description" content="Altru Radiance Studio Policies — booking, cancellations, late arrivals, returns, and client care guidelines for Murray, Utah.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://altruradiance.com/policies">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black:#06100a; --deep:#0a1810; --forest:#162b1c; --gold:#c9a84c; --gold-light:#e8cc88; --cream:#f4f0e6; --mist:#8aaa8a; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 900; padding: 0 3rem; height: 68px; display: flex; justify-content: space-between; align-items: center; background: rgba(6,16,10,0.97); border-bottom: 1px solid rgba(201,168,76,0.12); }
+  .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; flex-shrink: 0; }
+  .nav-logo { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+  .nav-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .nav-brand-text { display: flex; flex-direction: column; gap: 0.08rem; }
+  .nav-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+  .nav-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); line-height: 1; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; flex-shrink: 0; }
+  .nav-cta:hover { background: var(--gold-light); }
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem; border-top: 1px solid rgba(201,168,76,0.12); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none; }
+  .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
+  .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: rgba(244,240,230,0.85); text-decoration: none; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--gold-light); }
+  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; min-height: 48px; display: flex; align-items: center; }
+  @media (max-width: 640px) { nav { padding: 0 1rem; height: 60px; } .nav-links { display: none; } .nav-brand-sub { display: none; } .nav-cta { display: none; } .nav-hamburger { display: flex; } }
+
+  /* SHARED */
+  .eyebrow { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 0.75rem; display: block; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  @media (max-width: 640px) { .container { padding: 0 1.25rem; } }
+
+  /* PAGE HEADER */
+  .page-header { padding: 140px 0 72px; background: linear-gradient(to bottom, rgba(6,16,10,0.6) 0%, rgba(10,24,16,0.4) 50%, rgba(6,16,10,0.95) 100%), radial-gradient(ellipse at 60% 30%, #1e3d28 0%, #0d2015 50%, #06100a 100%); position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .page-header-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 68px; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.4)); }
+  .page-header-inner { position: relative; z-index: 1; }
+  .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 0.85rem; }
+  .page-header h1 em { font-style: italic; color: var(--gold-light); }
+  .page-header-meta { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244,240,230,0.35); margin-top: 0.5rem; }
+  @media (max-width: 640px) { .page-header { padding: 110px 0 56px; } }
+
+  /* BREADCRUMB */
+  .breadcrumb { background: var(--deep); border-bottom: 1px solid rgba(201,168,76,0.08); padding: 0.85rem 0; }
+  .breadcrumb-inner { display: flex; align-items: center; gap: 0.5rem; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,240,230,0.35); }
+  .breadcrumb-inner a { color: rgba(244,240,230,0.35); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb-inner a:hover { color: var(--gold); }
+  .breadcrumb-sep { opacity: 0.3; }
+  .breadcrumb-current { color: rgba(201,168,76,0.6); }
+
+  /* LEGAL LAYOUT */
+  .legal-section { background: var(--black); padding: 72px 0; }
+  .legal-layout { display: grid; grid-template-columns: 220px 1fr; gap: 5rem; align-items: start; position: relative; }
+  @media (max-width: 860px) { .legal-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  /* Sticky sidebar TOC */
+  .legal-toc { position: sticky; top: 100px; height: fit-content; max-height: calc(100vh - 120px); }
+  .legal-toc-label { font-size: 0.5rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .legal-toc ul { list-style: none; display: flex; flex-direction: column; gap: 0; border-left: 1px solid rgba(201,168,76,0.12); }
+  .legal-toc ul li a { display: block; font-size: 0.72rem; line-height: 1.5; color: rgba(244,240,230,0.4); text-decoration: none; padding: 0.45rem 0 0.45rem 1rem; transition: all 0.3s ease; border-left: 2px solid transparent; margin-left: -1px; }
+  .legal-toc ul li a:hover { color: var(--gold); border-left-color: var(--gold); }
+  .legal-toc ul li a.active { color: var(--gold) !important; border-left-color: var(--gold) !important; opacity: 1; }
+  @media (max-width: 860px) { .legal-toc { display: none; } }
+
+  /* Legal content */
+  .legal-content { max-width: 720px; }
+  .legal-content h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 300; color: var(--cream); margin: 3rem 0 0.85rem; padding-top: 1rem; border-top: 1px solid rgba(201,168,76,0.1); line-height: 1.2; scroll-margin-top: 100px; }
+  .legal-content h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .legal-content h2 em { font-style: italic; color: var(--gold-light); }
+  .legal-content h3 { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 2rem 0 0.75rem; }
+  .legal-content p { font-size: 0.88rem; line-height: 1.85; color: rgba(244,240,230,0.65); margin-bottom: 1.1rem; }
+  .legal-content p strong { color: var(--cream); font-weight: 400; }
+  .legal-content p a { color: rgba(201,168,76,0.7); text-decoration: none; transition: color 0.2s; border-bottom: 1px solid rgba(201,168,76,0.3); }
+  .legal-content p a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .legal-content ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin: 0.75rem 0 1.25rem; }
+  .legal-content ul li { font-size: 0.86rem; line-height: 1.7; color: rgba(244,240,230,0.62); padding-left: 1.25rem; position: relative; }
+  .legal-content ul li::before { content: '—'; position: absolute; left: 0; color: rgba(201,168,76,0.4); }
+  .legal-content ul li strong { color: var(--cream); font-weight: 400; }
+
+  /* ELEVATED TEXT BOXES — Incorporating styles from policies_1.html */
+  .note-box { background: var(--forest); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--gold); padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+  .note-box-label { font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+  .note-box p { font-size: 0.87rem; line-height: 1.75; color: var(--cream); margin: 0; opacity: 0.9; }
+  .note-box p strong { color: var(--gold-light); }
+  .note-box a { color: var(--gold-light); border-bottom: 1px solid rgba(232,204,136,0.4); text-decoration: none; transition: border-color 0.2s; }
+  .note-box a:hover { border-bottom-color: var(--gold-light); }
+
+  .policy-block { background: var(--deep); border: 1px solid rgba(201,168,76,0.08); border-left: 2px solid var(--gold); padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
+  .policy-block p { margin-bottom: 0.5rem; color: rgba(244,240,230,0.7); }
+  .policy-block p:last-child { margin-bottom: 0; }
+  .policy-block strong { color: var(--cream); }
+
+  /* FEE TABLE */
+  .fee-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+  .fee-table th { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 0.65rem 1rem; text-align: left; border-bottom: 1px solid rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .fee-table td { font-size: 0.82rem; color: rgba(244,240,230,0.62); padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.55; vertical-align: top; }
+  .fee-table td strong { color: var(--cream); font-weight: 400; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 60px 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; } }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
+  .footer-logo-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--forest); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: 0.9rem; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+  .footer-brand-desc { font-size: 0.74rem; line-height: 1.7; color: rgba(244,240,230,0.45); margin-bottom: 1.5rem; }
+  .footer-address { font-size: 0.7rem; line-height: 1.75; color: rgba(244,240,230,0.5); font-style: normal; }
+  .footer-address strong { color: rgba(244,240,230,0.65); font-weight: 400; }
+  .footer-col-heading { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a { font-size: 0.72rem; color: rgba(244,240,230,0.5); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-hours-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; color: rgba(244,240,230,0.45); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .footer-hours-row span:first-child { color: rgba(244,240,230,0.6); }
+  .hours-closed { color: rgba(244,240,230,0.25) !important; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244,240,230,0.3); }
+</style>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-10KW19QN9R');
+</script>
+
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Altru Radiance</span>
+      <span class="nav-brand-sub">Aesthetic Wellness · Murray, Utah</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <a href="/book" class="nav-cta">Book Now</a>
+
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileMenu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <ul class="mobile-menu-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/book" class="mobile-menu-cta">Book Now</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-line"></div>
+  <div class="container page-header-inner">
+    <span class="eyebrow">Legal · Altru Radiance LLC</span>
+    <h1>Studio <em>Policy</em></h1>
+    <p class="page-header-meta">Last Updated: March 28, 2026</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a><span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Studio Policy</span>
+    </div>
+  </div>
+</div>
+
+<section class="legal-section">
+  <div class="container">
+    <div class="legal-layout">
+
+      <nav class="legal-toc" id="legalToc" aria-label="Page contents">
+        <span class="legal-toc-label">Contents</span>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#booking">1. Booking & Reservations</a></li>
+          <li><a href="#cancellations">2. Cancellations & Reschedules</a></li>
+          <li><a href="#late-arrivals">3. Late Arrivals</a></li>
+          <li><a href="#returns">4. Returns & Refunds</a></li>
+          <li><a href="#minors">5. Minor Clients</a></li>
+          <li><a href="#photography">6. Photography & Consent</a></li>
+          <li><a href="#gift-cards">7. Gift Cards</a></li>
+          <li><a href="#protocols">8. Studio Protocols</a></li>
+          <li><a href="#medical">9. Medical Disclaimer</a></li>
+          <li><a href="#liability">10. Liability</a></li>
+          <li><a href="#contact">11. Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="legal-content">
+
+        <h2 id="overview">Overview</h2>
+        <p>I strive to provide a personalized, intentional experience for every client at Altru Radiance. When you book an appointment, that time is reserved exclusively for you. These policies exist to protect both of us — to ensure I can continue delivering focused, high-quality care and that every client receives the attention they deserve.</p>
+        <p>By scheduling an appointment, you acknowledge that you have read and agree to the policies outlined below. A valid credit or debit card is required on file to hold all reservations.</p>
+        
+        <div class="note-box">
+          <span class="note-box-label">Intake Requirement</span>
+          <p>Clinical appointments cannot begin until a completed <a href="https://app.carepatron.com/Forms/qWAKKO7HsoetkezXK">Aesthetic Evaluation</a> has been received. This form will be sent with your confirmation email and must be completed prior to arrival. If you have questions before booking, <a href="/contact">contact me here</a>.</p>
+        </div>
+
+        <h2 id="booking">1. Booking <em>&amp; Reservations</em></h2>
+        <ul>
+          <li><strong>By Appointment Only:</strong> Altru Radiance does not accept walk-ins. All services must be booked in advance.</li>
+          <li><strong>Card on file:</strong> A valid credit or debit card is required to secure all reservations. Your card will not be charged at the time of booking — it serves as a guarantee.</li>
+          <li><strong>Arrival:</strong> Please do not arrive more than 5 minutes before your scheduled appointment — there is no public waiting area.</li>
+          <li><strong>Pre/Post Care:</strong> The client is responsible for adhering to all pre-treatment requirements. Failure to do so may result in a modified or denied service.</li>
+        </ul>
+
+        <h2 id="cancellations">2. Cancellations <em>&amp; Reschedules</em></h2>
+        <p>When you book a session, that time is held exclusively for you. I request 48 hours notice for any scheduling changes.</p>
+
+        <table class="fee-table">
+          <thead><tr><th>Notice Given</th><th>Fee Applied</th></tr></thead>
+          <tbody>
+            <tr><td><strong>48+ hours before appointment</strong></td><td>No charge — courtesy window</td></tr>
+            <tr><td><strong>24–48 hours before appointment</strong></td><td>50% of scheduled service fee</td></tr>
+            <tr><td><strong>Less than 24 hours</strong></td><td>100% of scheduled service fee</td></tr>
+            <tr><td><strong>No-show or Same-day</strong></td><td>100% of service fee + possible suspension</td></tr>
+          </tbody>
+        </table>
+
+        <div class="policy-block">
+          <p><strong>Suspension of Privileges:</strong> All outstanding fees must be resolved before a new appointment can be scheduled. If a card on file is declined, scheduling privileges will be suspended until the balance is paid.</p>
+        </div>
+
+        <h2 id="late-arrivals">3. Late <em>Arrivals</em></h2>
+        <ul>
+          <li><strong>Grace period:</strong> I offer a 5-minute grace period.</li>
+          <li><strong>Modified treatment:</strong> Arrivals beyond the grace period may result in a shortened treatment. You remain responsible for 100% of the original cost.</li>
+          <li><strong>Automatic cancellation:</strong> Arrivals more than 10 minutes late may be treated as a late cancellation if time is insufficient for a safe treatment.</li>
+        </ul>
+
+        <h2 id="returns">4. Returns <em>&amp; Refunds</em></h2>
+        <h3>Services</h3>
+        <p>There are no refunds on services rendered. If you are dissatisfied, please contact me within 24 hours.</p>
+        
+        <div class="note-box">
+          <span class="note-box-label">Product Returns</span>
+          <p>Returns and exchanges are accepted within <strong>14 days</strong> of purchase. Items must be unopened or accompanied by documentation of an adverse reaction. All refunds are issued as <strong>Studio Credit</strong> only.</p>
+        </div>
+
+        <h2 id="minors">5. <em>Minor</em> Clients</h2>
+        <ul>
+          <li>A parent or legal guardian must be present for the duration of the appointment.</li>
+          <li>A signed Parental Consent Form is required before any service may begin.</li>
+          <li>Altru Radiance reserves the right to decline service to a minor if consent requirements are not met.</li>
+        </ul>
+
+        <h2 id="photography">6. Photography <em>&amp; Consent</em></h2>
+        <p>Before/after photography may be taken for tracking results and, with your consent, used in marketing materials. You may opt out or withdraw consent at any time.</p>
+
+        <h2 id="gift-cards">7. <em>Gift</em> Cards</h2>
+        <ul>
+          <li>Gift cards are available for purchase in-studio.</li>
+          <li>Non-refundable, non-transferable, and carry no cash value.</li>
+          <li>Gift cards do not expire.</li>
+        </ul>
+
+        <h2 id="protocols">8. Studio <em>Protocols</em></h2>
+        <ul>
+          <li><strong>Private environment:</strong> Additional guests or children cannot be accommodated during your service.</li>
+          <li><strong>Respectful conduct:</strong> I reserve the right to refuse service to any client who engages in disrespectful or unsafe behavior.</li>
+          <li><strong>Health &amp; safety:</strong> Please reschedule if you are experiencing illness, fever, or contagious skin conditions.</li>
+        </ul>
+
+        <h2 id="medical">9. Medical <em>Disclaimer</em></h2>
+        <p>Services are aesthetic and wellness services performed by a licensed esthetician. They are <strong>not medical treatments</strong> and are not intended to diagnose or treat medical conditions.</p>
+
+        <h2 id="liability">10. <em>Liability</em></h2>
+        <p>Altru Radiance LLC is not liable for adverse outcomes resulting from undisclosed health information or failure to follow pre/post treatment instructions.</p>
+        
+        <div class="note-box">
+          <span class="note-box-label">Emergency Contact</span>
+          <p>If you experience unexpected irritation following a service, contact me immediately at <a href="tel:+18016608933">(801) 660-8933</a>.</p>
+        </div>
+
+        <h2 id="membership">11. Maintenance <em>Membership</em></h2>
+        <p>The Altru Radiance Maintenance Membership is governed by a separate signed Membership Agreement. All studio policies apply equally to membership sessions.</p>
+
+        <h2 id="contact">12. <em>Contact</em></h2>
+        <div class="policy-block">
+          <p><strong>Altru Radiance LLC</strong><br>
+          164 E 5900 S, Suite A108 · Murray, Utah 84107<br>
+          <a href="tel:+18016608933">(801) 660-8933</a><br>
+          <a href="mailto:mechelle@altruradiance.com">mechelle@altruradiance.com</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo-wrap">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <span class="footer-brand-name">Altru Radiance</span>
+        </div>
+        <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
+        <address class="footer-address">
+          <strong>164 E 5900 S, Suite A108 (near Fashion Place Mall)</strong><br>
+          Murray, Utah 84107<br>
+          <a href="tel:+18016608933" style="color:rgba(244,240,230,0.5);text-decoration:none;">(801) 660-8933</a><br>
+          <a href="/cdn-cgi/l/email-protection#ee838b8d868b82828bae8f829a9c9b9c8f8a878f808d8bc08d8183" style="color:rgba(244,240,230,0.5);text-decoration:none;"><span class="__cf_email__" data-cfemail="2d40484e45484141486d4c41595f585f4c49444c434e48034e4240">[email protected]</span></a>
+        </address>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="/services/restorative-buccal-massage">Buccal Massage</a></li>
+          <li><a href="/services/lymphatic-drainage-murray-utah">Lymphatic Drainage</a></li>
+          <li><a href="/services/structural-integration-salt-lake-city">Structural Integration</a></li>
+          <li><a href="/services/microneedling-murray-utah">Microneedling</a></li>
+          <li><a href="/services/aqua-peel-murray-utah">Aqua Peel</a></li>
+          <li><a href="/services">All Services →</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/policies">Policies</a></li>
+          <li><a href="/book">Book Now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Hours</div>
+        <div class="footer-hours-row"><span class="hours-closed">Sunday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span class="hours-closed">Monday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span>Tuesday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Wednesday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Thursday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Friday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Saturday</span><span>1 – 5pm</span></div>
+        <p style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-top:0.85rem;line-height:1.6;">By Appointment Only</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">Copyright © 2026 Altru Radiance</span>
+      <ul class="footer-legal-links">
+        <li><a href="/policies">Studio Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const btn = document.getElementById('navHamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (btn && menu) {
+    function openMenu() { menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    function closeMenu() { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); }
+    btn.addEventListener('click', () => btn.getAttribute('aria-expanded')==='true' ? closeMenu() : openMenu());
+  }
+
+  // ScrollSpy for Sidebar
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('.legal-content h2[id]');
+    const navLinks = document.querySelectorAll('.legal-toc ul li a');
+    let current = "";
+    sections.forEach(section => {
+      if (pageYOffset >= section.offsetTop - 120) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) link.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>

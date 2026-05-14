@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/avif" href="/assets/logoFinal.avif">
+<link rel="icon" type="image/webp" href="/assets/logoFinal.webp">
+<link rel="icon" type="image/png" href="/assets/logoFinal.png">
+<link rel="apple-touch-icon" href="/assets/logoFinal.png">
+<meta name="theme-color" content="#06100a">
+<title>Aesthetic Services · Altru Radiance · Murray, UT</title>
+<meta name="description" content="Explore every service at Altru Radiance — buccal massage, microneedling, aqua peel, lymphatic drainage, and structural integration in Murray, Utah.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://altruradiance.com/services">
+<meta property="og:title" content="Services — Altru Radiance · Murray, Utah">
+    <meta property="og:image" content="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/altru-radiance-regenerative-fascia-studio-murray-utah_eazl6k">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Altru Radiance studio — regenerative fascia and aesthetic wellness in Murray, Utah">
+<meta property="og:description" content="Regenerative, fascia-centered skincare and structural facial treatments in Murray, Utah. Non-invasive alternatives to fillers and Botox.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://altruradiance.com/services">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:      #06100a;
+    --deep:       #0a1810;
+    --forest:     #162b1c;
+    --gold:       #c9a84c;
+    --gold-light: #e8cc88;
+    --cream:      #f4f0e6;
+    --mist:       #8aaa8a;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ────────────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; width: 100%; z-index: 900;
+    padding: 0 3rem;
+    height: 68px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(6,16,10,0.97);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; flex-shrink: 0; }
+  .nav-logo { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+  .nav-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .nav-brand-text { display: flex; flex-direction: column; gap: 0.08rem; }
+  .nav-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+  .nav-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); line-height: 1; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.25s; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; white-space: nowrap; flex-shrink: 0; }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* Hamburger */
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile menu */
+  .mobile-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem; border-top: 1px solid rgba(201,168,76,0.12); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none; }
+  .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
+  .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: rgba(244,240,230,0.85); text-decoration: none; transition: color 0.2s; }
+  .mobile-menu-links a:hover, .mobile-menu-links a:focus { color: var(--gold-light); outline: none; }
+  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; transition: background 0.3s; min-height: 48px; display: flex; align-items: center; }
+  .mobile-menu-cta:hover { background: var(--gold-light); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; height: 60px; }
+    .nav-links { display: none; }
+    .nav-brand-sub { display: none; }
+    .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
+  /* ─── SHARED UTILITIES ──────────────────────────────────────── */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  @media (max-width: 640px) { .container { padding: 0 1.25rem; } }
+
+  .eyebrow { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--mist); display: block; margin-bottom: 0.85rem; }
+  .gold-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; margin: 1.25rem 0; }
+
+  .btn-primary { display: inline-flex; align-items: center; justify-content: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.9rem 2.2rem; text-decoration: none; transition: background 0.25s; min-height: 48px; border: none; cursor: pointer; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost { display: inline-flex; align-items: center; justify-content: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,240,230,0.55); border: 1px solid rgba(244,240,230,0.18); padding: 0.9rem 2.2rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; min-height: 48px; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── PAGE HERO ─────────────────────────────────────────────── */
+  .page-hero {
+    min-height: auto;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    padding: 8rem 2rem 5rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .page-hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(6,16,10,0.72) 0%,
+        rgba(10,24,16,0.52) 35%,
+        rgba(10,24,16,0.62) 65%,
+        rgba(6,16,10,0.95) 100%
+      ),
+      radial-gradient(ellipse at 55% 45%, #1a3522 0%, #0d2015 50%, #06100a 100%);
+  }
+  .page-hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    opacity: 0.5; pointer-events: none;
+  }
+
+  .page-hero-line {
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 80px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5));
+    z-index: 1;
+  }
+
+  .page-hero-inner {
+    position: relative; z-index: 2;
+    max-width: 760px; width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.62rem; letter-spacing: 0.36em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.6rem;
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+  }
+  .hero-eyebrow span { color: rgba(201,168,76,0.4); }
+
+  .page-hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 300; line-height: 1.12;
+    color: var(--cream); margin-bottom: 1.2rem; letter-spacing: 0.01em;
+  }
+  .page-hero-h1 em { font-style: italic; color: var(--gold-light); }
+
+  .page-hero-sub {
+    font-size: clamp(0.82rem, 1.8vw, 0.96rem);
+    letter-spacing: 0.04em; color: rgba(244,240,230,0.62);
+    line-height: 1.75; max-width: 560px; margin: 0 auto 2.5rem;
+  }
+
+  .hero-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.4; margin: 0 auto 2.5rem; }
+
+  /* ─── SERVICES INTRO STRIP ──────────────────────────────────── */
+  .intro-strip {
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.08);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    padding: 52px 0;
+  }
+  .intro-strip-inner {
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .intro-pill {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mist);
+  }
+  .intro-pill-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold); opacity: 0.6; flex-shrink: 0;
+  }
+  .intro-divider {
+    width: 1px; height: 22px;
+    background: rgba(201,168,76,0.18); flex-shrink: 0;
+  }
+  @media (max-width: 640px) { .intro-divider { display: none; } }
+
+  /* ─── SERVICES GRID ─────────────────────────────────────────── */
+  .services-section {
+    padding: 100px 0;
+    background: var(--black);
+  }
+
+  .services-section-head {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .services-section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 300; color: var(--cream); line-height: 1.1;
+    margin-bottom: 0.85rem;
+  }
+  .services-section-head h2 em { font-style: italic; color: var(--gold-light); }
+  .services-section-head p {
+    font-size: 0.88rem; color: rgba(244,240,230,0.5);
+    line-height: 1.75; max-width: 500px; margin: 0 auto;
+  }
+  .services-section-head .gold-rule { margin: 1.25rem auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+  }
+  @media (max-width: 860px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Service Card */
+  .svc-card {
+    background: var(--deep);
+    border: 1px solid rgba(201,168,76,0.08);
+    padding: 2.75rem 2.5rem 2.5rem;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .svc-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 2px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+  }
+  .svc-card:hover { border-color: rgba(201,168,76,0.22); }
+  .svc-card:hover::before { height: 100%; }
+
+  .svc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; font-style: italic;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+    position: absolute; top: 1.5rem; right: 2rem;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .svc-tag {
+    font-size: 0.48rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .svc-tag::before { content: ''; width: 18px; height: 1px; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
+
+  .svc-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+    font-weight: 300; color: var(--cream);
+    line-height: 1.15; margin-bottom: 0.3rem;
+  }
+  .svc-name em { font-style: italic; color: var(--gold-light); }
+
+  .svc-subtitle {
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    color: rgba(244,240,230,0.38); margin-bottom: 1.25rem;
+    font-style: italic;
+  }
+
+  .svc-rule { width: 32px; height: 1px; background: var(--gold); opacity: 0.35; margin-bottom: 1.25rem; }
+
+  .svc-desc {
+    font-size: 0.86rem; line-height: 1.85;
+    color: rgba(244,240,230,0.62);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  .svc-desc strong { color: var(--cream); font-weight: 400; }
+
+  .svc-benefits {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .svc-benefits li {
+    font-size: 0.72rem; letter-spacing: 0.05em;
+    color: rgba(244,240,230,0.52);
+    display: flex; align-items: flex-start; gap: 0.65rem;
+    line-height: 1.5;
+  }
+  .svc-benefits li::before {
+    content: '';
+    width: 14px; height: 1px;
+    background: var(--gold); opacity: 0.45;
+    flex-shrink: 0; margin-top: 0.55em;
+  }
+
+  .svc-card-footer {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .svc-learn {
+    font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244,240,230,0.38); text-decoration: none;
+    transition: color 0.2s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .svc-learn::after { content: '→'; }
+  .svc-learn:hover { color: var(--gold); }
+
+  /* Featured card spans 2 cols on desktop */
+  .svc-card--featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+  .svc-card--featured .svc-card-body {
+    padding: 2.75rem 2.5rem 2.5rem;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .svc-card--featured .svc-card-image {
+    position: relative; overflow: hidden;
+    min-height: 320px;
+  }
+  @media (max-width: 860px) {
+    .svc-card--featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .svc-card--featured .svc-card-image { min-height: 56vw; order: -1; }
+  }
+
+  /* ─── BEFORE / AFTER SLIDER ─────────────────────────────────── */
+  .ba-split {
+    position: relative;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    cursor: col-resize;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+    background: var(--deep);
+  }
+
+  .ba-before,
+  .ba-after {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  /* BEFORE = clipped top layer (left side reveals before image) */
+  .ba-before {
+    clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+    z-index: 2;
+  }
+
+  /* AFTER = full-width base layer */
+  .ba-after {
+    z-index: 1;
+  }
+
+  .ba-before img,
+  .ba-after img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.82) contrast(1.05);
+    pointer-events: none;
+  }
+
+  /* Draggable divider — position driven by --split CSS var */
+  .ba-divider {
+    position: absolute; top: 0; bottom: 0;
+    left: var(--split, 50%);
+    transform: translateX(-50%);
+    width: 2px;
+    background: var(--gold);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .ba-handle {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.55);
+    font-size: 0.58rem; color: var(--black); font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .ba-label {
+    position: absolute; bottom: 1rem;
+    font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 0.32rem 0.75rem;
+    background: rgba(6,16,10,0.75); backdrop-filter: blur(4px);
+    z-index: 8; pointer-events: none;
+  }
+  .ba-label-before {
+    left: 0.85rem;
+    color: rgba(244,240,230,0.65);
+    border: 1px solid rgba(244,240,230,0.15);
+  }
+  .ba-label-after {
+    right: 0.85rem;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  /* ─── MOBILE SLIDER OVERRIDES ────────────────────────────────── */
+  @media (max-width: 860px) {
+    /* Give the image slot an explicit height so height:100% on .ba-split resolves */
+    .svc-card--featured .svc-card-image {
+      height: 72vw;
+      min-height: 260px;
+    }
+
+    /* Belt-and-suspenders: ensure .ba-split fills the slot */
+    .ba-split {
+      height: 72vw;
+      min-height: 260px;
+    }
+
+    /* Larger touch target — minimum 44 × 44 px */
+    .ba-handle {
+      width: 44px;
+      height: 44px;
+      font-size: 0.68rem;
+    }
+
+    /* Compact labels so they don't crowd on narrow screens */
+    .ba-label {
+      font-size: 0.44rem;
+      letter-spacing: 0.18em;
+      padding: 0.26rem 0.55rem;
+      bottom: 0.6rem;
+    }
+    .ba-label-before { left: 0.55rem; }
+    .ba-label-after  { right: 0.55rem; }
+
+    /* Tighten card-body padding on mobile */
+    .svc-card--featured .svc-card-body {
+      padding: 1.75rem 1.25rem 1.5rem;
+    }
+  }
+
+  /* Drag-hint animation — sweeps divider on first load for mobile users */
+  @keyframes ba-hint-sweep {
+    0%   { left: 50%; }
+    35%  { left: 28%; }
+    65%  { left: 72%; }
+    100% { left: 50%; }
+  }
+  @keyframes ba-hint-clip {
+    0%   { clip-path: inset(0 50%   0 0); }
+    35%  { clip-path: inset(0 72%   0 0); }
+    65%  { clip-path: inset(0 28%   0 0); }
+    100% { clip-path: inset(0 50%   0 0); }
+  }
+  @media (max-width: 860px) {
+    .ba-split.hint-playing .ba-divider {
+      animation: ba-hint-sweep 1.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    }
+    .ba-split.hint-playing .ba-before {
+      animation: ba-hint-clip 1.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    }
+  }
+
+  /* ─── PHILOSOPHY QUOTE ──────────────────────────────────────── */
+  .philosophy-strip {
+    background: var(--forest);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 80px 0;
+    text-align: center;
+  }
+  .philosophy-strip-inner { max-width: 660px; margin: 0 auto; padding: 0 2rem; }
+  .philosophy-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem; line-height: 0.5;
+    color: rgba(201,168,76,0.15); display: block; margin-bottom: 1.5rem;
+  }
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.55; color: var(--cream); margin-bottom: 1.5rem;
+  }
+  .philosophy-quote em { color: var(--gold-light); font-style: normal; }
+  .philosophy-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.4; margin: 0 auto; }
+
+  /* ─── BOOKING CTA ───────────────────────────────────────────── */
+  .booking-cta {
+    background: var(--deep);
+    padding: 100px 0;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  .booking-cta-inner { max-width: 640px; margin: 0 auto; padding: 0 2rem; }
+  .booking-cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300; color: var(--cream);
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .booking-cta h2 em { font-style: italic; color: var(--gold-light); }
+  .booking-cta p {
+    font-size: 0.9rem; color: rgba(244,240,230,0.52);
+    line-height: 1.8; margin-bottom: 2.5rem;
+  }
+  .booking-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .booking-trust {
+    display: flex; align-items: center; justify-content: center;
+    gap: 2.5rem; flex-wrap: wrap; margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .booking-trust-item {
+    display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+    font-size: 0.54rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(244,240,230,0.35); text-align: center;
+  }
+  .booking-trust-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; font-style: italic;
+    color: var(--gold-light); line-height: 1;
+  }
+
+  /* ─── FAQ / WHAT TO EXPECT ──────────────────────────────────── */
+  .expect-section {
+    background: var(--black);
+    padding: 100px 0;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  .expect-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .expect-layout { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  .expect-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300; color: var(--cream);
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .expect-left h2 em { font-style: italic; color: var(--gold-light); }
+  .expect-left p {
+    font-size: 0.86rem; line-height: 1.85;
+    color: rgba(244,240,230,0.55);
+    margin-top: 1.25rem;
+  }
+
+  .faq-stack { display: flex; flex-direction: column; gap: 1.5px; }
+  .faq-item {
+    background: var(--deep);
+    border-left: 2px solid rgba(201,168,76,0.12);
+    transition: border-color 0.25s;
+    overflow: hidden;
+  }
+  .faq-item:hover { border-left-color: var(--gold); }
+
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 1.4rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; text-align: left;
+  }
+  .faq-q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--cream); line-height: 1.35;
+  }
+  .faq-chevron {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 1px solid rgba(201,168,76,0.28);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.25s;
+  }
+  .faq-chevron::after {
+    content: '';
+    display: block; width: 5px; height: 5px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: rotate(45deg) translateY(-1px);
+    transition: transform 0.3s;
+  }
+  .faq-item.is-open .faq-chevron { background: rgba(201,168,76,0.12); transform: none; }
+  .faq-item.is-open .faq-chevron::after { transform: rotate(-135deg) translateY(-1px); }
+
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 1.5rem;
+  }
+  .faq-answer p {
+    font-size: 0.84rem; line-height: 1.85;
+    color: rgba(244,240,230,0.55);
+    padding-bottom: 1.4rem;
+  }
+  .faq-item.is-open .faq-answer { max-height: 400px; }
+
+  /* ─── FOOTER ────────────────────────────────────────────────── */
+  footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 60px 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
+  .footer-logo-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--forest); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: 0.9rem; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+  .footer-brand-desc { font-size: 0.74rem; line-height: 1.7; color: rgba(244,240,230,0.45); margin-bottom: 1.5rem; }
+  .footer-address { font-size: 0.7rem; line-height: 1.75; color: rgba(244,240,230,0.5); font-style: normal; }
+  .footer-address strong { color: rgba(244,240,230,0.65); font-weight: 400; }
+  .footer-col-heading { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a { font-size: 0.72rem; color: rgba(244,240,230,0.5); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-hours-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; color: rgba(244,240,230,0.45); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .footer-hours-row span:first-child { color: rgba(244,240,230,0.6); }
+  .hours-closed { color: rgba(244,240,230,0.25) !important; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244,240,230,0.3); }
+  .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-legal-links a { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,240,230,0.3); text-decoration: none; }
+</style>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-10KW19QN9R');
+</script>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Altru Radiance</span>
+      <span class="nav-brand-sub">Aesthetic Wellness · Murray, Utah</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services" class="active">Services</a></li>
+    <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <a href="/book" class="nav-cta">Book Now</a>
+
+  <button
+    class="nav-hamburger"
+    id="navHamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="mobileMenu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <ul class="mobile-menu-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/book" class="mobile-menu-cta">Book Now</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-line"></div>
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">
+      <span>—</span> Altru Radiance · Murray, Utah <span>—</span>
+    </div>
+    <h1 class="page-hero-h1">
+      Treatments Designed<br>
+      for <em>Your Structure</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="page-hero-sub">
+      Each service at Altru Radiance works with the architecture of your face and body — releasing held tension in fascia, restoring lymphatic flow, and rebuilding your skin from the inside out. No needles, no fillers, no shortcuts.
+    </p>
+    <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Your Session</a>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="container">
+    <div class="intro-strip-inner">
+      <div class="intro-pill"><span class="intro-pill-dot"></span>Regenerative Fascia Work</div>
+      <div class="intro-divider"></div>
+      <div class="intro-pill"><span class="intro-pill-dot"></span>Non-Invasive Alternatives to Fillers</div>
+      <div class="intro-divider"></div>
+      <div class="intro-pill"><span class="intro-pill-dot"></span>Solo Esthetician · By Appointment Only</div>
+      <div class="intro-divider"></div>
+      <div class="intro-pill"><span class="intro-pill-dot"></span>Licensed Master Esthetician Since 2014</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
+<section class="services-section">
+  <div class="container">
+    <div class="services-section-head">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Every Session Begins With <em>Listening</em></h2>
+      <div class="gold-rule"></div>
+      <p>Six distinct modalities — each one chosen for its ability to work at the structural level, not just the surface.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- 1. Buccal Massage — FEATURED -->
+      <div class="svc-card svc-card--featured">
+        <div class="svc-card-image">
+          <div class="ba-split" role="img" aria-label="Before and after buccal massage results at Altru Radiance Murray Utah">
+            <!-- AFTER = base layer, always full-width visible -->
+            <div class="ba-after">
+              <img
+                src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png"
+                alt="After 1 buccal massage session at Altru Radiance Murray Utah"
+                loading="eager"
+                draggable="false"
+              >
+            </div>
+            <!-- BEFORE = clipped top layer, reveals from left -->
+            <div class="ba-before">
+              <img
+                src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-before-1-session-sculpting-lifting-murray-utah-altru-radiance_bnnla0.png"
+                alt="Before buccal massage at Altru Radiance Murray Utah"
+                loading="eager"
+                draggable="false"
+              >
+            </div>
+            <!-- Labels -->
+            <span class="ba-label ba-label-before">Before</span>
+            <span class="ba-label ba-label-after">After · 1 Session</span>
+            <!-- Divider handle -->
+            <div class="ba-divider"><div class="ba-handle">↔</div></div>
+          </div>
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-num">01</span>
+          <div class="svc-tag">Signature Service</div>
+          <h2 class="svc-name">Restorative<br><em>Buccal Massage</em></h2>
+          <p class="svc-subtitle">Intraoral + Extraoral Structural Facial Work</p>
+          <div class="svc-rule"></div>
+          <p class="svc-desc">
+            The most comprehensive structural facial treatment available without a needle. Buccal massage addresses the muscles and fascia of the face from <strong>both inside and outside the mouth</strong> — releasing deep-set tension patterns that no topical product or external technique can reach.
+          </p>
+          <p class="svc-desc" style="margin-bottom:1.5rem;">
+            The result is visible: cheekbones lift, jawline sharpens, nasolabial folds soften. Not because anything was added — but because what was always there has been <strong>released and restored.</strong>
+          </p>
+          <ul class="svc-benefits">
+            <li>Lifts and defines facial contour without injectables</li>
+            <li>Releases jaw tension and TMJ-related holding patterns</li>
+            <li>Softens nasolabial folds and marionette lines</li>
+            <li>Improves circulation and lymphatic drainage</li>
+            <li>Supports nervous system regulation through vagal tone</li>
+          </ul>
+          <div class="svc-card-footer">
+            <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Now</a>
+            <a href="/services/restorative-buccal-massage" class="svc-learn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Lymphatic Drainage -->
+      <div class="svc-card">
+        <span class="svc-num">02</span>
+        <div class="svc-tag">Detox &amp; Depuff</div>
+        <h3 class="svc-name">Lymphatic<br><em>Drainage Facial</em></h3>
+        <p class="svc-subtitle">Dr. Vodder Manual Technique · Face &amp; Neck</p>
+        <div class="svc-rule"></div>
+        <p class="svc-desc">
+          Fluid retention is one of the most underestimated contributors to facial aging. This treatment uses precise, rhythmic manual strokes based on the <strong>Dr. Vodder method</strong> to stimulate lymph flow, reduce puffiness, and clear the metabolic waste that dulls your skin's natural clarity.
+        </p>
+        <ul class="svc-benefits">
+          <li>Reduces puffiness and water retention in the face and neck</li>
+          <li>Brightens skin tone and improves clarity</li>
+          <li>Supports immune function and systemic detox</li>
+          <li>Deeply calming — activates the parasympathetic nervous system</li>
+        </ul>
+        <div class="svc-card-footer">
+          <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Now</a>
+          <a href="/services/lymphatic-drainage-murray-utah" class="svc-learn">Learn More</a>
+        </div>
+      </div>
+
+      <!-- 3. Microneedling -->
+      <div class="svc-card">
+        <span class="svc-num">03</span>
+        <div class="svc-tag">Skin Regeneration</div>
+        <h3 class="svc-name">Microneedling<br><em>with Skin Boosters</em></h3>
+        <p class="svc-subtitle">Procell Therapies Microchanneling · Collagen Induction</p>
+        <div class="svc-rule"></div>
+        <p class="svc-desc">
+          Using Procell Therapies microchanneling, this treatment creates thousands of microscopic channels that trigger your skin's own <strong>collagen and elastin production</strong> — then delivers targeted growth factors and peptides directly into the dermis for accelerated results.
+        </p>
+        <ul class="svc-benefits">
+          <li>Reduces fine lines, textural irregularities, and pore size</li>
+          <li>Improves skin density and elasticity over time</li>
+          <li>Addresses hyperpigmentation and post-acne scarring</li>
+          <li>Amplified with skin booster serums for deeper penetration</li>
+        </ul>
+        <div class="svc-card-footer">
+          <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Now</a>
+          <a href="/services/microneedling-murray-utah" class="svc-learn">Learn More</a>
+        </div>
+      </div>
+
+      <!-- 4. Structural Integration Facial -->
+      <div class="svc-card">
+        <span class="svc-num">04</span>
+        <div class="svc-tag">Structural · Lifting</div>
+        <h3 class="svc-name">Structural<br><em>Integration Facial</em></h3>
+        <p class="svc-subtitle">Fascia-Centered · Full-Face Sculpting Protocol</p>
+        <div class="svc-rule"></div>
+        <p class="svc-desc">
+          This isn't a relaxation facial. The Structural Integration Facial is a <strong>hands-on sculpting protocol</strong> designed to remodel facial fascia, restore symmetry, and create visible lift through therapeutic technique rather than product alone. Think of it as Rolfing for your face.
+        </p>
+        <ul class="svc-benefits">
+          <li>Restores facial symmetry and structural balance</li>
+          <li>Lifts brow, mid-face, and jawline through myofascial release</li>
+          <li>Addresses postural patterns that affect facial tension</li>
+          <li>Includes lymphatic drainage and product integration</li>
+        </ul>
+        <div class="svc-card-footer">
+          <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Now</a>
+          <a href="/services/structural-integration-salt-lake-city" class="svc-learn">Learn More</a>
+        </div>
+      </div>
+
+      <!-- 5. Korean Skincare -->
+      <div class="svc-card">
+        <span class="svc-num">05</span>
+        <div class="svc-tag">Ritual · Hydration</div>
+        <h3 class="svc-name">Korean<br><em>Skincare Treatment</em></h3>
+        <p class="svc-subtitle">Multi-Step Protocol · Barrier Restoration</p>
+        <div class="svc-rule"></div>
+        <p class="svc-desc">
+          Rooted in the Korean philosophy that great skin is a <strong>daily practice, not a procedure</strong>, this multi-step ritual works through layered hydration, gentle exfoliation, and targeted actives to restore skin barrier function, luminosity, and moisture balance.
+        </p>
+        <ul class="svc-benefits">
+          <li>Deep hydration through essence and ampoule layering</li>
+          <li>Strengthens the skin moisture barrier</li>
+          <li>Brightens, evens tone, and softens texture</li>
+          <li>Ideal for sensitive, depleted, or barrier-compromised skin</li>
+        </ul>
+        <div class="svc-card-footer">
+          <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 6. Red Light Therapy -->
+      <div class="svc-card">
+        <span class="svc-num">06</span>
+        <div class="svc-tag">Recovery · Cellular</div>
+        <h3 class="svc-name">Red Light<br><em>Therapy</em></h3>
+        <p class="svc-subtitle">Photobiomodulation · Mitochondrial Support</p>
+        <div class="svc-rule"></div>
+        <p class="svc-desc">
+          Red and near-infrared wavelengths penetrate deep into the dermis and underlying tissue, stimulating <strong>ATP production at the cellular level</strong>. The result is accelerated healing, reduced inflammation, improved collagen synthesis, and a visible boost in skin vitality.
+        </p>
+        <ul class="svc-benefits">
+          <li>Accelerates tissue repair and post-treatment recovery</li>
+          <li>Reduces redness, inflammation, and reactive skin patterns</li>
+          <li>Stimulates collagen and elastin at the cellular level</li>
+          <li>Available as an add-on to any structural treatment</li>
+        </ul>
+        <div class="svc-card-footer">
+          <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Now</a>
+        </div>
+      </div>
+
+    </div><!-- /services-grid -->
+  </div>
+</section>
+
+<!-- PHILOSOPHY QUOTE -->
+<div class="philosophy-strip">
+  <div class="philosophy-strip-inner">
+    <span class="philosophy-mark">"</span>
+    <p class="philosophy-quote">
+      Your face is not a problem to be corrected.<br>
+      It is a structure to be <em>listened to</em>.
+    </p>
+    <div class="philosophy-rule"></div>
+  </div>
+</div>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta">
+  <div class="booking-cta-inner">
+    <span class="eyebrow" style="justify-content:center;display:flex;">Ready to Begin</span>
+    <h2>Book Your First<br><em>Session</em></h2>
+    <p>Every first visit includes a structural consultation so I can understand your skin's history, your goals, and what your face is asking for. Sessions are available Tuesday through Saturday, by appointment only.</p>
+    <div class="booking-cta-row">
+      <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" target="_blank" rel="noopener">Book Online Now</a>
+      <a href="/contact" class="btn-ghost">Ask a Question</a>
+    </div>
+    <div class="booking-trust">
+      <div class="booking-trust-item">
+        <span class="booking-trust-val">10+</span>
+        Years of Practice
+      </div>
+      <div class="booking-trust-item">
+        <span class="booking-trust-val">6</span>
+        Specialized Modalities
+      </div>
+      <div class="booking-trust-item">
+        <span class="booking-trust-val">Murray, UT</span>
+        Salt Lake Valley
+      </div>
+      <div class="booking-trust-item">
+        <span class="booking-trust-val">Solo</span>
+        Esthetician Studio
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT / FAQ -->
+<section class="expect-section">
+  <div class="container">
+    <div class="expect-layout">
+
+      <div class="expect-left">
+        <span class="eyebrow">Before You Arrive</span>
+        <h2>What to <em>Expect</em></h2>
+        <div class="gold-rule"></div>
+        <p>Altru Radiance is a private, single-room studio. There's no waiting room energy, no product-pushing, no pressure. Just focused, intentional work and a space where your nervous system can genuinely settle.</p>
+        <p style="margin-top:1rem;">First visits include a full intake and structural consultation before we begin. Plan for about 15 extra minutes.</p>
+      </div>
+
+      <div class="expect-right">
+        <div class="faq-stack">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">What should I wear to my appointment?</span>
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Comfortable, relaxed clothing is ideal. For facial treatments, you'll be lying down with your head and neck accessible — a loose collar or button-down makes transitions easy. Avoid wearing heavy makeup if possible; we'll remove it at the start of your session.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">Is buccal massage uncomfortable?</span>
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Intraoral work is deeply therapeutic but not painful. Many clients describe a pressure-and-release sensation — similar to deep tissue bodywork — particularly in areas that hold chronic tension (jaw, cheeks, temples). Most clients find it profoundly relaxing once they settle in. Nitrile gloves are used throughout and fit, pressure, and pacing are always adjusted to your comfort.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">How many sessions will I need?</span>
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Many clients see visible changes after a single session — particularly with buccal massage, lymphatic drainage, and structural integration. For lasting structural change, a series of 3–6 sessions spaced 2–4 weeks apart is recommended. Results compound over time as fascia releases and the body learns to hold the new pattern.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">Are there any contraindications I should know about?</span>
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Please let me know before booking if you have: active skin infections, open wounds, recent facial surgery (within 6 months), Botox or filler injections in the last 4 weeks, a history of jaw surgery, active dental work, or any autoimmune conditions affecting connective tissue. Microneedling has additional contraindications — a full intake form is completed at your first visit to ensure every treatment is appropriate for you.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">Can I combine multiple services in one visit?</span>
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes — many treatments pair beautifully. Buccal massage is commonly combined with lymphatic drainage and red light therapy for a comprehensive structural session. Microneedling is generally scheduled as a standalone appointment to allow for proper recovery assessment. I'll make a recommendation based on your goals and skin's current state during your consultation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-text">Where are you located?</span>
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer">
+              <p>Altru Radiance is located at 164 E 5900 S, Suite A108, Murray, Utah 84107 — centrally positioned in the Salt Lake Valley. Street-level parking is available. If you need directions or have trouble finding Suite A108, don't hesitate to call or text (801) 660-8933.</p>
+            </div>
+          </div>
+
+        </div><!-- /faq-stack -->
+      </div><!-- /expect-right -->
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo-wrap">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <span class="footer-brand-name">Altru Radiance</span>
+        </div>
+        <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
+        <address class="footer-address">
+          <strong>164 E 5900 S, Suite A108 (near Fashion Place Mall)</strong><br>
+          Murray, Utah 84107<br>
+          <a href="tel:+18016608933" style="color:rgba(244,240,230,0.5);text-decoration:none;">(801) 660-8933</a><br>
+          <a href="mailto:hello@altruradiance.com" style="color:rgba(244,240,230,0.5);text-decoration:none;">hello@altruradiance.com</a>
+        </address>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="/services/restorative-buccal-massage">Buccal Massage</a></li>
+          <li><a href="/services/lymphatic-drainage-murray-utah">Lymphatic Drainage</a></li>
+          <li><a href="/services/structural-integration-salt-lake-city">Structural Integration</a></li>
+          <li><a href="/services/microneedling-murray-utah">Microneedling</a></li>
+          <li><a href="/services/aqua-peel-murray-utah">Aqua Peel</a></li>
+          <li><a href="/services">All Services →</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/policies">Policies</a></li>
+          <li><a href="/book">Book Now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Hours</div>
+        <div class="footer-hours-row"><span class="hours-closed">Sunday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span class="hours-closed">Monday</span><span class="hours-closed">Closed</span></div>
+        <div class="footer-hours-row"><span>Tuesday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Wednesday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Thursday</span><span>12 – 7:30pm</span></div>
+        <div class="footer-hours-row"><span>Friday</span><span>12 – 6pm</span></div>
+        <div class="footer-hours-row"><span>Saturday</span><span>1 – 5pm</span></div>
+        <p style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-top:0.85rem;line-height:1.6;">By Appointment Only</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">Copyright © 2026 Altru Radiance</span>
+      <ul class="footer-legal-links">
+        <li><a href="/policies">Studio Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Hamburger menu
+  const btn = document.getElementById('navHamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function openMenu() { menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeMenu() { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  btn.addEventListener('click', () => btn.getAttribute('aria-expanded')==='true' ? closeMenu() : openMenu());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeMenu(); });
+  window.matchMedia('(min-width: 641px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
+})();
+
+// Before / After Slider — Pointer Events API (matches index.html exactly)
+  document.querySelectorAll('.ba-split').forEach(function(panel) {
+    var dragging = false;
+    var startX = 0;
+    var startY = 0;
+    var DRAG_THRESHOLD = 4;
+
+    function setSplit(pct) {
+      var clamped = Math.min(Math.max(pct, 5), 95);
+      panel.style.setProperty('--split', clamped + '%');
+      var before = panel.querySelector('.ba-before');
+      if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      var divider = panel.querySelector('.ba-divider');
+      if (divider) divider.style.left = clamped + '%';
+    }
+
+    function getPercent(e) {
+      var rect = panel.getBoundingClientRect();
+      return ((e.clientX - rect.left) / rect.width) * 100;
+    }
+
+    panel.addEventListener('pointerdown', function(e) {
+      startX = e.clientX;
+      startY = e.clientY;
+      dragging = false;
+      panel.setPointerCapture(e.pointerId);
+    });
+
+    panel.addEventListener('pointermove', function(e) {
+      var dx = Math.abs(e.clientX - startX);
+      var dy = Math.abs(e.clientY - startY);
+      if (!dragging && dx > DRAG_THRESHOLD && dx > dy) {
+        dragging = true;
+      }
+      if (dragging) {
+        e.preventDefault();
+        setSplit(getPercent(e));
+      }
+    });
+
+    panel.addEventListener('pointerup',     function() { dragging = false; });
+    panel.addEventListener('pointercancel', function() { dragging = false; });
+
+    setSplit(50);
+
+    // Mobile drag-hint: briefly animate the divider so users know it's interactive
+    if (window.matchMedia('(max-width: 860px)').matches) {
+      setTimeout(function() {
+        panel.classList.add('hint-playing');
+        // Remove class after animation ends so manual drags override cleanly
+        panel.addEventListener('animationend', function onEnd() {
+          panel.classList.remove('hint-playing');
+          panel.removeEventListener('animationend', onEnd);
+        });
+      }, 700);
+    }
+  });
+
+// FAQ accordion
+(function() {
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('is-open');
+      // Close all
+      document.querySelectorAll('.faq-item.is-open').forEach(function(el) {
+        el.classList.remove('is-open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded','false');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
