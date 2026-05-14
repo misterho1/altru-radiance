@@ -209,6 +209,15 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Scroll progress indicator for long-form reading (delight) */
+  .read-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    z-index: 1000; transition: width 0.1s ease-out;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) { .read-progress { transition: none; } }
 </style>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
@@ -220,6 +229,7 @@
 </script>
 </head>
 <body>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 
 <nav>
   <a href="#" class="nav-brand">
@@ -576,5 +586,24 @@
 }
 </script>
 
+
+<script>
+/* Scroll progress on long articles */
+(function() {
+  var bar = document.getElementById('readProgress');
+  var article = document.getElementById('article');
+  if (!bar || !article) return;
+  function update() {
+    var rect = article.getBoundingClientRect();
+    var total = article.offsetHeight - window.innerHeight;
+    var scrolled = -rect.top;
+    var pct = Math.min(Math.max(scrolled / total, 0), 1);
+    bar.style.width = (pct * 100) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 </body>
 </html>

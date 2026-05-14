@@ -936,6 +936,14 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Drag-hint pulse on the first slide handle, fades after interaction (delight) */
+  @keyframes ba-handle-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+    50% { transform: translate(-50%, -50%) scale(1.16); box-shadow: 0 2px 24px rgba(201,168,76,0.45); }
+  }
+  .ba-handle.has-hint { animation: ba-handle-pulse 1.6s ease-in-out 0.8s 3; }
+  @media (prefers-reduced-motion: reduce) { .ba-handle.has-hint { animation: none; } }
 </style>
 
 <script type="application/ld+json">
@@ -2023,6 +2031,17 @@
 
     setSplit(50);
   });
+  // Drag-hint: pulse first slide handle on load, remove on first interaction
+  (function() {
+    var firstHandle = document.querySelector('.slide-1 .ba-handle');
+    var firstPanel = document.querySelector('.slide-1 .ba-split');
+    if (!firstHandle || !firstPanel) return;
+    firstHandle.classList.add('has-hint');
+    firstPanel.addEventListener('pointerdown', function() {
+      firstHandle.classList.remove('has-hint');
+    }, { once: true });
+  })();
+
 </script>
 
 <script>
