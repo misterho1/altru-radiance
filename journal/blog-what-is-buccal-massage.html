@@ -199,6 +199,12 @@
     .article-end-cta { padding: 1.75rem 1.5rem; }
     .article-cta-inline { padding: 1.5rem 1.4rem; }
   }
+
+  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
+  @media (max-width: 860px) and (min-width: 641px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
 </style>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>

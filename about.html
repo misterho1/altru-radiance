@@ -220,6 +220,12 @@
   .footer-copy { font-size:0.56rem; letter-spacing:0.12em; color:rgba(244, 240, 230, 0.65); }
   .footer-legal-links { display:flex; gap:1.5rem; list-style:none; }
   .footer-legal-links a { font-size:0.52rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(244, 240, 230, 0.65); text-decoration:none; }
+
+  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
+  @media (max-width: 860px) and (min-width: 641px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
 </style>
 
 <!-- Google Analytics 4 -->

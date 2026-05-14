@@ -866,6 +866,12 @@ footer {
   .stats-strip { flex-direction: column; gap: 0.75rem; }
   .stats-strip-item + .stats-strip-item { border-left: none; }
 }
+
+  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
+  @media (max-width: 860px) and (min-width: 641px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
 </style>
 
 <!-- Google Analytics 4 -->

@@ -512,6 +512,12 @@
   @media (max-width: 640px) {
     .sticky-mobile-cta { display: block; }
   }
+
+  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
+  @media (max-width: 860px) and (min-width: 641px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
 </style>
 
 <!-- GLightbox -->

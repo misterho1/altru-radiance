@@ -259,6 +259,12 @@
 
 .booking-note { font-size: 0.95rem; color: var(--mist); margin-bottom: 1.5rem; line-height: 1.6; }
 .booking-note a { color: var(--gold); text-decoration: underline; }
+
+  /* Tablet nav: hamburger from 860px to avoid the 922px-into-672px overflow */
+  @media (max-width: 860px) and (min-width: 641px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
 </style>
 
 <!-- Google Analytics 4 -->
