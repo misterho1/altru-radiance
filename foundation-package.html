@@ -55,7 +55,7 @@
   
 
   
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1440177589740208&ev=PageView&noscript=1"/></noscript>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1440177589740208&ev=PageView&noscript=1"/ loading="lazy" decoding="async"></noscript>
 
   <!-- Google Ads Conversion — activate after campaign launches -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
@@ -278,7 +278,7 @@
     .story-mosaic-featured figure:hover img{transform:scale(1.04)}
 
     /* Angle label overlay */
-    .angle-tag{position:absolute;bottom:10px;left:12px;font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244,240,230,0.8);background:rgba(6,16,10,0.65);padding:3px 9px;backdrop-filter:blur(4px);pointer-events:none;z-index:2}
+    .angle-tag{position:absolute;bottom:10px;left:12px;font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244,240,230,0.8);background:rgba(6,16,10,0.65);padding:3px 9px;pointer-events:none;z-index:2}
 
     /* ── Tier 1 custom drag slider (.ba-slider) ─────────────── */
     .ba-slider{position:relative;overflow:hidden;cursor:col-resize;user-select:none;-webkit-user-select:none}
@@ -299,7 +299,7 @@
     .carousel-track{display:flex;will-change:transform;transition:transform 0.65s cubic-bezier(0.4,0,0.2,1)}
     .carousel-slide{flex-shrink:0;position:relative}
     .slide-header{text-align:center;padding:1rem 1rem 0;background:rgba(6,16,10,0.95)}
-    .slide-service-badge{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:0.28rem 0.85rem;background:rgba(6,16,10,0.6);backdrop-filter:blur(4px)}
+    .slide-service-badge{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:0.28rem 0.85rem;background:rgba(6,16,10,0.6);}
     .ba-split{position:relative;height:480px;width:100%;overflow:hidden;cursor:col-resize;touch-action:pan-y;-webkit-user-select:none;user-select:none;background:var(--deep)}
     .ba-split .ba-before,.ba-split .ba-after{position:absolute;inset:0;overflow:hidden;background:var(--deep)}
     .ba-split .ba-before{clip-path:inset(0 calc(100% - var(--split,50%)) 0 0);z-index:2}
@@ -307,7 +307,7 @@
     .ba-split .ba-before img,.ba-split .ba-after img{width:100%;height:100%;object-fit:contain;object-position:center top;display:block;background:transparent}
     .ba-split .ba-divider{position:absolute;top:0;bottom:0;left:var(--split,50%);transform:translateX(-50%);width:2px;background:var(--gold);z-index:10;pointer-events:none}
     .ba-split .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.5);font-size:0.6rem;color:var(--black);font-weight:600}
-    .ba-label{position:absolute;bottom:1rem;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.85rem;background:rgba(6,16,10,0.75);backdrop-filter:blur(4px);z-index:8;pointer-events:none}
+    .ba-label{position:absolute;bottom:1rem;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.85rem;background:rgba(6,16,10,0.75);z-index:8;pointer-events:none}
     .ba-label-before{left:0.85rem;color:rgba(244,240,230,0.65);border:1px solid rgba(244, 240, 230, 0.65)}
     .ba-label-after{right:0.85rem;color:var(--gold);border:1px solid rgba(201,168,76,0.3)}
     .slide-footer{background:rgba(6,16,10,0.97);border-top:1px solid rgba(201,168,76,0.15);padding:1.2rem 1.6rem 1.4rem}
@@ -568,6 +568,24 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 
 <!-- GLightbox -->
@@ -715,10 +733,10 @@
           <div style="flex:0 0 100%;min-width:0;">
             <div class="ba-slider" style="aspect-ratio:1/1;background:var(--deep);">
               <div class="ba-before">
-                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_740,c_fit/v1774635277/tmj-buccal-massage-before-murray-utah-altru-radiance_mkctwn.png" alt="Restorative Buccal Massage before — TMJ tension and tech-neck holding pattern, Murray Utah Altru Radiance" loading="eager" decoding="async"/>
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_740,c_fit/v1774635277/tmj-buccal-massage-before-murray-utah-altru-radiance_mkctwn.png" alt="Restorative Buccal Massage before — TMJ tension and tech-neck holding pattern, Murray Utah Altru Radiance" loading="eager" decoding="async"/ fetchpriority="high">
               </div>
               <div class="ba-after">
-                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_740,c_fit/v1774635269/tmj-buccal-massage-after-1-session-murray-utah-altru-radiance_o8p8aa.png" alt="Restorative Buccal Massage after one session — TMJ released, nervous system downshifted, Murray Utah Altru Radiance" loading="eager" decoding="async"/>
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_740,c_fit/v1774635269/tmj-buccal-massage-after-1-session-murray-utah-altru-radiance_o8p8aa.png" alt="Restorative Buccal Massage after one session — TMJ released, nervous system downshifted, Murray Utah Altru Radiance" loading="eager" decoding="async"/ fetchpriority="high">
               </div>
               <div class="ba-divider">
                 <div class="ba-handle">
@@ -850,12 +868,12 @@
             <div class="ba-after">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778147139/results_restorative-buccal-massage-after-1-session-best-facial-for-jawline-definition-slc_smbyck.png"
                    alt="After Restorative Buccal Massage — jawline definition restored, masseter released, mandibular contour re-emerged, best facial for jawline Salt Lake City"
-                   loading="eager" decoding="async"/>
+                   loading="eager" decoding="async"/ fetchpriority="high">
             </div>
             <div class="ba-before">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778147140/results_restorative-buccal-massage-before-1-session-best-facial-for-jawline-definition-slc_cbpm7e.png"
                    alt="Before Restorative Buccal Massage — masseter hypertrophy, jaw clenching, softened jawline, Salt Lake City area"
-                   loading="eager" decoding="async"/>
+                   loading="eager" decoding="async"/ fetchpriority="high">
             </div>
             <span class="ba-label ba-label-before">Before</span>
             <span class="ba-label ba-label-after">After 1 Session</span>
@@ -1521,5 +1539,52 @@ document.addEventListener('DOMContentLoaded', function() {
   ]
 }
 </script>
+
+<script>
+/* BA slider a11y: keyboard + screen reader support for the before/after divider */
+(function () {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.ba-split').forEach(function (panel) {
+    var handle = panel.querySelector('.ba-handle');
+    if (!handle) return;
+    handle.setAttribute('role', 'slider');
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-label', 'Before and after split position');
+    handle.setAttribute('aria-valuemin', '0');
+    handle.setAttribute('aria-valuemax', '100');
+    handle.setAttribute('aria-valuenow', '50');
+
+    function applySplit(pct) {
+      var clamped = Math.min(Math.max(pct, 0), 100);
+      panel.style.setProperty('--split', clamped + '%');
+      var before = panel.querySelector('.ba-before');
+      if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      var divider = panel.querySelector('.ba-divider');
+      if (divider) divider.style.left = clamped + '%';
+      handle.setAttribute('aria-valuenow', Math.round(clamped));
+    }
+
+    handle.addEventListener('keydown', function (e) {
+      var step = e.shiftKey ? 10 : 1;
+      var current = parseInt(handle.getAttribute('aria-valuenow') || '50', 10);
+      var next = current;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = 100;
+      else return;
+      e.preventDefault();
+      applySplit(next);
+    });
+
+    // Sync aria-valuenow when the existing pointer drag logic updates --split
+    panel.addEventListener('pointerup', function () {
+      var raw = panel.style.getPropertyValue('--split') || '50%';
+      handle.setAttribute('aria-valuenow', Math.round(parseFloat(raw)));
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

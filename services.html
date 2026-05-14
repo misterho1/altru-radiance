@@ -407,7 +407,7 @@
     position: absolute; bottom: 1rem;
     font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase;
     padding: 0.32rem 0.75rem;
-    background: rgba(6,16,10,0.75); backdrop-filter: blur(4px);
+    background: rgba(6,16,10,0.75);
     z-index: 8; pointer-events: none;
   }
   .ba-label-before {
@@ -647,6 +647,24 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 
 <!-- Google Analytics 4 -->
@@ -665,7 +683,7 @@
 <nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Altru Radiance</span>
@@ -764,8 +782,7 @@
                 src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png"
                 alt="After 1 buccal massage session at Altru Radiance Murray Utah"
                 loading="eager"
-                draggable="false"
-              >
+                draggable="false" decoding="async" fetchpriority="high">
             </div>
             <!-- BEFORE = clipped top layer, reveals from left -->
             <div class="ba-before">
@@ -773,8 +790,7 @@
                 src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-before-1-session-sculpting-lifting-murray-utah-altru-radiance_bnnla0.png"
                 alt="Before buccal massage at Altru Radiance Murray Utah"
                 loading="eager"
-                draggable="false"
-              >
+                draggable="false" decoding="async" fetchpriority="high">
             </div>
             <!-- Labels -->
             <span class="ba-label ba-label-before">Before</span>
@@ -1054,7 +1070,7 @@
 
       <div>
         <div class="footer-logo-wrap">
-          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
           <span class="footer-brand-name">Altru Radiance</span>
         </div>
         <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
@@ -1206,5 +1222,52 @@
   });
 })();
 </script>
+
+<script>
+/* BA slider a11y: keyboard + screen reader support for the before/after divider */
+(function () {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.ba-split').forEach(function (panel) {
+    var handle = panel.querySelector('.ba-handle');
+    if (!handle) return;
+    handle.setAttribute('role', 'slider');
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-label', 'Before and after split position');
+    handle.setAttribute('aria-valuemin', '0');
+    handle.setAttribute('aria-valuemax', '100');
+    handle.setAttribute('aria-valuenow', '50');
+
+    function applySplit(pct) {
+      var clamped = Math.min(Math.max(pct, 0), 100);
+      panel.style.setProperty('--split', clamped + '%');
+      var before = panel.querySelector('.ba-before');
+      if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      var divider = panel.querySelector('.ba-divider');
+      if (divider) divider.style.left = clamped + '%';
+      handle.setAttribute('aria-valuenow', Math.round(clamped));
+    }
+
+    handle.addEventListener('keydown', function (e) {
+      var step = e.shiftKey ? 10 : 1;
+      var current = parseInt(handle.getAttribute('aria-valuenow') || '50', 10);
+      var next = current;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = 100;
+      else return;
+      e.preventDefault();
+      applySplit(next);
+    });
+
+    // Sync aria-valuenow when the existing pointer drag logic updates --split
+    panel.addEventListener('pointerup', function () {
+      var raw = panel.style.getPropertyValue('--split') || '50%';
+      handle.setAttribute('aria-valuenow', Math.round(parseFloat(raw)));
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

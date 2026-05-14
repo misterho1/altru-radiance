@@ -371,7 +371,7 @@ nav {
   position: absolute; bottom: 1rem;
   font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase;
   padding: 0.3rem 0.7rem;
-  background: rgba(6,16,10,0.72); backdrop-filter: blur(4px);
+  background: rgba(6,16,10,0.72);
   z-index: 8; pointer-events: none;
 }
 .ba-label-before { left: 0.85rem; color: rgba(244,240,230,0.65); border: 1px solid rgba(244, 240, 230, 0.65); }
@@ -391,7 +391,7 @@ nav {
   position: absolute; bottom: 1rem;
   font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase;
   padding: 0.3rem 0.7rem;
-  background: rgba(6,16,10,0.72); backdrop-filter: blur(4px);
+  background: rgba(6,16,10,0.72);
   pointer-events: none;
 }
 .composite-label-before { left: 0.85rem; color: rgba(244,240,230,0.65); border: 1px solid rgba(244, 240, 230, 0.65); }
@@ -872,6 +872,24 @@ footer {
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 
 <!-- Google Analytics 4 -->
@@ -889,7 +907,7 @@ footer {
 <nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Altru Radiance</span>
@@ -984,7 +1002,7 @@ footer {
         <img id="ecard-1-main"
              src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778716920/buccal-massage-before-after-lymphatic-luminosity-facial-lift-symmetry-front-1-session-murray-utah-altru-radiance_jvlyks.png"
              alt="buccal massage before after lymphatic luminosity facial lift symmetry front view 1 session murray utah altru radiance"
-             loading="eager" width="1200" height="800">
+             loading="eager" width="1200" height="800" decoding="async" fetchpriority="high">
       </div>
       <div class="editorial-body">
         <div class="editorial-body-left">
@@ -1012,17 +1030,17 @@ footer {
           <div class="thumb-stack">
             <div class="e-thumb active" data-card="1" data-idx="0">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716920/buccal-massage-before-after-lymphatic-luminosity-facial-lift-symmetry-front-1-session-murray-utah-altru-radiance_jvlyks.png"
-                   alt="front view thumbnail" loading="lazy">
+                   alt="front view thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Front</span>
             </div>
             <div class="e-thumb" data-card="1" data-idx="1">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716918/buccal-massage-before-after-fascial-release-structural-lift-three-quarter-view-1-session-murray-utah-altru-radiance_yyhatu.png"
-                   alt="three quarter view thumbnail" loading="lazy">
+                   alt="three quarter view thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Three-Quarter</span>
             </div>
             <div class="e-thumb" data-card="1" data-idx="2">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716922/buccal-massage-before-after-submental-compression-cervical-decompression-right-profile-1-session-murray-utah-altru-radiance_fabcet.png"
-                   alt="right profile thumbnail" loading="lazy">
+                   alt="right profile thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Right Profile</span>
             </div>
           </div>
@@ -1041,7 +1059,7 @@ footer {
         <img id="ecard-2-main"
              src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778716960/buccal-massage-before-after-male-jaw-symmetry-facial-definition-front-1-session-murray-utah-altru-radiance_doauzw.png"
              alt="buccal massage before after male jaw symmetry facial definition front view 1 session murray utah altru radiance"
-             loading="lazy" width="1200" height="800">
+             loading="lazy" width="1200" height="800" decoding="async">
       </div>
       <div class="editorial-body">
         <div class="editorial-body-left">
@@ -1069,17 +1087,17 @@ footer {
           <div class="thumb-stack">
             <div class="e-thumb active" data-card="2" data-idx="0">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716960/buccal-massage-before-after-male-jaw-symmetry-facial-definition-front-1-session-murray-utah-altru-radiance_doauzw.png"
-                   alt="front view thumbnail" loading="lazy">
+                   alt="front view thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Front</span>
             </div>
             <div class="e-thumb" data-card="2" data-idx="1">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716961/buccal-massage-before-after-male-tmj-submental-cervical-decompression-right-profile-1-session-murray-utah-altru-radiance_gpo9uo.png"
-                   alt="right profile thumbnail" loading="lazy">
+                   alt="right profile thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Right Profile</span>
             </div>
             <div class="e-thumb" data-card="2" data-idx="2">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716957/buccal-massage-before-after-male-cervical-decompression-neck-elongation-left-profile-1-session-murray-utah-altru-radiance_qdyygd.png"
-                   alt="left profile thumbnail" loading="lazy">
+                   alt="left profile thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Left Profile</span>
             </div>
           </div>
@@ -1098,7 +1116,7 @@ footer {
         <img id="ecard-3-main"
              src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778716950/buccal-massage-before-after-chest-trap-decompression-facial-lift-front-1-session-murray-utah-altru-radiance_xp3hxo.png"
              alt="buccal massage before after chest trap decompression facial lift front view 1 session murray utah altru radiance"
-             loading="lazy" width="1200" height="800">
+             loading="lazy" width="1200" height="800" decoding="async">
       </div>
       <div class="editorial-body">
         <div class="editorial-body-left">
@@ -1126,17 +1144,17 @@ footer {
           <div class="thumb-stack">
             <div class="e-thumb active" data-card="3" data-idx="0">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716950/buccal-massage-before-after-chest-trap-decompression-facial-lift-front-1-session-murray-utah-altru-radiance_xp3hxo.png"
-                   alt="front view thumbnail" loading="lazy">
+                   alt="front view thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Front</span>
             </div>
             <div class="e-thumb" data-card="3" data-idx="1">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716952/buccal-massage-before-after-forward-head-posture-cervical-correction-right-profile-1-session-murray-utah-altru-radiance_jrf2ry.png"
-                   alt="right profile thumbnail" loading="lazy">
+                   alt="right profile thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Right Profile</span>
             </div>
             <div class="e-thumb" data-card="3" data-idx="2">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_400/v1778716954/buccal-massage-before-after-forward-head-posture-tech-neck-left-profile-1-session-murray-utah-altru-radiance_ag4vfj.png"
-                   alt="left profile thumbnail" loading="lazy">
+                   alt="left profile thumbnail" loading="lazy" decoding="async">
               <span class="e-thumb-label">Left Profile</span>
             </div>
           </div>
@@ -1157,7 +1175,7 @@ footer {
       <div class="foundation-image-wrap">
         <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/results_foundation-package-progression-buccal-massage-for-fascia-regeneration-murray-ut_dv2ny5"
              alt="foundation package progression buccal massage fascia regeneration before after multi-session murray utah altru radiance"
-             loading="lazy" width="1600" height="800">
+             loading="lazy" width="1600" height="800" decoding="async">
       </div>
       <div class="btn-row">
         <a href="/programs/foundation-package" class="btn-primary">Learn About the Foundation Package →</a>
@@ -1181,7 +1199,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/tmj-buccal-massage-before-after-front-view-murray-utah-altru-radiance_qd6sa6"
-                   alt="TMJ buccal massage before after front view murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="TMJ buccal massage before after front view murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">TMJ Release · Front View</span>
@@ -1192,7 +1210,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/tmj-buccal-massage-before-after-left-lateral-view-murray-utah-altru-radiance_ifiabm"
-                   alt="TMJ buccal massage before after left lateral view murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="TMJ buccal massage before after left lateral view murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">TMJ Release · Left Lateral</span>
@@ -1203,7 +1221,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/tmj-buccal-massage-before-after-right-lateral-view-murray-utah-altru-radiance_bkcbds"
-                   alt="TMJ buccal massage before after right lateral view murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="TMJ buccal massage before after right lateral view murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">TMJ Release · Right Lateral</span>
@@ -1214,7 +1232,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-tmj-jaw-definition-neck-elongation_sntwdb"
-                   alt="buccal massage before after TMJ jaw definition neck elongation murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage before after TMJ jaw definition neck elongation murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">TMJ · Jaw Definition + Neck Elongation</span>
@@ -1225,7 +1243,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-natural-lift-luminosity_ovhcmb"
-                   alt="buccal massage before after natural lift luminosity murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage before after natural lift luminosity murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Natural Lift + Luminosity</span>
@@ -1236,7 +1254,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-bilateral-symmetry-head-alignment_j0xmln"
-                   alt="buccal massage before after bilateral symmetry head alignment murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage before after bilateral symmetry head alignment murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Bilateral Symmetry · Head Alignment</span>
@@ -1247,7 +1265,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-facial-symmetry-grid-overlay_rhndfm"
-                   alt="buccal massage before after facial symmetry grid overlay murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage before after facial symmetry grid overlay murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Facial Symmetry · Grid Overlay</span>
@@ -1258,7 +1276,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-cranial-alignment-chin-projection_zccdic"
-                   alt="buccal massage before after cranial alignment chin projection murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage before after cranial alignment chin projection murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Cranial Alignment · Chin Projection</span>
@@ -1269,7 +1287,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-lymphatic-skin-vitality-puffiness_gmqaxo"
-                   alt="buccal massage before after lymphatic skin vitality puffiness murray utah altru radiance" loading="lazy" width="600" height="562">
+                   alt="buccal massage before after lymphatic skin vitality puffiness murray utah altru radiance" loading="lazy" width="600" height="562" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Lymphatic Skin Vitality · Puffiness</span>
@@ -1280,7 +1298,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-fascial-release-sculpted-features_tuh9jc"
-                   alt="buccal massage before after fascial release sculpted features murray utah altru radiance" loading="lazy" width="600" height="566">
+                   alt="buccal massage before after fascial release sculpted features murray utah altru radiance" loading="lazy" width="600" height="566" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Fascial Release · Sculpted Features</span>
@@ -1291,7 +1309,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_forward-head-posture-facial-change-before-after-murray-utah_kpe6ta"
-                   alt="forward head posture facial change before after murray utah altru radiance" loading="lazy" width="600" height="400">
+                   alt="forward head posture facial change before after murray utah altru radiance" loading="lazy" width="600" height="400" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Forward Head Posture · Facial Change</span>
@@ -1302,7 +1320,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/structural-integration-cervical-jaw-decompression-before-after-murray-utah-altru-radiance_b7jlt0"
-                   alt="structural integration cervical jaw decompression before after murray utah altru radiance" loading="lazy" width="600" height="800">
+                   alt="structural integration cervical jaw decompression before after murray utah altru radiance" loading="lazy" width="600" height="800" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Structural Integration · Cervical Jaw</span>
@@ -1313,7 +1331,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_sympathetic-parasympathetic-shift-buccal-massage-diagram_irvoij"
-                   alt="buccal massage sympathetic parasympathetic shift before after murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage sympathetic parasympathetic shift before after murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Sympathetic · Parasympathetic Shift</span>
@@ -1324,7 +1342,7 @@ footer {
           <div class="results-grid-item">
             <div class="grid-img-wrap">
               <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_600/results_buccal-massage-before-after-facial-remodeling-symmetry_mozv6v"
-                   alt="buccal massage before after facial remodeling symmetry murray utah altru radiance" loading="lazy" width="600" height="600">
+                   alt="buccal massage before after facial remodeling symmetry murray utah altru radiance" loading="lazy" width="600" height="600" decoding="async">
             </div>
             <div class="grid-item-caption">
               <span class="grid-item-label">Facial Remodeling · Symmetry</span>
@@ -1510,7 +1528,7 @@ footer {
 
       <div>
         <div class="footer-logo-wrap">
-          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
           <span class="footer-brand-name">Altru Radiance</span>
         </div>
         <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
@@ -1844,5 +1862,52 @@ if (stickyBar && footer) {
   }, { passive: true });
 }
 </script>
+
+<script>
+/* BA slider a11y: keyboard + screen reader support for the before/after divider */
+(function () {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.ba-split').forEach(function (panel) {
+    var handle = panel.querySelector('.ba-handle');
+    if (!handle) return;
+    handle.setAttribute('role', 'slider');
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-label', 'Before and after split position');
+    handle.setAttribute('aria-valuemin', '0');
+    handle.setAttribute('aria-valuemax', '100');
+    handle.setAttribute('aria-valuenow', '50');
+
+    function applySplit(pct) {
+      var clamped = Math.min(Math.max(pct, 0), 100);
+      panel.style.setProperty('--split', clamped + '%');
+      var before = panel.querySelector('.ba-before');
+      if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      var divider = panel.querySelector('.ba-divider');
+      if (divider) divider.style.left = clamped + '%';
+      handle.setAttribute('aria-valuenow', Math.round(clamped));
+    }
+
+    handle.addEventListener('keydown', function (e) {
+      var step = e.shiftKey ? 10 : 1;
+      var current = parseInt(handle.getAttribute('aria-valuenow') || '50', 10);
+      var next = current;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = 100;
+      else return;
+      e.preventDefault();
+      applySplit(next);
+    });
+
+    // Sync aria-valuenow when the existing pointer drag logic updates --split
+    panel.addEventListener('pointerup', function () {
+      var raw = panel.style.getPropertyValue('--split') || '50%';
+      handle.setAttribute('aria-valuenow', Math.round(parseFloat(raw)));
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

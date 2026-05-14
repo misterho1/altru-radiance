@@ -243,6 +243,24 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -295,7 +313,7 @@
 <nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Altru Radiance</span>
@@ -449,7 +467,7 @@
 
       <div>
         <div class="footer-logo-wrap">
-          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
           <span class="footer-brand-name">Altru Radiance</span>
         </div>
         <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>

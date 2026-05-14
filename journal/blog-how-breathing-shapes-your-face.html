@@ -182,6 +182,24 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
@@ -197,7 +215,7 @@
 <nav>
   <a href="#" class="nav-brand">
     <div class="nav-logo">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Altru Radiance</span>
@@ -243,7 +261,7 @@
 <header class="article-hero">
   <div class="article-hero-bg" aria-hidden="true"></div>
   <div class="article-hero-img" aria-hidden="true">
-    <img src="" alt="" loading="eager" onerror="this.style.display='none'">
+    <img src="" alt="" loading="eager" onerror="this.style.display='none'" decoding="async" fetchpriority="high">
   </div>
   <div class="article-hero-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -456,7 +474,7 @@
     <h2 class="related-heading">Continue <span>reading</span></h2>
     <div class="related-grid">
       <a href="/journal/what-is-buccal-massage" class="related-card">
-        <div class="related-card-image"><img src="" alt="" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="related-card-image"><img src="" alt="" loading="lazy" onerror="this.style.display='none'" decoding="async"></div>
         <div class="related-card-body">
           <span class="related-tag">Technique Deep Dive</span>
           <h3 class="related-title">What Is Buccal Massage? The Face-Lifting Technique That Works From the Inside Out</h3>
@@ -464,7 +482,7 @@
         </div>
       </a>
       <a href="/journal/tmj-relief-facial-massage" class="related-card">
-        <div class="related-card-image"><img src="" alt="" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="related-card-image"><img src="" alt="" loading="lazy" onerror="this.style.display='none'" decoding="async"></div>
         <div class="related-card-body">
           <span class="related-tag">Clinical Education</span>
           <h3 class="related-title">TMJ Relief Through Facial Massage: How Intraoral Techniques Release Jaw Tension Naturally</h3>
@@ -472,7 +490,7 @@
         </div>
       </a>
       <a href="/journal/natural-alternatives-to-botox" class="related-card">
-        <div class="related-card-image"><img src="" alt="" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="related-card-image"><img src="" alt="" loading="lazy" onerror="this.style.display='none'" decoding="async"></div>
         <div class="related-card-body">
           <span class="related-tag">Comparison Guide</span>
           <h3 class="related-title">Natural Alternatives to Botox: What Actually Works — and What Doesn't</h3>
@@ -489,7 +507,7 @@
 
       <div>
         <div class="footer-logo-wrap">
-          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
           <span class="footer-brand-name">Altru Radiance</span>
         </div>
         <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>

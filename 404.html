@@ -256,7 +256,6 @@
     font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--mist); border: 1px solid rgba(138,170,138,0.25);
     padding: 0.45rem 1rem; background: rgba(22,43,28,0.45);
-    backdrop-filter: blur(4px);
   }
   .trust-pill .check { color: var(--gold); font-size: 0.7rem; }
 
@@ -282,7 +281,7 @@
     color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
     padding: 0.3rem 0.9rem; display: inline-block;
     margin-bottom: 0.9rem;
-    background: rgba(6,16,10,0.6); backdrop-filter: blur(4px);
+    background: rgba(6,16,10,0.6);
   }
 
   .carousel-wrap {
@@ -383,7 +382,7 @@
     position: absolute; bottom: 1rem;
     font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
     padding: 0.32rem 0.85rem;
-    background: rgba(6,16,10,0.75); backdrop-filter: blur(4px);
+    background: rgba(6,16,10,0.75);
     z-index: 8; pointer-events: none;
   }
   .ba-label-before {
@@ -931,6 +930,24 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 
 <!-- Google Analytics 4 -->
@@ -948,7 +965,7 @@
 <nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Altru Radiance</span>
@@ -1023,7 +1040,7 @@
 
       <div>
         <div class="footer-logo-wrap">
-          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
           <span class="footer-brand-name">Altru Radiance</span>
         </div>
         <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
@@ -1121,6 +1138,53 @@
   /* Close if viewport widens past mobile breakpoint */
   var mq = window.matchMedia('(min-width: 641px)');
   mq.addEventListener('change', function (e) { if (e.matches) closeMenu(); });
+})();
+</script>
+
+
+<script>
+/* BA slider a11y: keyboard + screen reader support for the before/after divider */
+(function () {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.ba-split').forEach(function (panel) {
+    var handle = panel.querySelector('.ba-handle');
+    if (!handle) return;
+    handle.setAttribute('role', 'slider');
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-label', 'Before and after split position');
+    handle.setAttribute('aria-valuemin', '0');
+    handle.setAttribute('aria-valuemax', '100');
+    handle.setAttribute('aria-valuenow', '50');
+
+    function applySplit(pct) {
+      var clamped = Math.min(Math.max(pct, 0), 100);
+      panel.style.setProperty('--split', clamped + '%');
+      var before = panel.querySelector('.ba-before');
+      if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      var divider = panel.querySelector('.ba-divider');
+      if (divider) divider.style.left = clamped + '%';
+      handle.setAttribute('aria-valuenow', Math.round(clamped));
+    }
+
+    handle.addEventListener('keydown', function (e) {
+      var step = e.shiftKey ? 10 : 1;
+      var current = parseInt(handle.getAttribute('aria-valuenow') || '50', 10);
+      var next = current;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = current - step;
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = current + step;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = 100;
+      else return;
+      e.preventDefault();
+      applySplit(next);
+    });
+
+    // Sync aria-valuenow when the existing pointer drag logic updates --split
+    panel.addEventListener('pointerup', function () {
+      var raw = panel.style.getPropertyValue('--split') || '50%';
+      handle.setAttribute('aria-valuenow', Math.round(parseFloat(raw)));
+    });
+  });
 })();
 </script>
 

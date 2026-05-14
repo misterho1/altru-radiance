@@ -226,6 +226,24 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
   }
+
+  /* Focus indicators for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Honor users who request reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 
 <!-- Google Analytics 4 -->
@@ -243,7 +261,7 @@
 <nav>
   <a href="/" class="nav-brand">
     <div class="nav-logo">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
     </div>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Altru Radiance</span>
@@ -288,7 +306,7 @@
 
 <section class="hero">
   <div class="hero-img-col">
-    <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1777684667/about_mechelle-self-portrait_oouddb.jpg" alt="Mechelle To, Licensed Master Esthetician and founder of Altru Radiance Murray Utah" loading="eager">
+    <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1777684667/about_mechelle-self-portrait_oouddb.jpg" alt="Mechelle To, Licensed Master Esthetician and founder of Altru Radiance Murray Utah" loading="eager" decoding="async" fetchpriority="high">
   </div>
   <div class="hero-content">
     <div class="hero-drop"></div>
@@ -326,7 +344,7 @@
 <section class="work-section">
   <div class="work-layout">
     <div class="work-img">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635400/altru-radiance-studio-murray-utah_dllkk1.jpg" alt="Altru Radiance studio Murray Utah structural facial work" loading="lazy">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635400/altru-radiance-studio-murray-utah_dllkk1.jpg" alt="Altru Radiance studio Murray Utah structural facial work" loading="lazy" decoding="async">
     </div>
     <div class="work-text">
       <span class="eyebrow">The Method</span>
@@ -452,7 +470,7 @@
 
       <div>
         <div class="footer-logo-wrap">
-          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
           <span class="footer-brand-name">Altru Radiance</span>
         </div>
         <p class="footer-brand-desc">Utah's only regenerative aesthetics fascia studio — dedicated to cranial support and the architecture of structural symmetry.</p>
