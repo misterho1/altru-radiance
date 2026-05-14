@@ -1977,6 +1977,10 @@
     let startY = 0;
     const DRAG_THRESHOLD = 4;
 
+    let cachedRect = null;
+    let frameQueued = false;
+    let pendingX = 0;
+
     function setSplit(pct) {
       const clamped = Math.min(Math.max(pct, 5), 95);
       panel.style.setProperty('--split', clamped + '%');
@@ -1986,15 +1990,11 @@
       if (divider) divider.style.left = clamped + '%';
     }
 
-    function getPercent(e) {
-      const rect = panel.getBoundingClientRect();
-      return ((e.clientX - rect.left) / rect.width) * 100;
-    }
-
     panel.addEventListener('pointerdown', e => {
       startX = e.clientX;
       startY = e.clientY;
       dragging = false;
+      cachedRect = panel.getBoundingClientRect();
       panel.setPointerCapture(e.pointerId);
     });
 
@@ -2006,12 +2006,20 @@
       }
       if (dragging) {
         e.preventDefault();
-        setSplit(getPercent(e));
+        pendingX = e.clientX;
+        if (!frameQueued && cachedRect) {
+          frameQueued = true;
+          requestAnimationFrame(() => {
+            setSplit(((pendingX - cachedRect.left) / cachedRect.width) * 100);
+            frameQueued = false;
+          });
+        }
       }
     });
 
-    panel.addEventListener('pointerup',     () => { dragging = false; });
-    panel.addEventListener('pointercancel', () => { dragging = false; });
+    const endDrag = () => { dragging = false; cachedRect = null; };
+    panel.addEventListener('pointerup',     endDrag);
+    panel.addEventListener('pointercancel', endDrag);
 
     setSplit(50);
   });

@@ -3,9 +3,20 @@ serve-brainstorm.py
 node.text
 .DS_Store
 __MACOSX/
+assets/NKSC_PARAM/
 assets/results/NKSC_PARAM/
 assets/results/preedit-strucural-integration*
 *.pyc
+
+# Local helper scripts — never deploy
+_*.py
+
+# Source PNGs that Cloudinary mirrors — never re-stage these in /assets/
+# Production uses res.cloudinary.com/dec9xzaxl/... for all imagery
+assets/*.png
+assets/*.jpg
+assets/*.webp
+!assets/logoFinal.*
 
 # Local agent / session workspaces — not for deploy
 .brainstorm/

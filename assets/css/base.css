@@ -64,3 +64,26 @@ body {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 }
+
+/* ── Touch target sizing for mobile (WCAG 2.5.5 AAA, 44px floor).
+       Expands the tap area for link lists without changing visual size. ── */
+@media (max-width: 640px) {
+  .footer-links a,
+  .breadcrumb-inner a,
+  .breadcrumb a {
+    display: inline-block;
+    min-height: 44px;
+    line-height: 1.55;
+    padding: 0.45rem 0;
+  }
+  .footer-address a {
+    display: inline-block;
+    min-height: 44px;
+    line-height: 1.55;
+    padding: 0.3rem 0;
+  }
+  .footer-address br + a,
+  .footer-address a + br {
+    margin: 0;
+  }
+}
