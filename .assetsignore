@@ -1,0 +1,16 @@
+# Files and directories to exclude from Cloudflare Pages deploys
+# Mirrors .gitignore so deploy bundle matches the GitHub repo content
+.brainstorm/
+.claude/
+.superpowers/
+.git/
+serve.py
+serve-brainstorm.py
+node.text
+.DS_Store
+__MACOSX/
+*.pyc
+_*.py
+README.md
+CLAUDE.md
+image-inventory.csv
