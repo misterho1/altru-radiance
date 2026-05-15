@@ -182,19 +182,37 @@
     padding: 5rem 2rem 3rem;
     text-align: center;
     overflow: hidden;
+    /* Fallback bg (visible while videos load, or if they fail) */
+    background: radial-gradient(ellipse at 60% 40%, #1e3d28 0%, #0d2015 45%, #06100a 100%);
   }
 
-  .hero-bg {
+  /* Video stack: 5 stacked <video> elements, JS cycles which is opaque */
+  .hero-video-stack {
     position: absolute; inset: 0; z-index: 0;
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(6,16,10,0.72) 0%,
-        rgba(10,24,16,0.52) 35%,
-        rgba(10,24,16,0.62) 65%,
-        rgba(6,16,10,0.92) 100%
-      ),
-      radial-gradient(ellipse at 60% 40%, #1e3d28 0%, #0d2015 45%, #06100a 100%);
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1500ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+  }
+  .hero-video.is-active { opacity: 1; }
+
+  /* Darkening scrim over the video for text readability */
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(6,16,10,0.55) 0%,
+      rgba(10,24,16,0.32) 35%,
+      rgba(10,24,16,0.45) 65%,
+      rgba(6,16,10,0.90) 100%
+    );
+    pointer-events: none;
   }
   .hero-bg::after {
     content: '';
@@ -208,11 +226,11 @@
     top: 0; left: 50%; transform: translateX(-50%);
     width: 1px; height: 80px;
     background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5));
-    z-index: 1;
+    z-index: 2;
   }
 
   .hero-inner {
-    position: relative; z-index: 2;
+    position: relative; z-index: 3;
     max-width: 860px; width: 100%;
   }
 
@@ -2178,6 +2196,77 @@
       handle.setAttribute('aria-valuenow', Math.round(parseFloat(raw)));
     });
   });
+})();
+</script>
+
+<script>
+/* ─── HERO VIDEO STACK ──────────────────────────────────────────────
+   Builds 5 stacked <video> elements behind .hero-bg scrim and cycles
+   which one is opaque every 3 seconds with a 1.5s crossfade.
+   Total loop: 5 × 3s = 15s.
+
+   - Videos rendered by Higgsfield (seedance_2_0), 720p 16:9, hosted on
+     CloudFront. Permanent URLs, no signing.
+   - JS injects the stack so users with JS disabled get the static
+     fallback radial-gradient — no broken hero.
+   - Honors prefers-reduced-motion: still shows the first video, but
+     skips the cycler so the user never has motion forced on them.
+   - Mobile autoplay requires muted + playsinline + autoplay attrs.
+   ─────────────────────────────────────────────────────────────────── */
+(function () {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  var VIDEO_URLS = [
+    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014711_bddec64a-2bac-4c6f-b6cf-d9287515ab56.mp4',
+    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014715_ca8f17ad-e31a-40fd-afcc-0df639b7051a.mp4',
+    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014719_1755764a-7d0d-4514-b2f9-5e89066ea8f6.mp4',
+    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014723_e72dbc77-2e4f-4801-9f97-fcee9277e193.mp4',
+    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014727_f6cbcbe5-a43d-4e62-afdf-e02baf2e5128.mp4'
+  ];
+
+  var stack = document.createElement('div');
+  stack.className = 'hero-video-stack';
+  stack.setAttribute('aria-hidden', 'true');
+  hero.insertBefore(stack, hero.firstChild);
+
+  var videos = VIDEO_URLS.map(function (url, i) {
+    var v = document.createElement('video');
+    v.className = 'hero-video' + (i === 0 ? ' is-active' : '');
+    v.src = url;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.autoplay = true;
+    v.preload = i === 0 ? 'auto' : 'metadata';
+    v.setAttribute('aria-hidden', 'true');
+    stack.appendChild(v);
+    return v;
+  });
+
+  // Kick off playback; catch blocked-autoplay errors silently
+  videos.forEach(function (v) {
+    var p = v.play();
+    if (p && typeof p.catch === 'function') p.catch(function () {});
+  });
+
+  // Cycle every 3 seconds (skip under prefers-reduced-motion — accessibility)
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || videos.length < 2) return;
+
+  var current = 0;
+  setInterval(function () {
+    var next = (current + 1) % videos.length;
+    try { videos[next].currentTime = 0; } catch (e) {}
+    var p = videos[next].play();
+    if (p && typeof p.catch === 'function') p.catch(function () {});
+    videos[next].classList.add('is-active');
+    var prev = current;
+    setTimeout(function () {
+      videos[prev].classList.remove('is-active');
+    }, 1500);
+    current = next;
+  }, 3000);
 })();
 </script>
 
