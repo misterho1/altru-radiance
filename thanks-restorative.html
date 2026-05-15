@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/avif" href="/assets/logoFinal.avif">
+<link rel="icon" type="image/webp" href="/assets/logoFinal.webp">
+<link rel="icon" type="image/png" href="/assets/logoFinal.png">
+<link rel="apple-touch-icon" href="/assets/logoFinal.png">
+<meta name="theme-color" content="#06100a">
+<title>Booking Confirmed · Restorative Facial + Buccal Massage | Altru Radiance</title>
+<meta name="description" content="Your Restorative Facial and Buccal Massage session at Altru Radiance is reserved. Pre-care instructions and what to expect on the day of your treatment.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://altruradiance.com/thanks-restorative">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/base.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* ─── NAV ─── */
+  nav { position: fixed; top: 0; width: 100%; z-index: 900; padding: 0 3rem; height: 68px; display: flex; justify-content: space-between; align-items: center; background: rgba(6,16,10,0.97); border-bottom: 1px solid rgba(201,168,76,0.12); }
+  .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; flex-shrink: 0; }
+  .nav-logo { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+  .nav-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .nav-brand-text { display: flex; flex-direction: column; gap: 0.08rem; }
+  .nav-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+  .nav-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); line-height: 1; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.25s; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; white-space: nowrap; flex-shrink: 0; }
+  .nav-cta:hover { background: var(--gold-light); }
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem; border-top: 1px solid rgba(201,168,76,0.12); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none; }
+  .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
+  .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: rgba(244,240,230,0.85); text-decoration: none; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--gold-light); }
+  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; min-height: 48px; display: flex; align-items: center; }
+  @media (max-width: 640px) { nav { padding: 0 1rem; height: 60px; } .nav-links { display: none; } .nav-brand-sub { display: none; } .nav-cta { display: none; } .nav-hamburger { display: flex; } }
+
+  /* ─── SHARED ─── */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  @media (max-width: 640px) { .container { padding: 0 1.25rem; } }
+
+  /* ─── CONFIRMATION HERO ─── */
+  .confirm-hero { padding: 160px 0 80px; position: relative; overflow: hidden; background: linear-gradient(to bottom, rgba(6,16,10,0.55) 0%, rgba(10,24,16,0.35) 50%, rgba(6,16,10,0.98) 100%), radial-gradient(ellipse at 50% 30%, #1e3d28 0%, #0d2015 50%, #06100a 100%); text-align: center; }
+  .confirm-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); opacity: 0.4; pointer-events: none; }
+  .confirm-hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+  .confirm-mark { width: 64px; height: 64px; margin: 0 auto 2rem; border: 1px solid rgba(201,168,76,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(6,16,10,0.5); }
+  .confirm-mark svg { width: 28px; height: 28px; stroke: var(--gold-light); stroke-width: 1.5; fill: none; }
+  .confirm-eyebrow { font-size: 0.55rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: block; }
+  .confirm-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 300; line-height: 1.15; color: var(--cream); margin-bottom: 1.4rem; }
+  .confirm-hero h1 em { font-style: italic; color: var(--gold-light); }
+  .confirm-sub { font-size: clamp(0.85rem, 1.6vw, 1rem); letter-spacing: 0.04em; color: rgba(244,240,230,0.72); line-height: 1.8; max-width: 560px; margin: 0 auto 2.5rem; }
+  .confirm-meta { display: inline-flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; padding: 1.25rem 2rem; border-top: 1px solid rgba(201,168,76,0.18); border-bottom: 1px solid rgba(201,168,76,0.18); }
+  .confirm-meta-item { font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,240,230,0.65); }
+  .confirm-meta-item strong { color: var(--gold-light); font-weight: 400; font-family: 'Cormorant Garamond', serif; font-size: 1rem; display: block; letter-spacing: 0.04em; text-transform: none; margin-bottom: 0.15rem; }
+  .confirm-meta-divider { width: 1px; height: 28px; background: rgba(201,168,76,0.2); }
+  @media (max-width: 640px) { .confirm-meta { gap: 1.25rem; padding: 1rem 1.25rem; } .confirm-meta-divider { display: none; } }
+
+  /* ─── WHAT'S NEXT ─── */
+  .whats-next { padding: 90px 0; background: var(--black); }
+  .whats-next-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300; line-height: 1.15; color: var(--cream); text-align: center; margin-bottom: 0.6rem; }
+  .whats-next-heading em { font-style: italic; color: var(--gold-light); }
+  .whats-next-sub { text-align: center; font-size: 0.82rem; letter-spacing: 0.04em; color: rgba(244,240,230,0.6); margin-bottom: 3.5rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  @media (max-width: 860px) { .step-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+  .step-card { padding: 2.25rem 2rem; border: 1px solid rgba(201,168,76,0.15); background: rgba(13,32,21,0.4); position: relative; }
+  .step-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2rem; color: rgba(201,168,76,0.35); line-height: 1; }
+  .step-eyebrow { font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: block; }
+  .step-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; line-height: 1.2; color: var(--cream); margin-bottom: 1rem; }
+  .step-heading em { font-style: italic; color: var(--gold-light); }
+  .step-body { font-size: 0.82rem; line-height: 1.75; color: rgba(244,240,230,0.65); }
+  .step-body strong { color: rgba(244,240,230,0.85); font-weight: 400; }
+  .step-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .step-list li { font-size: 0.78rem; line-height: 1.65; color: rgba(244,240,230,0.65); padding-left: 1.1rem; position: relative; margin-bottom: 0.55rem; }
+  .step-list li::before { content: '·'; color: var(--gold); position: absolute; left: 0; font-size: 1.2rem; line-height: 1; top: 0.1rem; }
+
+  /* ─── CTA STRIP ─── */
+  .cta-strip { padding: 70px 0; background: linear-gradient(to bottom, var(--black), #0a1810); border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; }
+  .cta-strip h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 300; line-height: 1.2; color: var(--cream); margin-bottom: 0.85rem; }
+  .cta-strip h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-strip p { font-size: 0.85rem; color: rgba(244,240,230,0.65); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .cta-strip-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-btn-primary { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.95rem 2.4rem; text-decoration: none; transition: background 0.3s; min-height: 48px; }
+  .cta-btn-primary:hover { background: var(--gold-light); }
+  .cta-btn-ghost { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,240,230,0.65); border: 1px solid rgba(244,240,230,0.4); padding: 0.95rem 2.4rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; min-height: 48px; }
+  .cta-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 50px 0 28px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
+  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+  .footer-brand-desc { font-size: 0.74rem; line-height: 1.7; color: rgba(244,240,230,0.65); margin-bottom: 1.4rem; }
+  .footer-address { font-size: 0.7rem; line-height: 1.75; color: rgba(244,240,230,0.65); font-style: normal; }
+  .footer-address strong { color: rgba(244,240,230,0.65); font-weight: 400; }
+  .footer-col-heading { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a { font-size: 0.72rem; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.8rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244,240,230,0.65); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10KW19QN9R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-10KW19QN9R');
+</script>
+
+<!-- ============================================================
+     GOOGLE ADS CONVERSION TAG — Restorative booking ($250)
+     Replace AW-XXXXXXXXX/AbC-D_efG-hIjKlMnO with your real
+     Conversion ID/Label after creating the "Booking – Restorative"
+     conversion action in Google Ads (see ADS-PLAYBOOK.md §4).
+     ============================================================ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  gtag('config', 'AW-XXXXXXXXX');
+  gtag('event', 'conversion', {
+    'send_to': 'AW-XXXXXXXXX/AbC-D_efG-hIjKlMnO',
+    'value': 250.0,
+    'currency': 'USD',
+    'transaction_id': ''
+  });
+</script>
+
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-logo">
+      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="42" height="42" loading="eager" style="object-fit:contain;" decoding="async" fetchpriority="high">
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Altru Radiance</span>
+      <span class="nav-brand-sub">Aesthetic Wellness · Murray, Utah</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <a href="/book" class="nav-cta">Book Now</a>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <ul class="mobile-menu-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/programs">Programs</a></li>
+    <li><a href="/results">Results</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <a href="/book" class="mobile-menu-cta">Book Now</a>
+</div>
+
+<section class="confirm-hero">
+  <div class="container">
+    <div class="confirm-hero-inner">
+      <div class="confirm-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"></polyline></svg>
+      </div>
+      <span class="confirm-eyebrow">Booking Confirmed</span>
+      <h1>Your <em>Restorative</em> session is reserved</h1>
+      <p class="confirm-sub">A confirmation email is on its way with your appointment details. Below is what to expect — and how to prepare so the buccal and fascia work can do its full structural job.</p>
+      <div class="confirm-meta">
+        <div class="confirm-meta-item"><strong>110 min</strong>Duration</div>
+        <div class="confirm-meta-divider"></div>
+        <div class="confirm-meta-item"><strong>$250</strong>Investment</div>
+        <div class="confirm-meta-divider"></div>
+        <div class="confirm-meta-item"><strong>Murray, Utah</strong>Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="whats-next">
+  <div class="container">
+    <h2 class="whats-next-heading">What happens <em>next</em></h2>
+    <p class="whats-next-sub">Three short steps between now and your session. Fascia work releases best when the body and jaw are relaxed and well-hydrated.</p>
+    <div class="step-grid">
+
+      <div class="step-card">
+        <span class="step-num">I</span>
+        <span class="step-eyebrow">Right Now</span>
+        <h3 class="step-heading">Check your <em>email</em></h3>
+        <p class="step-body">Your Square confirmation has your appointment date, time, and the studio address. If you don't see it within 10 minutes, check spam — and let us know.</p>
+        <ul class="step-list">
+          <li><strong>Studio:</strong> 164 E 5900 S, Suite A108, Murray, UT</li>
+          <li><strong>Questions:</strong> mechelle@altruradiance.com</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">II</span>
+        <span class="step-eyebrow">Two Days Before</span>
+        <h3 class="step-heading">Prepare the <em>tissue</em></h3>
+        <p class="step-body">Fascia responds to hydration and a calm nervous system. The more relaxed your jaw, neck, and breathing leading into the session, the more we can move.</p>
+        <ul class="step-list">
+          <li>Hydrate well in the 48 hours prior</li>
+          <li>Limit alcohol and excess caffeine the day before</li>
+          <li>Notice where you hold tension — jaw, brow, shoulders</li>
+          <li>Avoid heavy or aggressive facial treatments for one week prior</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">III</span>
+        <span class="step-eyebrow">Day Of</span>
+        <h3 class="step-heading">Arrive <em>ready</em></h3>
+        <p class="step-body">Eat lightly within two hours of your session — buccal work is more comfortable on a settled stomach. Arrive with a clean face if convenient, but it isn't required.</p>
+        <ul class="step-list">
+          <li>Wear comfortable, soft clothing</li>
+          <li>Remove earrings if you'd like</li>
+          <li>Plan a quiet rest of the day — release can leave you pleasantly fatigued</li>
+          <li>Hydrate again after your session</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <h2>While you <em>wait</em></h2>
+    <p>Read a few short pieces on the regenerative philosophy behind our work, or reach out if anything is unclear.</p>
+    <div class="cta-strip-actions">
+      <a href="/journal" class="cta-btn-primary">Read the Journal</a>
+      <a href="/contact" class="cta-btn-ghost">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-wrap">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635063/logoFinal_dh76fs.png" alt="Altru Radiance" width="36" height="36" loading="lazy" style="object-fit:contain; border-radius:50%;" decoding="async">
+          <span class="footer-brand-name">Altru Radiance</span>
+        </div>
+        <p class="footer-brand-desc">Utah's regenerative aesthetics and fascia studio. Visible change without needles, machines, or downtime.</p>
+        <address class="footer-address">
+          <strong>164 E 5900 S, Suite A108</strong><br>
+          Murray, Utah 84107<br>
+          <a href="tel:+18016608933" style="color:rgba(244,240,230,0.65);text-decoration:none;">(801) 660-8933</a>
+        </address>
+      </div>
+
+      <div>
+        <h4 class="footer-col-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="/services/restorative-buccal-massage">Restorative Facial + Buccal</a></li>
+          <li><a href="/services/lymphatic-drainage-murray-utah">Soothe Lymphatic Drainage</a></li>
+          <li><a href="/services/microneedling-murray-utah">Procell Microchanneling</a></li>
+          <li><a href="/services">All Services</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-heading">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Altru Radiance · Murray, Utah</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !isOpen);
+      mobileMenu.setAttribute('aria-hidden', isOpen);
+      mobileMenu.classList.toggle('is-open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenu.classList.remove('is-open');
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
