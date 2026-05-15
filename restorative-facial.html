@@ -123,6 +123,32 @@
   .lp-step-cta { margin-top: 1rem; padding-top: 2rem; border-top: 1px solid rgba(201, 168, 76, 0.12); max-width: 760px; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
   .lp-step-cta-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--gold-light); }
 
+  /* ─── OFFER LADDER (single / package / membership) ─── */
+  .lp-offers { background: var(--black); border-top: 1px solid rgba(201, 168, 76, 0.08); }
+  .lp-offers h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 300; line-height: 1.12; color: var(--cream); margin-bottom: 0.5rem; max-width: 720px; }
+  .lp-offers h2 em { font-style: italic; color: var(--gold-light); }
+  .lp-offers-intro { max-width: 680px; margin-bottom: 3rem; }
+  .lp-offer-grid { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 1.5rem; align-items: stretch; margin-top: 2rem; }
+  @media (max-width: 860px) { .lp-offer-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
+  .lp-offer { background: var(--deep); border: 1px solid rgba(201, 168, 76, 0.15); padding: 2rem 1.75rem; display: flex; flex-direction: column; position: relative; }
+  .lp-offer-featured { background: var(--forest); border: 1px solid rgba(201, 168, 76, 0.35); padding: 2.5rem 2rem; }
+  .lp-offer-featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); opacity: 0.6; }
+  .lp-offer-tag { font-size: 0.5rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+  .lp-offer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--cream); margin-bottom: 0.35rem; line-height: 1.2; }
+  .lp-offer-featured .lp-offer-name { font-size: 1.8rem; color: var(--gold-light); font-style: italic; }
+  .lp-offer-meta { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); margin-bottom: 1.5rem; }
+  .lp-offer-price { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 0.3rem; }
+  .lp-offer-featured .lp-offer-price { font-size: 2.8rem; }
+  .lp-offer-price-mo { font-size: 0.9rem; color: var(--mist); font-style: italic; }
+  .lp-offer-price-detail { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244, 240, 230, 0.55); margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem 0.85rem; }
+  .lp-offer-was { text-decoration: line-through; color: rgba(244, 240, 230, 0.4); }
+  .lp-offer-save { color: var(--gold); font-weight: 500; }
+  .lp-offer-description { font-size: 0.82rem; line-height: 1.7; color: rgba(244, 240, 230, 0.7); margin-bottom: 1.25rem; }
+  .lp-offer-includes { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.78rem; line-height: 1.55; color: rgba(244, 240, 230, 0.7); margin-bottom: 1.5rem; flex: 1; }
+  .lp-offer-includes li { padding-left: 1rem; position: relative; }
+  .lp-offer-includes li::before { content: '—'; position: absolute; left: 0; color: rgba(201, 168, 76, 0.5); }
+  .lp-offer .btn-primary, .lp-offer .btn-ghost { width: 100%; margin-top: auto; }
+
   /* ─── COMPARISON TABLE ─── */
   .lp-compare { background: var(--black); border-top: 1px solid rgba(201, 168, 76, 0.08); }
   .lp-compare h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 300; line-height: 1.12; color: var(--cream); margin-bottom: 0.5rem; max-width: 720px; }
@@ -138,7 +164,6 @@
   .lp-table tbody td { padding: 1.1rem 1.25rem; font-size: 0.82rem; line-height: 1.55; color: rgba(244, 240, 230, 0.78); vertical-align: top; border-bottom: 1px solid rgba(201, 168, 76, 0.08); }
   .lp-table tbody td:first-child { color: var(--cream); font-weight: 500; letter-spacing: 0.04em; width: 30%; }
   .lp-table tbody td.lp-hero-col { color: var(--gold-light); border-left: 1px solid rgba(201, 168, 76, 0.12); border-right: 1px solid rgba(201, 168, 76, 0.12); background: rgba(201, 168, 76, 0.03); }
-  .lp-compare-foot { margin-top: 1.5rem; font-size: 0.7rem; color: var(--mist); letter-spacing: 0.04em; }
 
   /* ─── WHO THIS IS FOR (asymmetric grid, not card grid) ─── */
   .lp-who { background: var(--deep); border-top: 1px solid rgba(201, 168, 76, 0.08); }
@@ -269,10 +294,10 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "How much does buccal massage cost in Murray, Utah?", "acceptedAnswer": {"@type": "Answer", "text": "The Restorative Facial with buccal massage at Altru Radiance in Murray, Utah is $250 for a 110-minute session. This includes intake, manual lymphatic drainage, intraoral buccal work, structural facial integration, and skincare closeout. New clients can also book the Welcome Bundle for two foundational sessions."}},
+        {"@type": "Question", "name": "How much does buccal massage cost in Murray, Utah?", "acceptedAnswer": {"@type": "Answer", "text": "Altru Radiance offers three pricing tiers for buccal massage. Single Session: $250 for a 110-minute Restorative Facial. Foundation Package: $700 for three sessions over six weeks, a $560 savings on the standard rate, including structural assessment, photo progress tracking, complimentary red light therapy, and 10% off retail. Maintenance Membership: $225 per month with a three-month minimum, including one Restorative Facial per month plus 10% off add-on services and retail products."}},
         {"@type": "Question", "name": "How is buccal massage different from a regular facial?", "acceptedAnswer": {"@type": "Answer", "text": "A regular facial works on the surface of the skin: cleansing, exfoliating, applying actives. Buccal massage works on the structural layer beneath the skin. The practitioner uses sterile gloves to manipulate deep facial muscles and fascia from inside the cheek, accessing the buccinator, masseter, and pterygoid muscles that cannot be reached from outside. The goal is structural lift and tension release rather than surface optimization."}},
         {"@type": "Question", "name": "Does buccal massage hurt?", "acceptedAnswer": {"@type": "Answer", "text": "Buccal massage involves deliberate pressure on areas of held tension, which most clients describe as a profound sense of release rather than pain. The intraoral portion begins with very light pressure and increases gradually as tissue softens. Some clients carry significant tension in the masseter and pterygoids; these areas may feel tender, but at no point should the work be painful. The practitioner adjusts pressure throughout the session based on your feedback."}},
-        {"@type": "Question", "name": "How many buccal massage sessions do I need to see results?", "acceptedAnswer": {"@type": "Answer", "text": "Most clients see visible lift and skin tone improvement after a single 110-minute session. For meaningful structural change, Altru Radiance recommends a series of 3 to 6 sessions over 6 to 10 weeks, followed by monthly maintenance. New clients often begin with the Welcome Bundle, which is two foundational sessions designed to establish a baseline and assess tissue response."}},
+        {"@type": "Question", "name": "How many buccal massage sessions do I need to see results?", "acceptedAnswer": {"@type": "Answer", "text": "Most clients see visible lift and skin tone improvement after a single 110-minute session. For meaningful structural change, Altru Radiance recommends a series of 3 to 6 sessions over 6 to 10 weeks, followed by monthly maintenance. The Foundation Package bundles three sessions for $700 (saving $560 on the single-session rate) with a structural assessment, before-and-after photo tracking, and complimentary red light therapy. After the series, the Maintenance Membership sustains results at $225 per month."}},
         {"@type": "Question", "name": "Is buccal massage safe?", "acceptedAnswer": {"@type": "Answer", "text": "Buccal massage performed by a trained, licensed esthetician using sterile gloves is a safe manual bodywork modality. Contraindications include active oral infections, cold sores, canker sores, recent oral surgery or dental work that has not fully healed, and clients within two weeks of injectable treatments. Mechelle reviews health history at intake and adjusts the session for any relevant conditions."}},
         {"@type": "Question", "name": "What should I expect during my first buccal massage session?", "acceptedAnswer": {"@type": "Answer", "text": "Your session begins with a brief consultation and assessment. External manual lymphatic drainage opens the work, softening tissue and calming the nervous system. Structural facial integration follows, releasing the surrounding myofascial layer through the brow, cheekbones, jaw, and neck to prepare for the deeper intraoral work. The intraoral buccal portion comes next, with sterile gloves and gradually increasing pressure on the buccinator, masseter, and medial and lateral pterygoid muscles. The session closes with clinical skincare. Expect approximately 110 minutes total. Some redness or flushing post-session is normal and resolves within 30 to 60 minutes."}},
         {"@type": "Question", "name": "Can buccal massage help TMJ pain?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The medial pterygoid muscle, which is one of the primary contributors to TMJ dysfunction, is only fully accessible from inside the mouth. Buccal massage directly addresses this muscle along with the masseter and lateral pterygoid. Clients with chronic jaw clenching, bruxism, or referred ear and headache pain often experience meaningful relief after a series of buccal massage sessions. This work pairs well with dental and orthodontic care."}},
@@ -440,13 +465,61 @@
       <li class="lp-step">
         <div class="lp-step-body">
           <strong>Clinical Skincare Closeout</strong>
-          <p>Targeted serums and a calming mask matched to your skin type. Red light therapy is available as an add-on for clients prioritizing collagen support and surface vitality.</p>
+          <p>Targeted serums and skincare products matched to your skin type and concerns. Red light therapy is available as an add-on for clients prioritizing collagen support and surface vitality.</p>
         </div>
       </li>
     </ol>
     <div class="lp-step-cta">
       <span class="lp-step-cta-note">110 minutes. $250. By appointment.</span>
       <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" data-book-cta data-service="restorative-facial-session" target="_blank" rel="noopener">Book This Service</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OFFER LADDER: Single / Foundation Package / Membership ─── -->
+<section class="lp-offers" aria-labelledby="lp-offers-h">
+  <div class="container">
+    <span class="eyebrow">Three Ways to Begin</span>
+    <h2 id="lp-offers-h">Single session, structured series, <em>or monthly practice</em></h2>
+    <p class="body-text lp-offers-intro">The Restorative Facial is the entry point. Clients addressing real structural change typically commit to a series; clients building this into ongoing care use the Maintenance Membership. Three commitments, one method.</p>
+
+    <div class="lp-offer-grid">
+      <div class="lp-offer">
+        <div class="lp-offer-tag">First Visit</div>
+        <h3 class="lp-offer-name">Single Session</h3>
+        <p class="lp-offer-meta">110 min · Restorative Facial</p>
+        <div class="lp-offer-price">$250</div>
+        <div class="lp-offer-price-detail"><span>One-time · No commitment</span></div>
+        <p class="lp-offer-description">The full 110-minute Restorative Facial: intraoral buccal massage, lymphatic drainage, structural integration, and skincare closeout. The right entry point for first-time clients in Murray, Utah.</p>
+        <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" data-book-cta data-service="restorative-facial-offer-single" target="_blank" rel="noopener">Book One Session</a>
+      </div>
+
+      <div class="lp-offer lp-offer-featured">
+        <div class="lp-offer-tag" style="color: var(--gold-light);">Most Popular · Save $560</div>
+        <h3 class="lp-offer-name">Foundation Package</h3>
+        <p class="lp-offer-meta">3 Sessions · 6 Weeks</p>
+        <div class="lp-offer-price">$700</div>
+        <div class="lp-offer-price-detail"><span class="lp-offer-was">$1,260 value</span><span class="lp-offer-save">You save $560</span></div>
+        <p class="lp-offer-description">The structured series for clients addressing real fascial change. Three full sessions plus the assessment, tracking, and add-ons that compound results.</p>
+        <ul class="lp-offer-includes" aria-label="Included with Foundation Package">
+          <li>Three 110-minute Restorative Facial sessions</li>
+          <li>Structural integration assessment ($150 value)</li>
+          <li>Before-and-after photo progress tracking</li>
+          <li>Complimentary red light therapy ($60 value)</li>
+          <li>10% off all retail products during the series</li>
+        </ul>
+        <a href="/foundation-package" class="btn-primary" data-book-cta data-service="restorative-facial-offer-foundation">Begin the Foundation Series</a>
+      </div>
+
+      <div class="lp-offer">
+        <div class="lp-offer-tag">Ongoing Practice</div>
+        <h3 class="lp-offer-name">Maintenance Membership</h3>
+        <p class="lp-offer-meta">Monthly · Recurring</p>
+        <div class="lp-offer-price">$225<span class="lp-offer-price-mo">/mo</span></div>
+        <div class="lp-offer-price-detail"><span>3-month minimum</span><span class="lp-offer-save">Save $25/session</span></div>
+        <p class="lp-offer-description">For clients who want fascial work as ongoing practice. One Restorative Facial per month, 10% off add-on services and retail, priority booking access in Murray, Utah.</p>
+        <a href="/membership" class="btn-ghost" data-book-cta data-service="restorative-facial-offer-membership">Inquire About Membership</a>
+      </div>
     </div>
   </div>
 </section>
@@ -526,7 +599,6 @@
         </tbody>
       </table>
     </div>
-    <p class="lp-compare-foot">Comparison reflects typical session pricing in the Salt Lake Valley as of 2026. Botox and injectables are not offered at Altru Radiance. Both can coexist with structural buccal massage in a complete care plan.</p>
   </div>
 </section>
 
@@ -579,7 +651,10 @@
       <details class="faq-item" role="listitem">
         <summary>How much does buccal massage cost in Murray, Utah?</summary>
         <div class="faq-answer">
-          <p>The Restorative Facial with buccal massage at Altru Radiance is <strong>$250 for a 110-minute session</strong>. This includes intake, manual lymphatic drainage, intraoral buccal work, structural facial integration, and skincare closeout. New clients can also book the <a href="/welcome-bundle">Welcome Bundle</a> for two foundational sessions at a combined rate.</p>
+          <p>Altru Radiance offers three pricing tiers for the Restorative Facial with buccal massage:</p>
+          <p><strong>Single Session: $250</strong> for a 110-minute Restorative Facial. The standard entry point with no commitment.</p>
+          <p><strong>Foundation Package: $700</strong> for a series of three Restorative Facial sessions over approximately six weeks (a $560 savings on the standard rate). Includes structural integration assessment, before-and-after photo progress tracking, complimentary red light therapy, and 10% off retail products during the series. See the <a href="/foundation-package">Foundation Package page</a> for details.</p>
+          <p><strong>Maintenance Membership: $225 per month</strong> with a 3-month minimum commitment. One Restorative Facial per month plus 10% off add-on services and retail products. The right tier for clients building this into ongoing care. See the <a href="/membership">Membership page</a> for the full agreement.</p>
         </div>
       </details>
 
@@ -601,7 +676,8 @@
       <details class="faq-item" role="listitem">
         <summary>How many buccal massage sessions do I need to see results?</summary>
         <div class="faq-answer">
-          <p>Most clients see visible lift, jaw softening, and skin tone improvement after a single 110-minute session. For meaningful structural change, we recommend a series of <strong>3 to 6 sessions over 6 to 10 weeks</strong>, followed by monthly maintenance. The <a href="/welcome-bundle">Welcome Bundle</a> of two foundational sessions is the standard entry point for new clients.</p>
+          <p>Most clients see visible lift, jaw softening, and skin tone improvement after a single 110-minute session. For meaningful structural change, we recommend a series of <strong>3 to 6 sessions over 6 to 10 weeks</strong>, followed by monthly maintenance.</p>
+          <p>The <a href="/foundation-package">Foundation Package</a> bundles the recommended 3-session series at $700 (saving $560 over the single-session rate) and includes a structural assessment, photo progress tracking, and complimentary red light therapy. After the series, the <a href="/membership">Maintenance Membership</a> ($225/month) sustains results with one session per month plus discounts on add-ons and retail.</p>
         </div>
       </details>
 
