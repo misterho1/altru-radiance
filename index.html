@@ -632,8 +632,14 @@
   .trust-stat-label { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); }
   .trust-divider { width: 1px; height: 44px; background: rgba(201,168,76,0.18); }
 
-  .trust-stars { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-  .stars-source { font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); }
+  .trust-stars { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-decoration: none; color: inherit; transition: opacity 0.2s; }
+  a.trust-stars:hover { opacity: 0.78; }
+  a.trust-stars:hover .stars-source { color: var(--gold-light); }
+  .trust-rating-row { display: flex; align-items: baseline; gap: 0.4rem; line-height: 1; }
+  .stars-source { font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); transition: color 0.2s; }
+  /* Live-update fade: when JS swaps the count from the API, fade in briefly */
+  .trust-bridge .gbp-live { animation: gbp-fade-in 0.6s ease-out; }
+  @keyframes gbp-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
   @media (max-width: 640px) {
     .trust-bridge .container { gap: 2rem; }
@@ -1361,6 +1367,34 @@
   </div>
 </section>
 
+<!-- ─── TRUST BRIDGE (right below hero, live GBP rating wired in via JS) ─── -->
+<section class="trust-bridge" style="padding:0;" aria-label="At-a-glance studio trust signals">
+  <div class="container">
+    <div class="trust-stat">
+      <span class="trust-stat-number" id="trust-clients">200+</span>
+      <span class="trust-stat-label">Clients Served</span>
+    </div>
+    <div class="trust-divider"></div>
+    <a class="trust-stars" id="trust-google" href="https://search.google.com/local/reviews?placeid=PLACE_ID_PLACEHOLDER" target="_blank" rel="noopener" aria-label="See Altru Radiance Google reviews">
+      <span class="stars" id="trust-stars-display">★★★★★</span>
+      <span class="trust-rating-row">
+        <span id="trust-rating" style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);line-height:1;">5.0</span>
+      </span>
+      <span class="stars-source">Google · <span id="trust-review-count">54</span> Reviews</span>
+    </a>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-stat-number">8</span>
+      <span class="trust-stat-label">Regenerative Modalities</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-stat-number">Murray, UT</span>
+      <span class="trust-stat-label">164 E 5900 S · Ste A108</span>
+    </div>
+  </div>
+</section>
+
 <!-- ─── HERO SHOWCASE: before/after carousel + social proof ─────── -->
 <section class="hero-showcase">
   <div class="hero-showcase-inner">
@@ -1482,32 +1516,6 @@
     </div>
 
   </div></section>
-
-
-<section class="trust-bridge" style="padding:0;">
-  <div class="container">
-    <div class="trust-stat">
-      <span class="trust-stat-number">200+</span>
-      <span class="trust-stat-label">Clients Served</span>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-stars">
-      <span class="stars">★★★★★</span>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);line-height:1;">5.0</span>
-      <span class="stars-source">Google · 54 Reviews</span>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-stat">
-      <span class="trust-stat-number">8</span>
-      <span class="trust-stat-label">Regenerative Modalities</span>
-    </div>
-    <div class="trust-divider"></div>
-    <div class="trust-stat">
-      <span class="trust-stat-number">Murray, UT</span>
-      <span class="trust-stat-label">164 E 5900 S · Ste A108</span>
-    </div>
-  </div>
-</section>
 
 
 <section class="services-section">
@@ -2000,12 +2008,31 @@
     autoTimer = setInterval(() => goTo(current + 1), 8000);
   }
 
-  setSlideWidths();
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { setSlideWidths(); goTo(current); }, 100);
-  });
+  // Initial sizing: defer with rAF so layout has settled (the carousel
+  // moved into its own section below a 100vh hero, so the parent may
+  // not have computed its width yet when this script runs).
+  function safeSize() {
+    setSlideWidths();
+    goTo(current);
+  }
+  requestAnimationFrame(() => requestAnimationFrame(safeSize));
+
+  // ResizeObserver re-measures whenever the carousel-wrap's actual size
+  // changes (font load shifts, async image loads, viewport resize, etc.).
+  // Fallback to window resize listener for legacy browsers.
+  if (typeof ResizeObserver !== 'undefined' && track.parentElement) {
+    const ro = new ResizeObserver(() => safeSize());
+    ro.observe(track.parentElement);
+  } else {
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(safeSize, 100);
+    });
+  }
+  // Also re-measure once after window load (images, fonts done loading)
+  window.addEventListener('load', safeSize);
+
   startAuto();
 
   // Pause autoplay on hover, on focus, or while the user is dragging the BA divider
@@ -2227,6 +2254,57 @@
       handle.setAttribute('aria-valuenow', Math.round(parseFloat(raw)));
     });
   });
+})();
+</script>
+
+<script>
+/* ─── LIVE GOOGLE REVIEWS (GBP) ─────────────────────────────────────
+   Fetches /api/reviews (a Cloudflare Pages Function that proxies the
+   Google Places API). If configured, updates the trust-bridge with
+   real rating + review count from Mechelle's actual GBP. If not
+   configured (returns 503), the hardcoded baseline values in HTML
+   stay visible — graceful degradation, never a broken state.
+   ─────────────────────────────────────────────────────────────────── */
+(function () {
+  var ratingEl = document.getElementById('trust-rating');
+  var countEl  = document.getElementById('trust-review-count');
+  var starsEl  = document.getElementById('trust-stars-display');
+  var linkEl   = document.getElementById('trust-google');
+  if (!ratingEl || !countEl) return;
+
+  function renderStars(rating) {
+    if (typeof rating !== 'number' || isNaN(rating)) return '★★★★★';
+    var full = Math.floor(rating);
+    var half = rating - full >= 0.5;
+    var s = '';
+    for (var i = 0; i < full; i++) s += '★';
+    if (half && full < 5) { s += '½'; full++; }
+    for (var i = full; i < 5; i++) s += '☆';
+    return s;
+  }
+
+  fetch('/api/reviews', { credentials: 'omit' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('not_ok');
+      return r.json();
+    })
+    .then(function (data) {
+      if (typeof data.rating === 'number') {
+        ratingEl.textContent = data.rating.toFixed(1);
+        ratingEl.classList.add('gbp-live');
+        if (starsEl) starsEl.textContent = renderStars(data.rating);
+      }
+      if (typeof data.total === 'number') {
+        countEl.textContent = data.total.toLocaleString();
+        countEl.classList.add('gbp-live');
+      }
+      if (linkEl && data.placeUrl) {
+        linkEl.href = data.placeUrl;
+      }
+    })
+    .catch(function () {
+      // Silent fallback — hardcoded baseline stays visible
+    });
 })();
 </script>
 
