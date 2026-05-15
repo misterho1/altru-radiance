@@ -271,14 +271,29 @@
   }
   .trust-pill .check { color: var(--gold); font-size: 0.7rem; }
 
+  /* ─── HERO SHOWCASE (post-hero section: carousel + proof) ───────── */
+  .hero-showcase {
+    background: var(--black);
+    padding: 100px 0 80px;
+    position: relative;
+    border-top: 1px solid rgba(201, 168, 76, 0.08);
+  }
+  .hero-showcase-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .hero-showcase { padding: 64px 0 56px; }
+    .hero-showcase-inner { padding: 0 1.25rem; }
+  }
+
   /* ─── BEFORE/AFTER CAROUSEL ─────────────────────────────── */
   .carousel-section {
     width: 100%;
     max-width: 620px;
-    margin: 5rem auto 2.4rem;
-  }
-  @media (max-width: 640px) {
-    .carousel-section { margin-top: 3rem; }
+    margin: 0 auto 2.4rem;
   }
 
   .carousel-headline {
@@ -1336,6 +1351,13 @@
       <div class="trust-pill"><span class="check">✓</span> Structural Body & Face Alignment</div>
       <span class="annotation" style="top:50%;">← Objection handling above the fold</span>
     </div>
+
+  </div>
+</section>
+
+<!-- ─── HERO SHOWCASE: before/after carousel + social proof ─────── -->
+<section class="hero-showcase">
+  <div class="hero-showcase-inner">
 
     <div class="carousel-section annotated">
 
