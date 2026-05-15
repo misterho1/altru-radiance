@@ -2094,14 +2094,20 @@
         if (!frameQueued && cachedRect) {
           frameQueued = true;
           requestAnimationFrame(() => {
-            setSplit(((pendingX - cachedRect.left) / cachedRect.width) * 100);
+            // Defensive: pointerup may have fired between this rAF being
+            // queued and it running, setting cachedRect to null. Without
+            // this guard, the resulting TypeError stops frameQueued from
+            // resetting, which silently breaks every subsequent drag.
+            if (cachedRect) {
+              setSplit(((pendingX - cachedRect.left) / cachedRect.width) * 100);
+            }
             frameQueued = false;
           });
         }
       }
     });
 
-    const endDrag = () => { dragging = false; cachedRect = null; };
+    const endDrag = () => { dragging = false; cachedRect = null; frameQueued = false; };
     panel.addEventListener('pointerup',     endDrag);
     panel.addEventListener('pointercancel', endDrag);
 
