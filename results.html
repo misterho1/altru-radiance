@@ -912,15 +912,16 @@ footer {
     id="navHamburger"
     aria-label="Open navigation menu"
     aria-expanded="false"
-    aria-controls="mobileMenu"
+    aria-controls="mobileNavOverlay"
   >
     <span></span>
     <span></span>
     <span></span>
   </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
-  <ul class="mobile-menu-links">
+<div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">×</button>
+  <ul class="mobile-nav-links">
     <li><a href="/about">About</a></li>
     <li><a href="/services">Services</a></li>
     <li><a href="/programs">Programs</a></li>
@@ -928,7 +929,7 @@ footer {
     <li><a href="/journal">Journal</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
-  <a href="/book" class="mobile-menu-cta">Book Now</a>
+  <a href="/book" class="mobile-nav-book">Book Now</a>
 </div>
 
 <div class="jump-nav-bar" id="jumpNavBar">
