@@ -1,6 +1,8 @@
 # Square Appointments — Per-Service Redirect Setup
 
-Walkthrough for Mechelle. Configures Square Appointments to send each customer to the correct thank-you page on altruradiance.com after they book, so Google Ads can attribute conversions to the right service and the right campaign.
+> **TEMPORARY URL STATE (2026-05-15 → DNS migration day).** While DNS is still pointed at the old host, all URLs in this walkthrough use `altru-radiance.pages.dev` — the Cloudflare Pages deployment URL. The moment the custom domain DNS flips to Cloudflare, swap every `altru-radiance.pages.dev` in Square's redirect settings back to `altruradiance.com`. The thank-you pages and conversion tags are identical on both domains; only the hostname changes.
+
+Walkthrough for Mechelle. Configures Square Appointments to send each customer to the correct thank-you page after they book, so Google Ads can attribute conversions to the right service and the right campaign.
 
 This document is self-contained. You should be able to do the entire setup from this file without asking anyone for help.
 
@@ -8,13 +10,13 @@ This document is self-contained. You should be able to do the entire setup from 
 
 ## Why we are doing this
 
-Three services on altruradiance.com each have their own thank-you page with its own Google Ads conversion tag:
+Three services on altru-radiance.pages.dev each have their own thank-you page with its own Google Ads conversion tag:
 
 | Service | Price | Duration | Thank-you URL |
 |---|---|---|---|
-| Restorative Facial + Buccal Massage | 250 | 110 min | https://altruradiance.com/thanks-restorative |
-| Soothe Lymphatic Drainage | 250 | 110 min | https://altruradiance.com/thanks-soothe |
-| Procell Microchanneling | 300 | 100 min | https://altruradiance.com/thanks-procell |
+| Restorative Facial + Buccal Massage | 250 | 110 min | https://altru-radiance.pages.dev/thanks-restorative |
+| Soothe Lymphatic Drainage | 250 | 110 min | https://altru-radiance.pages.dev/thanks-soothe |
+| Procell Microchanneling | 300 | 100 min | https://altru-radiance.pages.dev/thanks-procell |
 
 When a customer finishes booking on Square, Square needs to send their browser to the correct one of those three URLs. The thank-you page loads, the Google Ads tag fires, and the conversion is recorded against the correct service and campaign.
 
@@ -137,7 +139,7 @@ Inside the service editor for Restorative Facial + Buccal Massage:
 4. Paste this exact URL into that field, with no extra spaces:
 
    ```
-   https://altruradiance.com/thanks-restorative
+   https://altru-radiance.pages.dev/thanks-restorative
    ```
 
 5. Click **Save** at the bottom of the service editor.
@@ -152,7 +154,7 @@ If you scroll the entire service editor and there is no redirect field inside it
 4. Paste this exact URL:
 
    ```
-   https://altruradiance.com/thanks-soothe
+   https://altru-radiance.pages.dev/thanks-soothe
    ```
 
 5. Click **Save**.
@@ -165,7 +167,7 @@ If you scroll the entire service editor and there is no redirect field inside it
 4. Paste this exact URL:
 
    ```
-   https://altruradiance.com/thanks-procell
+   https://altru-radiance.pages.dev/thanks-procell
    ```
 
 5. Click **Save**.
@@ -181,14 +183,14 @@ This is the most important part. Do not skip it.
 5. After you complete the booking, your browser should automatically redirect to:
 
    ```
-   https://altruradiance.com/thanks-restorative
+   https://altru-radiance.pages.dev/thanks-restorative
    ```
 
    Confirm the URL bar shows exactly that. If it shows a Square confirmation page instead, the redirect is not configured and you should re-check A4.
 6. On the thank-you page, click the Tag Assistant icon. Tag Assistant should show a green icon and list the Google Ads conversion tag for the Restorative service. If it shows yellow or red, the conversion tag is misfiring — see the Troubleshooting section.
 7. Cancel the test appointment from your Square Dashboard so it does not block a real customer slot.
-8. Repeat steps 4–7 for **Soothe Lymphatic Drainage**. Expected redirect URL: `https://altruradiance.com/thanks-soothe`.
-9. Repeat steps 4–7 for **Procell Microchanneling**. Expected redirect URL: `https://altruradiance.com/thanks-procell`.
+8. Repeat steps 4–7 for **Soothe Lymphatic Drainage**. Expected redirect URL: `https://altru-radiance.pages.dev/thanks-soothe`.
+9. Repeat steps 4–7 for **Procell Microchanneling**. Expected redirect URL: `https://altru-radiance.pages.dev/thanks-procell`.
 
 If all three services redirect correctly and Tag Assistant shows green on each thank-you page, you are done. You can stop reading here.
 
@@ -208,8 +210,8 @@ In Path B, every booking redirects to a single page (`/thanks`) with a query par
 
 **Important honesty check:** Square's standard booking flow does NOT let you append a custom query parameter that varies by service. If your Square plan gives you a single global redirect field with no per-service control, you have two sub-options:
 
-- **B-Option-1:** Configure the global redirect to send to `https://altruradiance.com/thanks` and have JavaScript on that page detect which service was booked by reading the page that Square's confirmation token resolves to (rarely workable — Square does not pass service info in the redirect by default).
-- **B-Option-2 (recommended):** Configure the global redirect to `https://altruradiance.com/thanks` and fire a **single combined conversion event** in Google Ads, then separate the services using **Google Ads campaign attribution** (each service has its own campaign, so the conversion is attributed by which ad the user clicked, not by which service they booked).
+- **B-Option-1:** Configure the global redirect to send to `https://altru-radiance.pages.dev/thanks` and have JavaScript on that page detect which service was booked by reading the page that Square's confirmation token resolves to (rarely workable — Square does not pass service info in the redirect by default).
+- **B-Option-2 (recommended):** Configure the global redirect to `https://altru-radiance.pages.dev/thanks` and fire a **single combined conversion event** in Google Ads, then separate the services using **Google Ads campaign attribution** (each service has its own campaign, so the conversion is attributed by which ad the user clicked, not by which service they booked).
 
 We will set up **B-Option-2** below. It is the cleanest practical solution when per-service redirect is unavailable.
 
@@ -222,14 +224,14 @@ If your Square plan does allow you to append a query parameter to the redirect U
 3. In the redirect URL field, paste:
 
    ```
-   https://altruradiance.com/thanks
+   https://altru-radiance.pages.dev/thanks
    ```
 
 4. Click **Save**.
 
-## B2. Create the /thanks page on altruradiance.com
+## B2. Create the /thanks page on altru-radiance.pages.dev
 
-If the file `/thanks` does not exist yet on altruradiance.com, create it. The page should be a standard thank-you page that contains the JavaScript snippet shown in B3.
+If the file `/thanks` does not exist yet on altru-radiance.pages.dev, create it. The page should be a standard thank-you page that contains the JavaScript snippet shown in B3.
 
 The site is a static HTML site served from Cloudflare Pages (per the Altru Radiance project notes). The thank-you page lives in the site repo as `thanks.html` at the root, alongside `thanks-restorative.html`, `thanks-soothe.html`, and `thanks-procell.html`.
 
@@ -313,14 +315,14 @@ Test whether your Square plan honors query strings in the redirect URL. Some pla
 1. In the Square redirect URL field, replace the current value with:
 
    ```
-   https://altruradiance.com/thanks?service=restorative
+   https://altru-radiance.pages.dev/thanks?service=restorative
    ```
 
 2. Save.
 3. Run a test booking for the Restorative service.
 4. After booking, check the URL bar on the thank-you page.
-   - If it shows `https://altruradiance.com/thanks?service=restorative`, Square preserved the query string. You can use a separate hard-coded URL for each service. **Skip to B5.**
-   - If it shows just `https://altruradiance.com/thanks` (the `?service=` part was stripped), Square is rewriting the URL and you must use **B-Option-2** instead. **Skip to B6.**
+   - If it shows `https://altru-radiance.pages.dev/thanks?service=restorative`, Square preserved the query string. You can use a separate hard-coded URL for each service. **Skip to B5.**
+   - If it shows just `https://altru-radiance.pages.dev/thanks` (the `?service=` part was stripped), Square is rewriting the URL and you must use **B-Option-2** instead. **Skip to B6.**
 
 ## B5. Per-service redirect with query strings (if B4 passed)
 
@@ -328,14 +330,14 @@ If Square preserved the query string in B4, set each service's redirect URL insi
 
 | Service | Redirect URL |
 |---|---|
-| Restorative Facial + Buccal Massage | `https://altruradiance.com/thanks?service=restorative` |
-| Soothe Lymphatic Drainage | `https://altruradiance.com/thanks?service=soothe` |
-| Procell Microchanneling | `https://altruradiance.com/thanks?service=procell` |
+| Restorative Facial + Buccal Massage | `https://altru-radiance.pages.dev/thanks?service=restorative` |
+| Soothe Lymphatic Drainage | `https://altru-radiance.pages.dev/thanks?service=soothe` |
+| Procell Microchanneling | `https://altru-radiance.pages.dev/thanks?service=procell` |
 
 Steps:
 
 1. Open **Appointments → Services → Restorative Facial + Buccal Massage**.
-2. Set the after-booking redirect to `https://altruradiance.com/thanks?service=restorative`.
+2. Set the after-booking redirect to `https://altru-radiance.pages.dev/thanks?service=restorative`.
 3. Save.
 4. Repeat for **Soothe Lymphatic Drainage** with `?service=soothe`.
 5. Repeat for **Procell Microchanneling** with `?service=procell`.
@@ -348,7 +350,7 @@ If the per-service redirect field is not available in your plan, but the query s
 If Square only supports a single global redirect URL and no query parameter manipulation, set the global redirect to:
 
 ```
-https://altruradiance.com/thanks
+https://altru-radiance.pages.dev/thanks
 ```
 
 Fire a single "booking completed" conversion on that page. Inside Google Ads, you already have three campaigns (one per service). Because Google Ads attributes the conversion to the campaign that delivered the click that led to the booking, you can still see which campaign produced which booking, even though the website tag itself is generic.
@@ -368,7 +370,7 @@ Same verification process as Path A, but for the fallback flow:
 1. Open Chrome Incognito (Ctrl+Shift+N) and enable Tag Assistant.
 2. Visit your live Square booking page.
 3. Book the **Restorative** service end-to-end.
-4. After booking, confirm you land at `https://altruradiance.com/thanks?service=restorative` (or `/thanks` if you went with B6).
+4. After booking, confirm you land at `https://altru-radiance.pages.dev/thanks?service=restorative` (or `/thanks` if you went with B6).
 5. Tag Assistant should show green and list the conversion tag firing.
 6. If you used B5: also confirm the page text (via the `#service-name` element in the snippet) shows the correct service name. If you used B6: confirm the generic conversion fires.
 7. Cancel the test booking.
@@ -409,7 +411,7 @@ This means your plan does not expose it. Two options:
 
 ### "The redirect works but the URL bar shows extra Square parameters appended"
 
-Square sometimes appends booking-confirmation tokens to the redirect URL, ending up with something like `https://altruradiance.com/thanks-restorative?bookingId=ABC123`. This is harmless. The conversion tag on the thank-you page does not care about extra parameters. Leave it alone.
+Square sometimes appends booking-confirmation tokens to the redirect URL, ending up with something like `https://altru-radiance.pages.dev/thanks-restorative?bookingId=ABC123`. This is harmless. The conversion tag on the thank-you page does not care about extra parameters. Leave it alone.
 
 ### "Tag Assistant shows yellow or red on the thank-you page"
 
