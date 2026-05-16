@@ -78,6 +78,41 @@
   font-size: 0.78rem;
   margin-bottom: 0.1rem;
 }
+
+/* Anchor-style trust items (face + reviews) — clickable proof artifacts */
+a.trust-item {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+a.trust-item:hover { opacity: 0.78; }
+a.trust-item:focus-visible {
+  outline: 1px solid rgba(201, 168, 76, 0.5);
+  outline-offset: 4px;
+}
+
+/* Practitioner headshot replaces the roman-numeral mark */
+.trust-face {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+}
+
+/* Star rating in the reviews item */
+.trust-stars {
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  flex-shrink: 0;
+  width: auto;
+  height: auto;
+  border: none;
+}
+
 @media (max-width: 760px) {
   .trust-strip-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; }
 }
