@@ -18,6 +18,8 @@ assets/*.jpg
 assets/*.webp
 !assets/logoFinal.*
 !assets/social-share.*
+!assets/journal/
+!assets/journal/**
 
 # Local agent / session workspaces — not for deploy
 .brainstorm/
