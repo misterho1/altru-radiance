@@ -143,7 +143,11 @@
   position: relative;
   z-index: 2;
   width: 55%;   /* ← TUNE THIS. Controls how wide the text column appears. */
-  padding: 6rem max(3rem, calc((100vw - 1180px)/2 + 3rem)) 6rem max(3rem, calc((100vw - 1180px)/2 + 3rem));
+  /* Left padding aligns the text with the page's 1180px content container.
+     Right padding stays a flat 3rem so the content area doesn't collapse
+     on wide viewports (the panel is only 55% wide, so symmetric padding
+     would leave near-zero room for the text itself). */
+  padding: 6rem 3rem 6rem max(3rem, calc((100vw - 1180px)/2 + 3rem));
   display: flex;
   flex-direction: column;
   justify-content: center;

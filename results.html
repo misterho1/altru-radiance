@@ -142,9 +142,16 @@ nav {
   max-width: 600px; margin: 0 auto 2.5rem;
 }
 
+/* Jump-nav links sit inside a centered max-width container so they
+   always align with the page's content area, regardless of scroll
+   position. Without this they were floating against the full viewport
+   edge-to-edge until you scrolled (when .is-sticky added max-width),
+   creating a jarring shift in the link positions on first scroll. */
 .jump-nav {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0.65rem 3rem;
 }
 .jump-link {
   font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -161,20 +168,16 @@ nav {
   left: 0;
   right: 0;
   z-index: 850;
+  background: rgba(6, 16, 10, 0.92);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.10);
   transform: translateZ(0);
   will-change: transform;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 .jump-nav-bar.is-sticky {
-  z-index: 850;
-  background: rgba(6,16,10,0.97);
-  border-bottom: 1px solid rgba(201,168,76,0.15);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-  padding: 0.65rem 2rem;
-}
-.jump-nav-bar.is-sticky .jump-nav {
-  max-width: 1060px;
-  margin: 0 auto;
+  background: rgba(6, 16, 10, 0.97);
+  border-bottom-color: rgba(201, 168, 76, 0.18);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 .jump-link.jump-active {
   background: rgba(201,168,76,0.1);

@@ -176,10 +176,17 @@
 
   /* ─── FOOTER ─────────────────────────────────────────────────── */
   footer { background: var(--deep); border-top: 1px solid rgba(201,168,76,0.08); padding: 64px 0 0; }
-  .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 3rem 3rem; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 3rem; }
+  footer .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  .footer-inner,
+  .footer-grid { max-width: 1180px; margin: 0 auto; padding: 0 0 3rem; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 3rem; }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
   .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
   .footer-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
-  .footer-desc { font-size: 0.78rem; line-height: 1.7; color: rgba(244, 240, 230, 0.65); max-width: 260px; }
+  .footer-desc,
+  .footer-brand-desc { font-size: 0.78rem; line-height: 1.7; color: rgba(244, 240, 230, 0.65); max-width: 260px; margin-bottom: 1.25rem; }
+  .footer-address { font-size: 0.74rem; line-height: 1.75; color: rgba(244, 240, 230, 0.65); font-style: normal; }
+  .footer-address strong { color: rgba(244, 240, 230, 0.65); font-weight: 400; }
+  .footer-hours-row span:first-child { color: rgba(244, 240, 230, 0.65); }
   .footer-col-heading { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
   .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
   .footer-links a { font-size: 0.72rem; color: rgba(244, 240, 230, 0.65); text-decoration: none; transition: color 0.25s; letter-spacing: 0.03em; }
@@ -201,7 +208,8 @@
     .cta-strip-inner { grid-template-columns: 1fr; text-align: center; }
     .cta-divider { display: none; }
     .cta-action { align-items: center; }
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-inner,
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
   @media (max-width: 640px) {
     nav { padding: 0 1rem; height: 60px; }
@@ -214,7 +222,8 @@
     .journal-featured-body { padding: 1.75rem 1.4rem; }
     .cta-strip { padding: 60px 0; }
     .cta-strip-inner { padding: 0 1.25rem; }
-    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-inner,
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     .footer-bottom { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
   }
   /* Honor users who request reduced motion */
@@ -306,8 +315,7 @@
     <!-- Featured Article: Article 1 -->
     <a href="/journal/what-is-buccal-massage" class="journal-featured-card" aria-label="Read: What Is Buccal Massage? The Face-Lifting Technique That Works From the Inside Out">
       <div class="journal-featured-image">
-        <!-- Swap for real Cloudinary URL: https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/... -->
-        <img src="" alt="Licensed esthetician performing buccal massage intraoral facial treatment at Altru Radiance in Murray, Utah" loading="lazy" onerror="this.style.display='none'" decoding="async">
+        <img src="https://res.cloudinary.com/dec9xzaxl/image/fetch/f_auto,q_auto,w_1400,c_fill/https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260516_051717_91e5a925-7721-4926-9533-bfa8f57f233e.png" alt="Licensed esthetician performing buccal massage intraoral facial treatment at Altru Radiance in Murray, Utah" loading="eager" fetchpriority="high" decoding="async">
         <div class="journal-featured-svg" aria-hidden="true">
           <svg width="240" height="240" viewBox="0 0 240 240" fill="none">
             <circle cx="120" cy="120" r="100" stroke="#c9a84c" stroke-width="0.7"/>
@@ -344,7 +352,7 @@
       <!-- Article 2 -->
       <a href="/journal/natural-alternatives-to-botox" class="journal-card-secondary" aria-label="Read: Natural Alternatives to Botox">
         <div class="journal-card-image">
-          <img src="" alt="Non-invasive facial treatment at Altru Radiance — natural alternative to Botox in Murray, Utah" loading="lazy" onerror="this.style.display='none'" decoding="async">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/fetch/f_auto,q_auto,w_900,c_fill/https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260516_051722_bf7c7123-cf7a-45b2-bcfc-f6e872ba2a94.png" alt="Non-invasive facial treatment at Altru Radiance — natural alternative to Botox in Murray, Utah" loading="lazy" decoding="async">
           <div class="card-icon" aria-hidden="true">
             <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
               <circle cx="80" cy="80" r="60" stroke="#c9a84c" stroke-width="0.7"/>
@@ -371,7 +379,7 @@
       <!-- Article 3 -->
       <a href="/journal/tmj-relief-facial-massage" class="journal-card-secondary" aria-label="Read: TMJ Relief Through Facial Massage">
         <div class="journal-card-image">
-          <img src="" alt="Intraoral jaw massage for TMJ relief at Altru Radiance, Murray Utah" loading="lazy" onerror="this.style.display='none'" decoding="async">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/fetch/f_auto,q_auto,w_900,c_fill/https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260516_051726_1c21ae52-1c4d-4ab2-89f9-975d7b044a6c.png" alt="Intraoral jaw massage for TMJ relief at Altru Radiance, Murray Utah" loading="lazy" decoding="async">
           <div class="card-icon" aria-hidden="true">
             <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
               <path d="M35 60 Q80 35 125 60 L125 110 Q80 135 35 110 Z" stroke="#c9a84c" stroke-width="0.7" fill="none"/>
@@ -399,7 +407,7 @@
       <!-- Article 4 -->
       <a href="/journal/how-breathing-shapes-your-face" class="journal-card-secondary" aria-label="Read: How Breathing Shapes Your Face">
         <div class="journal-card-image">
-          <img src="" alt="Airway and facial structure education at Altru Radiance Murray Utah" loading="lazy" onerror="this.style.display='none'" decoding="async">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/fetch/f_auto,q_auto,w_900,c_fill/https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260516_051731_533f440a-407d-455d-b236-33233bb97d6d.png" alt="Airway and facial structure education at Altru Radiance Murray Utah" loading="lazy" decoding="async">
           <div class="card-icon" aria-hidden="true">
             <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
               <path d="M80 30 Q110 50 115 80 Q110 110 80 125 Q50 110 45 80 Q50 50 80 30Z" stroke="#c9a84c" stroke-width="0.7" fill="none"/>
@@ -418,6 +426,44 @@
           <p class="journal-card-excerpt">How you breathe determines how your face ages. Tongue posture, neck positioning, and breathing patterns leave a structural imprint that compounds over decades — here's how to become aware and change the code.</p>
           <div class="article-meta">
             <span>April 2026</span>
+            <span class="meta-sep"></span>
+            <span>10 min read</span>
+          </div>
+          <span class="journal-read-more">Read the article →</span>
+        </div>
+      </a>
+
+      <!-- Article 5 -->
+      <a href="/journal/lymphatic-drainage-benefits-salt-lake-city" class="journal-card-secondary" aria-label="Read: 5 Signs You Need Lymphatic Drainage">
+        <div class="journal-card-image">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/fetch/f_auto,q_auto,w_900,c_fill/https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260516_051735_ab78a369-743c-48ed-ab38-935dbb0cd784.png" alt="Manual lymphatic drainage at Altru Radiance — gentle cervical drainage technique in Murray, Utah" loading="lazy" decoding="async">
+          <span class="card-img-tag">Lymphatic Drainage</span>
+        </div>
+        <div class="journal-card-body">
+          <span class="journal-tag">Body Awareness Guide</span>
+          <h2 class="journal-card-title">5 Signs You Need Lymphatic Drainage — and What to Expect at Altru Radiance</h2>
+          <p class="journal-card-excerpt">Puffiness, fatigue, stiffness, slow recovery, dull skin — five signals the lymphatic system uses to ask for support. What MLD does, who it's for, and what a session feels like.</p>
+          <div class="article-meta">
+            <span>May 2026</span>
+            <span class="meta-sep"></span>
+            <span>8 min read</span>
+          </div>
+          <span class="journal-read-more">Read the article →</span>
+        </div>
+      </a>
+
+      <!-- Article 6 -->
+      <a href="/journal/myofascial-release-facial-salt-lake-city" class="journal-card-secondary" aria-label="Read: Myofascial Release Facial vs Traditional Facial">
+        <div class="journal-card-image">
+          <img src="https://res.cloudinary.com/dec9xzaxl/image/fetch/f_auto,q_auto,w_900,c_fill/https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260516_051740_84320877-27dc-4997-bfca-94ee75eff5e2.png" alt="Myofascial release facial vs traditional facial comparison at Altru Radiance Murray Utah" loading="lazy" decoding="async">
+          <span class="card-img-tag">Myofascial · Comparison</span>
+        </div>
+        <div class="journal-card-body">
+          <span class="journal-tag">Comparison Guide</span>
+          <h2 class="journal-card-title">Myofascial Release Facial vs. Traditional Facial: What's the Difference?</h2>
+          <p class="journal-card-excerpt">One addresses the surface. The other addresses the system. The actual difference between myofascial release facials and traditional facials, explained — and when to choose each.</p>
+          <div class="article-meta">
+            <span>May 2026</span>
             <span class="meta-sep"></span>
             <span>10 min read</span>
           </div>

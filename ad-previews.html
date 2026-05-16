@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altru Radiance — Google Ad Previews</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f3ef; color: #1f1f1f; padding: 40px 24px 80px; line-height: 1.5; }
+  .container { max-width: 880px; margin: 0 auto; }
+
+  /* Page header */
+  .page-head { margin-bottom: 56px; padding-bottom: 32px; border-bottom: 1px solid #d9d4ca; }
+  .page-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a7f6a; margin-bottom: 12px; }
+  .page-title { font-family: "Cormorant Garamond", "Times New Roman", serif; font-size: 40px; font-weight: 400; line-height: 1.1; margin-bottom: 14px; color: #2b2b2b; }
+  .page-title em { font-style: italic; color: #9b7f3a; }
+  .page-sub { font-size: 15px; color: #6a6457; max-width: 620px; line-height: 1.65; }
+
+  /* Campaign section */
+  .campaign { margin-bottom: 64px; }
+  .campaign-head { margin-bottom: 20px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .campaign-num { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 30px; color: #c9a84c; line-height: 1; }
+  .campaign-title { font-family: "Cormorant Garamond", serif; font-size: 26px; font-weight: 400; color: #2b2b2b; }
+  .campaign-title em { font-style: italic; color: #9b7f3a; }
+  .campaign-meta { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a7f6a; }
+  .campaign-meta strong { color: #4a4232; font-weight: 500; }
+
+  .campaign-intro { font-size: 13.5px; color: #6a6457; margin-bottom: 22px; padding: 12px 16px; background: rgba(201,168,76,0.08); border-left: 2px solid #c9a84c; }
+
+  /* Variant label */
+  .variant-label { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #8a7f6a; margin: 24px 0 10px; }
+
+  /* Google ad mockup */
+  .google-ad { background: #fff; padding: 16px 20px; border: 1px solid #e8e6e0; border-radius: 8px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(60,64,67,0.06); font-family: Arial, sans-serif; }
+  .ad-row-1 { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .sponsored { font-size: 14px; font-weight: 700; color: #202124; }
+  .ad-domain-row { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+  .ad-favicon { width: 18px; height: 18px; background: #06100a; border-radius: 50%; color: #c9a84c; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ad-url-stack { display: flex; flex-direction: column; }
+  .ad-name { font-size: 14px; color: #202124; }
+  .ad-url { font-size: 12px; color: #4d5156; }
+  .ad-headline { font-size: 20px; line-height: 1.3; color: #1a0dab; margin: 4px 0 4px; font-weight: 400; cursor: pointer; }
+  .ad-headline:hover { text-decoration: underline; }
+  .ad-desc { font-size: 14px; color: #4d5156; line-height: 1.45; margin-bottom: 8px; }
+  .ad-sitelinks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; margin-top: 10px; padding-top: 4px; }
+  .ad-sitelinks a { font-size: 14px; color: #1a0dab; text-decoration: none; cursor: pointer; }
+  .ad-sitelinks a:hover { text-decoration: underline; }
+  .ad-callout { font-size: 13px; color: #4d5156; margin-top: 8px; }
+
+  /* Mobile-style ad — narrower */
+  .mobile-frame { max-width: 380px; margin: 0 auto; }
+  .mobile-frame .ad-headline { font-size: 17px; }
+  .mobile-frame .ad-desc { font-size: 13px; }
+
+  /* Section divider */
+  .divider { height: 1px; background: linear-gradient(to right, transparent, #d9d4ca, transparent); margin: 48px 0; }
+
+  /* Footer note */
+  .footer-note { margin-top: 80px; padding-top: 32px; border-top: 1px solid #d9d4ca; font-size: 12.5px; color: #6a6457; line-height: 1.65; }
+  .footer-note strong { color: #4a4232; }
+
+  /* Tab indicator */
+  .device-tab { display: inline-block; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a7f6a; background: rgba(201,168,76,0.08); padding: 3px 10px; border-radius: 3px; margin-bottom: 12px; }
+
+  /* Search-result framing */
+  .serp-frame { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 16px 14px; margin-bottom: 14px; }
+  .serp-query { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0eee8; margin-bottom: 14px; }
+  .serp-query-icon { font-family: serif; font-size: 18px; color: #4285f4; font-weight: bold; }
+  .serp-query-text { font-size: 14px; color: #4d5156; }
+  .serp-query-text em { font-style: normal; color: #1a0dab; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="page-head">
+  <div class="page-eyebrow">Pre-launch · Account 857-072-1509</div>
+  <h1 class="page-title">Your <em>Google Ad</em> Previews</h1>
+  <p class="page-sub">Mockups of how each campaign's Responsive Search Ad will render in Google search results. Google rotates headline and description combinations dynamically — you'll see one variant per ad below, but the live campaigns can produce hundreds of unique combinations.</p>
+</header>
+
+<!-- ============================================================
+     CAMPAIGN 1: RESTORATIVE
+============================================================ -->
+<section class="campaign">
+  <div class="campaign-head">
+    <span class="campaign-num">I</span>
+    <h2 class="campaign-title">Restorative — <em>Search</em></h2>
+    <span class="campaign-meta"><strong>$13/day</strong> · 3 ad groups · 15 headlines · 4 descriptions</span>
+  </div>
+  <p class="campaign-intro">Your signature campaign. Bids on buccal massage, fascia facial, and natural face lift searches in Salt Lake County. Below is one likely variant per ad group.</p>
+
+  <div class="variant-label">When someone searches "buccal massage salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>buccal massage salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › regenerative › facial</div>
+        </div>
+      </div>
+      <div class="ad-headline">Buccal Facial Massage — SLC | Regenerative Facial Work | Visible Change Without Needles</div>
+      <div class="ad-desc">Buccal and fascia massage that moves the structure under your skin. Visible lift, no needles, no downtime. Online booking. We treat the face the way good bodyworkers treat the body — fascia first.</div>
+      <div class="ad-callout">Online booking · No-needle results · Master Esthetician · Same-week availability · Murray, Utah</div>
+      <div class="ad-sitelinks">
+        <a>Restorative Facial</a>
+        <a>Soothe Lymphatic Drainage</a>
+        <a>Procell Microchanneling</a>
+        <a>Book Online</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant-label">When someone searches "fascia facial massage"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>fascia facial massage</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › regenerative › facial</div>
+        </div>
+      </div>
+      <div class="ad-headline">Regenerative Facial Work | Visible Change Without Needles | Fascia-Led Facial Work</div>
+      <div class="ad-desc">Most facials work on the surface. Ours works on the architecture underneath. Buccal + fascia release in one session. The regenerative alternative to injections.</div>
+      <div class="ad-callout">Online booking · No-needle results · Master Esthetician · No machines · Salt Lake County</div>
+      <div class="ad-sitelinks">
+        <a>About Mechelle</a>
+        <a>Pricing</a>
+        <a>Book Online</a>
+        <a>Soothe Lymphatic</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant-label">When someone searches "natural face lift salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>natural face lift salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › regenerative › facial</div>
+        </div>
+      </div>
+      <div class="ad-headline">Lift Without Needles | Sculpt Without Surgery | The Face Has Architecture</div>
+      <div class="ad-desc">The regenerative alternative to injections. Premium facial massage in Salt Lake County. Book online — same-week availability. No Botox. No Downtime.</div>
+      <div class="ad-callout">No-needle results · Master Esthetician · Same-week availability · Premium products</div>
+      <div class="ad-sitelinks">
+        <a>Restorative Facial</a>
+        <a>Procell Microchanneling</a>
+        <a>About</a>
+        <a>Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     CAMPAIGN 2: SOOTHE LYMPHATIC
+============================================================ -->
+<section class="campaign">
+  <div class="campaign-head">
+    <span class="campaign-num">II</span>
+    <h2 class="campaign-title">Soothe Lymphatic — <em>Search</em></h2>
+    <span class="campaign-meta"><strong>$5.50/day</strong> · 2 ad groups · 15 headlines · 4 descriptions</span>
+  </div>
+  <p class="campaign-intro">Manual lymphatic drainage facials, depuff treatments, and event-prep "day-before-anything" positioning.</p>
+
+  <div class="variant-label">When someone searches "lymphatic drainage facial salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>lymphatic drainage facial salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › lymphatic › facial</div>
+        </div>
+      </div>
+      <div class="ad-headline">Lymphatic Facial — Salt Lake | Soothe Protocol — Altru Radiance | Manual Lymphatic Drainage</div>
+      <div class="ad-desc">Manual lymphatic drainage for the face. Less puffiness, sharper definition, calmer skin. Online booking in Salt Lake County. The day-before-anything facial.</div>
+      <div class="ad-callout">No machines · Trained hands · Same-day depuff · Master Esthetician · Murray, Utah</div>
+      <div class="ad-sitelinks">
+        <a>Soothe Lymphatic Drainage</a>
+        <a>Restorative Facial</a>
+        <a>Book Online</a>
+        <a>About</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant-label">When someone searches "pre wedding facial salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>pre wedding facial salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › lymphatic › facial</div>
+        </div>
+      </div>
+      <div class="ad-headline">The Day-Before-Anything Facial | Wedding, Photo, Event Prep | Depuff & Drain In 60 Min</div>
+      <div class="ad-desc">Designed for the day before something matters. Methodical drainage work, no machines, visible result. Reduce puffiness, restore tone and definition. Same-week booking.</div>
+      <div class="ad-callout">Same-day depuff · Manual technique only · Master Esthetician · Murray, Utah</div>
+      <div class="ad-sitelinks">
+        <a>Soothe Lymphatic</a>
+        <a>Pricing</a>
+        <a>Book Online</a>
+        <a>Procell</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     CAMPAIGN 3: PROCELL
+============================================================ -->
+<section class="campaign">
+  <div class="campaign-head">
+    <span class="campaign-num">III</span>
+    <h2 class="campaign-title">Procell Microchanneling — <em>Search</em></h2>
+    <span class="campaign-meta"><strong>$6/day</strong> · 4 ad groups · 15 headlines · 4 descriptions</span>
+  </div>
+  <p class="campaign-intro">Bids on Procell brand searches, microchanneling category, growth-factor/regenerative terms, and "alternative to Morpheus8" comparison searches.</p>
+
+  <div class="variant-label">When someone searches "procell salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>procell salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › procell › microchanneling</div>
+        </div>
+      </div>
+      <div class="ad-headline">Procell Microchanneling — SLC | Microneedling Evolved | Visible Change Without Needles</div>
+      <div class="ad-desc">Procell Microchanneling delivers bone-marrow-derived growth factors through ultra-fine channels. Gentler than microneedling, regenerative by design. Salt Lake's Procell Studio.</div>
+      <div class="ad-callout">No RF · No downtime · Master Esthetician · Procell Therapies certified · Murray, Utah</div>
+      <div class="ad-sitelinks">
+        <a>Procell Microchanneling</a>
+        <a>About Mechelle</a>
+        <a>Pricing</a>
+        <a>Book Online</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant-label">When someone searches "morpheus8 alternative salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>morpheus8 alternative salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › procell › microchanneling</div>
+        </div>
+      </div>
+      <div class="ad-headline">Not Morpheus8. Better For Some. | The Regenerative Alternative | Gentle Enough For Sensitive Skin</div>
+      <div class="ad-desc">The microneedling alternative that doesn't use heat or radiofrequency. Less downtime, stem-cell-derived serum, real results. Salt Lake County.</div>
+      <div class="ad-callout">No heat · No RF · Bone-marrow-derived growth factors · Salt Lake's Procell Studio</div>
+      <div class="ad-sitelinks">
+        <a>Procell vs Microneedling</a>
+        <a>About</a>
+        <a>Book Online</a>
+        <a>Pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant-label">When someone searches "growth factor facial salt lake city"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>growth factor facial salt lake city</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com › procell › microchanneling</div>
+        </div>
+      </div>
+      <div class="ad-headline">Growth Factor Facial — Salt Lake | Stem Cell Regeneration For Skin | Built On Bone Marrow Growth Factors</div>
+      <div class="ad-desc">Procell is microneedling evolved — finer channels, growth-factor serum, faster healing. Educated, hands-first care. Online booking.</div>
+      <div class="ad-callout">Wellness-grade · Procell-certified · Master Esthetician · Same-week booking</div>
+      <div class="ad-sitelinks">
+        <a>Procell Microchanneling</a>
+        <a>Restorative Facial</a>
+        <a>About</a>
+        <a>Book Online</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     CAMPAIGN 4: BRAND DEFENSE
+============================================================ -->
+<section class="campaign">
+  <div class="campaign-head">
+    <span class="campaign-num">IV</span>
+    <h2 class="campaign-title">Brand Defense — <em>Search</em></h2>
+    <span class="campaign-meta"><strong>$1/day</strong> · 1 ad group · brand keywords only</span>
+  </div>
+  <p class="campaign-intro">Catches people who search "altru radiance" by name. Prevents competitors from bidding on your brand. Cheapest, highest-converting campaign.</p>
+
+  <div class="variant-label">When someone searches "altru radiance"</div>
+  <div class="serp-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">Showing results for "<em>altru radiance</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance — Official Site</div>
+          <div class="ad-url">altruradiance.com</div>
+        </div>
+      </div>
+      <div class="ad-headline">Altru Radiance — Official Site | Regenerative Aesthetics & Fascia | Murray, Utah</div>
+      <div class="ad-desc">Utah's regenerative aesthetics and fascia studio. Restorative facial, lymphatic drainage, Procell microchanneling. Master Esthetician owned. Book online.</div>
+      <div class="ad-callout">Master Esthetician · Murray, Utah · Online booking · No machines</div>
+      <div class="ad-sitelinks">
+        <a>Restorative Facial</a>
+        <a>Soothe Lymphatic</a>
+        <a>Procell Microchanneling</a>
+        <a>About Mechelle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     MOBILE PREVIEW
+============================================================ -->
+<section class="campaign">
+  <div class="campaign-head">
+    <h2 class="campaign-title">On <em>mobile</em></h2>
+  </div>
+  <p class="campaign-intro">Most spa searches happen on phones. Here's how the Restorative ad looks at mobile width. Note: we bid +15% on mobile in all campaigns.</p>
+
+  <span class="device-tab">Mobile · 380px</span>
+  <div class="serp-frame mobile-frame">
+    <div class="serp-query">
+      <span class="serp-query-icon">G</span>
+      <span class="serp-query-text">"<em>buccal massage near me</em>"</span>
+    </div>
+    <div class="google-ad">
+      <div class="ad-row-1"><span class="sponsored">Sponsored</span></div>
+      <div class="ad-domain-row">
+        <div class="ad-favicon">A</div>
+        <div class="ad-url-stack">
+          <div class="ad-name">Altru Radiance</div>
+          <div class="ad-url">altruradiance.com</div>
+        </div>
+      </div>
+      <div class="ad-headline">Buccal Facial Massage — SLC | Regenerative Facial Work</div>
+      <div class="ad-desc">Buccal and fascia massage that moves the structure under your skin. Visible lift, no needles, no downtime.</div>
+      <div class="ad-callout">No machines · Master Esthetician · Murray</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p><strong>About these previews:</strong> Google Responsive Search Ads rotate combinations of headlines and descriptions automatically based on what's most likely to convert for each search query. The variants above are representative — your live campaigns can produce hundreds of unique combinations from the 15 headlines + 4 descriptions per ad group.</p>
+  <p style="margin-top: 14px;"><strong>Pinned positions:</strong> Headlines 1 and 2 (e.g., "Buccal Facial Massage — SLC" and "Regenerative Facial Work") are pinned to position 1 — they will always appear first. Headline 3 ("Visible Change Without Needles") is pinned to position 2. This keeps the brand voice consistent across every ad serve.</p>
+  <p style="margin-top: 14px;"><strong>What's not shown:</strong> Image extensions, location pin (auto-pulled from your GBP), call-only display (auto-formatted with Murray phone number on mobile), and ad ratings/reviews that Google adds automatically as the campaigns accumulate data.</p>
+  <p style="margin-top: 14px; color: #8a7f6a;">Account 857-072-1509 · Conversion ID AW-18164308166 · Source: <a href="ads-import/bulk-upload.csv" style="color: #9b7f3a;">bulk-upload.csv</a> · Strategy: <a href="ADS-PLAYBOOK.md" style="color: #9b7f3a;">ADS-PLAYBOOK.md</a></p>
+</footer>
+
+</div>
+</body>
+</html>
