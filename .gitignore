@@ -17,6 +17,7 @@ assets/*.png
 assets/*.jpg
 assets/*.webp
 !assets/logoFinal.*
+!assets/social-share.*
 
 # Local agent / session workspaces — not for deploy
 .brainstorm/
