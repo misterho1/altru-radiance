@@ -11,7 +11,10 @@
 - [x] **Apply**: edit affected files for HIGH-confidence fixes only
 - [x] **Self-verify**: re-run scan, confirm zero HIGH-confidence breakage remains
 - [x] **Review section** below: summarize what changed, what was flagged, what assumptions were made
-- [ ] **Wait for user verification** before commit/deploy
+- [x] **Wait for user verification** before commit/deploy → user chose option (a), build /programs page
+- [x] **Build /programs hub page** (resolves the 21 flagged occurrences)
+- [x] **Site-wide verification scan** → found one extra HIGH-confidence fix on `/results`
+- [x] **Commit + deploy** → live at https://altru-radiance.pages.dev/programs
 
 ## Rules applied
 
