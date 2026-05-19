@@ -277,6 +277,34 @@
   }
   .trust-pill .check { color: var(--gold); font-size: 0.7rem; }
 
+  /* Hero CTA pair (added 2026-05-19 — was missing primary action above the fold).
+     Side-by-side on desktop, stacked on mobile. Mirrors the button language
+     used on /restorative-facial so cross-page visitors see consistent affordance. */
+  .hero-cta-row {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.85rem; margin-top: 0.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 0.95rem 2rem; min-height: 48px;
+    text-decoration: none; white-space: nowrap;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hero-cta-primary { color: var(--black); background: var(--gold); }
+  .hero-cta-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .hero-cta-ghost {
+    color: var(--cream);
+    border: 1px solid rgba(244,240,230,0.4);
+    background: transparent;
+  }
+  .hero-cta-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  @media (max-width: 640px) {
+    .hero-cta-row { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+    .hero-cta { width: 100%; }
+  }
+
   /* ─── HERO SHOWCASE (post-hero section: carousel + proof) ───────── */
   .hero-showcase {
     background: var(--black);
@@ -943,6 +971,8 @@
   .btn-primary:hover { background: var(--gold-light); }
   .cta-meta { font-size: 0.58rem; color: rgba(244, 240, 230, 0.65); letter-spacing: 0.08em; line-height: 1.6; }
   .cta-meta strong { color: rgba(244,240,230,0.65); display: block; font-weight: 400; }
+  .cta-meta-link { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.4); padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; }
+  .cta-meta-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
   /* ══════════════════════════════════════════════════════════════
      §8 · FOOTER
@@ -1371,6 +1401,11 @@
       <span class="annotation" style="top:50%;">← Objection handling above the fold</span>
     </div>
 
+    <div class="hero-cta-row" aria-label="Primary actions">
+      <a href="/book" class="hero-cta hero-cta-primary">Reserve Your Session</a>
+      <a href="/results" class="hero-cta hero-cta-ghost">See Results →</a>
+    </div>
+
   </div>
 </section>
 
@@ -1762,21 +1797,21 @@
           <div class="pillar">
             <span class="pillar-marker" aria-hidden="true">I</span>
             <div class="pillar-body">
-              <h4 class="pillar-heading">Regenerative, Not Corrective</h4>
+              <h3 class="pillar-heading">Regenerative, Not Corrective</h3>
               <p class="pillar-detail">We work with your body's intelligence, not against it, creating conditions for natural realignment.</p>
             </div>
           </div>
           <div class="pillar pillar-indent">
             <span class="pillar-marker" aria-hidden="true">II</span>
             <div class="pillar-body">
-              <h4 class="pillar-heading">Fascia-Centered</h4>
+              <h3 class="pillar-heading">Fascia-Centered</h3>
               <p class="pillar-detail">Every modality we offer works through the fascial network, the connective tissue web that shapes how you look and feel.</p>
             </div>
           </div>
           <div class="pillar pillar-indent-deeper">
             <span class="pillar-marker" aria-hidden="true">III</span>
             <div class="pillar-body">
-              <h4 class="pillar-heading">Whole-System Thinking</h4>
+              <h3 class="pillar-heading">Whole-System Thinking</h3>
               <p class="pillar-detail">A lifted face and a balanced body are the same conversation. We address both.</p>
             </div>
           </div>
@@ -1912,7 +1947,7 @@
       <a href="/services" class="btn-ghost">Explore Services →</a>
       <div class="cta-meta">
         <strong>164 E 5900 S, Ste A108 · Murray, UT 84107</strong>
-        Tue–Fri 12–7:30pm · Sat 1–5pm
+        By appointment, Tue–Sat. <a href="#footer-hours" class="cta-meta-link">See hours below.</a>
       </div>
     </div>
   </div>
@@ -1961,7 +1996,7 @@
         </ul>
       </div>
 
-      <div>
+      <div id="footer-hours" style="scroll-margin-top: 90px;">
         <div class="footer-col-heading">Hours</div>
         <div class="footer-hours-row"><span class="hours-closed">Sunday</span><span class="hours-closed">Closed</span></div>
         <div class="footer-hours-row"><span class="hours-closed">Monday</span><span class="hours-closed">Closed</span></div>
