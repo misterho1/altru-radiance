@@ -33,91 +33,172 @@
 }
 
 /* ── Trust strip ── */
+/* ── Trust strip (bolder pass) ──
+   Two layers of credibility, ranked by visual weight:
+     1. .trust-proof   — face + live Google rating, editorial scale
+     2. .trust-promise — claims band, demoted to small dot-separated row
+   The asymmetric proof row resists the "4 identical cards" pattern by
+   sizing the face block to its content and letting the rating fill rest. */
 .trust-strip {
   background: var(--deep);
-  border-top: 1px solid rgba(201, 168, 76, 0.12);
+  border-top: 1px solid rgba(201, 168, 76, 0.14);
   border-bottom: 1px solid rgba(201, 168, 76, 0.08);
-  padding: 1.4rem 0;
+  padding: 2.25rem 0 1.4rem;
+  position: relative;
+  overflow: hidden;
 }
-.trust-strip-inner {
+.trust-strip-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 22% 50%, rgba(201, 168, 76, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Proof row — asymmetric: face block sizes to content, rating fills */
+.trust-proof {
+  position: relative; z-index: 1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
   align-items: center;
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-width: 0;
-}
-.trust-mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(201, 168, 76, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  color: var(--gold);
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-.trust-text {
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: rgba(244, 240, 230, 0.72);
-  line-height: 1.4;
-}
-.trust-text strong {
-  color: var(--cream);
-  font-weight: 400;
-  display: block;
-  font-size: 0.78rem;
-  margin-bottom: 0.1rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
 }
 
-/* Anchor-style trust items (face + reviews) — clickable proof artifacts */
-a.trust-item {
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s;
+/* Practitioner block */
+.trust-practitioner {
+  display: flex; align-items: center; gap: 1.1rem;
+  text-decoration: none; color: inherit;
+  transition: opacity 0.25s;
 }
-a.trust-item:hover { opacity: 0.78; }
-a.trust-item:focus-visible {
+.trust-practitioner:hover { opacity: 0.85; }
+.trust-practitioner:focus-visible {
   outline: 1px solid rgba(201, 168, 76, 0.5);
-  outline-offset: 4px;
+  outline-offset: 6px;
+  border-radius: 4px;
 }
-
-/* Practitioner headshot replaces the roman-numeral mark */
 .trust-face {
-  width: 44px; height: 44px;
+  width: 66px; height: 66px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
   flex-shrink: 0;
-  border: 1px solid rgba(201, 168, 76, 0.35);
+  border: 1px solid rgba(201, 168, 76, 0.42);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32), 0 0 0 4px rgba(22, 43, 28, 0.4);
+}
+.trust-byline {
+  display: flex; flex-direction: column; gap: 0.18rem;
+  min-width: 0;
+}
+.trust-byline-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.trust-byline-title {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mist);
+  line-height: 1.4;
 }
 
-/* Star rating in the reviews item */
-.trust-stars {
-  font-size: 0.95rem;
+/* Rating block — treated as an editorial pull-quote, not a hero metric */
+.trust-rating {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  gap: 0.45rem 0.95rem;
+  justify-content: end;
+  text-decoration: none; color: inherit;
+  transition: opacity 0.25s;
+}
+.trust-rating:hover { opacity: 0.85; }
+.trust-rating:focus-visible {
+  outline: 1px solid rgba(201, 168, 76, 0.5);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+.trust-rating-stars {
+  font-size: 1.15rem;
   color: var(--gold);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
   line-height: 1;
-  flex-shrink: 0;
-  width: auto;
-  height: auto;
-  border: none;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: end;
+}
+.trust-rating-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+}
+.trust-rating-source {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mist);
+  line-height: 1.4;
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  align-self: center;
+  display: flex; flex-direction: column;
+  gap: 0.15rem;
+  white-space: nowrap;
+}
+.trust-rating-count {
+  color: rgba(244, 240, 230, 0.55);
+  font-size: 0.54rem;
+  letter-spacing: 0.18em;
+}
+
+/* Promise band — small dot-separated facts under the proof row */
+.trust-promise {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.5rem 1rem;
+  padding-top: 1.1rem;
+  font-size: 0.56rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 230, 0.55);
+  line-height: 1.4;
+}
+.trust-promise span[aria-hidden="true"] {
+  color: rgba(201, 168, 76, 0.45);
 }
 
 @media (max-width: 760px) {
-  .trust-strip-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; }
+  .trust-strip { padding: 1.85rem 0 1.2rem; }
+  .trust-proof {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+    padding-bottom: 1.2rem;
+  }
+  .trust-practitioner { justify-content: center; }
+  .trust-rating { justify-content: center; }
+  .trust-strip-glow {
+    background: radial-gradient(ellipse 80% 50% at 50% 35%, rgba(201, 168, 76, 0.08) 0%, transparent 65%);
+  }
 }
-@media (max-width: 420px) {
-  .trust-strip-inner { grid-template-columns: 1fr; }
+
+@media (max-width: 480px) {
+  .trust-face { width: 56px; height: 56px; }
+  .trust-byline-name { font-size: 1.3rem; }
+  .trust-rating-number { font-size: 2.1rem; }
+  .trust-promise { gap: 0.35rem 0.7rem; font-size: 0.5rem; }
 }
 
 /* ── FAQ section ── */
