@@ -18,8 +18,13 @@
 # Files were renamed; redirects preserve external links + indexed URLs.
 /journal/blog-what-is-buccal-massage          /journal/what-is-buccal-massage           301
 /journal/blog-tmj-relief-facial-massage       /journal/tmj-relief-facial-massage        301
-/journal/blog-natural-alternatives-to-botox   /journal/natural-alternatives-to-botox    301
+/journal/blog-natural-alternatives-to-botox   /journal/hands-first-facial-alternatives  301
 /journal/blog-how-breathing-shapes-your-face  /journal/how-breathing-shapes-your-face   301
+
+# Renamed journal article: the slug originally named a prescription drug
+# which tripped Google Ads "Restricted drug terms" policy. New slug uses
+# generic language.
+/journal/natural-alternatives-to-botox        /journal/hands-first-facial-alternatives  301
 
 # Homepage typo legacy — `-murray-utah` suffix that matched no file.
 /journal/what-is-buccal-massage-murray-utah   /journal/what-is-buccal-massage           301
