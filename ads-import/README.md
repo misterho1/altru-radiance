@@ -8,6 +8,22 @@ This directory contains a Google Ads Editor bulk-upload CSV that will create all
 
 ---
 
+## Utah Master Esthetician scope compliance — read this before editing
+
+**Rule:** Altru Radiance is a Master Esthetician practice under Utah R156-11a-102, not a massage therapy practice. The business cannot represent itself as performing "massage." Two implications for these CSV files:
+
+1. **Ad copy (Headlines + Descriptions) NEVER contains the word "massage."** This is the business representing itself in publicly-served ad text. If you're editing Headlines or Descriptions in the RSA rows, do not introduce "massage." Use "release," "release work," "release session," "structural facial," or similar esthetics-scope language.
+
+2. **Keyword targets CAN contain "massage."** Keywords are the search queries we want to *bid on*, not how we describe ourselves. Real Murray locals search "face massage near me" — bidding on that query lets us *capture* the intent and redirect to compliant ad copy. This is standard ads strategy: target the search, don't be the search.
+
+**Allowed instances of "massage" in this directory:**
+- `face massage salt lake city` (Phrase match keyword in the Buccal Release ad group) — targeting intent
+- `massage school` (Negative Phrase keyword in the Soothe ad group) — excluding irrelevant searches
+
+Any other "massage" in this directory is a bug. Fix it before importing.
+
+---
+
 ## How to import
 
 1. Open **Google Ads Editor** (download from https://ads.google.com/intl/en_us/home/tools/ads-editor/ if not installed).
