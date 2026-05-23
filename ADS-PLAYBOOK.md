@@ -52,18 +52,18 @@ Booking platform: Square Appointments
   - Sat: 9am–4pm
   - Sun + Mon: paused
 
-**Ad Group A — Buccal Massage** (match types: Phrase + Exact only)
-- `"buccal massage salt lake city"`
+**Ad Group A — Buccal Release** (match types: Phrase + Exact only)
+- `"buccal release salt lake city"`
 - `"buccal facial salt lake"`
-- `"buccal massage near me"`
-- `[buccal massage utah]`
+- `"buccal release near me"`
+- `[buccal release utah]`
 - `"face massage salt lake city"`
-- `"facial massage slc"`
+- `"facial release slc"`
 
 **Ad Group B — Fascia Facial**
-- `"fascia facial massage"`
+- `"fascia facial release"`
 - `"face fascia release"`
-- `"structural facial massage"`
+- `"structural facial release"`
 - `"myofascial facial"`
 
 **Ad Group C — Natural Face Lift**
@@ -78,7 +78,7 @@ Booking platform: Square Appointments
 **Responsive Search Ad (one per ad group, same copy):**
 
 Headlines (15) — paste in this order; pin #1 to position 1:
-1. Buccal Facial Massage — SLC *(pin to position 1)*
+1. Buccal Facial Release — SLC *(pin to position 1)*
 2. Regenerative Facial Work *(pin to position 1)*
 3. Visible Change Without Needles *(pin to position 2)*
 4. Fascia-Led Facial Work
@@ -89,19 +89,19 @@ Headlines (15) — paste in this order; pin #1 to position 1:
 9. Book Your Restorative Facial
 10. No Botox. No Downtime.
 11. Visible Lift In One Session
-12. Inside-The-Mouth Facial Massage
+12. Inside-The-Mouth Facial Release
 13. Where Anti-Aging Ends
 14. Educated, Hands-First Skincare
 15. Salt Lake's Fascia Facial
 
 Descriptions (4):
-1. Buccal and fascia massage that moves the structure under your skin. Visible lift, no needles, no downtime. Online booking.
+1. Buccal and fascia release that moves the structure under your skin. Visible lift, no needles, no downtime. Online booking.
 2. We treat the face the way good bodyworkers treat the body — fascia first. Educated, results-driven facial work in Salt Lake.
 3. Most facials work on the surface. Ours works on the architecture underneath. Buccal + fascia release in one session.
-4. The regenerative alternative to injections. Premium facial massage in Salt Lake County. Book online — same-week availability.
+4. The regenerative alternative to injections. Premium facial release in Salt Lake County. Book online — same-week availability.
 
 Path fields: `regenerative` / `facial`
-Final URL: `https://altruradiance.com/services/restorative-buccal-massage`
+Final URL: `https://altruradiance.com/services/restorative-buccal-release`
 
 ---
 
@@ -241,7 +241,7 @@ Final URL: `https://altruradiance.com/services/microneedling-murray-utah`
 Apply at the account level so all campaigns inherit:
 
 - **Sitelinks (4–6):**
-  - Restorative Facial → `/services/restorative-buccal-massage`
+  - Restorative Facial → `/services/restorative-buccal-release`
   - Soothe Lymphatic → `/services/lymphatic-drainage-murray-utah`
   - Procell → `/services/microneedling-murray-utah`
   - About → `/about`
@@ -276,7 +276,7 @@ Each page should:
 
 Square Dashboard → Online Booking → Settings → After Booking:
 - Set "Redirect to custom URL after booking" per service:
-  - Restorative + Buccal Massage → `https://altruradiance.com/thanks-restorative`
+  - Restorative + Buccal Release → `https://altruradiance.com/thanks-restorative`
   - Soothe Lymphatic Drainage → `https://altruradiance.com/thanks-soothe`
   - Procell Microchanneling → `https://altruradiance.com/thanks-procell`
 
@@ -358,7 +358,7 @@ GBP often out-converts paid ads for local intent. Treat this as critical, not op
 
 ### Services (each as a separate offering with description + price)
 
-- [ ] Restorative Facial + Buccal Massage — $250 · 110 min
+- [ ] Restorative Facial + Buccal Release — $250 · 110 min
 - [ ] Soothe Lymphatic Drainage — $250 · 110 min
 - [ ] Procell Microchanneling — $300 · 100 min
 - [ ] Structural Integration Facial — $140 · 60 min
@@ -390,7 +390,7 @@ Post one per week. Rotate:
 
 Pre-populate with your own Q&A — Google rewards active profiles:
 - "What is Procell Microchanneling?"
-- "How is buccal massage different from a facial?"
+- "How is buccal release different from a facial?"
 - "Do you take insurance?"
 - "Do I need a series of treatments?"
 - "How long until I see results?"
@@ -432,7 +432,7 @@ These align landing-page copy to ad copy. Lifts Quality Score and conversion tog
 | Hero subhead — add sentence: `The day-before-anything facial — for weddings, photos, and the days that matter.` |
 | Verify `data-book-cta` and `data-service` attributes on every booking link (already present on this page) |
 
-### `/services/restorative-buccal-massage.html` (Restorative page)
+### `/services/restorative-buccal-release.html` (Restorative page)
 
 Leave alone — user direction.
 

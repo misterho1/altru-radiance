@@ -134,4 +134,4 @@ See `CLAUDE.md` for the full voice guide, design tokens, and content conventions
 
 ## URL conventions
 
-Internal links and the sitemap use clean URLs without `.html` (e.g. `/services/restorative-buccal-massage`). The `_redirects` file maps these to the underlying `.html` files and 301-redirects any `.html` access to the clean form.
+Internal links and the sitemap use clean URLs without `.html` (e.g. `/services/restorative-buccal-release`). The `_redirects` file maps these to the underlying `.html` files and 301-redirects any `.html` access to the clean form.

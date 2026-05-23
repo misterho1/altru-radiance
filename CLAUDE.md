@@ -12,7 +12,7 @@
 ### Services Offered
 
 #### Signature Regenerative Services (Fascial Focus)
-- **Restorative Facial + Buccal Massage** — Signature 110-minute service, $250. Combines intraoral buccal massage, lymphatic drainage, and myofascial release.
+- **Restorative Facial + Buccal Release** — Signature 110-minute service, $250. Combines intraoral buccal release, lymphatic drainage, and myofascial release.
 - **Soothe Lymphatic Drainage** — Clearing the fluid within the Hydrated Foundation to reduce inflammation and stagnant "puffiness."
 - **Structural Integration Facial** — A targeted session focusing on the facial "architecture" and fascial planes to restore symmetry and lift.
 
@@ -45,11 +45,11 @@
 - It's okay to say "Botox is effective for X" if true — credibility matters more than brand protection
 - Never use wellness buzzwords without substance: no "holistic healing journey," "glowing from within," "self-love ritual"
 - Avoid filler adjectives: luxurious, transformative, revolutionary, cutting-edge, game-changing
-- **Entity-Based Authority:** Use "Fascia" as the primary anchor. Instead of saying "we massage the face," say "we address the fascial web to restore structural balance."
+- **Entity-Based Authority:** Use "Fascia" as the primary anchor. Instead of saying "we manipulate the face," say "we address the fascial web to restore structural balance."
 - **Mechanically Minded:** Frame treatments through Physical Signaling (Mechanotransduction)—explaining how manual touch creates biological change.
 
 ### Signature Phrases & Positioning
-- **"From the inside out"** — Core differentiator. Buccal massage works where external techniques can't reach.
+- **"From the inside out"** — Core differentiator. Buccal release works where external techniques can't reach.
 - **"Structural anti-aging"** — The primary service category. Not "anti-aging" alone — structural is the key word.
 - **"Works where conventional skincare can't reach"** — Used for the Restorative Facial positioning.
 - **"Aesthetic wellness"** — The category label for the business overall.
@@ -93,7 +93,7 @@
 - CTA at thread end: link to relevant service or Journal post
 
 ### SEO Priorities
-- Primary keyword targets: buccal massage Murray Utah, fascia facial Murray Utah, non-invasive facial lift Utah, TMJ massage Murray Utah, natural alternatives to Botox Utah, fascia-focused facial Utah, myofascial release for face Utah
+- Primary keyword targets: buccal release Murray Utah, fascia facial Murray Utah, non-invasive facial lift Utah, TMJ release Murray Utah, natural alternatives to Botox Utah, fascia-focused facial Utah, myofascial release for face Utah
 - All service pages and Journal posts include: location city+state, service name, and differentiator in title tag
 - Alt text format: `[service/technique]-[descriptor]-[location]-altru-radiance` (e.g., `buccal-massage-before-after-1-session-murray-utah-altru-radiance`)
 - Internal linking: Journal articles link to relevant service pages; service pages link to related Journal articles
@@ -128,7 +128,7 @@ When generating content across X, email, or any other channel, maintain the same
 - **Masseter** — primary chewing muscle; holds stress/tension; hypertrophy widens the jaw
 - **Medial & Lateral Pterygoids** — deep jaw muscles, only fully accessible intraorally; key for TMJ
 - **Fascia** — connective tissue network; fascial adhesions cause asymmetry and downward pull
-- **Intraoral** — inside the mouth (the defining access point of buccal massage)
+- **Intraoral** — inside the mouth (the defining access point of buccal release)
 - **Lymphatic drainage** — fluid movement; reduces puffiness, activates circulation
 - **Myofascial release** — manual technique targeting the fascia and underlying muscle
 - **Fascial Adhesions** — the "glue" that creates deep wrinkles and restricted movement
@@ -142,7 +142,7 @@ When generating content across X, email, or any other channel, maintain the same
 
 ## Content Don'ts
 - Don't promise permanent results — always frame as cumulative and maintained with sessions
-- Don't compare buccal massage to surgery as "just as good" — position it as a different category
+- Don't compare buccal release to surgery as "just as good" — position it as a different category
 - Don't use "anti-aging" alone — always pair with "structural" or qualify what's being addressed
 - Don't use "toxin-free" or "chemical-free" — those are anti-science framings
 - Don't write in the third person about Mechelle — she is the author and voice of the brand

@@ -74,7 +74,7 @@ Common Day 1 issues:
 
 - Ad disapproved. Open the ad, read the policy reason at the top, fix the headline or description, resubmit. Most disapprovals on a med-spa account come from "Healthcare and medicines" auto-flagging the word "treatment" or "injection". Rephrase, do not appeal.
 - "Daily budget exceeded" warning at 6pm on Day 1. Ignore. Google can spend up to 2x the daily budget on a single day and averages over the month.
-- No impressions on Restorative after 6 hours. Normal. Search volume for "buccal massage Utah" is low. Wait 48 hours before worrying.
+- No impressions on Restorative after 6 hours. Normal. Search volume for "buccal release Utah" is low. Wait 48 hours before worrying.
 
 ### Day 2 (Wednesday)
 
@@ -116,7 +116,7 @@ What to do:
 
 - Open Tools (top right wrench icon) -> Insights and reports -> Search terms.
 - Set the date range to "Since campaign start".
-- Scan the list for terms that have nothing to do with the practice. Examples to expect: "free facial near me", "esthetician jobs murray", "buccal massage tutorial youtube", "lymphatic drainage for weight loss".
+- Scan the list for terms that have nothing to do with the practice. Examples to expect: "free facial near me", "esthetician jobs murray", "buccal release tutorial youtube", "lymphatic drainage for weight loss".
 
 How to add a negative keyword:
 
@@ -345,7 +345,7 @@ These are the specific scenarios that justify breaking the normal "do not touch"
 
 - What it means: the ad copy is not matching what searchers want.
 - Action: rewrite Headline 1 on each ad to lead with the exact service name. Test for 7 days.
-- Exception: Restorative may run lower CTR than the other campaigns because buccal massage is a less-familiar term. Under 2% is fine for Restorative. Under 1% is not.
+- Exception: Restorative may run lower CTR than the other campaigns because buccal release is a less-familiar term. Under 2% is fine for Restorative. Under 1% is not.
 
 ### Red Flag 3: Cost per conversion above $80
 
@@ -428,7 +428,7 @@ At the 30-day mark, before scaling, revisit these items in Week 5:
 - Day-of-week budget shifting. If Saturdays produce 40% of weekly bookings on 15% of the spend, raise the Saturday share.
 - Add a remarketing audience. Once you have 100+ site visitors, you can build a remarketing list for Display (separate budget, separate campaign, not Performance Max).
 - Test a second landing page variant. Take the highest-traffic service page and test a version with a different above-the-fold layout. Run 50/50 for 30 days.
-- Expand keyword themes that are working. If "buccal massage" is producing bookings, add related themes: "intraoral massage", "face sculpting", "jaw tension release".
+- Expand keyword themes that are working. If "buccal release" is producing bookings, add related themes: "intraoral release", "face sculpting", "jaw tension release".
 - Trim what is not working. Pause keywords with 100+ clicks and 0 conversions. Move budget to the proven themes.
 - Evaluate Procell pricing in the conversion value. If actual booking averages are higher than $300, raise the conversion value. tCPA will then become more aggressive on Procell.
 - Consider adding a fourth conversion action for phone calls if the call-tracking number is generating bookings outside of Square.

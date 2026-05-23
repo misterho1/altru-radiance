@@ -4,13 +4,13 @@ These are the automated email flows sent from Square (or a paired ESP) following
 
 ---
 
-## Sequence 1 — Restorative Facial + Buccal Massage
+## Sequence 1 — Restorative Facial + Buccal Release
 
 ### Email 1 — Confirmation (on booking)
 **Subject:** Your Restorative is on the books
 **Preview text:** A few small things to know before we meet for your fascia work.
 **Body:**
-Thank you for booking your Restorative Facial with Buccal Massage. I am looking forward to this session with you.
+Thank you for booking your Restorative Facial with Buccal Release. I am looking forward to this session with you.
 
 A few things to know in advance.
 

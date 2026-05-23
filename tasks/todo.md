@@ -37,8 +37,8 @@ Applied **4 HIGH-confidence link edits across 2 files** in `journal/`:
 |---|---|---|---|
 | `journal/how-breathing-shapes-your-face.html` | 401 | `/buccal-massage-slc` (CTA "Explore the Restorative Facial") | `/restorative-facial` |
 | `journal/how-breathing-shapes-your-face.html` | 413 | `/structural-integration` (inline body link) | `/services/structural-integration-salt-lake-city` |
-| `journal/how-breathing-shapes-your-face.html` | 417 | `/buccal-massage-slc` (inline body link "buccal massage") | `/services/restorative-buccal-massage` |
-| `journal/tmj-relief-facial-massage.html` | 469 | `/tmj-facial-massage-murray-ut` (inline body link) | `/services/restorative-buccal-massage` |
+| `journal/how-breathing-shapes-your-face.html` | 417 | `/buccal-massage-slc` (inline body link "buccal release") | `/services/restorative-buccal-release` |
+| `journal/tmj-relief-facial-massage.html` | 469 | `/tmj-facial-massage-murray-ut` (inline body link) | `/services/restorative-buccal-release` |
 
 Each fix points at a file that genuinely exists in the repo (verified by glob, not by HTTP).
 
@@ -48,11 +48,11 @@ Each fix points at a file that genuinely exists in the repo (verified by glob, n
 
 ### Assumptions I made
 
-1. **`/buccal-massage-slc` (line 401) → `/restorative-facial`** rather than `/services/restorative-buccal-massage`, because the CTA text "Explore the Restorative Facial" *exactly* matches the H1 of the `restorative-facial.html` page (which is also your live Google Ads landing target). Service page would be a defensible alternative; ads landing page is the better fit for a CTA.
+1. **`/buccal-massage-slc` (line 401) → `/restorative-facial`** rather than `/services/restorative-buccal-release`, because the CTA text "Explore the Restorative Facial" *exactly* matches the H1 of the `restorative-facial.html` page (which is also your live Google Ads landing target). Service page would be a defensible alternative; ads landing page is the better fit for a CTA.
 
-2. **`/buccal-massage-slc` (line 417) → `/services/restorative-buccal-massage`** rather than `/journal/what-is-buccal-massage`, because the original URL shape (`<service>-slc` with location suffix) followed the site's service-page slug convention. The sister lymphatic article uses the article-page convention for a similar inline link, so this is a slight inconsistency — but the original intent here was clearly a service URL.
+2. **`/buccal-massage-slc` (line 417) → `/services/restorative-buccal-release`** rather than `/journal/what-is-buccal-release`, because the original URL shape (`<service>-slc` with location suffix) followed the site's service-page slug convention. The sister lymphatic article uses the article-page convention for a similar inline link, so this is a slight inconsistency — but the original intent here was clearly a service URL.
 
-3. **`/tmj-facial-massage-murray-ut` → `/services/restorative-buccal-massage`** rather than the structural-integration service. The buccal service page is the more TMJ-focused content on the site (it explicitly mentions the masseter and pterygoid muscles, which drive TMJ dysfunction).
+3. **`/tmj-facial-massage-murray-ut` → `/services/restorative-buccal-release`** rather than the structural-integration service. The buccal service page is the more TMJ-focused content on the site (it explicitly mentions the masseter and pterygoid muscles, which drive TMJ dysfunction).
 
 ### Root-cause observation
 

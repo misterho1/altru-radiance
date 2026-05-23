@@ -4,46 +4,46 @@ These three reels are designed as the pinned trio at the top of the Altru Radian
 
 ---
 
-### Reel 1 — "What buccal massage is actually doing"
+### Reel 1 — "What buccal release is actually doing"
 **Duration:** 75 seconds
 **Goal:** Educate the buccal-curious viewer who has seen the word on TikTok but doesn't understand the anatomy behind it, and position Altru as the studio that can actually explain it.
 
 **The hook (0-3 sec):**
-"Buccal massage is not a facial. It's bodywork. And it's happening inside your mouth for a reason."
+"Buccal release is not a facial. It's bodywork. And it's happening inside your mouth for a reason."
 
 **Beats:**
 
 | Time | On camera | B-roll / Overlay | Voice (verbatim) |
 |------|-----------|------------------|------------------|
-| 0:00 | Mechelle, tight on face, neutral studio backdrop | Title card fades up: "What buccal massage is actually doing" | "Buccal massage is not a facial. It's bodywork. And it's happening inside your mouth for a reason." |
+| 0:00 | Mechelle, tight on face, neutral studio backdrop | Title card fades up: "What buccal release is actually doing" | "Buccal release is not a facial. It's bodywork. And it's happening inside your mouth for a reason." |
 | 0:08 | Medium shot, Mechelle gesturing to her own cheek | Hand-drawn anatomical overlay of facial fascia layers animates over her face — mid-century textbook aesthetic, sepia ink | "The reason is fascia. Fascia is the connective tissue that wraps every muscle, every organ, and yes, every part of your face." |
 | 0:18 | Close-up, Mechelle's hands demonstrating on a anatomical bust | Overlay shifts to show fascia tightening, with subtle directional arrows | "Think of fascia like a fitted sheet. When it's smooth and pliable, everything sits where it should. When it shortens or tightens unevenly, the face shifts with it." |
 | 0:30 | Back to Mechelle to camera, soft side light | Overlay text: "Asymmetry. Tension. A jaw that feels heavy." | "That's where you see asymmetry. Tension across the jaw. A brow that pulls down on one side. A smile that lifts more on the left than the right." |
 | 0:42 | Close-up of Mechelle's gloved hands, demonstrating intraoral technique on a model jaw illustration | Hand-drawn cross-section of cheek and masseter, with the working hand inside | "The deepest, most restrictive fascia in the face sits where you can't reach it externally. Around the masseter. Along the inner cheek. Under the zygomatic arch." |
 | 0:55 | Mechelle to camera | Overlay text: "Inside-out, not surface-down." | "Working inside the mouth is the only way to release that tissue directly. Everything else is working around it." |
-| 1:05 | Slow push in on Mechelle | Lower-third: "Restorative Facial + Buccal Massage — Altru Radiance" | "So when you book a buccal session with me, understand what you're booking. You're not getting a facial with an extra step. You're getting bodywork applied to the face." |
+| 1:05 | Slow push in on Mechelle | Lower-third: "Restorative Facial + Buccal Release — Altru Radiance" | "So when you book a buccal session with me, understand what you're booking. You're not getting a facial with an extra step. You're getting bodywork applied to the face." |
 | 1:15 | Static end card | Brand mark, "Murray, Utah" subline | (Silent beat. Brand mark holds for 1 second.) |
 
 **Caption (paste-ready):**
 
-Buccal massage is not a facial. It's bodywork applied to the face — and there's an anatomical reason it happens inside the mouth.
+Buccal release is not a facial. It's bodywork applied to the face — and there's an anatomical reason it happens inside the mouth.
 
 Fascia is the connective tissue that holds the shape of your face. When it's pliable and even, everything sits where it should. When it shortens or tightens unevenly — which it does, slowly, over years of clenching, screen posture, expression patterns, and stress — the face shifts with it. That's where asymmetry comes from. That's the heaviness in the jaw at the end of a long day. That's why one side of your smile lifts higher than the other.
 
 The deepest fascia in the face sits in places you cannot reach from the outside. Around the masseter. Along the inner cheek wall. Under the zygomatic arch. Working intraorally is the only way to release that tissue directly, and the release is felt immediately — across the jaw, through the temples, down into the neck.
 
-This is the work I built Altru around. Slow, precise, restorative. Save this for the next time someone asks you what buccal massage actually is.
+This is the work I built Altru around. Slow, precise, restorative. Save this for the next time someone asks you what buccal release actually is.
 
-Restorative Facial with Buccal Massage is available to book at altruradiance.com.
+Restorative Facial with Buccal Release is available to book at altruradiance.com.
 
 **Hashtags:** #buccalmassage #facialfascia #fascia #regenerativeskincare #wellnessfacial #faceyoga #murrayutah #saltlakecityesthetician #utahesthetician #holisticskincare #masterEsthetician #lymphaticdrainage #facialmassage #facialbodywork #altruradiance
 
 **On-screen text overlays:**
-- 0:00 — "What buccal massage is actually doing"
+- 0:00 — "What buccal release is actually doing"
 - 0:18 — "Fascia = the fitted sheet of your face"
 - 0:30 — "Asymmetry. Tension. A jaw that feels heavy."
 - 0:55 — "Inside-out, not surface-down."
-- 1:05 — "Restorative Facial + Buccal Massage"
+- 1:05 — "Restorative Facial + Buccal Release"
 - 1:15 — "Altru Radiance — Murray, Utah"
 
 **Audio direction:**

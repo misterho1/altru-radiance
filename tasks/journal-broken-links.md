@@ -36,10 +36,10 @@
 | **Source file** | `journal/how-breathing-shapes-your-face.html` |
 | **Line** | 417 |
 | **Broken URL** | `/buccal-massage-slc` |
-| **Context** | `...Releasing that hypertonicity through <a href="/buccal-massage-slc">buccal massage</a> literally changes the path of least resistance...` |
+| **Context** | `...Releasing that hypertonicity through <a href="/buccal-massage-slc">buccal release</a> literally changes the path of least resistance...` |
 | **Why broken** | Same as #1 — no file, no redirect rule. |
-| **Proposed fix** | `/services/restorative-buccal-massage` |
-| **Confidence** | **HIGH** — the original URL shape (`<service>-slc` with a location suffix) matches this site's service-page convention. The only buccal-massage service is `/services/restorative-buccal-massage`. Going to the service page rather than the article page since the original intent was clearly a service URL. |
+| **Proposed fix** | `/services/restorative-buccal-release` |
+| **Confidence** | **HIGH** — the original URL shape (`<service>-slc` with a location suffix) matches this site's service-page convention. The only buccal-massage service is `/services/restorative-buccal-release`. Going to the service page rather than the article page since the original intent was clearly a service URL. |
 
 ## #3 — `/structural-integration`
 
@@ -60,10 +60,10 @@
 | **Source file** | `journal/tmj-relief-facial-massage.html` |
 | **Line** | 469 |
 | **Broken URL** | `/tmj-facial-massage-murray-ut` |
-| **Context** | `If you've been managing jaw tension, headaches, or grinding without getting to the root of it, <a href="/tmj-facial-massage-murray-ut">see our TMJ facial massage page</a> or book directly below.` |
+| **Context** | `If you've been managing jaw tension, headaches, or grinding without getting to the root of it, <a href="/tmj-facial-massage-murray-ut">see our TMJ facial release page</a> or book directly below.` |
 | **Why broken** | No file with that slug, no redirect rule. Slug shape (`-murray-ut`) follows service-page convention but the page was never built. |
-| **Proposed fix** | `/services/restorative-buccal-massage` |
-| **Confidence** | **HIGH** — the link text says "TMJ facial massage page," implying a service page. `/services/restorative-buccal-massage` is the buccal/intraoral service that explicitly addresses TMJ via the masseter and pterygoid muscles. It's the only service page on the site that targets TMJ as a treatment goal. |
+| **Proposed fix** | `/services/restorative-buccal-release` |
+| **Confidence** | **HIGH** — the link text says "TMJ facial release page," implying a service page. `/services/restorative-buccal-release` is the buccal/intraoral service that explicitly addresses TMJ via the masseter and pterygoid muscles. It's the only service page on the site that targets TMJ as a treatment goal. |
 
 ## #5 — `/programs` (NAV LINK, all 7 files, 21 occurrences)
 
@@ -101,8 +101,8 @@ I recommend deciding the strategy (build the page, redirect, or rename) before a
 |---|---|---|---|
 | `journal/how-breathing-shapes-your-face.html` | 401 | `/buccal-massage-slc` | `/restorative-facial` |
 | `journal/how-breathing-shapes-your-face.html` | 413 | `/structural-integration` | `/services/structural-integration-salt-lake-city` |
-| `journal/how-breathing-shapes-your-face.html` | 417 | `/buccal-massage-slc` | `/services/restorative-buccal-massage` |
-| `journal/tmj-relief-facial-massage.html` | 469 | `/tmj-facial-massage-murray-ut` | `/services/restorative-buccal-massage` |
+| `journal/how-breathing-shapes-your-face.html` | 417 | `/buccal-massage-slc` | `/services/restorative-buccal-release` |
+| `journal/tmj-relief-facial-massage.html` | 469 | `/tmj-facial-massage-murray-ut` | `/services/restorative-buccal-release` |
 
 **Total: 4 link edits across 2 files.**
 
@@ -123,7 +123,7 @@ After applying the 4 HIGH-confidence fixes:
 - Confirmed each fix target resolves to a real file in the repo:
   - `/restorative-facial` → `restorative-facial.html` ✓
   - `/services/structural-integration-salt-lake-city` → `services/structural-integration-salt-lake-city.html` ✓
-  - `/services/restorative-buccal-massage` → `services/restorative-buccal-massage.html` ✓
+  - `/services/restorative-buccal-release` → `services/restorative-buccal-massage.html` ✓
 - `/programs` still appears 21× as flagged. **No change here**, deliberately left for your decision.
 
 ---

@@ -1,7 +1,7 @@
 # Altru Radiance — Expanded Negative Keyword List
 
 Account: Altru Radiance (Murray, UT)
-Campaigns: Restorative Facial + Buccal Massage | Soothe Lymphatic Drainage | Procell Microchanneling
+Campaigns: Restorative Facial + Buccal Release | Soothe Lymphatic Drainage | Procell Microchanneling
 Audience: Educated 35-55 women, Salt Lake County, premium ($250-$300), wellness-grade
 Last updated: 2026-05-15
 
@@ -43,14 +43,14 @@ massage training
 massage course
 microneedling training
 microneedling certification
-buccal massage training
+buccal release training
 lymphatic drainage training
 lymphatic drainage certification
 procell training
 procell certification
 microchanneling training
 microchanneling certification
-facial massage training
+facial release training
 become an esthetician
 become a massage therapist
 diploma
@@ -523,21 +523,21 @@ groupon massage
 
 what is microneedling
 what is microchanneling
-what is buccal massage
+what is buccal release
 what is lymphatic drainage
 what is procell
 what is mld
 what does microneedling do
 what does microchanneling do
-what does buccal massage do
+what does buccal release do
 what does lymphatic drainage do
 how does microneedling work
 how does microchanneling work
-how does buccal massage work
+how does buccal release work
 how does lymphatic drainage work
 benefits of
 benefits of microneedling
-benefits of buccal massage
+benefits of buccal release
 benefits of lymphatic drainage
 benefits of procell
 definition
@@ -694,7 +694,7 @@ pet acupuncture
 
 These layer on top of the shared list above. Add at the campaign level (not the shared list) since they are intent-specific.
 
-## Restorative Facial + Buccal Massage — campaign negatives
+## Restorative Facial + Buccal Release — campaign negatives
 
 (Negate non-buccal intent and treatments outside our scope that match the same root words.)
 

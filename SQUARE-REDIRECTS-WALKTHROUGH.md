@@ -14,7 +14,7 @@ Three services on altru-radiance.pages.dev each have their own thank-you page wi
 
 | Service | Price | Duration | Thank-you URL |
 |---|---|---|---|
-| Restorative Facial + Buccal Massage | 250 | 110 min | https://altru-radiance.pages.dev/thanks-restorative |
+| Restorative Facial + Buccal Release | 250 | 110 min | https://altru-radiance.pages.dev/thanks-restorative |
 | Soothe Lymphatic Drainage | 250 | 110 min | https://altru-radiance.pages.dev/thanks-soothe |
 | Procell Microchanneling | 300 | 100 min | https://altru-radiance.pages.dev/thanks-procell |
 
@@ -123,11 +123,11 @@ Square shows this setting in different places depending on plan and account age.
 
 1. Go back to **Appointments** in the left sidebar.
 2. Click **Services** (sometimes labeled **Service Library** or **Services & Categories**).
-3. You should see a list of all the services Altru Radiance offers. Find **Restorative Facial + Buccal Massage** and click on its name to open the service editor.
+3. You should see a list of all the services Altru Radiance offers. Find **Restorative Facial + Buccal Release** and click on its name to open the service editor.
 
 ## A4. Set the redirect for Restorative Facial
 
-Inside the service editor for Restorative Facial + Buccal Massage:
+Inside the service editor for Restorative Facial + Buccal Release:
 
 1. Scroll down through the service's settings (Name, Description, Duration, Price, Staff, etc.).
 2. Look for a section called **Online Booking** or **Booking Settings** or **Advanced** within this service's editor.
@@ -179,7 +179,7 @@ This is the most important part. Do not skip it.
 1. Open a brand-new Chrome window in **Incognito mode** (Ctrl+Shift+N). This makes sure you are not signed in as the business owner — Square sometimes shows different flows to logged-in admins.
 2. Click the Tag Assistant icon in the Chrome toolbar (top-right of Chrome) and click **Enable**. If you do not see the icon, click the puzzle-piece icon in Chrome's toolbar, find Tag Assistant in the list, and pin it.
 3. Go to your live booking site URL. This is typically `https://book.squareup.com/...` with your business slug, or whatever URL is shown at the top of **Appointments → Online Booking** in your dashboard.
-4. Book **Restorative Facial + Buccal Massage** end-to-end as a test customer. Use your own email and any future appointment slot.
+4. Book **Restorative Facial + Buccal Release** end-to-end as a test customer. Use your own email and any future appointment slot.
 5. After you complete the booking, your browser should automatically redirect to:
 
    ```
@@ -283,7 +283,7 @@ Replace `AW-XXXXXXXXX/YYYYYYYYY` placeholders with the real conversion IDs for e
     // Optional: update visible thank-you copy based on service
     document.addEventListener('DOMContentLoaded', function () {
       var labels = {
-        restorative: 'Restorative Facial + Buccal Massage',
+        restorative: 'Restorative Facial + Buccal Release',
         soothe:      'Soothe Lymphatic Drainage',
         procell:     'Procell Microchanneling'
       };
@@ -330,13 +330,13 @@ If Square preserved the query string in B4, set each service's redirect URL insi
 
 | Service | Redirect URL |
 |---|---|
-| Restorative Facial + Buccal Massage | `https://altru-radiance.pages.dev/thanks?service=restorative` |
+| Restorative Facial + Buccal Release | `https://altru-radiance.pages.dev/thanks?service=restorative` |
 | Soothe Lymphatic Drainage | `https://altru-radiance.pages.dev/thanks?service=soothe` |
 | Procell Microchanneling | `https://altru-radiance.pages.dev/thanks?service=procell` |
 
 Steps:
 
-1. Open **Appointments → Services → Restorative Facial + Buccal Massage**.
+1. Open **Appointments → Services → Restorative Facial + Buccal Release**.
 2. Set the after-booking redirect to `https://altru-radiance.pages.dev/thanks?service=restorative`.
 3. Save.
 4. Repeat for **Soothe Lymphatic Drainage** with `?service=soothe`.
@@ -453,7 +453,7 @@ Print this and keep it near the booking desk.
 ```
 Square Appointments redirects — Altru Radiance
 
-Restorative Facial + Buccal Massage   $250   →  /thanks-restorative
+Restorative Facial + Buccal Release   $250   →  /thanks-restorative
 Soothe Lymphatic Drainage             $250   →  /thanks-soothe
 Procell Microchanneling               $300   →  /thanks-procell
 
