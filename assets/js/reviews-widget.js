@@ -11,10 +11,11 @@
    HTML IS the loading state.
 
    Shapes (set via data-altru-reviews attribute):
-     carousel         - .reviews-carousel (cycling slides, prev/next/dots)
-     row              - .reviews-row (3-card grid)
-     testimonial-card - .testimonial-card (single card)
-     sidebar          - service-page sidebar block (single quote)
+     carousel          - .reviews-carousel (cycling slides, prev/next/dots)
+     row               - .reviews-row (3-card grid with .review-card children)
+     testimonial-card  - .testimonial-card (single card, replaces inner content)
+     testimonials-grid - .testimonials-grid (3-card grid with .testimonial-card children)
+     sidebar           - service-page sidebar block (single quote)
 
    XSS-safe: nodes are built via document.createElement +
    textContent; mount contents are swapped via replaceChildren
@@ -63,6 +64,9 @@
         break;
       case 'testimonial-card':
         replaceChildrenWith(mount, renderTestimonialCard(reviews));
+        break;
+      case 'testimonials-grid':
+        replaceChildrenWith(mount, renderTestimonialsGrid(reviews));
         break;
       case 'sidebar':
         replaceChildrenWith(mount, renderSidebar(reviews));
@@ -183,6 +187,19 @@
       el('p', 'review-author', rev.author),
       el('p', 'review-source', 'Verified Google Review'),
     ];
+  }
+
+  // ---- Testimonials-grid shape (results.html — 3 cards in a grid) ----
+
+  function renderTestimonialsGrid(reviews) {
+    return reviews.slice(0, 3).map(function (rev) {
+      var card = el('div', 'testimonial-card');
+      card.appendChild(el('div', 'review-stars', stars(rev.rating)));
+      card.appendChild(el('p', 'review-quote', '"' + rev.text + '"'));
+      card.appendChild(el('p', 'review-author', rev.author));
+      card.appendChild(el('p', 'review-source', 'Verified Google Review'));
+      return card;
+    });
   }
 
   // ---- Sidebar shape (service pages) ----
