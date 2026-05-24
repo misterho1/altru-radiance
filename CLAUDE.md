@@ -12,12 +12,12 @@
 ### Services Offered
 
 #### Signature Regenerative Services (Fascial Focus)
-- **Restorative Facial + Buccal Release** — Signature 110-minute service, $250. Combines intraoral buccal release, lymphatic drainage, and myofascial release.
+- **Restorative Buccal Facial** — Signature 110-minute service, $250. Combines intraoral buccal release, lymphatic drainage, and myofascial release. (Consolidated rename — was previously "Restorative Facial + Buccal Release" / "Buccal Release"; both legacy names now point to this single service.)
 - **Soothe Lymphatic Drainage** — Clearing the fluid within the Hydrated Foundation to reduce inflammation and stagnant "puffiness."
-- **Structural Integration Facial** — A targeted session focusing on the facial "architecture" and fascial planes to restore symmetry and lift.
+- **Facial Architecture Ritual** — A targeted session focusing on the facial "architecture" and fascial planes to restore symmetry and lift. (Renamed from "Structural Integration Facial" to stay clearly within Master Esthetician scope; file renamed to `services/facial-architecture-ritual.html`. Old slug `/services/structural-integration-salt-lake-city` no longer exists.)
 
 #### Adjuvant Cosmetic Treatments
-- **Microneedling + Skin Boosters** — Targeting the Living Framework to stimulate collagen and elastin for refined surface texture and resilience.
+- **Microneedling + Skin Boosters** — Targeting the Living Framework to support collagen and elastin response for refined surface texture and resilience. The booster ingredient varies per client based on their skin (NOT a single branded "bone-marrow-derived growth factor" claim — describe as "skin boosters" rather than naming specific medical-derived sources).
 - **Korean Aqua Peel** — Advanced surface exfoliation and nutrient infusion.
 - **Back Facial** — Deep cleansing and structural relaxation for the posterior fascia.
 - **Red Light Therapy** — Cellular energy support for surface repair and collagen health.
@@ -50,10 +50,10 @@
 
 ### Signature Phrases & Positioning
 - **"From the inside out"** — Core differentiator. Buccal release works where external techniques can't reach.
-- **"Structural anti-aging"** — The primary service category. Not "anti-aging" alone — structural is the key word.
-- **"Works where conventional skincare can't reach"** — Used for the Restorative Facial positioning.
+- **"Regenerative Aesthetics"** / **"Regenerative Skincare"** — The primary service category framing. (Note: previously framed as "Structural anti-aging." SCOPE.md flags "anti-aging" as a guaranteed-result claim — use "anti-aging" sparingly with explicit context, never as a positioning hook. Prefer "regenerative" or "longevity.")
+- **"Works where conventional skincare can't reach"** — Used for the Restorative Buccal Facial positioning.
 - **"Aesthetic wellness"** — The category label for the business overall.
-- Mechelle's philosophy: *"The body knows how to heal. We create the conditions that allow it to."*
+- Mechelle's philosophy: *"The body knows how to find its own balance. We create the conditions that allow it to."* (Updated from "knows how to heal" — "heal" is SCOPE-flagged outcome verb.)
 - The Resonance metaphor: *"Conventional skincare polishes the instrument's wood; fascial release tunes the hidden strings, restoring the face's natural resonance and structural ease."*
 
 ### What Altru Radiance Is NOT
@@ -61,6 +61,24 @@
 - Not injectable-focused (no Botox, no fillers offered)
 - Not a day spa or relaxation-only concept
 - Not wellness woo — all claims grounded in anatomy and manual therapy evidence
+
+---
+
+## Compliance (SCOPE.md)
+
+The repo root contains `SCOPE.md` — the Utah Master Esthetician scope-of-practice authority for all content work. Every page edit must satisfy SCOPE.md. Key rules:
+
+- **The hard line (58-11a-302.18(1)(b)):** No service may be performed or advertised "for the treatment of medical, physical, or mental ailments."
+- **Lane = beautification.** Every sentence should sell beauty / appearance, never a condition fix. When in doubt: "does this sell beauty, or does it claim to fix a condition?" Only the first belongs on the site.
+- **FLAGGED phrasing patterns:** treat / heal / cure / diagnose / relieve / fix / resolve / detox; named medical conditions (TMJ, bruxism, hypertrophy, lymphedema, inflammation, post-surgical recovery, airway, sleep apnea, sinusitis); "anti-aging" as a guaranteed result; "medical-grade" / "clinical" / "therapeutic" used as health-claim modifiers.
+- **APPROVED phrasing patterns:** "supports the look and feel of X" / "a regenerative-inspired approach" / "hands-on fascia work" / "softens held tension" / "advanced facials" / "visible lift" / philosophy framing of the studio's approach.
+- **Gray-zone verbs** (object determines legality): `release`, `reduce`, `improve`, `boost`, `address` — fine on aesthetic objects ("release jaw tension", "reduce the appearance of fine lines"), flagged on medical objects ("release adhesions", "reduce inflammation").
+- **Approach C for nervous system language:** Keep general philosophy mentions ("the nervous system, fascia, and lymphatic system work together"); STRIP mechanism claims ("regulation", "activation", "downshifts to parasympathetic", "vagal pathway access").
+- **Defensive disclaimers are PROTECTIVE, not violations.** Articles that explicitly redirect medical concerns to medical providers (e.g. "I don't diagnose airway conditions — see a dentist or PT") satisfy SCOPE through editorial honesty. Don't strip them; their explicit denials of treatment are exactly what makes the surrounding content scope-compliant.
+- **R156-11a-612 disclosure** (chemical exfoliation, microneedling, microdermabrasion as "cosmetic, not medical purposes") is handled site-wide via `/policies#reviews` and the Medical Disclaimer section of the policies page. New service pages do NOT need inline per-page disclosures.
+- **Service-name consolidation in effect:** "Buccal Release" / "Restorative Facial" / "Restorative Facial + Buccal Release" all rename to **"Restorative Buccal Facial"** in display copy. "Structural Integration" renames to **"Facial Architecture Ritual"** (and the page lives at `/services/facial-architecture-ritual.html`).
+
+See `SCOPE.md` for full primary-source citations.
 
 ---
 
@@ -93,7 +111,7 @@
 - CTA at thread end: link to relevant service or Journal post
 
 ### SEO Priorities
-- Primary keyword targets: buccal release Murray Utah, fascia facial Murray Utah, non-invasive facial lift Utah, TMJ release Murray Utah, natural alternatives to Botox Utah, fascia-focused facial Utah, myofascial release for face Utah
+- Primary keyword targets: buccal release Murray Utah, Restorative Buccal Facial Murray Utah, fascia facial Murray Utah, non-invasive facial lift Utah, natural alternatives to injectables Utah, fascia-focused facial Utah, myofascial release facial Utah (TMJ-related keywords intentionally NOT served — the previously-targeted "TMJ release" search intent is now redirected to the appearance-focused "Why the Lower Face Reads Heavier" journal article)
 - All service pages and Journal posts include: location city+state, service name, and differentiator in title tag
 - Alt text format: `[service/technique]-[descriptor]-[location]-altru-radiance` (e.g., `buccal-massage-before-after-1-session-murray-utah-altru-radiance`)
 - Internal linking: Journal articles link to relevant service pages; service pages link to related Journal articles
@@ -123,15 +141,39 @@ When generating content across X, email, or any other channel, maintain the same
 
 ---
 
+## Live Google Reviews Widget
+
+Reviews on this site are rendered live from Google Places API via `/assets/js/reviews-widget.js`. Pages with widget integration:
+
+- `index.html` — carousel shape (`.reviews-carousel`)
+- `foundation-package.html` + `welcome-bundle.html` — row shape (`.reviews-row`)
+- `results.html` — testimonials-grid shape (`.testimonials-grid`)
+- `services/restorative-buccal-release.html` + `services/lymphatic-drainage-murray-utah.html` — sidebar shape (`.sidebar-block`)
+
+The widget queries `[data-altru-reviews]` mount points on DOMContentLoaded, fetches `/api/reviews?include=reviews` once, and replaces each mount's children with rendered review nodes. Hardcoded review HTML inside each mount stays as graceful-degradation fallback (renders if the API errors).
+
+**To add widget to a new page:**
+1. Mark the existing review container with `data-altru-reviews="<shape>"` attribute
+2. Add `<script src="/assets/js/reviews-widget.js" defer></script>` once near `</body>`
+3. Add "About these reviews →" link beneath the container pointing to `/policies#reviews`
+
+See `docs/superpowers/specs/2026-05-23-google-reviews-widget-design.md` for full design + per-shape render contract.
+
+**Implementation notes:**
+- Pass-through: reviews are displayed as Google returns them; the studio doesn't curate which ones surface. This is the compliance design — editorial distance via API instead of hand-curated quotes.
+- 24h edge cache; ~$0.66/month inside Google's $200 Maps free credit.
+- XSS-safe by construction: all DOM nodes built via `document.createElement` + `textContent`; never `.innerHTML`.
+
+---
+
 ## Key Anatomical Terms (Use Accurately)
 - **Buccinator** — flat cheek muscle, defines cheek hollows and midface contour
 - **Masseter** — primary chewing muscle; holds stress/tension; hypertrophy widens the jaw
 - **Medial & Lateral Pterygoids** — deep jaw muscles, only fully accessible intraorally; key for TMJ
-- **Fascia** — connective tissue network; fascial adhesions cause asymmetry and downward pull
+- **Fascia** — connective tissue network; held fascial tension contributes to asymmetry and downward pull (the term "fascial adhesions" is SCOPE-flagged — frame as "held tension" or "areas of restriction" instead)
 - **Intraoral** — inside the mouth (the defining access point of buccal release)
 - **Lymphatic drainage** — fluid movement; reduces puffiness, activates circulation
 - **Myofascial release** — manual technique targeting the fascia and underlying muscle
-- **Fascial Adhesions** — the "glue" that creates deep wrinkles and restricted movement
 - **Living Framework** — the internal web of collagen and elastin fibers (ECM) that supports the skin's surface
 - **Hydrated Foundation** — the fluid-filled environment (Ground Substance) within the fascia that provides plumpness
 - **Physical Signaling** — the clinical process (Mechanotransduction) of how cells respond to manual pressure
@@ -143,7 +185,7 @@ When generating content across X, email, or any other channel, maintain the same
 ## Content Don'ts
 - Don't promise permanent results — always frame as cumulative and maintained with sessions
 - Don't compare buccal release to surgery as "just as good" — position it as a different category
-- Don't use "anti-aging" alone — always pair with "structural" or qualify what's being addressed
+- Use "anti-aging" sparingly and only with explicit context — never as a guaranteed result. Prefer "regenerative" or "longevity" as positioning words. SCOPE.md flags unqualified anti-aging claims.
 - Don't use "toxin-free" or "chemical-free" — those are anti-science framings
 - Don't write in the third person about Mechelle — she is the author and voice of the brand
 - Don't describe results as "dramatic" — use "visible," "meaningful," "structural," or "progressive"
