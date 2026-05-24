@@ -1063,7 +1063,7 @@
     <p class="section-label">54 Five-Star Google Reviews &middot; Murray, Utah</p>
     <h2>What clients say<br><em>about the work.</em></h2>
   </div>
-  <div class="reviews-row" style="max-width:1100px;margin:0 auto;">
+  <div class="reviews-row" data-altru-reviews="row" style="max-width:1100px;margin:0 auto;">
     <div class="review-card">
       <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <div class="review-text">&ldquo;Mechelle flush a lot of lymphatic fluid out of my body and I feel so much better!!! Definitely go visit her!!&rdquo;</div>
@@ -1080,6 +1080,9 @@
       <div class="review-author">&mdash; Meganne Townsend &middot; Google Review</div>
     </div>
   </div>
+  <p class="reviews-policy-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,230,0.5);text-align:center;margin-top:1.5rem;max-width:1100px;margin-left:auto;margin-right:auto;">
+    <a href="/policies#reviews" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.25);padding-bottom:1px;">About these reviews &rarr;</a>
+  </p>
 </section>
 
 <!-- SECTION 9B: FAQ — AEO/Featured Snippet targeting -->
@@ -1621,6 +1624,8 @@ document.addEventListener('DOMContentLoaded', function() {
   mq.addEventListener('change', function (e) { if (e.matches) closeMenu(); });
 })();
 </script>
+
+<script src="/assets/js/reviews-widget.js" defer></script>
 
 </body>
 </html>
