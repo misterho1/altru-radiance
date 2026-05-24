@@ -108,15 +108,23 @@
   function renderCarousel(mount, reviews) {
     var track = mount.querySelector('.reviews-track');
     if (!track) return;
+    var total = reviews.length;
     var slides = reviews.map(function (rev, i) {
       var slide = el('div', i === 0 ? 'review-slide active' : 'review-slide');
       slide.setAttribute('data-index', String(i));
+      // A11y: each slide is a labeled group; only the active slide is exposed
+      // to assistive tech (rather than letting SRs read all 5 in succession).
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label', 'Review ' + (i + 1) + ' of ' + total);
+      slide.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
       slide.appendChild(el('div', 'review-stars', stars(rev.rating)));
       slide.appendChild(el('p', 'review-text', rev.text));
       var author = el('div', 'review-author');
       var line = el('div', 'review-author-line');
       line.appendChild(el('span', 'review-name', rev.author));
-      line.appendChild(el('span', 'review-detail', 'Google Review · ' + (rev.relativeTime || '')));
+      // Bug fix: drop the trailing " · " separator when relativeTime is empty.
+      line.appendChild(el('span', 'review-detail', 'Google Review' + (rev.relativeTime ? ' · ' + rev.relativeTime : '')));
       author.appendChild(line);
       slide.appendChild(author);
       return slide;
@@ -131,13 +139,21 @@
     var nextBtn = mount.querySelector('#reviewNext');
     if (!slides.length || !dotsContainer || !prevBtn || !nextBtn) return;
 
+    // A11y: declare the mount as a carousel region so assistive tech announces it
+    // appropriately. Only set aria-label if the HTML didn't already provide one.
+    if (!mount.getAttribute('role')) mount.setAttribute('role', 'region');
+    mount.setAttribute('aria-roledescription', 'carousel');
+    if (!mount.getAttribute('aria-label')) mount.setAttribute('aria-label', 'Customer reviews');
+
     // Build dots fresh (one per slide)
     var dots = [];
     while (dotsContainer.firstChild) dotsContainer.removeChild(dotsContainer.firstChild);
     for (var i = 0; i < slides.length; i++) {
       (function (idx) {
         var dot = el('button', idx === 0 ? 'review-dot active' : 'review-dot');
-        dot.setAttribute('aria-label', 'Go to review ' + (idx + 1));
+        dot.setAttribute('type', 'button');
+        dot.setAttribute('aria-label', 'Show review ' + (idx + 1) + ' of ' + slides.length);
+        if (idx === 0) dot.setAttribute('aria-current', 'true');
         dot.addEventListener('click', function () { showSlide(idx); });
         dotsContainer.appendChild(dot);
         dots.push(dot);
@@ -147,21 +163,32 @@
     var current = 0;
     function showSlide(i) {
       slides[current].classList.remove('active');
+      slides[current].setAttribute('aria-hidden', 'true');
       dots[current].classList.remove('active');
+      dots[current].removeAttribute('aria-current');
       current = (i + slides.length) % slides.length;
       slides[current].classList.add('active');
+      slides[current].setAttribute('aria-hidden', 'false');
       dots[current].classList.add('active');
+      dots[current].setAttribute('aria-current', 'true');
     }
 
     prevBtn.addEventListener('click', function () { showSlide(current - 1); });
     nextBtn.addEventListener('click', function () { showSlide(current + 1); });
 
-    // Auto-rotate every 7s, pause on hover. Honor prefers-reduced-motion.
+    // Auto-rotate every 7s. Pause on hover AND on keyboard focus inside the
+    // carousel (WCAG 2.2.2 — pausable auto-rotation). Honor prefers-reduced-motion.
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var interval = setInterval(function () { showSlide(current + 1); }, 7000);
-    mount.addEventListener('mouseenter', function () { clearInterval(interval); interval = null; });
-    mount.addEventListener('mouseleave', function () {
-      if (!interval) interval = setInterval(function () { showSlide(current + 1); }, 7000);
+    function pause() { if (interval) { clearInterval(interval); interval = null; } }
+    function resume() { if (!interval) interval = setInterval(function () { showSlide(current + 1); }, 7000); }
+    mount.addEventListener('mouseenter', pause);
+    mount.addEventListener('mouseleave', resume);
+    mount.addEventListener('focusin', pause);
+    // focusout fires as focus moves between children too; only resume if focus
+    // has actually left the mount entirely.
+    mount.addEventListener('focusout', function (e) {
+      if (!mount.contains(e.relatedTarget)) resume();
     });
   }
 
