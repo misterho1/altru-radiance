@@ -40,18 +40,26 @@ export async function onRequestGet({ env, request }) {
   const includeReviews = url.searchParams.get("include") === "reviews";
 
   const fields = "name,rating,user_ratings_total,reviews,url";
+  // The &v= param is a cache-version marker. Bump it whenever you need to
+  // invalidate the Cloudflare edge cache for the upstream Places fetch
+  // (e.g. after fixing billing or restricting the API key) — Cloudflare
+  // keys cache by URL, so any URL change forces a cache miss.
   const apiUrl =
     "https://maps.googleapis.com/maps/api/place/details/json" +
     `?place_id=${encodeURIComponent(placeId)}` +
     `&fields=${encodeURIComponent(fields)}` +
     `&language=en` +
+    `&v=2` +
     `&key=${encodeURIComponent(apiKey)}`;
 
   try {
-    const resp = await fetch(apiUrl, {
-      // Cache upstream Places fetch for 24h. Worst case: ~30 calls/month.
-      cf: { cacheTtl: 86400, cacheEverything: true },
-    });
+    // We fetch WITHOUT cf.cacheTtl first so we can inspect the response body
+    // before deciding whether to cache it. Google Places returns HTTP 200
+    // even on app-level errors (REQUEST_DENIED, OVER_QUERY_LIMIT, etc.) with
+    // the error in the JSON `status` field — if we cache blindly, we'd
+    // pin the error for 24h. Instead: fetch fresh, check status, then cache
+    // only OK responses via the response-side Cache-Control header.
+    const resp = await fetch(apiUrl);
 
     if (!resp.ok) {
       return new Response(
@@ -63,9 +71,11 @@ export async function onRequestGet({ env, request }) {
     const data = await resp.json();
 
     if (data.status !== "OK") {
+      // Short browser cache (60s) so retries don't hammer Google during an
+      // outage, but nowhere near the 24h success cache.
       return new Response(
         JSON.stringify({ error: "places_api_status", status: data.status, message: data.error_message || null }),
-        { status: 502, headers: { "Content-Type": "application/json" } },
+        { status: 502, headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=60" } },
       );
     }
 
