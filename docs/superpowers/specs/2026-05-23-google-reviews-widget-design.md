@@ -15,7 +15,7 @@ The fix is to render reviews live from Google. The studio no longer curates whic
 1. **Expand the existing `/api/reviews` Cloudflare Pages Function** to support `?include=reviews` query, returning up to 5 Google reviews with rating/count/placeUrl. Cache at the edge for 24h. Trust-bridge callers (rating + count only) continue to use unqueried `/api/reviews` and get the lighter payload.
 2. **Add a vanilla-JS widget** (`/assets/js/reviews-widget.js`, ~180 LOC, no dependencies) that finds `[data-altru-reviews]` mounts on the page, fetches the API once, and swaps each mount's children with rendered review nodes in the appropriate shape (carousel / row / testimonial-card / sidebar).
 3. **Modify 6 HTML pages** to mark their existing review containers as widget mounts. Hardcoded review HTML stays inside each mount as the fallback shown when the API is unavailable.
-4. **Add a "cosmetic, not medical" disclosure** line beneath each main-content mount as a belt-and-suspenders implied-claim defense.
+4. **Add a `#reviews` section to `policies.html`** as the canonical compliance surface for live-reviews. Beneath each reviews mount, add one small "About these reviews →" link pointing to `/policies#reviews`. One canonical legal-copy location; visitors who want the framing find it in one click.
 
 ## Non-goals
 
@@ -42,7 +42,8 @@ new:       /assets/js/reviews-widget.js
 
 change:    6 HTML pages: add data-altru-reviews attribute to existing
            review container; add <script src="/assets/js/reviews-widget.js"
-           defer> once; add one-line disclosure beneath main-content mounts.
+           defer> once; add "About these reviews →" link beneath each mount.
+           1 HTML page: policies.html gets new #reviews section (9).
 ```
 
 ## API contract
@@ -157,46 +158,71 @@ The widget NEVER sets `.innerHTML` from any string that contains user data. The 
 
 `replaceChildren` accepts DOM nodes (not strings) so the substitution can never round-trip through an HTML parser. Google review text containing characters like `<`, `>`, `&`, or `<script>` is treated as literal text by the DOM and rendered as escaped entities visually — not interpreted.
 
-## Compliance disclosure
+## Compliance link
 
-**Copy:** *Reviews reflect individual client experiences. All services at Altru Radiance are cosmetic, not medical.*
+**Principle:** legal-copy DRY. The site already has a canonical compliance surface at `/policies` linked from every page's footer (`.footer-legal-links`), with a Medical Disclaimer section at `#medical`. Instead of repeating compliance text across 4–6 review sections, we:
 
-**Placement:** Once per page, directly beneath the widget mount, on main-content placements only. Omitted on sidebar mounts (narrow column; cramped; the sidebar placement is supplementary, not the legal mechanism — Utah R156-11a-612 disclosure is a pre-service informed-consent rule, not a website rule).
+1. Add ONE new section to `policies.html`: **9. Reviews & Testimonials**
+2. Renumber existing sections: Medical Disclaimer 9 → 10, Liability 10 → 11, Contact 11 → 12
+3. Beneath each reviews mount (all 6, sidebar included), add ONE small contextual link: *"About these reviews →"* pointing to `/policies#reviews`
 
-| Page | Disclosure shown? |
-|---|---|
-| `index.html` | yes — beneath `.reviews-footer` |
-| `foundation-package.html` | yes — beneath `.reviews-row` |
-| `welcome-bundle.html` | yes — beneath `.reviews-row` |
-| `results.html` | yes — beneath `.testimonial-card` |
-| `services/restorative-buccal-release.html` | no — sidebar mount |
-| `services/lymphatic-drainage-murray-utah.html` | no — sidebar mount |
+This means: ONE place to update if compliance language ever changes; ONE small surface signal per page connecting reviews to the legal context; zero duplicated paragraphs.
+
+### New section copy for `policies.html`
+
+```html
+<h2 id="reviews">9. Reviews &amp; <em>Testimonials</em></h2>
+<p>Reviews displayed on this site are fetched live from Altru Radiance's Google Business Profile via the Google Places API. They are not curated, selected, or edited &mdash; the most recent and most relevant reviews are surfaced automatically by Google's ranking.</p>
+<p>Reviews reflect individual client experiences and are not promises of results. All services at Altru Radiance are aesthetic and wellness services, <strong>not medical treatments</strong>. See <a href="#medical">Medical Disclaimer</a> for the full scope-of-practice context.</p>
+```
+
+Insertion point: between Section 8 (Studio Protocols) and the existing Medical Disclaimer section. The TOC sidebar (`policies.html` L241–245) gets one new `<li>` and the three following list items have their numbers bumped.
+
+### Per-mount link
+
+| Page | Mount | Link shown? |
+|---|---|---|
+| `index.html` | `.reviews-carousel` | yes — beneath `.reviews-footer`, inline-aligned with the Google badge |
+| `foundation-package.html` | `.reviews-row` | yes — beneath row |
+| `welcome-bundle.html` | `.reviews-row` | yes — beneath row |
+| `results.html` | `.testimonial-card` | yes — beneath card |
+| `services/restorative-buccal-release.html` | sidebar block | yes — fits in sidebar column (single link, not a paragraph) |
+| `services/lymphatic-drainage-murray-utah.html` | sidebar block | yes — fits in sidebar column |
 
 **Markup:**
 ```html
-<p class="reviews-disclosure" style="font-size:0.78rem;color:var(--mist);font-style:italic;text-align:center;margin-top:1.2rem;max-width:680px;margin-left:auto;margin-right:auto;">
-  Reviews reflect individual client experiences. All services at Altru Radiance are cosmetic, not medical.
+<p class="reviews-policy-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,230,0.5);text-align:center;margin-top:0.85rem;">
+  <a href="/policies#reviews" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.25);padding-bottom:1px;">About these reviews →</a>
 </p>
 ```
 
-Inline style chosen over a new CSS class — single use, no theme tokens to drift from.
+Mist-toned, small-caps, single line. Inherits the design system's `.eyebrow` aesthetic (see `policies.html` L53) so it reads as a quiet navigational cue rather than a legal warning. Inline-styled for the same reason as before — single use, no theme drift.
+
+### Why not a paragraph-level disclaimer on every page
+
+Considered and rejected. Repeating the same compliance copy across 4 main-content mounts is (a) visually heavy, (b) creates a stale-duplicate hazard if the language ever needs updating, and (c) implicitly signals weakness in the editorial-distance argument — if live-rendered reviews need a paragraph of legal context every place they appear, then we don't really believe rendering them live changes anything. The canonical-surface + contextual-link pattern is what the site's own footer + policies architecture is already built for.
 
 ## Per-page changes
 
-| File | Container | Shape | Disclosure | Notes |
+| File | Container | Shape | Policy link | Notes |
 |---|---|---|---|---|
 | `index.html` | `.reviews-carousel` (L1450) | `carousel` | yes | Hardcoded carousel cycler script is removed; widget owns cycling |
 | `foundation-package.html` | `.reviews-row` (L1051) | `row` | yes | 3 hardcoded cards stay as fallback |
 | `welcome-bundle.html` | `.reviews-row` (L1066) | `row` | yes | 3 hardcoded cards stay as fallback |
 | `results.html` | `.testimonial-card` (L1452) | `testimonial-card` | yes | Service tag dropped post-swap |
-| `services/restorative-buccal-release.html` | sidebar block (L532) | `sidebar` | no | Single quote shown |
-| `services/lymphatic-drainage-murray-utah.html` | sidebar block (L531) | `sidebar` | no | Single quote shown |
+| `services/restorative-buccal-release.html` | sidebar block (L532) | `sidebar` | yes | Single quote shown |
+| `services/lymphatic-drainage-murray-utah.html` | sidebar block (L531) | `sidebar` | yes | Single quote shown |
+| `policies.html` | — | — | — | NEW: section 9 added (Reviews & Testimonials); existing 9–11 renumbered to 10–12 |
 | `404.html` | — | — | — | NOT TOUCHED |
 
-**Three additions per affected page:**
+**Three additions per affected page (the 6 with mounts):**
 1. `data-altru-reviews="<shape>"` attribute on the existing container
 2. `<script src="/assets/js/reviews-widget.js" defer></script>` once near `</body>`
-3. Disclosure `<p>` line beneath the container (skipped on sidebar pages)
+3. "About these reviews →" link beneath the container
+
+**Two changes to `policies.html`:**
+1. Insert new `<h2 id="reviews">9. Reviews &amp; Testimonials</h2>` section before existing Medical Disclaimer (using copy from "Compliance link" section above)
+2. Update TOC sidebar list (L241–245): insert new `<li>` for `#reviews`, renumber existing 9→10, 10→11, 11→12
 
 **Function changes (`functions/api/reviews.js`):**
 1. Read `?include=reviews` from `request.url` query; conditionally include `reviews` in response payload
@@ -242,7 +268,9 @@ No test framework in this repo (static HTML, no Node/Jest). Verification is manu
 4. Confirm reviews on page differ from the committed hardcoded fallback (proves the swap happened)
 5. Test fallback: temporarily clear `GOOGLE_PLACES_API_KEY` in Cloudflare Pages env → confirm hardcoded reviews still render + console warns
 6. Lighthouse Performance ≥90 on `index.html` (widget is ~6KB minified, deferred — should not regress)
-7. Verify disclosure line renders on all 4 main-content pages, absent on both sidebar pages
+7. Verify "About these reviews →" link renders on all 6 mount pages and links to `/policies#reviews`
+8. Click the link on any page — confirm `policies.html` loads scrolled to the new Reviews & Testimonials section (anchor scroll works)
+9. Verify policies.html TOC sidebar shows updated numbering (1–12, with Reviews as 9)
 
 The task's specific verification requirement — "verify with a real fetch on staging/production that 5 reviews load" — is satisfied by step 2 + step 4 above.
 
