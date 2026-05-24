@@ -13,7 +13,7 @@ The fix is to render reviews live from Google. The studio no longer curates whic
 ## Solution overview
 
 1. **Expand the existing `/api/reviews` Cloudflare Pages Function** to support `?include=reviews` query, returning up to 5 Google reviews with rating/count/placeUrl. Cache at the edge for 24h. Trust-bridge callers (rating + count only) continue to use unqueried `/api/reviews` and get the lighter payload.
-2. **Add a vanilla-JS widget** (`/assets/js/reviews-widget.js`, ~180 LOC, no dependencies) that finds `[data-altru-reviews]` mounts on the page, fetches the API once, and swaps each mount's children with rendered review nodes in the appropriate shape (carousel / row / testimonial-card / sidebar).
+2. **Add a vanilla-JS widget** (`/assets/js/reviews-widget.js`, ~180 LOC, no dependencies) that finds `[data-altru-reviews]` mounts on the page, fetches the API once, and swaps each mount's children with rendered review nodes in the appropriate shape (carousel / row / testimonial-card / testimonials-grid / sidebar).
 3. **Modify 6 HTML pages** to mark their existing review containers as widget mounts. Hardcoded review HTML stays inside each mount as the fallback shown when the API is unavailable.
 4. **Add a `#reviews` section to `policies.html`** as the canonical compliance surface for live-reviews. Beneath each reviews mount, add one small "About these reviews →" link pointing to `/policies#reviews`. One canonical legal-copy location; visitors who want the framing find it in one click.
 
@@ -110,9 +110,14 @@ Each existing review container on each affected page gets a `data-altru-reviews=
   <!-- existing 3 hardcoded review-cards stay here as fallback -->
 </div>
 
-<!-- testimonial-card shape (results.html) -->
+<!-- testimonial-card shape (single card — retained in widget, no current consumer) -->
 <div class="testimonial-card" data-altru-reviews="testimonial-card">
   <!-- existing hardcoded testimonial stays here as fallback -->
+</div>
+
+<!-- testimonials-grid shape (results.html — 3 testimonial-cards in a grid) -->
+<div class="testimonials-grid" data-altru-reviews="testimonials-grid">
+  <!-- existing 3 hardcoded .testimonial-card divs stay here as fallback -->
 </div>
 
 <!-- sidebar shape (service pages) -->
@@ -131,18 +136,21 @@ Each existing review container on each affected page gets a `data-altru-reviews=
 
 ### Render functions
 
-All four render functions copy the existing markup from each consuming page verbatim — so visual styling stays identical post-swap. Each function takes the reviews array and returns an array of constructed DOM `Element` nodes (built via `document.createElement` + `textContent` + `appendChild`).
+All five render functions copy the existing markup from each consuming page verbatim — so visual styling stays identical post-swap. Each function takes the reviews array and returns an array of constructed DOM `Element` nodes (built via `document.createElement` + `textContent` + `appendChild`).
 
 | Shape | Render function | Source of markup template |
 |---|---|---|
 | `carousel` | `renderCarousel(reviews) → Node[]` | Mirrors `index.html` L1450–1556 (`.reviews-track > .review-slide` × N, `.reviews-nav` with prev/next/dots) |
 | `row` | `renderRow(reviews) → Node[]` | Mirrors `foundation-package.html` L1051–1067 (`.review-card` × 3) |
-| `testimonial-card` | `renderTestimonialCard(reviews) → Node[]` | Mirrors `results.html` L1452–1457 (first review only; `.review-stars`, `.review-quote`, `.review-author`, `.review-source`) |
+| `testimonial-card` | `renderTestimonialCard(reviews) → Node[]` | Single `.testimonial-card` block (first review only; `.review-stars`, `.review-quote`, `.review-author`, `.review-source`). No current consumer — retained for forward compat. |
+| `testimonials-grid` | `renderTestimonialsGrid(reviews) → Node[]` | Mirrors `results.html` (3 `.testimonial-card` divs with `.review-stars`/`.review-quote`/`.review-author`/`.review-source`) |
 | `sidebar` | `renderSidebar(reviews) → Node[]` | Mirrors service-page `.sidebar-review` blocks (first review only; `.sidebar-label`, `.sidebar-stars`, `.sidebar-review`, `.sidebar-review-author`) |
+
+**Shape drift log:** The original spec described 4 shapes (carousel / row / testimonial-card / sidebar). `testimonials-grid` was added in commit `03cad1c` after discovering `results.html` had 3 `.testimonial-card` divs inside a `.testimonials-grid` wrapper — not the single card the spec assumed. The single-card `testimonial-card` shape is retained in the widget for forward compatibility (no current consumer). 5 shapes ship in production.
 
 **Star rendering:** `'★'.repeat(rating) + '☆'.repeat(5-rating)` — same heuristic the existing trust-bridge IIFE uses.
 
-**Service tag in testimonial-card:** The current hardcoded version on `results.html` includes a `.review-service-tag` ("Restorative Facial + Buccal Release"). Live Google reviews don't carry service-attribution metadata, so the tag is dropped from the rendered output. The visual block is one element shorter post-swap on this page only.
+**Service tag in testimonial-card / testimonials-grid:** Hardcoded versions on `results.html` include a `.review-service-tag` ("Restorative Facial + Buccal Release"). Live Google reviews have no service-attribution metadata, so the tag is dropped from the rendered output on both shapes. The visual block is one element shorter post-swap.
 
 **Carousel cycling logic:** The existing inline cycler script on `index.html` needs to be either (a) extracted into the widget so it re-binds after the swap, or (b) re-triggered post-swap. Approach (a) — extract into widget. The widget owns prev/next/dots wiring for any carousel-shape mount.
 
@@ -185,7 +193,7 @@ Insertion point: between Section 8 (Studio Protocols) and the existing Medical D
 | `index.html` | `.reviews-carousel` | yes — beneath `.reviews-footer`, inline-aligned with the Google badge |
 | `foundation-package.html` | `.reviews-row` | yes — beneath row |
 | `welcome-bundle.html` | `.reviews-row` | yes — beneath row |
-| `results.html` | `.testimonial-card` | yes — beneath card |
+| `results.html` | `.testimonials-grid` | yes — beneath grid |
 | `services/restorative-buccal-release.html` | sidebar block | yes — fits in sidebar column (single link, not a paragraph) |
 | `services/lymphatic-drainage-murray-utah.html` | sidebar block | yes — fits in sidebar column |
 
@@ -209,10 +217,10 @@ Considered and rejected. Repeating the same compliance copy across 4 main-conten
 | `index.html` | `.reviews-carousel` (L1450) | `carousel` | yes | Hardcoded carousel cycler script is removed; widget owns cycling |
 | `foundation-package.html` | `.reviews-row` (L1051) | `row` | yes | 3 hardcoded cards stay as fallback |
 | `welcome-bundle.html` | `.reviews-row` (L1066) | `row` | yes | 3 hardcoded cards stay as fallback |
-| `results.html` | `.testimonial-card` (L1452) | `testimonial-card` | yes | Service tag dropped post-swap |
+| `results.html` | `.testimonials-grid` (L1451) | `testimonials-grid` | yes | Wraps 3 hardcoded `.testimonial-card` divs as fallback; service tag dropped post-swap |
 | `services/restorative-buccal-release.html` | sidebar block (L532) | `sidebar` | yes | Single quote shown |
 | `services/lymphatic-drainage-murray-utah.html` | sidebar block (L531) | `sidebar` | yes | Single quote shown |
-| `policies.html` | — | — | — | NEW: section 9 added (Reviews & Testimonials); existing 9–11 renumbered to 10–12 |
+| `policies.html` | — | — | — | NEW: section 9 added (Reviews & Testimonials); existing sections renumbered to make room (Medical 9→10, Liability 10→11, Membership 11→12, Contact 12→13). Also fixed pre-existing TOC gap — added missing Membership entry. |
 | `404.html` | — | — | — | NOT TOUCHED |
 
 **Three additions per affected page (the 6 with mounts):**
@@ -222,7 +230,7 @@ Considered and rejected. Repeating the same compliance copy across 4 main-conten
 
 **Two changes to `policies.html`:**
 1. Insert new `<h2 id="reviews">9. Reviews &amp; Testimonials</h2>` section before existing Medical Disclaimer (using copy from "Compliance link" section above)
-2. Update TOC sidebar list (L241–245): insert new `<li>` for `#reviews`, renumber existing 9→10, 10→11, 11→12
+2. Update TOC sidebar list (L235–245): insert new `<li>` for `#reviews`; renumber existing entries 9→10, 10→11, 12→13; add previously-missing `<li>` for `#membership` (12 — pre-existing TOC gap fix)
 
 **Function changes (`functions/api/reviews.js`):**
 1. Read `?include=reviews` from `request.url` query; conditionally include `reviews` in response payload
