@@ -363,14 +363,32 @@
       flex-shrink: 0;
     }
 
-    /* CTA row on mobile */
+    /* CTA row on mobile — close each program's "card" with a bottom border */
     .programs-compare .row-cta td {
       border-top: 1px solid rgba(201,168,76,0.16);
-      border-bottom: none;
-      padding: 1.25rem 0 0.5rem;
+      border-bottom: 1px solid rgba(201,168,76,0.16);
+      padding: 1.25rem 0;
       margin-top: 0.5rem;
     }
+    /* Featured card gets a heavier closing accent to match its top stripe */
+    .programs-compare .row-cta td.is-featured {
+      border-bottom-color: rgba(201,168,76,0.42);
+    }
     .programs-compare .row-cta td::before { display: none; }
+
+    /* "You save" row: restore prominence as a key-value pair on mobile.
+       The mobile cell rule shrank font to 0.9rem; bump back up so the
+       italic Cormorant gold-light value carries the same weight it does
+       on desktop. */
+    .programs-compare .row-save td {
+      font-size: 1.05rem;
+    }
+    .programs-compare .row-save td::before {
+      /* Keep the label compact even though the value is larger */
+      font-family: 'Jost', sans-serif;
+      font-style: normal;
+      font-size: 0.58rem;
+    }
 
     .price-value { font-size: 1.35rem; }
   }
@@ -645,7 +663,7 @@
           </th>
           <th scope="col" class="col-program col-foundation is-featured">
             <a href="/foundation-package" class="program-headline" aria-label="Learn about the Foundation Package">
-              <span class="program-stage">Most Popular</span>
+              <span class="program-stage">Where Most Begin</span>
               <span class="program-title">Foundation Package</span>
             </a>
           </th>
@@ -756,9 +774,9 @@
         <!-- ─── Action ─── -->
         <tr class="row-cta">
           <th scope="row"><span class="sr-only">Learn more</span></th>
-          <td class="col-welcome"><a href="/welcome-bundle">Welcome Bundle &rarr;</a></td>
-          <td class="col-foundation is-featured"><a href="/foundation-package">Foundation Package &rarr;</a></td>
-          <td class="col-membership"><a href="/membership">Membership &rarr;</a></td>
+          <td class="col-welcome"><a href="/welcome-bundle">Begin Welcome Bundle &rarr;</a></td>
+          <td class="col-foundation is-featured"><a href="/foundation-package">Commit to Foundation &rarr;</a></td>
+          <td class="col-membership"><a href="/membership">Continue with Membership &rarr;</a></td>
         </tr>
 
       </tbody>
