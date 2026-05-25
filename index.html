@@ -589,8 +589,6 @@
     .stars-row { font-size: 0.6rem; }
     .ghost-btn { width: 100%; text-align: center; padding: 0.75rem 1rem; min-height: 48px; display: flex; align-items: center; justify-content: center; }
 
-    .annotation { display: none; }
-
     /* ── Mobile body-text floor: 16 px (1 rem) ─────────────────────
        All selectors below were sub-16px on mobile. Non-body labels
        (eyebrows, badges, meta, legal) intentionally stay small.     */
@@ -600,16 +598,6 @@
     .journal-excerpt     { font-size: 1rem; }
     .cta-sub             { font-size: 1rem; }
   }
-
-  /* ─── ANNOTATION LABELS (mockup only — hidden at all viewports) ─── */
-  .annotation {
-    display: none;
-    position: absolute; font-size: 0.52rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: rgba(201,168,76,0.55);
-    border-left: 1px solid rgba(201,168,76,0.3); padding-left: 0.5rem;
-    right: -170px; white-space: nowrap;
-  }
-  .annotated { position: relative; }
 
   /* ─── BELOW-FOLD SHARED ──────────────────────────────────────── */
   .eyebrow {
@@ -1380,27 +1368,23 @@
 
   <div class="hero-inner">
 
-    <p class="hero-eyebrow annotated">
+    <p class="hero-eyebrow">
       Murray, Utah <span>•</span> Regenerative Esthetics
-      <span class="annotation">← Local SEO anchor · schema location</span>
     </p>
 
-    <h1 class="hero-h1 annotated">
+    <h1 class="hero-h1">
       Regenerative Fascia Therapy:<br>
       <em>Sculpting the Body, Illuminating the Face.</em>
-      <span class="annotation" style="top:50%;">← H1 · primary keyword target</span>
     </h1>
 
-    <p class="hero-sub annotated">
+    <p class="hero-sub">
       Where the Restorative Buccal Facial, manual lymphatic drainage, and the Facial Architecture Ritual meet. Salt Lake Valley's regenerative fascia studio.
-      <span class="annotation">← Secondary keywords + region</span>
     </p>
 
-    <div class="trust-bar annotated">
+    <div class="trust-bar">
       <div class="trust-pill"><span class="check">✓</span> Visible Lift · Lymphatic Support</div>
       <div class="trust-pill"><span class="check">✓</span> Regenerative Fascia Sculpting</div>
       <div class="trust-pill"><span class="check">✓</span> Fascia-Informed Body & Face Sculpting</div>
-      <span class="annotation" style="top:50%;">← Objection handling above the fold</span>
     </div>
 
     <div class="hero-cta-row" aria-label="Primary actions">
@@ -1575,7 +1559,7 @@
 <section class="hero-showcase">
   <div class="hero-showcase-inner">
 
-    <div class="carousel-section annotated">
+    <div class="carousel-section">
 
       <p class="carousel-headline">
         One signature service. Every transformation is different.
@@ -1682,13 +1666,12 @@
         <button class="carousel-arrow" id="nextBtn" aria-label="Next slide">→</button>
       </div>
 
-    </div><div class="hero-proof annotated">
+    </div><div class="hero-proof">
       <div class="stars-row">
         <span class="stars">★★★★★</span>
         5-star rated in Murray, Utah
       </div>
       <a href="/results" class="ghost-btn">See Results</a>
-      <span class="annotation" style="top:50%;">← Safety net · captures undecided visitors</span>
     </div>
 
   </div></section>
