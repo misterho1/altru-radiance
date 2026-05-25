@@ -601,16 +601,19 @@
   .faq-item.is-open .faq-chevron::after { transform: rotate(-135deg) translateY(-1px); }
 
   .faq-answer {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
     padding: 0 1.5rem;
   }
   .faq-answer p {
+    overflow: hidden;
+    min-height: 0;
     font-size: 0.84rem; line-height: 1.85;
     color: rgba(244, 240, 230, 0.65);
     padding-bottom: 1.4rem;
   }
-  .faq-item.is-open .faq-answer { max-height: 400px; }
+  .faq-item.is-open .faq-answer { grid-template-rows: 1fr; }
 
   /* ─── FOOTER ────────────────────────────────────────────────── */
   footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 60px 0 32px; }

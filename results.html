@@ -784,10 +784,15 @@ footer {
 .grid-toggle-arrow { transition: transform 0.25s; display: inline-block; }
 .grid-toggle-btn.open .grid-toggle-arrow { transform: rotate(180deg); }
 .results-grid-body {
-  overflow: hidden; max-height: 0;
-  transition: max-height 0.45s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s ease;
 }
-.results-grid-body.open { max-height: 8000px; }
+.results-grid-body > .results-grid {
+  overflow: hidden;
+  min-height: 0;
+}
+.results-grid-body.open { grid-template-rows: 1fr; }
 .results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
