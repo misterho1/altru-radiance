@@ -1257,7 +1257,9 @@
   if(next) next.addEventListener('click', function(){ clearInterval(autoTimer); goTo(cur+1); startAuto(); });
   dots.forEach(function(d){ d.addEventListener('click', function(){ clearInterval(autoTimer); goTo(+d.dataset.index); startAuto(); }); });
 
-  function startAuto(){ autoTimer = setInterval(function(){ goTo(cur+1); }, 12000); }
+  /* Auto-rotation disabled. The drag-to-see-the-change interaction IS the
+     proof; auto-advance interrupted dwell time. Dots and arrows remain. */
+  function startAuto(){ /* no-op */ }
 
   setSizes();
   var rTimer;
