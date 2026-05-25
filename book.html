@@ -420,6 +420,58 @@
     position: relative;
     min-height: 720px;
   }
+  /* Loading state: visible until iframe fires onload. Also acts as the
+     offline fallback if Square is unreachable — the phone number stays
+     readable underneath even when the iframe never resolves. */
+  .embed-loading-state {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: var(--black);
+    z-index: 1;
+    transition: opacity 0.45s ease, visibility 0.45s ease;
+    pointer-events: none;
+    text-align: center;
+  }
+  .embed-wrap.is-loaded .embed-loading-state {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .embed-loading-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: rgba(244, 240, 230, 0.7);
+    letter-spacing: 0.02em;
+  }
+  .embed-loading-fallback {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244, 240, 230, 0.5);
+  }
+  .embed-loading-fallback a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+    padding-bottom: 1px;
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .embed-loading-fallback a:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold-light);
+  }
+  /* When prefers-reduced-motion is on, hide the transition entirely */
+  @media (prefers-reduced-motion: reduce) {
+    .embed-loading-state { transition: none; }
+  }
   .embed-wrap iframe {
     display: block;
     width: 100%;
@@ -593,7 +645,7 @@
       <span class="intake-marker">First visit?</span>
       <div class="intake-body">
         <h2 id="intake-heading" class="intake-heading">Complete your <em>Aesthetic Evaluation</em></h2>
-        <p class="intake-copy">Takes about 5 minutes. Helps me prepare for your session and tailor the work to your skin. Returning clients can skip this.</p>
+        <p class="intake-copy">Reserve a session below first, then take 5 minutes to fill this out before your visit. It helps me prepare and tailor the work to your skin. Returning clients can skip.</p>
       </div>
       <a href="https://app.carepatron.com/Forms/qWAKKO7HsoetkezXK" target="_blank" rel="noopener" class="intake-cta">Begin Intake &rarr;</a>
     </div>
@@ -892,12 +944,17 @@
     </div>
   </div>
   <div class="container">
-    <div class="embed-wrap">
+    <div class="embed-wrap" id="square-embed-wrap">
+      <div class="embed-loading-state" aria-hidden="true">
+        <div class="embed-loading-text">Booking with Square Appointments&hellip;</div>
+        <div class="embed-loading-fallback">If booking does not load, call <a href="tel:+18016608933">(801) 660-8933</a>.</div>
+      </div>
       <iframe
         id="square-iframe"
         src="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start"
         title="Book an appointment at Altru Radiance"
         loading="lazy"
+        onload="document.getElementById('square-embed-wrap').classList.add('is-loaded')"
         allowfullscreen></iframe>
     </div>
     <p class="embed-policy-note">
