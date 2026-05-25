@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="/assets/logoFinal.png">
 <meta name="theme-color" content="#06100a">
 <title>Reserve a Session · Altru Radiance · Murray, UT</title>
-<meta name="description" content="Book your Restorative Buccal Facial or lymphatic drainage session in minutes. Start your journey toward regenerative skin and symmetry today.">
+<meta name="description" content="Choose a single session or one of two new-client packages. Restorative Buccal Facial, Soothe Lymphatic Drainage, Procell Microchanneling, and more, by Licensed Master Esthetician Mechelle in Murray, Utah.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://altruradiance.com/book">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,26 +17,12 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/base.css">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  
-
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--black);
-    color: var(--cream);
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* ─── NAV ──────────────────────────────────────────────────────── */
+  /* ── NAV ───────────────────────────────────────────────────────── */
   nav {
-    position: fixed;
-    top: 0; width: 100%; z-index: 900;
-    padding: 0 3rem;
-    height: 68px;
+    position: fixed; top: 0; width: 100%; z-index: 900;
+    padding: 0 3rem; height: 68px;
     display: flex; justify-content: space-between; align-items: center;
     background: rgba(6,16,10,0.97);
     border-bottom: 1px solid rgba(201,168,76,0.12);
@@ -53,20 +39,17 @@
   .nav-cta { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; white-space: nowrap; flex-shrink: 0; }
   .nav-cta:hover { background: var(--gold-light); }
 
-  /* Hamburger */
   .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
   .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
   .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .mobile-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem; border-top: 1px solid rgba(201,168,76,0.12); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none; }
+  .mobile-menu { position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: rgba(6,16,10,0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 800; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem; border-top: 1px solid rgba(201,168,76,0.12); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; pointer-events: none; }
   .mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
   .mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
   .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: rgba(244,240,230,0.85); text-decoration: none; transition: color 0.2s; }
   .mobile-menu-links a:hover { color: var(--gold-light); }
-  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; transition: background 0.3s; min-height: 48px; display: flex; align-items: center; }
-  .mobile-menu-cta:hover { background: var(--gold-light); }
-
+  .mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.85rem 3rem; text-decoration: none; min-height: 48px; display: flex; align-items: center; }
   @media (max-width: 640px) {
     nav { padding: 0 1rem; height: 60px; }
     .nav-links { display: none; }
@@ -75,34 +58,33 @@
     .nav-hamburger { display: flex; }
   }
 
-  /* ─── SHARED ────────────────────────────────────────────────────── */
+  /* ── SHARED ────────────────────────────────────────────────────── */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  .container-narrow { max-width: 920px; margin: 0 auto; padding: 0 3rem; }
+  @media (max-width: 640px) {
+    .container, .container-narrow { padding: 0 1.25rem; }
+  }
+
   .eyebrow { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 0.75rem; display: block; }
   .section-heading { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; color: var(--cream); }
   .section-heading em { font-style: italic; color: var(--gold-light); }
   .gold-rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; margin: 1.25rem auto; }
-  .gold-rule.left { margin-left: 0; }
+
   section { width: 100%; padding: 90px 0; }
-  .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+  @media (max-width: 640px) { section { padding: 64px 0; } }
 
-  @media (max-width: 640px) {
-    section { padding: 64px 0; }
-    .container { padding: 0 1.25rem; }
-  }
-
-  /* ─── PAGE HEADER ───────────────────────────────────────────────── */
+  /* ── PAGE HEADER ───────────────────────────────────────────────── */
   .page-header {
-    padding: 140px 0 72px;
+    padding: 140px 0 64px;
     background:
       linear-gradient(to bottom, rgba(6,16,10,0.6) 0%, rgba(10,24,16,0.4) 50%, rgba(6,16,10,0.95) 100%),
       radial-gradient(ellipse at 70% 30%, #1e3d28 0%, #0d2015 50%, #06100a 100%);
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     border-bottom: 1px solid rgba(201,168,76,0.1);
   }
   .page-header::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
     opacity: 0.4; pointer-events: none;
   }
@@ -110,130 +92,385 @@
   .page-header-inner { position: relative; z-index: 1; }
   .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0.01em; }
   .page-header h1 em { font-style: italic; color: var(--gold-light); }
-  .page-header-sub { font-size: clamp(0.78rem, 1.6vw, 0.9rem); letter-spacing: 0.08em; color: rgba(244, 240, 230, 0.65); line-height: 1.7; max-width: 520px; margin: 0 auto; }
+  .page-header-sub { font-size: clamp(0.82rem, 1.6vw, 0.95rem); letter-spacing: 0.04em; color: rgba(244, 240, 230, 0.7); line-height: 1.75; max-width: 580px; margin: 0 auto; }
+  @media (max-width: 640px) { .page-header { padding: 110px 0 48px; } }
 
-  /* ─── PREP NOTES SECTION ────────────────────────────────────────── */
-  .prep-section { background: var(--deep); }
-  .prep-header { text-align: center; margin-bottom: 3.5rem; }
-  .prep-header .section-heading { font-size: clamp(1.8rem, 3vw, 2.6rem); }
-
-  .prep-grid {
+  /* ── FIRST-VISIT INTAKE CALLOUT ────────────────────────────────── */
+  .intake-section {
+    background: var(--deep);
+    padding: 56px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .intake-panel {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: auto 1fr auto;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(201,168,76,0.22);
+    background: rgba(6,16,10,0.45);
+  }
+  .intake-marker {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gold);
+    align-self: start;
+    padding-top: 0.25rem;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .intake-body { display: flex; flex-direction: column; gap: 0.55rem; }
+  .intake-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--cream);
+  }
+  .intake-heading em { font-style: italic; color: var(--gold-light); }
+  .intake-copy {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: rgba(244, 240, 230, 0.72);
+    max-width: 56ch;
+  }
+  .intake-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.95rem 1.8rem;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    min-height: 48px; white-space: nowrap;
+  }
+  .intake-cta:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); color: var(--gold-light); }
+  @media (max-width: 760px) {
+    .intake-panel { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.5rem; text-align: left; }
+    .intake-marker { padding-top: 0; }
+    .intake-cta { width: 100%; }
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     STUDIO MENU — the page's primary affordance.
+     One continuous grid; subhead rows interleave with menu rows.
+     The 1.5px gridline rule applies across the whole menu.
+  ══════════════════════════════════════════════════════════════ */
+  .menu-section { background: var(--black); padding-top: 90px; padding-bottom: 90px; }
+  .menu-header { text-align: center; margin-bottom: 3rem; }
+  .menu-header .section-heading { font-size: clamp(1.9rem, 3vw, 2.6rem); }
+  .menu-header-sub {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(244, 240, 230, 0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+  }
+
+  .studio-menu {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1.5px;
     background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.08);
-    margin-bottom: 0;
+    border: 1px solid rgba(201,168,76,0.12);
   }
-  @media (max-width: 900px) { .prep-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .prep-grid { grid-template-columns: 1fr; } }
-
-  .prep-card {
+  .menu-subhead {
     background: var(--black);
-    padding: 2rem;
-    cursor: pointer;
-    position: relative;
-    transition: background 0.3s;
-    border-bottom: 2px solid transparent;
-    transition: background 0.3s, border-color 0.3s;
+    padding: 1.25rem 1.75rem 0.85rem;
+    display: flex; align-items: baseline; gap: 0.85rem;
+    border-bottom: 1px solid rgba(201,168,76,0.18);
   }
-  .prep-card:hover { background: var(--deep); }
-  .prep-card.active { background: var(--deep); border-bottom-color: var(--gold); }
-
-  .prep-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.85rem; }
-  .prep-service-badge { font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 3px 8px; border-radius: 2px; display: inline-block; width: fit-content; }
-  .prep-toggle-icon { color: rgba(201,168,76,0.4); font-size: 1rem; line-height: 1; transition: transform 0.3s, color 0.3s; flex-shrink: 0; margin-left: 1rem; margin-top: 2px; }
-  .prep-card.active .prep-toggle-icon { transform: rotate(45deg); color: var(--gold); }
-
-  .prep-service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 0.5rem; }
-  .prep-service-meta { font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); }
-
-  .prep-notes {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
+  .menu-subhead-label {
+    font-size: 0.55rem; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
   }
-  .prep-card.active .prep-notes { max-height: 800px; opacity: 1; }
-
-  .prep-notes-inner {
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(201,168,76,0.1);
-    margin-top: 1.25rem;
-  }
-  .prep-notes-label { font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; display: block; }
-  .prep-notes ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .prep-notes ul li { font-size: 0.82rem; line-height: 1.65; color: rgba(244,240,230,0.65); padding-left: 1.1rem; position: relative; }
-  .prep-notes ul li::before { content: '—'; position: absolute; left: 0; color: rgba(201,168,76,0.4); font-size: 0.7rem; }
-  .prep-no-notes { font-size: 0.82rem; color: rgba(244, 240, 230, 0.65); font-style: italic; line-height: 1.6; }
-
-  .prep-hint {
-    text-align: center;
-    padding: 2rem 0 0;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: rgba(244, 240, 230, 0.65);
+  .menu-subhead-rule {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, rgba(201,168,76,0.25), transparent);
   }
 
-  /* ─── BOOKING EMBED ─────────────────────────────────────────────── */
-  .book-section { background: var(--black); padding: 80px 0 0; }
-  .book-header { text-align: center; margin-bottom: 3rem; }
-  .book-header .section-heading { font-size: clamp(1.8rem, 3vw, 2.6rem); }
-  .book-header-sub { font-size: 0.82rem; color: rgba(244, 240, 230, 0.65); letter-spacing: 0.06em; line-height: 1.7; margin-top: 0.85rem; }
-
-  .book-embed-wrap {
+  /* Menu row — the apothecary studio-menu primitive */
+  .menu-row { background: var(--black); }
+  .menu-row-toggle {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr auto auto auto;
+    gap: 1.25rem;
+    align-items: baseline;
     width: 100%;
+    padding: 1.5rem 1.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--cream);
+    transition: background 0.25s;
+    position: relative;
+    font: inherit;
+  }
+  .menu-row-toggle:hover { background: rgba(22, 43, 28, 0.4); }
+  .menu-row-toggle::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .menu-row.is-expanded .menu-row-toggle::after { transform: scaleX(1); }
+
+  .menu-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    line-height: 1;
+    letter-spacing: 0.04em;
+  }
+  .menu-row.is-special .menu-num {
+    font-size: 0.5rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-style: normal;
+    color: var(--gold);
+    padding-top: 0.45rem;
+    line-height: 1.2;
+  }
+  .menu-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--cream);
+  }
+  .menu-name-sub {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-top: 0.3rem;
+    font-weight: 400;
+  }
+  .menu-duration {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    white-space: nowrap;
+  }
+  .menu-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--gold-light);
+    font-weight: 300;
+    line-height: 1;
+    white-space: nowrap;
+    min-width: 4ch;
+    text-align: right;
+  }
+  .menu-row.is-special .menu-price {
+    color: var(--gold);
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  }
+  .menu-expand {
+    width: 24px; height: 24px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: rgba(201,168,76,0.55);
+    font-size: 1.05rem; line-height: 1;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s;
+  }
+  .menu-row.is-expanded .menu-expand { transform: rotate(45deg); color: var(--gold); }
+  .menu-row-toggle:hover .menu-expand { color: var(--gold); }
+
+  /* The grid-template-rows trick: 0fr collapsed, 1fr expanded.
+     No max-height, no magic numbers, smooth at any content length. */
+  .menu-row-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    background: rgba(10, 24, 16, 0.55);
+  }
+  .menu-row-detail > .menu-row-detail-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .menu-row.is-expanded .menu-row-detail { grid-template-rows: 1fr; }
+
+  .menu-row-detail-content {
+    padding: 0.25rem 1.75rem 2rem 6rem;
+    border-top: 1px solid rgba(201,168,76,0.08);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
+    align-items: end;
+  }
+  .menu-row-prep-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.85rem;
+    margin-top: 1.5rem;
+  }
+  .menu-row-prep-list {
+    list-style: none;
+    display: flex; flex-direction: column;
+    gap: 0.65rem;
+    max-width: 60ch;
+  }
+  .menu-row-prep-list li {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(244, 240, 230, 0.72);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .menu-row-prep-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0; top: -0.15rem;
+    color: var(--gold);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+  .menu-row-prep-list em { font-style: italic; color: var(--gold-light); }
+
+  .menu-book-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--black); background: var(--gold);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    min-height: 48px;
+    white-space: nowrap;
+    align-self: end;
+  }
+  .menu-book-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  @media (max-width: 760px) {
+    .menu-row-toggle {
+      grid-template-columns: 2rem 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 0.75rem 1rem;
+      padding: 1.25rem;
+      align-items: start;
+    }
+    .menu-num { grid-row: 1 / 3; padding-top: 0.2rem; font-size: 1.2rem; }
+    .menu-row.is-special .menu-num { grid-row: 1 / 2; padding-top: 0.35rem; }
+    .menu-name { grid-column: 2 / 3; grid-row: 1 / 2; }
+    .menu-duration { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .menu-price { grid-column: 3 / 4; grid-row: 1 / 2; }
+    .menu-expand { grid-column: 3 / 4; grid-row: 2 / 3; justify-self: end; }
+    .menu-row.is-special .menu-expand { grid-row: 2 / 3; }
+    .menu-row-detail-content {
+      padding: 0.25rem 1.25rem 1.5rem 1.25rem;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .menu-book-btn { width: 100%; }
+  }
+
+  .menu-hint {
+    text-align: center;
+    margin-top: 1.75rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: rgba(244, 240, 230, 0.5);
+  }
+  .menu-hint a { color: rgba(201,168,76,0.65); text-decoration: none; transition: color 0.2s; }
+  .menu-hint a:hover { color: var(--gold); }
+
+  /* ── BOOKING EMBED ─────────────────────────────────────────────── */
+  .embed-section {
     background: var(--deep);
-    border: 1px solid rgba(201,168,76,0.1);
+    padding: 80px 0 0;
+    scroll-margin-top: 90px;
+  }
+  .embed-header { text-align: center; margin-bottom: 2.5rem; }
+  .embed-header .section-heading { font-size: clamp(1.55rem, 2.6vw, 2rem); }
+  .embed-header .eyebrow { color: var(--mist); }
+  .embed-header-sub {
+    font-size: 0.82rem;
+    color: rgba(244, 240, 230, 0.65);
+    margin-top: 0.6rem;
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+  }
+  .embed-active-service {
+    display: none;
+    margin-top: 1.25rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+  }
+  .embed-active-service.is-shown { display: block; }
+
+  .embed-wrap {
+    width: 100%;
+    background: var(--black);
+    border: 1px solid rgba(201,168,76,0.12);
     border-bottom: none;
     position: relative;
-    min-height: 700px;
+    min-height: 720px;
   }
-
-  /* Placeholder shown before Square URL is added */
-  .embed-placeholder {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 1.25rem;
-    background: var(--deep);
-    z-index: 2;
-  }
-  .embed-placeholder-icon { font-size: 2.5rem; opacity: 0.15; }
-  .embed-placeholder-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: rgba(244, 240, 230, 0.65); }
-  .embed-placeholder-note { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(201,168,76,0.35); border: 1px solid rgba(201,168,76,0.15); padding: 0.5rem 1.25rem; }
-
-  .book-embed-wrap iframe {
+  .embed-wrap iframe {
     display: block;
     width: 100%;
-    min-height: 700px;
+    min-height: 720px;
     border: none;
   }
 
-  .book-reassurance {
+  .embed-policy-note {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--black);
+    border: 1px solid rgba(201,168,76,0.08);
+    border-top: 1px solid rgba(201,168,76,0.06);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244, 240, 230, 0.5);
+  }
+  .embed-policy-note a { color: rgba(201,168,76,0.65); text-decoration: none; transition: color 0.2s; }
+  .embed-policy-note a:hover { color: var(--gold); }
+
+  /* ── REASSURANCE STRIP ──────────────────────────────────────────── */
+  .reassurance {
     background: var(--forest);
-    border: 1px solid rgba(201,168,76,0.1);
-    border-top: none;
-    padding: 2rem 3rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 2.25rem 0;
+  }
+  .reassurance-grid {
     display: flex; align-items: center; justify-content: center;
-    gap: 3rem; flex-wrap: wrap;
+    gap: 3.5rem; flex-wrap: wrap;
   }
-  .reassurance-item { display: flex; align-items: center; gap: 0.65rem; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244, 240, 230, 0.65); }
-  .reassurance-item span { color: var(--gold); }
-
-  @media (max-width: 640px) {
-    .page-header { padding: 110px 0 56px; }
-    .book-reassurance { padding: 1.5rem; gap: 1.5rem; }
-    .prep-grid { gap: 1px; }
+  .reassurance-item {
+    display: flex; align-items: center; gap: 0.65rem;
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244, 240, 230, 0.72);
+  }
+  .reassurance-mark { color: var(--gold); font-size: 0.7rem; line-height: 1; }
+  .reassurance-item a { color: var(--gold-light); text-decoration: none; margin-left: 0.3rem; transition: color 0.2s; }
+  .reassurance-item a:hover { color: var(--gold); }
+  @media (max-width: 760px) {
+    .reassurance-grid { gap: 1.5rem; flex-direction: column; align-items: flex-start; padding: 0 1.25rem; }
+    .reassurance-item { font-size: 0.58rem; }
   }
 
-  /* ─── FOOTER ────────────────────────────────────────────────────── */
+  /* ── FOOTER ─────────────────────────────────────────────────────── */
   footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 60px 0 32px; }
   .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
   @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; } }
   @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
   .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
-  .footer-logo-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--forest); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: 0.9rem; }
   .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
   .footer-brand-desc { font-size: 0.74rem; line-height: 1.7; color: rgba(244, 240, 230, 0.65); margin-bottom: 1.5rem; }
   .footer-address { font-size: 0.7rem; line-height: 1.75; color: rgba(244, 240, 230, 0.65); font-style: normal; }
@@ -243,23 +480,24 @@
   .footer-links a { font-size: 0.72rem; color: rgba(244, 240, 230, 0.65); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
   .footer-links a:hover { color: var(--cream); }
   .footer-hours-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; color: rgba(244, 240, 230, 0.65); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .footer-hours-row span:first-child { color: rgba(244, 240, 230, 0.65); }
   .hours-closed { color: rgba(244, 240, 230, 0.65) !important; }
   .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
   .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244, 240, 230, 0.65); }
   .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
   .footer-legal-links a { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244, 240, 230, 0.65); text-decoration: none; }
 
-.booking-note { font-size: 0.95rem; color: var(--mist); margin-bottom: 1.5rem; line-height: 1.6; }
-.booking-note a { color: var(--gold); text-decoration: underline; }
-  /* Honor users who request reduced motion */
+  /* ── NO-JS FALLBACK ─────────────────────────────────────────────── */
+  /* Without JS, all rows render expanded for full functional access. */
+  .no-js .menu-row-detail { grid-template-rows: 1fr; }
+  .no-js .menu-expand { display: none; }
+
+  /* ── REDUCED MOTION ─────────────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
+    .menu-row-detail { transition: none; }
+    .menu-row-toggle::after { transition: none; }
+    .menu-expand { transition: none; }
+    .menu-book-btn { transition: background 0.01ms; }
     html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 </style>
 
@@ -270,6 +508,28 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-10KW19QN9R');
+</script>
+
+<!-- Mark JS-enabled so the no-js fallback styles do not apply -->
+<script>document.documentElement.classList.remove('no-js'); document.documentElement.classList.add('js');</script>
+
+<!--
+  Per-service Square URLs (forward-compatible).
+  When Mechelle completes SQUARE-REDIRECTS-WALKTHROUGH.md and per-service
+  booking URLs are known, drop them into this config. JS reads from it on
+  click. If a service has no URL, the iframe stays on the generic URL.
+-->
+<script>
+  window.ALTRU_SERVICE_URLS = {
+    // restorative: 'https://app.squareup.com/appointments/...',
+    // soothe:      'https://app.squareup.com/appointments/...',
+    // procell:     'https://app.squareup.com/appointments/...',
+    // 'facial-architecture': 'https://app.squareup.com/appointments/...',
+    // 'aqua-peel':           'https://app.squareup.com/appointments/...',
+    // 'back-facial':         'https://app.squareup.com/appointments/...',
+    // 'welcome-bundle':      'https://app.squareup.com/appointments/...',
+    // 'foundation-package':  'https://app.squareup.com/appointments/...'
+  };
 </script>
 
 </head>
@@ -292,24 +552,17 @@
     <li><a href="/services">Services</a></li>
     <li><a href="/programs">Programs</a></li>
     <li><a href="/results">Results</a></li>
-          <li><a href="/journal">Journal</a></li>
+    <li><a href="/journal">Journal</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
 
-  <a href="/book" class="nav-cta">Reserve</a>
+  <a href="#studio-menu" class="nav-cta">Reserve</a>
 
-  <button
-    class="nav-hamburger"
-    id="navHamburger"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
-    aria-controls="mobileMenu"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
   <ul class="mobile-menu-links">
     <li><a href="/">Home</a></li>
@@ -320,202 +573,347 @@
     <li><a href="/journal">Journal</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
-  <a href="/book" class="mobile-menu-cta">Reserve</a>
+  <a href="#studio-menu" class="mobile-menu-cta">Reserve</a>
 </div>
 
 <!-- ─── PAGE HEADER ───────────────────────────────────────────────── -->
-<div class="page-header">
+<header class="page-header">
   <div class="page-header-line"></div>
   <div class="container page-header-inner">
     <span class="eyebrow">Murray, Utah · Altru Radiance</span>
     <h1>Reserve Your <em>Session</em></h1>
-    <p class="page-header-sub">Select your treatment below to review preparation guidelines, then choose your date and time.</p>
+    <p class="page-header-sub">Choose a single session or one of two new-client packages. Tap any row for preparation notes before you book.</p>
   </div>
-</div>
+</header>
 
-<!-- ─── PREP NOTES ────────────────────────────────────────────────── -->
-<section class="prep-section">
+<!-- ─── FIRST-VISIT INTAKE CALLOUT ────────────────────────────────── -->
+<section class="intake-section" aria-labelledby="intake-heading">
   <div class="container">
-    <div class="prep-header">
-      <span class="eyebrow">Before You Arrive</span>
-      <h2 class="section-heading">Prepare for <em>Your Treatment</em></h2>
+    <div class="intake-panel">
+      <span class="intake-marker">First visit?</span>
+      <div class="intake-body">
+        <h2 id="intake-heading" class="intake-heading">Complete your <em>Aesthetic Evaluation</em></h2>
+        <p class="intake-copy">Takes about 5 minutes. Helps me prepare for your session and tailor the work to your skin. Returning clients can skip this.</p>
+      </div>
+      <a href="https://app.carepatron.com/Forms/qWAKKO7HsoetkezXK" target="_blank" rel="noopener" class="intake-cta">Begin Intake &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════════
+     STUDIO MENU
+     One continuous grid. Subheads interleave with menu rows so the
+     1.5px gridlines flow across the whole artifact uninterrupted.
+═════════════════════════════════════════════════════════════════════ -->
+<section class="menu-section" id="studio-menu" aria-labelledby="menu-heading">
+  <div class="container">
+
+    <div class="menu-header">
+      <span class="eyebrow">Studio Menu</span>
+      <h2 id="menu-heading" class="section-heading">Choose your <em>session</em></h2>
       <div class="gold-rule"></div>
-      <p style="font-size:0.82rem;color:rgba(244, 240, 230, 0.65);line-height:1.7;max-width:540px;margin:0 auto;">Select a service to review preparation steps for the best possible results.</p>
+      <p class="menu-header-sub">All sessions are by appointment, performed by Mechelle, Licensed Master Esthetician.</p>
     </div>
 
-    <div class="prep-grid">
+    <ul class="studio-menu" role="list">
 
-      <!-- Aqua Peel -->
-      <div class="prep-card" data-service="aqua-peel" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-aqua-peel">
-        <div class="prep-card-top">
-          <span class="prep-service-badge">Resurface</span>
-          <span class="prep-toggle-icon">+</span>
-        </div>
-        <div class="prep-service-name">Aqua Peel</div>
-        <div class="prep-service-meta">60 min · $200</div>
-        <div class="prep-notes" id="prep-notes-aqua-peel">
-          <div class="prep-notes-inner">
-            <span class="prep-notes-label">Preparation Guidelines</span>
-            <ul>
-              <li>Arrive with clean, makeup-free skin. Makeup remover available.</li>
-              <li>Discontinue AHAs, BHAs, and retinol for 72 hours before your session.</li>
-              <li>Contraindications: active sunburn, broken skin, severe rosacea, or cystic acne on the day of your appointment.</li>
-            </ul>
+      <!-- ── Subhead: Special Offers ────────────────────────────── -->
+      <li class="menu-subhead" role="presentation">
+        <span class="menu-subhead-label">Special Offers</span>
+        <span class="menu-subhead-rule" aria-hidden="true"></span>
+      </li>
+
+      <!-- Welcome Bundle ─────────────────────────────────────── -->
+      <li class="menu-row is-special" data-service="welcome-bundle">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-welcome-bundle">
+          <span class="menu-num">Intro</span>
+          <span class="menu-name">
+            Welcome Bundle
+            <span class="menu-name-sub">Two sessions · whole-picture intake</span>
+          </span>
+          <span class="menu-duration">2 sessions</span>
+          <span class="menu-price">$400</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-welcome-bundle">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">What's included</span>
+                <ul class="menu-row-prep-list">
+                  <li>One <em>Restorative Buccal Facial</em> (110 minutes of intraoral hands-on fascia work with the jaw, cheek, and pterygoid muscles).</li>
+                  <li>One <em>Soothe Lymphatic Drainage</em> (110 minutes of full-body manual lymphatic drainage).</li>
+                  <li>Whole-picture assessment at the first session, with a personalized plan delivered after the second.</li>
+                  <li>$550 total value at standard pricing; $150 saved with the bundle.</li>
+                  <li>See preparation notes under each individual service below.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="welcome-bundle">Book Welcome Bundle</a>
+            </div>
           </div>
         </div>
-      </div>
+      </li>
 
-      <!-- Back Facial -->
-      <div class="prep-card" data-service="back-facial" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-back-facial">
-        <div class="prep-card-top">
-          <span class="prep-service-badge">Clarify</span>
-          <span class="prep-toggle-icon">+</span>
-        </div>
-        <div class="prep-service-name">Back Facial</div>
-        <div class="prep-service-meta">50 min · $150</div>
-        <div class="prep-notes" id="prep-notes-back-facial">
-          <div class="prep-notes-inner">
-            <span class="prep-notes-label">Preparation Guidelines</span>
-            <p class="prep-no-notes">No specific preparation is required for this service. Simply arrive comfortable and ready to relax.</p>
+      <!-- Foundation Package ─────────────────────────────────── -->
+      <li class="menu-row is-special" data-service="foundation-package">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-foundation-package">
+          <span class="menu-num">Series</span>
+          <span class="menu-name">
+            Foundation Package
+            <span class="menu-name-sub">Three sessions · structural focus</span>
+          </span>
+          <span class="menu-duration">3 sessions</span>
+          <span class="menu-price">$700</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-foundation-package">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">What's included</span>
+                <ul class="menu-row-prep-list">
+                  <li>Three sessions across roughly six weeks, scheduled at booking.</li>
+                  <li>Built around the <em>Restorative Buccal Facial</em>, with one session adapted to the holding patterns surfaced during your first visit.</li>
+                  <li>For clients who want cumulative work rather than single-session results.</li>
+                  <li>$1,260 total value at standard pricing; $560 saved with the package.</li>
+                  <li>See preparation notes under <em>Restorative Buccal Facial</em> below; the same applies to every session in the series.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="foundation-package">Book Foundation Package</a>
+            </div>
           </div>
         </div>
-      </div>
+      </li>
 
-      <!-- Microneedling -->
-      <div class="prep-card" data-service="microneedling" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-microneedling">
-        <div class="prep-card-top">
-          <span class="prep-service-badge">Regenerate</span>
-          <span class="prep-toggle-icon">+</span>
-        </div>
-        <div class="prep-service-name">Microneedling<br>+ Skin Booster</div>
-        <div class="prep-service-meta">100 min · $300</div>
-        <div class="prep-notes" id="prep-notes-microneedling">
-          <div class="prep-notes-inner">
-            <span class="prep-notes-label">Preparation Guidelines</span>
-            <ul>
-              <li>Injectables, waxing, electrolysis, and laser treatments must be avoided for at least 2 weeks prior.</li>
-              <li>Discontinue all retinols, vitamin A derivatives, AHAs, and BHAs 1 week before your session.</li>
-              <li>Avoid anti-inflammatory medications (Ibuprofen, Aspirin, Motrin) and blood thinners 48–72 hours prior — these increase bruising and reduce the skin's natural response to the treatment.</li>
-              <li>Avoid alcohol the day before and limit caffeine the day of your appointment.</li>
-              <li>Arrive with a completely clean face — no makeup, including mascara. Notify me immediately if you have active breakouts, cold sores, or open skin.</li>
-              <li>Do not come with an active sunburn. Sun-damaged treatment areas will result in a forfeited appointment.</li>
-              <li>Hydrate well in the days leading up to and following your treatment.</li>
-            </ul>
+      <!-- ── Subhead: Single Sessions ───────────────────────────── -->
+      <li class="menu-subhead" role="presentation">
+        <span class="menu-subhead-label">Single Sessions</span>
+        <span class="menu-subhead-rule" aria-hidden="true"></span>
+      </li>
+
+      <!-- I. Restorative Buccal Facial ─────────────────────────── -->
+      <li class="menu-row" data-service="restorative">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-restorative">
+          <span class="menu-num">I.</span>
+          <span class="menu-name">
+            Restorative Buccal Facial
+            <span class="menu-name-sub">Signature · intraoral fascia work</span>
+          </span>
+          <span class="menu-duration">110 min</span>
+          <span class="menu-price">$250</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-restorative">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">Preparation</span>
+                <ul class="menu-row-prep-list">
+                  <li>Avoid a large meal 1 to 2 hours before your session. Intraoral work is more comfortable on a lighter stomach.</li>
+                  <li>If you carry jaw tension, clenching habits, or facial holding patterns, let me know. It helps me tailor the session.</li>
+                  <li>Injectables: wait at least 2 weeks after any cosmetic injection treatment before booking.</li>
+                  <li>Oral health: be free of active infections, cold sores, canker sores, or open wounds inside or around the mouth. Recent dental work must be fully healed first.</li>
+                  <li>Arrive with a clean face. Work extends to the scalp and neck. Drink plenty of water before and after to support tissue recovery.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="restorative">Book this session</a>
+            </div>
           </div>
         </div>
-      </div>
+      </li>
 
-      <!-- Restorative Buccal -->
-      <div class="prep-card" data-service="buccal" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-buccal">
-        <div class="prep-card-top">
-          <span class="prep-service-badge">Signature</span>
-          <span class="prep-toggle-icon">+</span>
-        </div>
-        <div class="prep-service-name">Restorative Buccal Facial</div>
-        <div class="prep-service-meta">110 min · $250</div>
-        <div class="prep-notes" id="prep-notes-buccal">
-          <div class="prep-notes-inner">
-            <span class="prep-notes-label">Preparation Guidelines</span>
-            <ul>
-              <li>Avoid a large meal 1–2 hours before your session — intraoral work is more comfortable on a lighter stomach.</li>
-              <li>If you carry jaw tension, clenching habits, or facial holding patterns, let me know — this helps me tailor your session.</li>
-              <li>Injectables: wait at least 2 weeks after any cosmetic injection treatment before booking.</li>
-              <li>Oral health: ensure you are free of active infections, cold sores, canker sores, or open wounds inside or around the mouth. Recent dental work or oral surgery must be fully healed prior to your appointment.</li>
-              <li>Arrive with a clean face — work extends to the scalp and neck. Drink plenty of water before and after to support tissue recovery.</li>
-            </ul>
+      <!-- II. Soothe Lymphatic Drainage ─────────────────────────── -->
+      <li class="menu-row" data-service="soothe">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-soothe">
+          <span class="menu-num">II.</span>
+          <span class="menu-name">
+            Soothe Lymphatic Drainage
+            <span class="menu-name-sub">Full-body · manual technique</span>
+          </span>
+          <span class="menu-duration">110 min</span>
+          <span class="menu-price">$250</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-soothe">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">Preparation</span>
+                <ul class="menu-row-prep-list">
+                  <li>Arrive well hydrated. Electrolytes, spring water, or fruit in the 24 hours before your session.</li>
+                  <li>Avoid alcohol for at least 24 hours before and after your appointment.</li>
+                  <li>Wear or bring loose, comfortable clothing.</li>
+                  <li>Avoid a heavy meal 1 to 2 hours before your session. Abdominal work will be uncomfortable.</li>
+                  <li>Contraindications: active infections (including fever), blood clots (DVT), congestive heart failure, acute kidney failure, untreated cancer, post-surgical swelling, or lymphedema. Please disclose any of these at booking so we can confirm this is appropriate for you.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="soothe">Book this session</a>
+            </div>
           </div>
         </div>
-      </div>
+      </li>
 
-      <!-- Lymphatic Drainage -->
-      <div class="prep-card" data-service="lymphatic" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-lymphatic">
-        <div class="prep-card-top">
-          <span class="prep-service-badge">Fundamental</span>
-          <span class="prep-toggle-icon">+</span>
-        </div>
-        <div class="prep-service-name">Soothe Lymphatic<br>Drainage</div>
-        <div class="prep-service-meta">110 min · $250</div>
-        <div class="prep-notes" id="prep-notes-lymphatic">
-          <div class="prep-notes-inner">
-            <span class="prep-notes-label">Preparation Guidelines</span>
-            <ul>
-              <li>Arrive well hydrated — electrolytes, spring water, or fruit in the 24 hours before your session.</li>
-              <li>Avoid alcohol for at least 24 hours before and after your appointment.</li>
-              <li>Wear or bring loose, comfortable clothing.</li>
-              <li>Avoid a heavy meal 1–2 hours before your session — abdominal work will be uncomfortable.</li>
-              <li>Contraindications: active infections (including fever), blood clots (DVT), congestive heart failure, acute kidney failure, untreated cancer, post-surgical swelling, or lymphedema. Please disclose any of these at booking so we can confirm this treatment is appropriate for you.</li>
-            </ul>
+      <!-- III. Procell Microchanneling ──────────────────────────── -->
+      <li class="menu-row" data-service="procell">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-procell">
+          <span class="menu-num">III.</span>
+          <span class="menu-name">
+            Procell Microchanneling
+            <span class="menu-name-sub">Microneedling with skin boosters</span>
+          </span>
+          <span class="menu-duration">100 min</span>
+          <span class="menu-price">$300</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-procell">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">Preparation</span>
+                <ul class="menu-row-prep-list">
+                  <li>Injectables, waxing, electrolysis, and laser treatments must be avoided for at least 2 weeks prior.</li>
+                  <li>Discontinue all retinols, vitamin A derivatives, AHAs, and BHAs 1 week before your session.</li>
+                  <li>Avoid anti-inflammatory medications (Ibuprofen, Aspirin, Motrin) and blood thinners 48 to 72 hours prior. These increase bruising and reduce the skin's natural response.</li>
+                  <li>Avoid alcohol the day before and limit caffeine the day of your appointment.</li>
+                  <li>Arrive with a completely clean face. No makeup, including mascara. Notify me immediately if you have active breakouts, cold sores, or open skin.</li>
+                  <li>Do not come with an active sunburn. Sun-damaged treatment areas will result in a forfeited appointment.</li>
+                  <li>Hydrate well in the days leading up to and following your appointment.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="procell">Book this session</a>
+            </div>
           </div>
         </div>
-      </div>
+      </li>
 
-      <!-- Facial Architecture Ritual -->
-      <div class="prep-card" data-service="structural" role="button" tabindex="0" aria-expanded="false" aria-controls="prep-notes-structural">
-        <div class="prep-card-top">
-          <span class="prep-service-badge">Initiate</span>
-          <span class="prep-toggle-icon">+</span>
-        </div>
-        <div class="prep-service-name">Facial Architecture<br>Ritual</div>
-        <div class="prep-service-meta">50 min · $140</div>
-        <div class="prep-notes" id="prep-notes-structural">
-          <div class="prep-notes-inner">
-            <span class="prep-notes-label">Preparation Guidelines</span>
-            <ul>
-              <li>This treatment involves hands-on sculpting with the surface facial fascia. Moments of focused pressure or brief discomfort are part of the skilled, attentive technique.</li>
-              <li>Please communicate any areas of chronic pain, recent injury, prior surgery, or heightened sensitivity before we begin.</li>
-              <li>Avoid booking within two weeks of facial surgery, injectables, or acute facial inflammation.</li>
-              <li>Avoid retinols and chemical exfoliants (AHAs) for 3 days prior — deep manual work can be irritating on sensitized skin.</li>
-              <li>Skin must be free of active sunburns or inflammatory skin infections on the day of your appointment.</li>
-            </ul>
+      <!-- IV. Facial Architecture Ritual ────────────────────────── -->
+      <li class="menu-row" data-service="facial-architecture">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-facial-architecture">
+          <span class="menu-num">IV.</span>
+          <span class="menu-name">
+            Facial Architecture Ritual
+            <span class="menu-name-sub">Surface fascial sculpting</span>
+          </span>
+          <span class="menu-duration">50 min</span>
+          <span class="menu-price">$140</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-facial-architecture">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">Preparation</span>
+                <ul class="menu-row-prep-list">
+                  <li>This session involves hands-on sculpting with the surface facial fascia. Moments of focused pressure or brief discomfort are part of the skilled, attentive technique.</li>
+                  <li>Please communicate any areas of habitual tension, recent injury, prior surgery, or heightened sensitivity before we begin.</li>
+                  <li>Avoid booking within two weeks of facial surgery, injectables, or acute facial inflammation.</li>
+                  <li>Avoid retinols and chemical exfoliants (AHAs) for 3 days prior. Deep manual work can be irritating on sensitized skin.</li>
+                  <li>Skin must be free of active sunburn or inflammatory skin conditions on the day of your appointment.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="facial-architecture">Book this session</a>
+            </div>
           </div>
         </div>
-      </div>
+      </li>
 
-    </div><!-- /prep-grid -->
+      <!-- V. Aqua Peel ──────────────────────────────────────────── -->
+      <li class="menu-row" data-service="aqua-peel">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-aqua-peel">
+          <span class="menu-num">V.</span>
+          <span class="menu-name">
+            Aqua Peel
+            <span class="menu-name-sub">Resurfacing infusion</span>
+          </span>
+          <span class="menu-duration">60 min</span>
+          <span class="menu-price">$200</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-aqua-peel">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">Preparation</span>
+                <ul class="menu-row-prep-list">
+                  <li>Arrive with clean, makeup-free skin. Makeup remover is available in the studio.</li>
+                  <li>Discontinue AHAs, BHAs, and retinol for 72 hours before your session.</li>
+                  <li>Contraindications: active sunburn, broken skin, severe rosacea, or cystic acne on the day of your appointment.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="aqua-peel">Book this session</a>
+            </div>
+          </div>
+        </div>
+      </li>
 
-    <p class="prep-hint">Tap any service to expand preparation notes · Questions? <a href="/contact" style="color:rgba(201,168,76,0.5);text-decoration:none;">Contact me before booking →</a></p>
+      <!-- VI. Back Facial ───────────────────────────────────────── -->
+      <li class="menu-row" data-service="back-facial">
+        <button class="menu-row-toggle" aria-expanded="false" aria-controls="prep-back-facial">
+          <span class="menu-num">VI.</span>
+          <span class="menu-name">
+            Back Facial
+            <span class="menu-name-sub">Posterior cleansing and softening</span>
+          </span>
+          <span class="menu-duration">50 min</span>
+          <span class="menu-price">$150</span>
+          <span class="menu-expand" aria-hidden="true">+</span>
+        </button>
+        <div class="menu-row-detail" id="prep-back-facial">
+          <div class="menu-row-detail-inner">
+            <div class="menu-row-detail-content">
+              <div>
+                <span class="menu-row-prep-label">Preparation</span>
+                <ul class="menu-row-prep-list">
+                  <li>No specific preparation is required. Arrive comfortable and ready to relax.</li>
+                  <li>If you have any back-skin conditions or sensitivities, let me know at booking so I can plan the session accordingly.</li>
+                </ul>
+              </div>
+              <a class="menu-book-btn" href="#book-embed" data-book-service="back-facial">Book this session</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <p class="menu-hint">Open as many sessions as you like to compare. Questions before booking? <a href="/contact">Contact me &rarr;</a></p>
 
   </div>
 </section>
 
-<!-- ─── BOOKING EMBED ─────────────────────────────────────────────── -->
-<section class="book-section">
+<!-- ─── SQUARE EMBED ──────────────────────────────────────────────── -->
+<section class="embed-section" id="book-embed" aria-labelledby="embed-heading">
   <div class="container">
-    <div class="book-header">
+    <div class="embed-header">
       <span class="eyebrow">Online Booking · Square Appointments</span>
-      <h2 class="section-heading">Choose Your <em>Date &amp; Time</em></h2>
-      <p class="book-header-sub">Available Tuesday – Saturday · Murray, Utah</p>
+      <h2 id="embed-heading" class="section-heading">Pick your <em>date and time</em></h2>
+      <p class="embed-header-sub">Available Tuesday through Saturday · Murray, Utah</p>
+      <p class="embed-active-service" id="active-service-label" aria-live="polite"></p>
     </div>
   </div>
-
-<p class="booking-note">
-  First time visiting? Please complete your 
-  <a href="https://app.carepatron.com/Forms/qWAKKO7HsoetkezXK" target="_blank" rel="noopener">
-    Aesthetic Evaluation intake form
-  </a> 
-  before your appointment — it takes about 5 minutes and helps me prepare for your session.
-</p>
-
-    <div class="book-embed-wrap">
-    <iframe
-      src="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start"
-      title="Book an appointment at Altru Radiance"
-      width="100%"
-      style="min-height:700px;border:none;display:block;"
-      id="squareEmbed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="book-reassurance">
-    <div class="reassurance-item"><span>✓</span> Free parking on south side of building</div>
-    <div class="reassurance-item"><span>✓</span> Confirmation sent by email</div>
-    <div class="reassurance-item"><span>✓</span> 24-hour cancellation policy</div>
-    <div class="reassurance-item"><span>✓</span> Questions? <a href="/contact" style="color:rgba(201,168,76,0.5);margin-left:0.3rem;text-decoration:none;">Contact me →</a></div>
+  <div class="container">
+    <div class="embed-wrap">
+      <iframe
+        id="square-iframe"
+        src="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start"
+        title="Book an appointment at Altru Radiance"
+        loading="lazy"
+        allowfullscreen></iframe>
+    </div>
+    <p class="embed-policy-note">
+      Flexible rescheduling. <a href="/policies">Review our cancellation policy &rarr;</a>
+    </p>
   </div>
 </section>
 
+<!-- ─── REASSURANCE ───────────────────────────────────────────────── -->
+<section class="reassurance" aria-label="Visit details">
+  <div class="container reassurance-grid">
+    <div class="reassurance-item"><span class="reassurance-mark">&#10003;</span>Free parking on south side of building</div>
+    <div class="reassurance-item"><span class="reassurance-mark">&#10003;</span>Confirmation sent by email</div>
+    <div class="reassurance-item"><span class="reassurance-mark">&#10003;</span>Questions? <a href="/contact">Contact me &rarr;</a></div>
+  </div>
+</section>
 
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer>
@@ -585,39 +983,85 @@
 </footer>
 
 <script>
-/* Prep card accordion — keyboard + aria-expanded */
-document.querySelectorAll('.prep-card').forEach(card => {
-  function toggle() {
-    const isActive = card.classList.contains('active');
-    document.querySelectorAll('.prep-card').forEach(c => {
-      c.classList.remove('active');
-      c.setAttribute('aria-expanded', 'false');
+(function () {
+  'use strict';
+
+  /* ─── Hamburger / mobile menu ────────────────────────────────── */
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+  if (btn && menu) {
+    function openMenu()  { menu.classList.add('is-open');    btn.setAttribute('aria-expanded','true');  menu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true');  document.body.style.overflow = ''; }
+    btn.addEventListener('click', function () {
+      btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
     });
-    if (!isActive) {
-      card.classList.add('active');
-      card.setAttribute('aria-expanded', 'true');
+    menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(min-width: 641px)');
+      if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) closeMenu(); });
     }
   }
-  card.addEventListener('click', toggle);
-  card.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggle();
+
+  /* ─── Studio menu accordion ──────────────────────────────────
+     Multi-open allowed: clicking one row does not collapse others.
+     Uses grid-template-rows transition, not max-height.            */
+  var rows = document.querySelectorAll('.menu-row');
+  rows.forEach(function (row) {
+    var toggle = row.querySelector('.menu-row-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      row.classList.toggle('is-expanded', !expanded);
+      toggle.setAttribute('aria-expanded', String(!expanded));
+    });
+  });
+
+  /* ─── Service labels (used by the active-service announcement) ── */
+  var SERVICE_LABELS = {
+    'welcome-bundle':      'Welcome Bundle',
+    'foundation-package':  'Foundation Package',
+    'restorative':         'Restorative Buccal Facial',
+    'soothe':              'Soothe Lymphatic Drainage',
+    'procell':             'Procell Microchanneling',
+    'facial-architecture': 'Facial Architecture Ritual',
+    'aqua-peel':           'Aqua Peel',
+    'back-facial':         'Back Facial'
+  };
+
+  /* ─── Book buttons: per-service iframe swap + active-label ──── */
+  var iframe = document.getElementById('square-iframe');
+  var activeLabel = document.getElementById('active-service-label');
+  var configuredUrls = (window.ALTRU_SERVICE_URLS && typeof window.ALTRU_SERVICE_URLS === 'object')
+    ? window.ALTRU_SERVICE_URLS
+    : {};
+
+  document.querySelectorAll('.menu-book-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var service = btn.getAttribute('data-book-service');
+      if (!service) return;
+
+      // Swap iframe src if a per-service URL is configured.
+      if (iframe && configuredUrls[service]) {
+        var nextSrc = configuredUrls[service];
+        if (iframe.getAttribute('src') !== nextSrc) iframe.setAttribute('src', nextSrc);
+      }
+
+      // Announce the active service for assistive tech + show small label.
+      if (activeLabel && SERVICE_LABELS[service]) {
+        activeLabel.textContent = 'Booking: ' + SERVICE_LABELS[service];
+        activeLabel.classList.add('is-shown');
+      }
+      // The href="#book-embed" handles the scroll natively, smooth via base.css.
+    });
+  });
+
+  /* ─── Active nav link ────────────────────────────────────────── */
+  document.querySelectorAll('.nav-links a, .mobile-menu-links a').forEach(function (a) {
+    if (a.getAttribute('href') === '/book' || a.getAttribute('href') === '#studio-menu') {
+      a.classList.add('active');
     }
   });
-});
-
-/* Hamburger */
-(function() {
-  const btn = document.getElementById('navHamburger');
-  const menu = document.getElementById('mobileMenu');
-  if (!btn || !menu) return;
-  function openMenu() { menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
-  function closeMenu() { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
-  btn.addEventListener('click', () => btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu());
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-  window.matchMedia('(min-width: 641px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
 })();
 </script>
 
