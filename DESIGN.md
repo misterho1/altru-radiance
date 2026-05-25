@@ -136,7 +136,7 @@ A four-tone substrate (pitch → substrate → forest → cream) layered as parc
 
 ### Named Rules
 
-**The One Italic Anchor Rule.** Each page has exactly ONE italic phrase as its emotional anchor — typically the `<em>` inside the hero `h1`, or the lede sentence on a Journal article. Italic Cormorant Garamond + Italic Gold is the only accent treatment for headings. No underline, no background color, no scale change on the accent. The italic carries hierarchy alone. Two competing italic accents on the same page is a failure mode.
+**The Italic Anchor Rule.** Each section can carry its own italic emphasis at its own scale. The hero `h1`'s em is the page's primary anchor; subsequent section headings, sub-headings, and Journal ledes may each carry their own italic phrase at smaller scales — they don't compete because they aren't at the same visual weight. Italic Cormorant Garamond + Italic Gold is still the ONLY accent treatment for emphasis. No underline, no background color, no scale change on the accent itself. The italic carries hierarchy alone. **Failure mode**: two italic anchors at the SAME visual scale competing for the same emphasis tier (e.g., two h1-sized italic phrases in the hero, or two equal-weight emphases in a single paragraph). Multiple italic phrases at different scales or in different sections are fine and often desirable — each anchors its own zone.
 
 **The Atlas Gold Rarity Rule.** Atlas Gold is used on ≤10% of any given screen. Its rarity is the point. The skeptical-curious visitor's eye should land on Atlas Gold instances and read them as "the studio is pointing here" — a CTA, a price, a chapter marker. If gold is everywhere, it's nowhere.
 
@@ -232,7 +232,7 @@ The site is mostly static with a Square iframe for booking. The few inputs that 
 
 - **Eyebrow** (`.eyebrow`): Jost 400, `0.6rem`, letter-spacing `0.25em`, uppercase, Sage Mist. Always appears above a section heading and a gold-rule.
 - **Gold Rule** (`.gold-rule`): 40×1px Atlas Gold at 0.5 alpha. Margin `1.25rem auto`. Variant `.gold-rule.left` aligns to the start.
-- **Section Heading** (`.section-heading`): Cormorant Garamond 300, line-height 1.1. The `<em>` inside is Italic Gold. The italic em is the One Italic Anchor.
+- **Section Heading** (`.section-heading`): Cormorant Garamond 300, line-height 1.1. The `<em>` inside is Italic Gold. Each section's em is its own italic anchor at the section's scale (see The Italic Anchor Rule).
 
 ### Signature Component: The Before/After Slider
 
