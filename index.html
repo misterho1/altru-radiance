@@ -238,6 +238,10 @@
   .hero-inner {
     position: relative; z-index: 3;
     max-width: 860px; width: 100%;
+    /* Flex items default to min-width: auto, which expands to content size and
+       prevents wrap when text would overflow the viewport. Opt out so children
+       (h1, hero-sub) wrap naturally at narrow widths. */
+    min-width: 0;
   }
 
   /* Eyebrow */
@@ -254,14 +258,22 @@
     font-size: clamp(2.6rem, 6.2vw, 5rem);
     font-weight: 300; line-height: 1.12;
     color: var(--cream); margin-bottom: 1.4rem; letter-spacing: 0.01em;
+    /* Ensure text wraps within the hero-inner container at any viewport. */
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
   .hero-h1 em { font-style: italic; color: var(--gold-light); }
+  /* Force the h1 to wrap as "Regenerative Fascia / Therapy:" on narrow
+     viewports only. Desktop keeps the natural single-line layout. */
+  .break-mobile { display: none; }
+  @media (max-width: 640px) { .break-mobile { display: inline; } }
 
   /* Subheadline */
   .hero-sub {
     font-size: clamp(0.8rem, 1.8vw, 0.95rem);
     letter-spacing: 0.06em; color: rgba(244,240,230,0.65);
     line-height: 1.7; max-width: 580px; margin: 0 auto 2rem;
+    overflow-wrap: break-word;
   }
 
   /* Trust pills */
@@ -589,7 +601,11 @@
     .nav-brand-sub { display: none; }
     .nav-cta { padding: 0.5rem 1rem; font-size: 0.58rem; }
 
-    .hero { padding: 5.5rem 1.2rem 3rem; text-align: left; align-items: flex-start; }
+    /* On mobile, switch off flex layout. The flex item (.hero-inner) was
+       expanding to its content's min-width, allowing the h1/hero-sub to
+       overflow the viewport. Block layout naturally constrains children
+       to the container's available width. */
+    .hero { display: block; padding: 5.5rem 1.2rem 3rem; text-align: left; }
     .hero-eyebrow { justify-content: flex-start; font-size: 0.56rem; margin-bottom: 1.2rem; }
     .hero-h1 { font-size: clamp(1.75rem, 8vw, 2.4rem); letter-spacing: 0; margin-bottom: 1rem; }
     .hero-sub { font-size: 1rem; max-width: 100%; margin-bottom: 1.6rem; text-align: left; }
@@ -1395,7 +1411,7 @@
     </p>
 
     <h1 class="hero-h1">
-      Regenerative Fascia Therapy:<br>
+      Regenerative Fascia<br class="break-mobile"> Therapy:<br>
       <em>Sculpting the Body, Illuminating the Face.</em>
     </h1>
 
