@@ -111,112 +111,269 @@
     max-width: 580px;
   }
 
-  /* ─── OFFER LADDER ─── */
+  /* ─── COMPARISON TABLE ─── */
   .programs-section {
     background: var(--black);
     padding: 56px 0 88px;
     border-top: 1px solid rgba(201,168,76,0.05);
   }
-  .programs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr 1fr;
-    gap: 1.25rem;
-    align-items: stretch;
+
+  .programs-compare {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1.5px 0;
+    background: rgba(201, 168, 76, 0.08);
+    caption-side: top;
   }
-  .program-card {
-    background: var(--deep);
-    border: 1px solid rgba(201,168,76,0.12);
-    padding: 2.25rem 1.85rem 2rem;
-    display: flex; flex-direction: column;
-    text-decoration: none; color: inherit;
-    transition: border-color 0.3s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  .programs-compare th,
+  .programs-compare td {
+    background: var(--black);
+    padding: 1.05rem 1.4rem;
+    text-align: left;
+    vertical-align: baseline;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: rgba(244, 240, 230, 0.85);
+    line-height: 1.45;
+  }
+
+  /* Top-left empty cell */
+  .programs-compare thead tr th:first-child {
+    background: transparent;
+    border-bottom: 1px solid rgba(201,168,76,0.18);
+  }
+
+  /* Program header cells */
+  .programs-compare thead .col-program {
+    padding: 1.4rem 1.4rem 1.25rem;
     position: relative;
+    border-bottom: 1px solid rgba(201,168,76,0.18);
   }
-  .program-card:hover {
-    border-color: rgba(201,168,76,0.32);
-    transform: translateY(-2px);
+  .programs-compare thead .col-program.is-featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
   }
-  .program-card-featured {
-    border: 1px solid rgba(201,168,76,0.28);
-    background: linear-gradient(180deg, rgba(22,43,28,0.55) 0%, var(--deep) 60%);
-  }
-  .program-card-featured::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 2px; background: var(--gold);
+
+  .program-headline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
   }
   .program-stage {
-    font-size: 0.5rem; letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--mist);
-    margin-bottom: 0.65rem;
-  }
-  .program-card-featured .program-stage { color: var(--gold-light); }
-  .program-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300; font-style: italic;
-    color: var(--gold-light);
-    font-size: 1.55rem;
-    line-height: 1.18;
-    margin-bottom: 0.45rem;
-  }
-  .program-meta {
-    font-size: 0.72rem;
-    color: rgba(244, 240, 230, 0.6);
-    margin-bottom: 1.1rem;
-    letter-spacing: 0.02em;
-  }
-  .program-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem; font-weight: 300;
-    color: var(--cream); line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-  .program-price-mo {
     font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    color: rgba(244, 240, 230, 0.55);
-    letter-spacing: 0.04em;
-    margin-left: 0.25rem;
-  }
-  .program-price-detail {
-    display: flex; flex-direction: column; gap: 0.2rem;
-    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-size: 0.5rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
     color: var(--mist);
-    margin-bottom: 1.5rem;
+    font-weight: 400;
   }
-  .program-save { color: var(--gold-light); letter-spacing: 0.14em; }
-  .program-desc {
-    font-size: 0.84rem; line-height: 1.7;
-    color: rgba(244, 240, 230, 0.7);
-    margin-bottom: 1.25rem;
+  .is-featured .program-stage { color: var(--gold-light); }
+  .program-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.18;
+    color: var(--gold-light);
+    letter-spacing: 0.01em;
   }
-  .program-includes {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 0.55rem;
-    margin-bottom: 1.85rem;
-    flex: 1;
-  }
-  .program-includes li {
-    font-size: 0.78rem;
-    line-height: 1.5;
-    color: rgba(244, 240, 230, 0.72);
-    padding-left: 1.1rem;
-    position: relative;
-  }
-  .program-includes li::before {
-    content: ''; position: absolute;
-    left: 0; top: 0.55rem;
-    width: 5px; height: 1px;
-    background: var(--gold);
-    opacity: 0.6;
-  }
-  .program-link {
-    font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  .is-featured .program-title { color: var(--cream); font-weight: 400; }
+  .program-headline:hover .program-title { color: var(--cream); }
+  .is-featured .program-headline:hover .program-title { color: var(--gold-light); }
+
+  /* Subhead rows */
+  .programs-compare .row-subhead th {
+    background: var(--deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
     color: var(--gold);
-    border-top: 1px solid rgba(201,168,76,0.16);
-    padding-top: 1.1rem;
-    transition: letter-spacing 0.3s;
+    font-weight: 500;
+    padding: 1rem 1.4rem 0.65rem;
+    border-bottom: 1px solid rgba(201,168,76,0.18);
   }
-  .program-card:hover .program-link { letter-spacing: 0.28em; }
+
+  /* Row labels (first column) */
+  .programs-compare tbody th[scope="row"] {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    font-weight: 400;
+    width: 230px;
+  }
+
+  /* Featured column cells: slightly heavier weight */
+  .programs-compare tbody td.is-featured {
+    font-weight: 400;
+    color: rgba(244, 240, 230, 0.95);
+  }
+
+  /* Price values */
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .is-featured .price-value { color: var(--gold-light); font-weight: 400; }
+  .price-unit {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(244, 240, 230, 0.55);
+    margin-left: 0.25rem;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+  }
+
+  /* "You save" row */
+  .programs-compare .row-save td {
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* Check / dash marks */
+  .mark-check {
+    color: var(--gold);
+    font-size: 0.95rem;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .is-featured .mark-check { color: var(--gold-light); }
+  .mark-dash {
+    color: var(--mist);
+    font-size: 0.95rem;
+    line-height: 1;
+    opacity: 0.45;
+  }
+
+  /* CTA row */
+  .programs-compare .row-cta td {
+    padding: 1.5rem 1.4rem 1.75rem;
+    border-top: 1px solid rgba(201,168,76,0.16);
+  }
+  .programs-compare .row-cta a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: letter-spacing 0.3s, color 0.25s;
+    display: inline-block;
+  }
+  .programs-compare .row-cta a:hover {
+    letter-spacing: 0.28em;
+    color: var(--gold-light);
+  }
+  /* CTA row's first cell is empty on desktop (preserves column 1 layout). */
+
+  /* Row hover for scan tracking */
+  .programs-compare tbody tr:not(.row-subhead):not(.row-cta):hover th,
+  .programs-compare tbody tr:not(.row-subhead):not(.row-cta):hover td {
+    background: var(--deep);
+  }
+
+  /* Visually hidden utility */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+
+  /* ── Mobile reflow: per-program cards via display:contents + flex order ── */
+  @media (max-width: 760px) {
+    .programs-compare {
+      display: flex;
+      flex-direction: column;
+      border-spacing: 0;
+      background: transparent;
+      gap: 1.5rem;
+    }
+    .programs-compare thead,
+    .programs-compare tbody,
+    .programs-compare tr {
+      display: contents;
+    }
+
+    /* Hide structural cells that don't belong in per-program cards */
+    .programs-compare thead tr th:first-child,
+    .programs-compare tbody th[scope="row"],
+    .programs-compare .row-subhead,
+    .programs-compare .row-subhead th {
+      display: none;
+    }
+
+    .programs-compare th,
+    .programs-compare td {
+      display: block;
+      padding: 0.55rem 0;
+      background: transparent;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      font-size: 0.9rem;
+    }
+
+    /* GROUP cells by program column via flex order */
+    .col-welcome    { order: 1; }
+    .col-foundation { order: 2; }
+    .col-membership { order: 3; }
+
+    /* Program header cell becomes card title */
+    .programs-compare thead .col-program {
+      border-top: 1px solid rgba(201,168,76,0.22);
+      padding: 1.5rem 0 1rem;
+      background: transparent;
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+    }
+    .programs-compare thead .col-program.is-featured {
+      border-top: 2px solid var(--gold);
+    }
+    .programs-compare thead .col-program.is-featured::before {
+      display: none;
+    }
+
+    /* tbody td shows attribute label via data-label prefix */
+    .programs-compare tbody td {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .programs-compare tbody td::before {
+      content: attr(data-label);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mist);
+      flex-shrink: 0;
+    }
+
+    /* CTA row on mobile */
+    .programs-compare .row-cta td {
+      border-top: 1px solid rgba(201,168,76,0.16);
+      border-bottom: none;
+      padding: 1.25rem 0 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .programs-compare .row-cta td::before { display: none; }
+
+    .price-value { font-size: 1.35rem; }
+  }
 
   /* ─── HOW TO CHOOSE ─── */
   .choose-section {
@@ -329,9 +486,6 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 940px) {
-    .programs-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .program-card { padding: 2rem 1.6rem 1.85rem; }
-    .program-card-featured { order: -1; }
     .choose-grid { grid-template-columns: 1fr; gap: 0.5rem 0; }
     .choose-label { padding-top: 0; padding-bottom: 0.25rem; }
     .choose-text { padding-bottom: 1.85rem; margin-bottom: 1.85rem; }
@@ -474,73 +628,141 @@
   </div>
 </section>
 
-<!-- OFFER LADDER -->
-<section class="programs-section" aria-label="Programs">
+<!-- COMPARISON TABLE -->
+<section class="programs-section" aria-label="Compare programs">
   <div class="container">
-    <div class="programs-grid">
+    <table class="programs-compare">
+      <caption class="sr-only">Side-by-side comparison of Welcome Bundle, Foundation Package, and Maintenance Membership.</caption>
 
-      <!-- Welcome Bundle -->
-      <a href="/welcome-bundle" class="program-card" aria-label="Learn about the Welcome Bundle">
-        <span class="program-stage">Start Here · New Clients</span>
-        <h2 class="program-name">Welcome Bundle</h2>
-        <p class="program-meta">2 Sessions · Face &amp; Body</p>
-        <div class="program-price">$400</div>
-        <div class="program-price-detail">
-          <span>$550 value</span>
-          <span class="program-save">You save $150</span>
-        </div>
-        <p class="program-desc">Two introductory sessions that map your whole system. One Restorative Buccal Facial, one full-body SOOTHE Lymphatic Drainage, one integrated structural plan built from what we find.</p>
-        <ul class="program-includes" aria-label="Included with Welcome Bundle">
-          <li>One Restorative Buccal Facial</li>
-          <li>One SOOTHE Lymphatic Drainage session</li>
-          <li>Full-body structural assessment</li>
-          <li>Personalized plan for next steps</li>
-        </ul>
-        <span class="program-link">Learn more about the Welcome Bundle →</span>
-      </a>
+      <thead>
+        <tr>
+          <th scope="col"><span class="sr-only">Attribute</span></th>
+          <th scope="col" class="col-program col-welcome">
+            <a href="/welcome-bundle" class="program-headline" aria-label="Learn about the Welcome Bundle">
+              <span class="program-stage">Start Here</span>
+              <span class="program-title">Welcome Bundle</span>
+            </a>
+          </th>
+          <th scope="col" class="col-program col-foundation is-featured">
+            <a href="/foundation-package" class="program-headline" aria-label="Learn about the Foundation Package">
+              <span class="program-stage">Most Popular</span>
+              <span class="program-title">Foundation Package</span>
+            </a>
+          </th>
+          <th scope="col" class="col-program col-membership">
+            <a href="/membership" class="program-headline" aria-label="Learn about the Maintenance Membership">
+              <span class="program-stage">Ongoing</span>
+              <span class="program-title">Maintenance Membership</span>
+            </a>
+          </th>
+        </tr>
+      </thead>
 
-      <!-- Foundation Package (featured) -->
-      <a href="/foundation-package" class="program-card program-card-featured" aria-label="Learn about the Foundation Package">
-        <span class="program-stage">Most Popular · Save $560</span>
-        <h2 class="program-name">Foundation Package</h2>
-        <p class="program-meta">3 Sessions · 6 Weeks · Restorative Buccal Facial Series</p>
-        <div class="program-price">$700</div>
-        <div class="program-price-detail">
-          <span>$1,260 value</span>
-          <span class="program-save">You save $560</span>
-        </div>
-        <p class="program-desc">The structured series for clients addressing real fascial change. Three full Restorative Buccal Facial sessions over six weeks, with the assessment, tracking, and add-ons that compound results across the series.</p>
-        <ul class="program-includes" aria-label="Included with Foundation Package">
-          <li>Three 110-minute Restorative Buccal Facial sessions</li>
-          <li>Whole-picture assessment ($150 value)</li>
-          <li>Before-and-after photo progress tracking</li>
-          <li>Complimentary red light therapy ($60 value)</li>
-          <li>10% off retail products throughout the series</li>
-        </ul>
-        <span class="program-link">Learn more about the Foundation Package →</span>
-      </a>
+      <tbody>
+        <!-- ─── Overview ─── -->
+        <tr class="row-subhead"><th scope="colgroup" colspan="4">Overview</th></tr>
 
-      <!-- Maintenance Membership -->
-      <a href="/membership" class="program-card" aria-label="Learn about the Maintenance Membership">
-        <span class="program-stage">Ongoing Practice</span>
-        <h2 class="program-name">Maintenance Membership</h2>
-        <p class="program-meta">Monthly · 3-Month Minimum</p>
-        <div class="program-price">$225<span class="program-price-mo">/mo</span></div>
-        <div class="program-price-detail">
-          <span>$250 per session value</span>
-          <span class="program-save">You save $25 each month</span>
-        </div>
-        <p class="program-desc">For clients ready to make fascial work an ongoing part of their practice. One full Restorative Buccal Facial per month, priority booking, retail discounts, and a built-in commitment that keeps results compounding.</p>
-        <ul class="program-includes" aria-label="Included with Maintenance Membership">
-          <li>One 110-minute Restorative Buccal Facial per month</li>
-          <li>Priority booking access</li>
-          <li>10% off add-on services and retail</li>
-          <li>3-month minimum, then month-to-month</li>
-        </ul>
-        <span class="program-link">Learn more about Membership →</span>
-      </a>
+        <tr>
+          <th scope="row">Sessions</th>
+          <td class="col-welcome"    data-label="Sessions">2</td>
+          <td class="col-foundation is-featured" data-label="Sessions">3</td>
+          <td class="col-membership" data-label="Sessions">1 per month</td>
+        </tr>
+        <tr>
+          <th scope="row">Timeframe</th>
+          <td class="col-welcome"    data-label="Timeframe">2 weeks</td>
+          <td class="col-foundation is-featured" data-label="Timeframe">6 weeks</td>
+          <td class="col-membership" data-label="Timeframe">Monthly &middot; 3-month min</td>
+        </tr>
 
-    </div>
+        <!-- ─── Investment ─── -->
+        <tr class="row-subhead"><th scope="colgroup" colspan="4">Investment</th></tr>
+
+        <tr>
+          <th scope="row">Total</th>
+          <td class="col-welcome"    data-label="Total"><span class="price-value">$400</span></td>
+          <td class="col-foundation is-featured" data-label="Total"><span class="price-value">$700</span></td>
+          <td class="col-membership" data-label="Total"><span class="price-value">$225</span><span class="price-unit">/mo</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Value</th>
+          <td class="col-welcome"    data-label="Value">$550</td>
+          <td class="col-foundation is-featured" data-label="Value">$1,260</td>
+          <td class="col-membership" data-label="Value">$250 per session</td>
+        </tr>
+        <tr class="row-save">
+          <th scope="row">You save</th>
+          <td class="col-welcome"    data-label="You save">$150</td>
+          <td class="col-foundation is-featured" data-label="You save">$560</td>
+          <td class="col-membership" data-label="You save">$25 per month</td>
+        </tr>
+
+        <!-- ─── Includes ─── -->
+        <tr class="row-subhead"><th scope="colgroup" colspan="4">Includes</th></tr>
+
+        <tr>
+          <th scope="row">Restorative Buccal Facial</th>
+          <td class="col-welcome"    data-label="Restorative Buccal Facial">1 session</td>
+          <td class="col-foundation is-featured" data-label="Restorative Buccal Facial">3 sessions</td>
+          <td class="col-membership" data-label="Restorative Buccal Facial">1 per month</td>
+        </tr>
+        <tr>
+          <th scope="row">Soothe Lymphatic Drainage</th>
+          <td class="col-welcome"    data-label="Soothe Lymphatic Drainage"><span class="mark-check" aria-label="Included">&#10003;</span></td>
+          <td class="col-foundation is-featured" data-label="Soothe Lymphatic Drainage"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+          <td class="col-membership" data-label="Soothe Lymphatic Drainage"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Whole-picture assessment</th>
+          <td class="col-welcome"    data-label="Whole-picture assessment"><span class="mark-check" aria-label="Included">&#10003;</span></td>
+          <td class="col-foundation is-featured" data-label="Whole-picture assessment"><span class="mark-check" aria-label="Included">&#10003;</span></td>
+          <td class="col-membership" data-label="Whole-picture assessment"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Photo progress tracking</th>
+          <td class="col-welcome"    data-label="Photo progress tracking"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+          <td class="col-foundation is-featured" data-label="Photo progress tracking"><span class="mark-check" aria-label="Included">&#10003;</span></td>
+          <td class="col-membership" data-label="Photo progress tracking"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Red light therapy</th>
+          <td class="col-welcome"    data-label="Red light therapy"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+          <td class="col-foundation is-featured" data-label="Red light therapy"><span class="mark-check" aria-label="Included">&#10003;</span></td>
+          <td class="col-membership" data-label="Red light therapy"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Priority booking</th>
+          <td class="col-welcome"    data-label="Priority booking"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+          <td class="col-foundation is-featured" data-label="Priority booking"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+          <td class="col-membership" data-label="Priority booking"><span class="mark-check" aria-label="Included">&#10003;</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Retail discount</th>
+          <td class="col-welcome"    data-label="Retail discount"><span class="mark-dash" aria-label="Not included">&mdash;</span></td>
+          <td class="col-foundation is-featured" data-label="Retail discount">10% during series</td>
+          <td class="col-membership" data-label="Retail discount">10% ongoing</td>
+        </tr>
+
+        <!-- ─── Commitment ─── -->
+        <tr class="row-subhead"><th scope="colgroup" colspan="4">Commitment</th></tr>
+
+        <tr>
+          <th scope="row">Minimum</th>
+          <td class="col-welcome"    data-label="Minimum">None</td>
+          <td class="col-foundation is-featured" data-label="Minimum">None</td>
+          <td class="col-membership" data-label="Minimum">3 months</td>
+        </tr>
+
+        <!-- ─── Action ─── -->
+        <tr class="row-cta">
+          <th scope="row"><span class="sr-only">Learn more</span></th>
+          <td class="col-welcome"><a href="/welcome-bundle">Welcome Bundle &rarr;</a></td>
+          <td class="col-foundation is-featured"><a href="/foundation-package">Foundation Package &rarr;</a></td>
+          <td class="col-membership"><a href="/membership">Membership &rarr;</a></td>
+        </tr>
+
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -569,11 +791,11 @@
   <div class="cta-strip-inner">
     <div>
       <span class="cta-eyebrow">Not sure which is right?</span>
-      <h2 class="cta-headline">We can <em>recommend</em><br>a starting point.</h2>
+      <h2 class="cta-headline">Mechelle can <em>recommend</em><br>a starting point.</h2>
     </div>
     <div class="cta-divider" aria-hidden="true"></div>
     <div class="cta-action">
-      <p class="cta-sub">Send us a short note about your goals and we'll point you toward the program that fits. No pressure to book.</p>
+      <p class="cta-sub">Send me a short note about your goals and I'll point you toward the program that fits. No pressure to book.</p>
       <a href="/contact" class="btn-gold">Get in touch</a>
     </div>
   </div>
