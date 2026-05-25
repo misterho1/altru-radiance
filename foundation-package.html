@@ -1077,9 +1077,7 @@
   <h2 style="margin-bottom:3rem;">Three sessions.<br><em>One lasting visible shift.</em></h2>
   <div class="pkg-card">
     <div class="pkg-badge-row">
-      <span class="pkg-badge">Most Popular</span>
-      <span class="pkg-badge">Best Value</span>
-      <span class="pkg-badge">Limited Monthly Spots</span>
+      <span class="pkg-badge">The Core Series</span>
     </div>
     <div class="pkg-name">The Foundation Package</div>
     <p class="pkg-sub">3 sessions &middot; Ideal for clients transitioning away from volume injections &mdash; or anyone wanting the full Altru Approach</p>
@@ -1384,10 +1382,10 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Track page view with content details
   if (typeof gtag !== 'undefined') {
-    gtag('event', 'view_item', {
+    gtag('event', 'view_item', {/* Bundle total value $700; previously misreported as $250×3=$750. */
       currency: 'USD',
-      value: 250,
-      items: [{ item_id: 'foundation-package', item_name: 'Foundation Package', item_category: 'Buccal Release', price: 250, quantity: 3 }]
+      value: 700,
+      items: [{ item_id: 'foundation-package', item_name: 'Foundation Package', item_category: 'Restorative Buccal Facial', price: 700, quantity: 1 }]
     });
   }
 
@@ -1398,8 +1396,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof gtag !== 'undefined') {
           gtag('event', 'begin_checkout', {
             currency: 'USD',
-            value: 250,
-            items: [{ item_id: 'foundation-package', item_name: 'Foundation Package', item_category: 'Buccal Release', price: 250 }]
+            value: 700,
+            items: [{ item_id: 'foundation-package', item_name: 'Foundation Package', item_category: 'Restorative Buccal Facial', price: 700 }]
           });
         }
       });
@@ -1423,7 +1421,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <div class="sticky-mobile-cta" id="stickyCta">
-  <a href="/book">Reserve Your Foundation Package · $250 per session</a>
+  <a href="/book">Reserve the Foundation Series · $700 · Save $560</a>
 </div>
 <script>
 (function() {

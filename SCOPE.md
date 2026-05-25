@@ -238,8 +238,27 @@ applies (no "treats," "relieves," "detoxes").
 - "anti-aging" stated as a guaranteed result
 - "medical-grade," "clinical results," "therapeutic" (as a health claim)
 - pain, injury, disease, disorder, inflammation as something addressed
-- biofield/quantum-biology language implying a HEALTH outcome (philosophy
-  framing is fine; health-outcome framing is not)
+- biofield/quantum-biology language ONLY when it implies a HEALTH outcome
+  (e.g., "biofield therapy treats X" or "biofield healing").
+
+  Biofield itself is NOT banned. Mechelle uses "biofield" as practitioner
+  language for how she palpates and observes — the body's perceived
+  electromagnetic/energetic field — and that is in scope as either
+  practitioner-observation framing OR philosophy framing.
+
+  Approved patterns:
+  - "biofield-informed observations" (assessment framing)
+  - "Mechelle works with tissue, fascia, and biofield together" (description of
+    her hands-on palpation method, not a health claim)
+  - "Mechelle reads tissue, fascia, and biofield" (sensory practitioner verb)
+
+  Flagged patterns (only these):
+  - "biofield therapy heals/treats/cures X" (health-outcome claim)
+  - "balances the biofield to resolve [condition]" (medical-outcome framing)
+  - "biofield tuning" (sounds like a treatment service, not an observation)
+
+  Biofield as Mechelle's first-person practitioner vocabulary is in scope.
+  Biofield as a service or outcome claim is not.
 
 ---
 
