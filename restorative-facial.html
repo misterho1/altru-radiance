@@ -272,11 +272,26 @@
   .lp-step-cta { margin-top: 1rem; padding-top: 2rem; border-top: 1px solid rgba(201, 168, 76, 0.12); max-width: 760px; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
   .lp-step-cta-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--gold-light); }
 
+  /* ─── PLAN YOUR VISIT (prep / aftercare / location) ─── */
+  .lp-prep { background: var(--black); border-top: 1px solid rgba(201, 168, 76, 0.08); }
+  .lp-prep h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 300; line-height: 1.12; color: var(--cream); margin-bottom: 0.5rem; max-width: 720px; }
+  .lp-prep h2 em { font-style: italic; color: var(--gold-light); }
+  .lp-prep-intro { max-width: 680px; margin-bottom: 3rem; }
+  .lp-prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; margin-top: 2.5rem; }
+  @media (max-width: 860px) { .lp-prep-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .lp-prep-block { padding-top: 1.4rem; border-top: 1px solid rgba(201, 168, 76, 0.18); }
+  .lp-prep-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 500; }
+  .lp-prep-block p { font-size: 0.88rem; line-height: 1.75; color: rgba(244, 240, 230, 0.72); }
+  .lp-prep-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.88rem; line-height: 1.6; color: rgba(244, 240, 230, 0.72); }
+  .lp-prep-list li { padding-left: 1.1rem; position: relative; }
+  .lp-prep-list li::before { content: '—'; position: absolute; left: 0; color: rgba(201, 168, 76, 0.5); }
+
   /* ─── OFFER LADDER (single / package / membership) ─── */
   .lp-offers { background: var(--black); border-top: 1px solid rgba(201, 168, 76, 0.08); }
   .lp-offers h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 300; line-height: 1.12; color: var(--cream); margin-bottom: 0.5rem; max-width: 720px; }
   .lp-offers h2 em { font-style: italic; color: var(--gold-light); }
-  .lp-offers-intro { max-width: 680px; margin-bottom: 3rem; }
+  .lp-offers-intro { max-width: 680px; margin-bottom: 1.4rem; }
+  .lp-offers-credential { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.55); margin-bottom: 3rem; max-width: 680px; line-height: 1.6; }
   .lp-offer-grid { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 1.5rem; align-items: stretch; margin-top: 2rem; }
   @media (max-width: 860px) { .lp-offer-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
   .lp-offer { background: var(--deep); border: 1px solid rgba(201, 168, 76, 0.15); padding: 2rem 1.75rem; display: flex; flex-direction: column; position: relative; }
@@ -297,6 +312,21 @@
   .lp-offer-includes li { padding-left: 1rem; position: relative; }
   .lp-offer-includes li::before { content: '—'; position: absolute; left: 0; color: rgba(201, 168, 76, 0.5); }
   .lp-offer .btn-primary, .lp-offer .btn-ghost { width: 100%; margin-top: auto; }
+
+  /* ─── CLIENT VOICES (3-card review band at the decision point) ─── */
+  .lp-voices { background: var(--deep); border-top: 1px solid rgba(201, 168, 76, 0.08); }
+  .lp-voices-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+  .lp-voices-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 300; line-height: 1.18; color: var(--cream); margin-bottom: 0; max-width: 680px; }
+  .lp-voices-head h2 em { font-style: italic; color: var(--gold-light); }
+  .lp-voices-link { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201, 168, 76, 0.35); padding-bottom: 2px; white-space: nowrap; }
+  .lp-voices-link:hover { color: var(--gold-light); }
+  .lp-voices-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 860px) { .lp-voices-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
+  .lp-voice { background: var(--black); border: 1px solid rgba(201, 168, 76, 0.12); padding: 1.6rem 1.4rem 1.4rem; display: flex; flex-direction: column; }
+  .lp-voice-stars { color: var(--gold); font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 0.85rem; }
+  .lp-voice-text { font-size: 0.82rem; line-height: 1.7; color: rgba(244, 240, 230, 0.75); margin-bottom: 1.25rem; flex: 1; font-style: italic; }
+  .lp-voice-name { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--cream); margin-bottom: 0.2rem; }
+  .lp-voice-detail { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); }
 
   /* ─── COMPARISON TABLE ─── */
   .lp-compare { background: var(--black); border-top: 1px solid rgba(201, 168, 76, 0.08); }
@@ -755,12 +785,49 @@
   </div>
 </section>
 
+<!-- ─── PLAN YOUR VISIT: prep, aftercare, contraindications, location ─── -->
+<section class="lp-prep" aria-labelledby="lp-prep-h">
+  <div class="container">
+    <span class="eyebrow">Plan Your Visit</span>
+    <h2 id="lp-prep-h">What happens on <em>the day of your session</em></h2>
+    <p class="body-text lp-prep-intro">The operational details, so you can focus on the work.</p>
+
+    <div class="lp-prep-grid">
+      <div class="lp-prep-block">
+        <div class="lp-prep-label">Before You Arrive</div>
+        <ul class="lp-prep-list">
+          <li>Arrive 5 minutes early</li>
+          <li>Come with skin clean of makeup</li>
+          <li>Comfortable clothing, no jewelry</li>
+          <li>Avoid heavy meals within an hour of your session</li>
+        </ul>
+      </div>
+
+      <div class="lp-prep-block">
+        <div class="lp-prep-label">After Your Session</div>
+        <p>Hydration and ice can be supportive in the hours after. There is no downtime — this is a supportive modality for the skin barrier.</p>
+      </div>
+
+      <div class="lp-prep-block">
+        <div class="lp-prep-label">Flag at Intake</div>
+        <p>Recent dental work, active oral infections or cold sores, or treatments within two weeks of injectables. The full contraindications list is part of your intake form.</p>
+      </div>
+
+      <div class="lp-prep-block">
+        <div class="lp-prep-label">Finding the Studio</div>
+        <p>South side of the building. The Modern Display sign is visible from the parking lot — Altru Radiance is on the same side.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── OFFER LADDER: Single / Foundation Package / Membership ─── -->
 <section class="lp-offers" aria-labelledby="lp-offers-h">
   <div class="container">
     <span class="eyebrow">Three Ways to Begin</span>
     <h2 id="lp-offers-h">Single session, structured series, <em>or monthly practice</em></h2>
     <p class="body-text lp-offers-intro">The Restorative Buccal Facial is the entry point. Clients addressing real visible change typically commit to a series; clients building this into ongoing care use the Maintenance Membership. Three commitments, one method.</p>
+    <p class="lp-offers-credential">Performed only by Mechelle, Utah-licensed Master Esthetician · 14+ years of practice</p>
 
     <div class="lp-offer-grid">
       <div class="lp-offer">
@@ -786,7 +853,7 @@
           <li>Complimentary red light therapy ($60 value)</li>
           <li>10% off all retail products during the series</li>
         </ul>
-        <a href="/foundation-package" class="btn-ghost" data-book-cta data-service="restorative-facial-offer-foundation">Learn About the 3-Session Series →</a>
+        <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-ghost" data-book-cta data-service="restorative-facial-offer-foundation" target="_blank" rel="noopener">Reserve the 3-Session Foundation →</a>
       </div>
 
       <div class="lp-offer">
@@ -795,7 +862,43 @@
         <div class="lp-offer-price">$225<span class="lp-offer-price-mo">/mo</span></div>
         <div class="lp-offer-price-detail"><span>3-month minimum</span><span class="lp-offer-save">Save $25/session</span></div>
         <p class="lp-offer-description">For clients who want fascial work as ongoing practice. One Restorative Buccal Facial per month, 10% off add-on services and retail, priority booking access in Murray, Utah.</p>
-        <a href="/membership" class="btn-ghost" data-book-cta data-service="restorative-facial-offer-membership">See Membership Details →</a>
+        <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-ghost" data-book-cta data-service="restorative-facial-offer-membership" target="_blank" rel="noopener">Reserve Maintenance Membership →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLIENT VOICES: three perspectives at the decision point ─── -->
+<section class="lp-voices" aria-labelledby="lp-voices-h">
+  <div class="container">
+    <div class="lp-voices-head">
+      <div>
+        <span class="eyebrow">Client Voices · Google Reviews</span>
+        <h2 id="lp-voices-h">What clients say <em>about the work</em></h2>
+      </div>
+      <a class="lp-voices-link" href="https://www.google.com/maps/search/?api=1&amp;query=Altru+Radiance+164+E+5900+S+Murray+UT+84107" target="_blank" rel="noopener">Read all reviews →</a>
+    </div>
+
+    <div class="lp-voices-grid">
+      <div class="lp-voice">
+        <div class="lp-voice-stars" aria-hidden="true">★★★★★</div>
+        <p class="lp-voice-text">"I opted for the buccal facial because it releases tension in the jaw and facial muscles due to stress. Mechelle explained each step of the facial along the way and made sure to check in with me. My face showed visible lifting and contouring. I thought it was better than the 80-min full body massage I had done the day prior."</p>
+        <div class="lp-voice-name">Yara Neu</div>
+        <div class="lp-voice-detail">Buccal Release Facial</div>
+      </div>
+
+      <div class="lp-voice">
+        <div class="lp-voice-stars" aria-hidden="true">★★★★★</div>
+        <p class="lp-voice-text">"I got the Restorative Facial + Buccal Intra-Oral Release and it was amazing. We had a great chat after about continued self care and my energy points to focus on. If that alone didn't make me a return customer, her kindness, time, and understanding for sure did."</p>
+        <div class="lp-voice-name">Kate Gensler</div>
+        <div class="lp-voice-detail">Restorative Facial + Buccal</div>
+      </div>
+
+      <div class="lp-voice">
+        <div class="lp-voice-stars" aria-hidden="true">★★★★★</div>
+        <p class="lp-voice-text">"She went as far as getting into my diet, lifestyle, and living environment to help me identify what PREVENTION I could do, which is huge because so many estheticians just fix problems instead of working individually to address root causes. I never had my skin so clear afterwards."</p>
+        <div class="lp-voice-name">Sasi</div>
+        <div class="lp-voice-detail">Restorative Facial</div>
       </div>
     </div>
   </div>
