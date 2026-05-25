@@ -277,6 +277,27 @@
   }
   .trust-pill .check { color: var(--gold); font-size: 0.7rem; }
 
+  /* Hero glossary — plain-language fascia anchor beneath the trust pills.
+     Sits as a quiet caption: small Jost body, italic Cormorant on the
+     defined term ("Fascia work"). One sentence; SCOPE-compliant. */
+  .hero-glossary {
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(0.78rem, 1.4vw, 0.86rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(244, 240, 230, 0.58);
+    max-width: 560px;
+    margin: -1.5rem auto 2rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  .hero-glossary em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 0.01em;
+  }
+
   /* Hero CTA pair (added 2026-05-19 — was missing primary action above the fold).
      Side-by-side on desktop, stacked on mobile. Mirrors the button language
      used on /restorative-facial so cross-page visitors see consistent affordance. */
@@ -575,6 +596,7 @@
 
     .trust-bar { justify-content: flex-start; gap: 0.45rem; margin-bottom: 2rem; }
     .trust-pill { font-size: 0.52rem; padding: 0.4rem 0.75rem; letter-spacing: 0.16em; }
+    .hero-glossary { text-align: left; margin: -1rem 0 1.5rem; font-size: 0.9rem; max-width: 100%; }
 
     .carousel-section { max-width: 100%; }
     .carousel-slide { height: auto; }
@@ -1386,6 +1408,8 @@
       <div class="trust-pill"><span class="check">✓</span> Regenerative Fascia Sculpting</div>
       <div class="trust-pill"><span class="check">✓</span> Fascia-Informed Body & Face Sculpting</div>
     </div>
+
+    <p class="hero-glossary"><em>Fascia work</em> softens the connective tissue beneath the skin that holds your face in its shape, so the natural lift returns.</p>
 
     <div class="hero-cta-row" aria-label="Primary actions">
       <a href="/book" class="hero-cta hero-cta-primary">Reserve Your Session</a>
