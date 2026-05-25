@@ -153,6 +153,23 @@ See `SCOPE.md` for full primary-source citations.
 - **Cormorant Garamond** — Serif, editorial. Used for: headings, brand name, italic lede, prices, nav brand
 - **Jost** — Sans-serif, clean. Used for: body copy, nav links, CTAs, labels (weight 300/400/500)
 
+### Service Badge Taxonomy
+
+Two badge components serve distinct purposes. Use the canonical labels below; do not invent new ones per page.
+
+**`.service-badge`** — categorizes a service card. Canonical labels only:
+- **Signature Regenerative** — fascia-focused services: Restorative Buccal Facial, Soothe Lymphatic Drainage, Facial Architecture Ritual
+- **Adjuvant Cosmetic** — surface treatments: Procell Microchanneling, Aqua Peel, Microneedling, Back Facial, Red Light Therapy
+- **New Client Package** — Welcome Bundle (the only intro-pricing package)
+- **Foundation Series** — Foundation Package (3-session commitment)
+
+**`.slide-service-badge`** — caption above before/after demo slides. Use the actual service name shown in the image, not a descriptive phrase:
+- **Restorative Buccal Facial**
+- **Soothe Lymphatic Drainage**
+- **Facial Architecture Ritual**
+
+Image filenames are the source of truth for which service a demo slide represents. When in doubt, read the filename slug (`buccal-massage-*` → Restorative Buccal Facial; `lymphatic-drainage-*` → Soothe Lymphatic Drainage; `structural-integration-*` → Facial Architecture Ritual).
+
 ### Voice Consistency Across Channels
 When generating content across X, email, or any other channel, maintain the same clinical-but-warm tone. The brand does not have a "casual voice" and a "formal voice" — it has one voice that adjusts register slightly for format without losing precision or authority.
 
