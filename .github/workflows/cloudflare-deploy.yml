@@ -1,0 +1,44 @@
+name: Deploy to Cloudflare Pages
+
+# Auto-deploys altru-radiance to Cloudflare Pages on every push to main.
+# This replaces the manual `wrangler pages deploy` step that was previously
+# required because the Pages project is "Direct Upload" type (not natively
+# git-connected). Functionally equivalent to a native git-connected Pages
+# project from the developer's perspective.
+#
+# Required GitHub repository secrets:
+#   CLOUDFLARE_API_TOKEN  — token scoped to Account:Cloudflare Pages:Edit
+#   CLOUDFLARE_ACCOUNT_ID — 86d89862fa4b6117b77923ff0db54aa4
+
+on:
+  push:
+    branches: [main]
+  # Allow manual dispatch from the GitHub Actions UI (useful for re-running
+  # or for the first run after setting up secrets).
+  workflow_dispatch:
+
+# Cancel in-flight deploys when a newer push arrives; only the latest commit
+# on main needs to be live.
+concurrency:
+  group: cf-pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=altru-radiance --branch=main --commit-dirty=true
+          # Disable telemetry to keep CI logs clean.
+          wranglerVersion: "latest"
