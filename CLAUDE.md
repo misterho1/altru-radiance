@@ -29,6 +29,23 @@
 
 ---
 
+## Design Context
+
+Strategic design canon lives in **[PRODUCT.md](PRODUCT.md)** (strategy) and **[DESIGN.md](DESIGN.md)** (visual system). Auto-loaded by every `/impeccable` command.
+
+**Register:** brand. **Creative North Star:** *"The Anatomical Atlas, with Apothecary precision in the studio menu."*
+
+**Five design principles** (cite by name in critique passes):
+1. Anatomy is the proof
+2. Mechelle speaks, not a brand
+3. Beautification, never treatment
+4. Editorial over commercial
+5. Three readers, one page (skeptic, injectable-fatigued, somatic-native)
+
+`DESIGN.json` sidecar carries tonal ramps and component HTML/CSS snippets for the live preview panel.
+
+---
+
 ## Brand Voice
 
 ### Personality

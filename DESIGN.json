@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-24T22:30:00Z",
+  "title": "Design System: Altru Radiance",
+  "extensions": {
+    "colorMeta": {
+      "atlas-pitch": {
+        "role": "neutral",
+        "displayName": "Atlas Pitch",
+        "canonical": "oklch(15% 0.013 152)",
+        "tonalRamp": ["#06100a", "#0d1c14", "#15281d", "#1f3527", "#2a4332", "#36523e", "#44614a", "#54715a", "#c8dfcd"]
+      },
+      "atlas-substrate": {
+        "role": "neutral",
+        "displayName": "Atlas Substrate",
+        "canonical": "oklch(19% 0.018 152)",
+        "tonalRamp": ["#0a1810", "#102117", "#172a1f", "#1f3527", "#284130", "#314e39", "#3c5c44", "#496c50", "#cee2d3"]
+      },
+      "atlas-forest": {
+        "role": "neutral",
+        "displayName": "Atlas Forest",
+        "canonical": "oklch(26% 0.027 152)",
+        "tonalRamp": ["#0c1810", "#11221a", "#162b1c", "#1d3624", "#26432d", "#305237", "#3d6244", "#4d7553", "#d5e6da"]
+      },
+      "atlas-gold": {
+        "role": "primary",
+        "displayName": "Atlas Gold",
+        "canonical": "oklch(73% 0.105 90)",
+        "tonalRamp": ["#1f1a0c", "#3a3119", "#564926", "#735f33", "#927840", "#b3924d", "#c9a84c", "#dabd66", "#f0e3c0"]
+      },
+      "italic-gold": {
+        "role": "primary",
+        "displayName": "Italic Gold",
+        "canonical": "oklch(86% 0.09 90)",
+        "tonalRamp": ["#241e10", "#43391f", "#62542d", "#82713d", "#a48f4d", "#c6ad65", "#e8cc88", "#f0d9a0", "#faedc8"]
+      },
+      "manuscript-cream": {
+        "role": "neutral",
+        "displayName": "Manuscript Cream",
+        "canonical": "oklch(95% 0.014 80)",
+        "tonalRamp": ["#26221a", "#3d382e", "#544f44", "#6c6759", "#85806f", "#a09a87", "#bdb7a3", "#dad3bc", "#f4f0e6"]
+      },
+      "sage-mist": {
+        "role": "neutral",
+        "displayName": "Sage Mist",
+        "canonical": "oklch(67% 0.04 145)",
+        "tonalRamp": ["#142117", "#1f322a", "#2a4537", "#365844", "#456e54", "#5d8a6c", "#789f86", "#8aaa8a", "#c8d8c8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display Serif", "purpose": "Hero h1 only. The biggest editorial statement on the page; the italic em inside is the One Italic Anchor." },
+      "headline": { "displayName": "Section Head", "purpose": "Major narrative transitions. Always paired with eyebrow + gold-rule below." },
+      "title": { "displayName": "Card Title", "purpose": "Service card names, journal article cards. Serif voice at small scale." },
+      "body": { "displayName": "Editorial Body", "purpose": "Default reading text. Line-height 1.7-1.8. Demographic skews 35-55." },
+      "label": { "displayName": "Atlas Label", "purpose": "Eyebrows, trust pills, badges. Sans voice at its quietest." }
+    },
+    "shadows": [
+      { "name": "carousel-handle", "value": "0 2px 12px rgba(0,0,0,0.5)", "purpose": "Only sanctioned drop-shadow. Applied to the before/after carousel draggable handle pill. Nowhere else." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for opacity, transform, and color transitions." },
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Hero CTA hover translateY lifts. Exponential ease-out — never elastic, never bounce." },
+      { "name": "duration-hover", "value": "0.25s", "purpose": "Quick state transitions (button bg, border, color)." },
+      { "name": "duration-stripe", "value": "0.35s", "purpose": "Bottom-stripe scaleX hover affordance on service cards." },
+      { "name": "duration-carousel", "value": "0.65s", "purpose": "Before/after carousel slide transitions." },
+      { "name": "duration-crossfade", "value": "1500ms", "purpose": "Hero video stack crossfade between clips. Respects prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "640px", "purpose": "Body-text floor enforced at 16px (1rem). Mobile menu activates." },
+      { "name": "tablet-narrow", "value": "759px", "purpose": "Two-column services-grid; left-aligned hero typography." },
+      { "name": "tablet", "value": "860px", "purpose": "Hamburger nav from 860px down (avoids 922→672 overflow at 641-859px)." },
+      { "name": "content-max", "value": "1180px", "purpose": ".container max-width." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Atlas Gold CTA pill. Sharp-cornered, uppercase Jost label. Used for hero primary CTA and Book Now actions.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">Book Restorative Buccal</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; font-family: 'Jost', system-ui, sans-serif; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #06100a; background: #c9a84c; padding: 0.95rem 2rem; min-height: 48px; text-decoration: none; border: none; border-radius: 0; cursor: pointer; transition: background 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { background: #e8cc88; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid #e8cc88; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent secondary action. Atlas Gold border at 0.35 alpha. Used across all pages for secondary CTAs (Read Full Technique, Browse Journal).",
+      "html": "<a href=\"#\" class=\"ds-btn-ghost\">Read Full Technique</a>",
+      "css": ".ds-btn-ghost { display: inline-block; font-family: 'Jost', system-ui, sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a84c; background: transparent; border: 1px solid rgba(201,168,76,0.35); padding: 14px 32px; text-decoration: none; border-radius: 0; cursor: pointer; transition: background 0.25s, border-color 0.25s; } .ds-btn-ghost:hover { background: rgba(201,168,76,0.08); border-color: #c9a84c; } .ds-btn-ghost:focus-visible { outline: 2px solid #e8cc88; outline-offset: 2px; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "service-card",
+      "description": "Sharp-cornered Atlas Pitch card with bottom-stripe scaleX hover affordance. Service badge eyebrow, Cormorant title, italic Jost hook, meta row with gold-rule above duration+price.",
+      "html": "<a href=\"#\" class=\"ds-service-card\"><span class=\"ds-service-badge\">Signature Service</span><h3 class=\"ds-service-name\">Restorative Buccal Facial</h3><p class=\"ds-service-hook\">Intraoral fascia work, lymphatic drainage, and the slow craft of midface release.</p><div class=\"ds-service-meta\"><span class=\"ds-service-duration\">110 min</span><span class=\"ds-service-price\">250</span></div><span class=\"ds-service-arrow\">&rarr;</span></a>",
+      "css": ".ds-service-card { display: flex; flex-direction: column; background: #06100a; color: #f4f0e6; padding: 2.2rem 2rem 2rem; text-decoration: none; border: none; border-radius: 0; position: relative; overflow: hidden; transition: background 0.3s; cursor: pointer; min-height: 280px; } .ds-service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #c9a84c; transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; } .ds-service-card:hover { background: #0a1810; } .ds-service-card:hover::after { transform: scaleX(1); } .ds-service-badge { font-family: 'Jost', system-ui, sans-serif; font-size: 0.48rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a84c; border: 1px solid rgba(201,168,76,0.3); padding: 3px 8px; border-radius: 2px; display: inline-block; margin-bottom: 1rem; width: fit-content; } .ds-service-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; font-weight: 300; color: #f4f0e6; line-height: 1.2; margin: 0 0 0.6rem; } .ds-service-hook { font-family: 'Jost', system-ui, sans-serif; font-size: 0.78rem; font-style: italic; color: rgba(244,240,230,0.65); line-height: 1.6; margin: 0 0 1.4rem; flex: 1; } .ds-service-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 1.1rem; border-top: 1px solid rgba(201,168,76,0.1); } .ds-service-duration { font-family: 'Jost', system-ui, sans-serif; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: #8aaa8a; } .ds-service-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: #e8cc88; } .ds-service-arrow { position: absolute; top: 2.2rem; right: 2rem; font-size: 0.75rem; color: rgba(201,168,76,0.3); transition: color 0.3s, transform 0.3s; } .ds-service-card:hover .ds-service-arrow { color: #c9a84c; transform: translateX(3px); }"
+    },
+    {
+      "name": "Trust Pill",
+      "kind": "chip",
+      "refersTo": "trust-pill",
+      "description": "Sage Mist trust badge with Atlas Gold checkmark. Used in hero trust-bar.",
+      "html": "<span class=\"ds-trust-pill\"><span class=\"ds-trust-check\">✓</span>Licensed Master Esthetician</span>",
+      "css": ".ds-trust-pill { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Jost', system-ui, sans-serif; font-size: 0.58rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: #8aaa8a; border: 1px solid rgba(138,170,138,0.25); padding: 0.45rem 1rem; background: rgba(22,43,28,0.45); border-radius: 0; } .ds-trust-check { color: #c9a84c; font-size: 0.7rem; }"
+    },
+    {
+      "name": "Eyebrow + Section Heading + Gold Rule",
+      "kind": "custom",
+      "refersTo": "section-heading",
+      "description": "The canonical section opener: Sage Mist eyebrow, 40x1 gold-rule, Cormorant section heading with Italic Gold em. The One Italic Anchor applies.",
+      "html": "<div class=\"ds-section-opener\"><span class=\"ds-eyebrow\">FIG. 1 · The Studio Method</span><div class=\"ds-gold-rule\"></div><h2 class=\"ds-section-heading\">A different category of <em>facial work</em></h2></div>",
+      "css": ".ds-section-opener { text-align: center; } .ds-eyebrow { display: block; font-family: 'Jost', system-ui, sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: #8aaa8a; margin-bottom: 0.75rem; } .ds-gold-rule { width: 40px; height: 1px; background: #c9a84c; opacity: 0.5; margin: 1.25rem auto; } .ds-section-heading { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.1; color: #f4f0e6; margin: 0; } .ds-section-heading em { font-style: italic; color: #e8cc88; }"
+    },
+    {
+      "name": "Studio Menu Row (Apothecary precision)",
+      "kind": "custom",
+      "refersTo": "studio-menu",
+      "description": "The apothecary half of the hybrid metaphor. Numbered formulation rows with hairline divider, service name, duration, price. For booking pages and service menus.",
+      "html": "<ul class=\"ds-studio-menu\"><li class=\"ds-menu-row\"><span class=\"ds-menu-no\">No. 1</span><span class=\"ds-menu-name\">Restorative Buccal Facial</span><span class=\"ds-menu-dur\">110 min</span><span class=\"ds-menu-price\">250</span></li><li class=\"ds-menu-row\"><span class=\"ds-menu-no\">No. 2</span><span class=\"ds-menu-name\">Soothe Lymphatic Drainage</span><span class=\"ds-menu-dur\">60 min</span><span class=\"ds-menu-price\">175</span></li><li class=\"ds-menu-row\"><span class=\"ds-menu-no\">No. 3</span><span class=\"ds-menu-name\">Facial Architecture Ritual</span><span class=\"ds-menu-dur\">75 min</span><span class=\"ds-menu-price\">195</span></li></ul>",
+      "css": ".ds-studio-menu { list-style: none; margin: 0; padding: 0; background: #06100a; border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); } .ds-menu-row { display: grid; grid-template-columns: 56px 1fr auto auto; gap: 1.5rem; align-items: baseline; padding: 1.1rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); } .ds-menu-row:last-child { border-bottom: none; } .ds-menu-no { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; font-style: italic; color: #e8cc88; letter-spacing: 0.04em; } .ds-menu-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; font-weight: 300; color: #f4f0e6; } .ds-menu-dur { font-family: 'Jost', system-ui, sans-serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8aaa8a; } .ds-menu-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: #c9a84c; min-width: 3ch; text-align: right; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Fixed top nav with brand mark, link list, primary CTA. Mobile hamburger from 860px down.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-brand\"><span class=\"ds-nav-brand-name\">Altru Radiance</span><span class=\"ds-nav-brand-sub\">Aesthetic Wellness · Murray UT</span></a><ul class=\"ds-nav-links\"><li><a href=\"#\">Services</a></li><li><a href=\"#\">Journal</a></li><li><a href=\"#\">About</a></li></ul><a href=\"#\" class=\"ds-nav-cta\">Book Now</a></nav>",
+      "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; padding: 0 3rem; height: 68px; background: rgba(6,16,10,0.97); border-bottom: 1px solid rgba(201,168,76,0.12); } .ds-nav-brand { display: flex; flex-direction: column; gap: 0.08rem; text-decoration: none; } .ds-nav-brand-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: #c9a84c; line-height: 1; } .ds-nav-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: #8aaa8a; line-height: 1; } .ds-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; } .ds-nav-links a { font-family: 'Jost', system-ui, sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.25s; } .ds-nav-links a:hover { color: #c9a84c; } .ds-nav-cta { font-family: 'Jost', system-ui, sans-serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #06100a; background: #c9a84c; padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s; border-radius: 0; } .ds-nav-cta:hover { background: #e8cc88; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Anatomical Atlas, with Apothecary precision in the studio menu.",
+    "overview": "The brand reads like a serious illustrated anatomy reference — Vesalius's De humani corporis fabrica or a Renaissance medical study, modernized but never reframed as wellness. Italic captions name the muscle. Hairline rules separate illustration from annotation. Gold-foil chapter markers (FIG. 1, FIG. 2) sit on deep-forest parchment. The studio teaches what it does, page by page, with the calm authority of a textbook that doesn't have to sell itself. Where the brand transitions from teaching to transacting — service menus, pricing tables, booking pages — it shifts to apothecary-grade restraint. Numbered formulations (No. 1, No. 2), label-typography precision, the studio as small-batch maker. Atlas authority dominant; apothecary precision in the cataloging. This system explicitly rejects the standard med-spa template, the wellness-mystic lane, and the corporate-clinical dermatologist sterility. The Atlas is dark-toned, parchment-coded, mechanically grounded — never floaty, never clinical-cold.",
+    "keyCharacteristics": [
+      "Deep forest-tinged blacks as substrate, never #000",
+      "Two-tone gold accent (Atlas Gold for primary, Italic Gold for emphasis)",
+      "Cormorant Garamond italic ledes as emotional anchor — one per page",
+      "Hairline rules (1.5px gaps, 1px borders at 0.08-0.15 alpha) as structural language",
+      "Sharp edges by default; radius reserved for pill-shaped tap targets",
+      "Bottom-stripe hover (gold scaleX 0→1) as the only card-affordance pattern",
+      "Layered tonal depth — atlas-pitch, atlas-substrate, atlas-forest are explicit elevation steps",
+      "Generous editorial line-height (1.7-1.8) on body copy; cap line length at 65-75ch"
+    ],
+    "rules": [
+      { "name": "The One Italic Anchor Rule", "body": "Each page has exactly ONE italic phrase as its emotional anchor. Italic Cormorant Garamond + Italic Gold is the only accent treatment for headings. No underline, no background color, no scale change on the accent. The italic carries hierarchy alone.", "section": "colors" },
+      { "name": "The Atlas Gold Rarity Rule", "body": "Atlas Gold is used on ≤10% of any given screen. Its rarity is the point. If gold is everywhere, it's nowhere.", "section": "colors" },
+      { "name": "The Italic Accent Rule", "body": "Italic Cormorant Garamond + Italic Gold is the ONLY treatment for emphasis inside a heading. Never underline a heading. Never apply background color to emphasized text. Never bold. The italic is the entire grammar of emphasis.", "section": "typography" },
+      { "name": "The Generous Line-Height Rule", "body": "Body line-height never drops below 1.6. Demographic skews 35-55; eye fatigue is real. Pillar text, philosophy paragraphs, and Journal articles use 1.7-1.8.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Cards do not have box-shadows at rest. Drop-shadows are reserved for the carousel handle and the live-update fade animation only. Hover lifts use translateY micro-movements (≤2px) plus the bottom-stripe affordance, never a shadow swap-in.", "section": "elevation" },
+      { "name": "The Paper-Layer Rule", "body": "When introducing a new section, choose its substrate (atlas-pitch, atlas-substrate, atlas-forest) deliberately — adjacent sections must contrast tonally. Two adjacent sections on the same substrate read as one undifferentiated wall.", "section": "elevation" },
+      { "name": "The 1.5px Gridline Rule", "body": "Multi-column grids (services, journal, results) use a 1.5px gap with a darker tint on the grid container as background. The gap reveals the tint, creating a hairline rule between cells without using cell borders. Never apply border to grid items — the gap IS the rule.", "section": "components" },
+      { "name": "The Bottom-Stripe Rule", "body": "Hoverable cards get an animated 2px gold bottom-stripe via ::after with transform scaleX(0) → scaleX(1) and transform-origin left. Never a glow, never a border-color shift, never a lift greater than 2px. The stripe is the entire hover affordance.", "section": "components" },
+      { "name": "The No-Radius Rule", "body": "Border-radius is reserved for pill-shaped tap targets only — carousel dots, the draggable carousel handle, the round logo placeholder, and one 2px hairline radius on small label-pills. Everything else is sharp-cornered. Radius is a feature, not a default.", "section": "components" }
+    ],
+    "dos": [
+      "Do lead every hero with one italic Cormorant Garamond phrase in Italic Gold (#e8cc88). One per page, always inside the h1 em. The italic carries the emotional anchor.",
+      "Do anchor color decisions to the seven named tokens. No off-token greys, no off-token golds, no bright accents.",
+      "Do use tonal layering (atlas-pitch → atlas-substrate → atlas-forest) for section depth. Adjacent sections must contrast tonally.",
+      "Do apply the 1.5px gap pattern to all multi-column primary grids. The gap with tinted background creates the hairline rule.",
+      "Do use the bottom-stripe pattern as the sole card-hover affordance. transform scaleX(0→1) over 0.35s with transform-origin left.",
+      "Do cap body line length at 65-75ch and never drop body line-height below 1.6.",
+      "Do name muscles, tissues, and mechanisms specifically. Buccinator, masseter, SMAS, mechanotransduction, lymphatic flow. Anatomy is the proof.",
+      "Do number the studio menu apothecary-style (No. 1, No. 2) in pricing/booking surfaces. Atlas authority in editorial; apothecary precision in catalog.",
+      "Do keep Atlas Gold at ≤10% of any given screen. Its rarity is the point."
+    ],
+    "donts": [
+      "Don't use #000 or #fff anywhere. Every neutral is tinted toward the forest-gold hue family.",
+      "Don't use side-stripe border-left or border-right greater than 1px as a colored accent.",
+      "Don't use gradient text (background-clip: text + gradient). Single-color text. Emphasis via italic + Italic Gold, not gradients.",
+      "Don't introduce glassmorphism on cards or surfaces. The mobile menu's single backdrop-filter is the only sanctioned use.",
+      "Don't apply border-radius to cards, buttons, inputs, or sections. Radius is reserved for pill-shaped tap targets.",
+      "Don't drop shadows on cards at rest. The system uses tonal layering, not box-shadows.",
+      "Don't stack two italic accents in the same heading hierarchy. One italic em per page is the anchor.",
+      "Don't use generic wellness vocabulary — no 'glow from within,' 'self-love ritual,' 'holistic healing journey,' 'transformative,' 'radiant.'",
+      "Don't style the brand as a med-spa. No stock-photo smiling women, no before/after slider as the hero, no baby-pink or chrome accents, no 'Specials This Month' banners.",
+      "Don't style the brand as wellness-mystic. No crystals, soft-focus, sage-and-hand-lettered fonts.",
+      "Don't style the brand as corporate-clinical dermatologist. No stark white plus navy, no lab-coat photography, no sterile geometry.",
+      "Don't style the brand as templated Squarespace day-spa. No centered-everything beige minimalism, no lavender fields, no 'Mind Body Soul' headers.",
+      "Don't format pricing as Groupon-style headlines. Pricing is supporting detail in apothecary-precision menu format.",
+      "Don't use exclamation points or em dashes. Use commas, colons, semicolons, periods, or parentheses. No emojis anywhere."
+    ]
+  }
+}
