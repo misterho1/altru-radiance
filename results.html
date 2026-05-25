@@ -85,19 +85,19 @@ nav {
 .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--cream); transition: 0.3s; }
 
 /* ─── MOBILE NAV OVERLAY ────────────────────────────────────────── */
-.mobile-nav-overlay {
+.mobile-menu {
   display: none;
   position: fixed; inset: 0; z-index: 950;
   background: rgba(6,16,10,0.98);
   flex-direction: column; align-items: center; justify-content: center;
   gap: 2.5rem;
 }
-.mobile-nav-overlay.open { display: flex; }
-.mobile-nav-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--cream); font-size: 1.4rem; cursor: pointer; opacity: 0.6; }
-.mobile-nav-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-.mobile-nav-links a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-style: italic; font-weight: 300; color: var(--cream); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
-.mobile-nav-links a:hover { color: var(--gold-light); }
-.mobile-nav-book { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.75rem 2rem; text-decoration: none; }
+.mobile-menu.is-open { display: flex; }
+.mobile-menu-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--cream); font-size: 1.4rem; cursor: pointer; opacity: 0.6; }
+.mobile-menu-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-style: italic; font-weight: 300; color: var(--cream); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.mobile-menu-links a:hover { color: var(--gold-light); }
+.mobile-menu-cta { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.75rem 2rem; text-decoration: none; }
 
 /* ─── HERO ──────────────────────────────────────────────────────── */
 .hero {
@@ -913,16 +913,16 @@ footer {
     id="navHamburger"
     aria-label="Open navigation menu"
     aria-expanded="false"
-    aria-controls="mobileNavOverlay"
+    aria-controls="mobileMenu"
   >
     <span></span>
     <span></span>
     <span></span>
   </button>
 </nav>
-<div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
-  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">×</button>
-  <ul class="mobile-nav-links">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation menu">×</button>
+  <ul class="mobile-menu-links">
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/services">Services</a></li>
@@ -931,7 +931,7 @@ footer {
     <li><a href="/journal">Journal</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
-  <a href="/book" class="mobile-nav-book">Reserve</a>
+  <a href="/book" class="mobile-menu-cta">Reserve</a>
 </div>
 
 <div class="jump-nav-bar" id="jumpNavBar">
@@ -1584,11 +1584,11 @@ footer {
 <script>
 // ── Mobile nav ───────────────────────────────────────────────────
 const hamburger = document.getElementById('navHamburger');
-const overlay   = document.getElementById('mobileNavOverlay');
-const closeBtn  = document.getElementById('mobileNavClose');
-hamburger.addEventListener('click', () => overlay.classList.add('open'));
-closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
-overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+const overlay   = document.getElementById('mobileMenu');
+const closeBtn  = document.getElementById('mobileMenuClose');
+hamburger.addEventListener('click', () => overlay.classList.add('is-open'));
+closeBtn.addEventListener('click', () => overlay.classList.remove('is-open'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('is-open'); });
 
 // ── Sticky jump nav ──────────────────────────────────────────────
 (function () {
