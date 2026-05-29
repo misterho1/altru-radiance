@@ -1349,39 +1349,9 @@
     cssEfects: { fade: { in: 'fadeIn', out: 'fadeOut' } }
   });
 </script>
-<script>
-  // Vanilla before/after drag sliders
-  document.querySelectorAll('.ba-slider').forEach(function(slider) {
-    var after   = slider.querySelector('.ba-after');
-    var divider = slider.querySelector('.ba-divider');
-    var dragging = false;
-
-    function setPos(clientX) {
-      var rect = slider.getBoundingClientRect();
-      var pct  = Math.max(0, Math.min(100, (clientX - rect.left) / rect.width * 100));
-      after.style.clipPath   = 'inset(0 0 0 ' + pct + '%)';
-      divider.style.left     = pct + '%';
-    }
-
-    // Mouse
-    slider.addEventListener('mousedown', function(e) {
-      dragging = true; setPos(e.clientX); e.preventDefault();
-    });
-    document.addEventListener('mousemove', function(e) {
-      if (dragging) setPos(e.clientX);
-    });
-    document.addEventListener('mouseup', function() { dragging = false; });
-
-    // Touch
-    slider.addEventListener('touchstart', function(e) {
-      dragging = true; setPos(e.touches[0].clientX);
-    }, { passive: true });
-    slider.addEventListener('touchmove', function(e) {
-      if (dragging) { setPos(e.touches[0].clientX); e.preventDefault(); }
-    }, { passive: false });
-    slider.addEventListener('touchend', function() { dragging = false; });
-  });
-</script>
+<!-- .ba-slider drag behavior is now handled by /assets/js/ba-carousel.js
+     (shared with .ba-split). The inline mouse/touch handler that used
+     to live here has been removed to avoid duplicate event bindings. -->
 
 <script>
 // Science section image carousel — scoped IIFE

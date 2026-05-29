@@ -31,6 +31,14 @@
     var handle = panel.querySelector('.ba-handle');
     if (!handle) return;
 
+    // Detect which component flavor we're attached to so we clip
+    // the right layer in the right direction. .ba-slider keeps
+    // .ba-after on top and clips it from the left as the slider
+    // moves right. .ba-split keeps .ba-before on top and clips it
+    // from the right. Both produce before-on-left / after-on-right
+    // visually but the math is inverted.
+    var isSlider = panel.classList.contains('ba-slider');
+
     var dragging = false;
     var startX = 0, startY = 0;
     var lingerTimer = null;
@@ -54,8 +62,15 @@
       // Unitless mirror so CSS calc() in ba-carousel.css can
       // drive label opacity from the same source of truth.
       panel.style.setProperty('--split-num', clamped);
-      var before = panel.querySelector('.ba-before');
-      if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      if (isSlider) {
+        // .ba-slider: clip .ba-after from the left
+        var after = panel.querySelector('.ba-after');
+        if (after) after.style.clipPath = 'inset(0 0 0 ' + clamped + '%)';
+      } else {
+        // .ba-split: clip .ba-before from the right
+        var before = panel.querySelector('.ba-before');
+        if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      }
       var divider = panel.querySelector('.ba-divider');
       if (divider) divider.style.left = clamped + '%';
       handle.setAttribute('aria-valuenow', Math.round(clamped));
@@ -127,15 +142,15 @@
   }
 
   function attachAll() {
-    var panels = document.querySelectorAll('.ba-split');
+    var panels = document.querySelectorAll('.ba-split, .ba-slider');
     panels.forEach(function (panel) {
       if (panel.dataset.baInitialized === '1') return;
       panel.dataset.baInitialized = '1';
       initBASlider(panel);
     });
 
-    // First-paint affordance hint on the first .ba-split panel.
-    var firstPanel = document.querySelector('.ba-split');
+    // First-paint affordance hint on the first slider panel.
+    var firstPanel = document.querySelector('.ba-split, .ba-slider');
     if (!firstPanel) return;
     var firstHandle = firstPanel.querySelector('.ba-handle');
     if (!firstHandle) return;

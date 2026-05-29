@@ -4,37 +4,43 @@
    page's inline <style> block so these state-driven rules
    override the older solid-gold-handle baseline via cascade.
 
+   Covers two component flavors:
+   • .ba-split  — standard, used on most pages. Clips
+                  .ba-before from the right via --split.
+   • .ba-slider — foundation-package science section. Clips
+                  .ba-after from the left. Handle contains
+                  an SVG icon (stroke hardcoded), so the
+                  rest/active fade is applied via opacity on
+                  the SVG itself rather than via color.
+
    Width/height/font-size on .ba-handle are intentionally NOT
    set here — per-page size customizations (e.g. larger mobile
    touch targets) are preserved by leaving sizing to the page.
+   :is() is used so a single rule matches both wrapper scopes
+   at the (0,2,0) specificity of the original page-scoped
+   rules being overridden.
    ============================================================ */
 
-/* ─── Divider — dimmed gold at rest, full gold when active.
-   .ba-split.is-active is added by JS during drag/touch;
-   CSS :hover handles desktop pointing. ─── */
-.ba-divider {
+/* ─── Divider — dimmed gold at rest, full gold when active. ─── */
+:is(.ba-split, .ba-slider) .ba-divider {
   background: rgba(201, 168, 76, 0.6);
   transition: background 1s ease;
 }
-.ba-split:hover .ba-divider,
-.ba-split.is-active .ba-divider {
+:is(.ba-split, .ba-slider):hover .ba-divider,
+:is(.ba-split, .ba-slider).is-active .ba-divider {
   background: var(--gold);
   transition: background 0.25s ease;
 }
 
-/* ─── Handle — default = outline only (barely detectable).
-   Active (hover, drag, focus) = 30% gold fill, ↔ visible.
-   Slow ease back to rest (~1s) lets the image hold the moment
-   after interaction; fast snap (~0.25s) on activation keeps it
-   responsive. ─── */
-.ba-handle {
+/* ─── Handle — outline only at rest, 30% gold fill when active. ─── */
+:is(.ba-split, .ba-slider) .ba-handle {
   background: transparent;
   border: 1px solid rgba(201, 168, 76, 0.35);
-  color: transparent; /* hides any inner symbol */
+  color: transparent; /* hides any inner text symbol (e.g. ↔) */
   box-shadow: none;
   transition: background 1s ease, border-color 1s ease, color 1s ease;
 }
-.ba-split:hover .ba-handle,
+:is(.ba-split, .ba-slider):hover .ba-handle,
 .ba-handle.is-active,
 .ba-handle:focus-visible {
   background: rgba(201, 168, 76, 0.3);
@@ -43,10 +49,23 @@
   transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
+/* SVG icon inside .ba-slider's handle.
+   The SVG paths have hardcoded stroke="#06100a", so we fade them
+   via opacity on the SVG itself rather than via inherited color. */
+.ba-slider .ba-handle svg {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.ba-slider:hover .ba-handle svg,
+.ba-slider .ba-handle.is-active svg,
+.ba-slider .ba-handle:focus-visible svg {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
 /* ─── Labels — fade as the slider passes over them.
-   Opacity tracks --split-num (a unitless mirror of --split set
-   by ba-carousel.js) so each label fades out near the edge it
-   sits on. clamp() ensures values stay in [0, 1]. ─── */
+   Opacity tracks --split-num (unitless mirror of --split set by
+   ba-carousel.js). clamp() keeps values in [0, 1]. ─── */
 .ba-label {
   transition: opacity 0.3s ease;
 }
@@ -58,8 +77,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ba-handle,
-  .ba-divider,
+  :is(.ba-split, .ba-slider) .ba-handle,
+  :is(.ba-split, .ba-slider) .ba-divider,
+  .ba-slider .ba-handle svg,
   .ba-label,
   .ba-label-before,
   .ba-label-after {
