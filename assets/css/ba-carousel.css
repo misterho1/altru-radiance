@@ -1,0 +1,68 @@
+/* ============================================================
+   Altru Radiance — ba-carousel.css
+   Shared before/after slider behavior. Loaded AFTER each
+   page's inline <style> block so these state-driven rules
+   override the older solid-gold-handle baseline via cascade.
+
+   Width/height/font-size on .ba-handle are intentionally NOT
+   set here — per-page size customizations (e.g. larger mobile
+   touch targets) are preserved by leaving sizing to the page.
+   ============================================================ */
+
+/* ─── Divider — dimmed gold at rest, full gold when active.
+   .ba-split.is-active is added by JS during drag/touch;
+   CSS :hover handles desktop pointing. ─── */
+.ba-divider {
+  background: rgba(201, 168, 76, 0.6);
+  transition: background 1s ease;
+}
+.ba-split:hover .ba-divider,
+.ba-split.is-active .ba-divider {
+  background: var(--gold);
+  transition: background 0.25s ease;
+}
+
+/* ─── Handle — default = outline only (barely detectable).
+   Active (hover, drag, focus) = 30% gold fill, ↔ visible.
+   Slow ease back to rest (~1s) lets the image hold the moment
+   after interaction; fast snap (~0.25s) on activation keeps it
+   responsive. ─── */
+.ba-handle {
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  color: transparent; /* hides any inner symbol */
+  box-shadow: none;
+  transition: background 1s ease, border-color 1s ease, color 1s ease;
+}
+.ba-split:hover .ba-handle,
+.ba-handle.is-active,
+.ba-handle:focus-visible {
+  background: rgba(201, 168, 76, 0.3);
+  border-color: transparent;
+  color: var(--black);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+/* ─── Labels — fade as the slider passes over them.
+   Opacity tracks --split-num (a unitless mirror of --split set
+   by ba-carousel.js) so each label fades out near the edge it
+   sits on. clamp() ensures values stay in [0, 1]. ─── */
+.ba-label {
+  transition: opacity 0.3s ease;
+}
+.ba-label-before {
+  opacity: clamp(0, calc((var(--split-num, 50) - 18) / 12), 1);
+}
+.ba-label-after {
+  opacity: clamp(0, calc((82 - var(--split-num, 50)) / 12), 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-handle,
+  .ba-divider,
+  .ba-label,
+  .ba-label-before,
+  .ba-label-after {
+    transition: none;
+  }
+}

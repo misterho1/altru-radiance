@@ -233,6 +233,11 @@
     width: 1px; height: 80px;
     background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5));
     z-index: 2;
+    animation: hero-line-breathe 5s ease-in-out infinite;
+  }
+  @keyframes hero-line-breathe {
+    0%, 100% { opacity: 0.6; }
+    50%      { opacity: 1; }
   }
 
   .hero-inner {
@@ -247,7 +252,7 @@
   /* Eyebrow */
   .hero-eyebrow {
     font-size: 0.62rem; letter-spacing: 0.36em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 1.6rem;
+    color: var(--gold); margin-bottom: 2.8rem;
     display: flex; align-items: center; justify-content: center; gap: 1rem;
   }
   .hero-eyebrow span { color: rgba(201,168,76,0.4); }
@@ -256,8 +261,8 @@
   .hero-h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.6rem, 6.2vw, 5rem);
-    font-weight: 300; line-height: 1.12;
-    color: var(--cream); margin-bottom: 1.4rem; letter-spacing: 0.01em;
+    font-weight: 300; line-height: 1.18;
+    color: var(--cream); margin-bottom: 2.4rem; letter-spacing: 0.01em;
     /* Ensure text wraps within the hero-inner container at any viewport. */
     max-width: 100%;
     overflow-wrap: break-word;
@@ -272,7 +277,7 @@
   .hero-sub {
     font-size: clamp(0.8rem, 1.8vw, 0.95rem);
     letter-spacing: 0.06em; color: rgba(244,240,230,0.65);
-    line-height: 1.7; max-width: 580px; margin: 0 auto 2rem;
+    line-height: 1.7; max-width: 580px; margin: 0 auto 3rem;
     overflow-wrap: break-word;
   }
 
@@ -291,7 +296,9 @@
 
   /* Hero glossary — plain-language fascia anchor beneath the trust pills.
      Sits as a quiet caption: small Jost body, italic Cormorant on the
-     defined term ("Fascia work"). One sentence; SCOPE-compliant. */
+     defined term ("Fascia work"). One sentence; SCOPE-compliant.
+     Caption-weight by design — the breathing room around it carries
+     the emphasis, not the type itself. Fade-in on first paint (P5). */
   .hero-glossary {
     font-family: 'Jost', sans-serif;
     font-size: clamp(0.78rem, 1.4vw, 0.86rem);
@@ -299,9 +306,10 @@
     line-height: 1.7;
     color: rgba(244, 240, 230, 0.58);
     max-width: 560px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 3rem;
     text-align: center;
     letter-spacing: 0.02em;
+    animation: hero-glossary-fade 1.2s ease-out 0.4s both;
   }
   .hero-glossary em {
     font-family: 'Cormorant Garamond', serif;
@@ -309,33 +317,9 @@
     color: var(--gold-light);
     letter-spacing: 0.01em;
   }
-
-  /* Hero CTA pair (added 2026-05-19 — was missing primary action above the fold).
-     Side-by-side on desktop, stacked on mobile. Mirrors the button language
-     used on /restorative-facial so cross-page visitors see consistent affordance. */
-  .hero-cta-row {
-    display: flex; flex-wrap: wrap; justify-content: center;
-    gap: 0.85rem; margin-top: 0.5rem;
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; justify-content: center;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
-    padding: 0.95rem 2rem; min-height: 48px;
-    text-decoration: none; white-space: nowrap;
-    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .hero-cta-primary { color: var(--black); background: var(--gold); }
-  .hero-cta-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .hero-cta-ghost {
-    color: var(--cream);
-    border: 1px solid rgba(244,240,230,0.4);
-    background: transparent;
-  }
-  .hero-cta-ghost:hover { border-color: var(--gold); color: var(--gold); }
-  @media (max-width: 640px) {
-    .hero-cta-row { flex-direction: column; align-items: stretch; gap: 0.65rem; }
-    .hero-cta { width: 100%; }
+  @keyframes hero-glossary-fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* ─── HERO SHOWCASE (post-hero section: carousel + proof) ───────── */
@@ -453,44 +437,71 @@
     object-position: center center;
   }
 
-  /* Draggable divider */
+  /* Draggable divider — dimmed at rest, full gold during interaction
+     so the chrome harmonizes with the quiet handle below. */
   .ba-divider {
     position: absolute; top: 0; bottom: 0;
     left: var(--split, 50%);
     transform: translateX(-50%);
     width: 2px;
-    background: var(--gold);
+    background: rgba(201, 168, 76, 0.6);
     z-index: 10;
     pointer-events: none;
+    transition: background 1s ease;
   }
+  .ba-split:hover .ba-divider,
+  .ba-split.is-active .ba-divider {
+    background: var(--gold);
+    transition: background 0.25s ease;
+  }
+  /* Handle — default = outline only (barely detectable).
+     Active (hover, drag, focus) = 30% gold fill with the ↔ symbol visible.
+     Slow ease back to rest (~1s) lets the image hold the moment after
+     interaction; fast snap (~0.25s) on activation keeps it responsive. */
   .ba-handle {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 32px; height: 32px; border-radius: 50%;
-    background: var(--gold);
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-    font-size: 0.6rem; color: var(--black); font-weight: 500;
-    letter-spacing: 0.05em;
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.05em;
+    background: transparent;
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    color: transparent; /* hides the ↔ symbol */
+    box-shadow: none;
+    transition: background 1s ease, border-color 1s ease, color 1s ease;
+  }
+  .ba-split:hover .ba-handle,
+  .ba-handle.is-active,
+  .ba-handle:focus-visible {
+    background: rgba(201, 168, 76, 0.3);
+    border-color: transparent;
+    color: var(--black);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   }
 
-  /* Before / After labels on the image */
+  /* Before / After labels on the image.
+     Opacity tracks --split-num (a unitless mirror of --split set by JS)
+     so each label fades out as the divider passes over it — clearer
+     which image the user is seeing at the extremes. */
   .ba-label {
     position: absolute; bottom: 1rem;
     font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
     padding: 0.32rem 0.85rem;
     background: rgba(6,16,10,0.75);
     z-index: 8; pointer-events: none;
+    transition: opacity 0.3s ease;
   }
   .ba-label-before {
     left: 0.85rem;
     color: rgba(244,240,230,0.65);
     border: 1px solid rgba(244, 240, 230, 0.65);
+    opacity: clamp(0, calc((var(--split-num, 50) - 18) / 12), 1);
   }
   .ba-label-after {
     right: 0.85rem;
     color: var(--gold);
     border: 1px solid rgba(201,168,76,0.3);
+    opacity: clamp(0, calc((82 - var(--split-num, 50)) / 12), 1);
   }
 
   /* Slide footer (result note) */
@@ -611,13 +622,13 @@
        overflow the viewport. Block layout naturally constrains children
        to the container's available width. */
     .hero { display: block; padding: 5.5rem 1.2rem 3rem; text-align: left; }
-    .hero-eyebrow { justify-content: flex-start; font-size: 0.56rem; margin-bottom: 1.2rem; }
-    .hero-h1 { font-size: clamp(1.75rem, 8vw, 2.4rem); letter-spacing: 0; margin-bottom: 1rem; }
-    .hero-sub { font-size: 1rem; max-width: 100%; margin-bottom: 1.6rem; text-align: left; }
+    .hero-eyebrow { justify-content: flex-start; font-size: 0.56rem; margin-bottom: 2rem; }
+    .hero-h1 { font-size: clamp(1.75rem, 8vw, 2.4rem); letter-spacing: 0; margin-bottom: 1.8rem; }
+    .hero-sub { font-size: 1rem; max-width: 100%; margin-bottom: 2.4rem; text-align: left; }
 
     .trust-bar { justify-content: flex-start; gap: 0.45rem; margin-bottom: 2rem; }
     .trust-pill { font-size: 0.52rem; padding: 0.4rem 0.75rem; letter-spacing: 0.16em; }
-    .hero-glossary { text-align: left; margin: 0 0 1.5rem; font-size: 0.9rem; max-width: 100%; }
+    .hero-glossary { text-align: left; margin: 0 0 2.4rem; font-size: 0.9rem; max-width: 100%; }
 
     .carousel-section { max-width: 100%; }
     .carousel-slide { height: auto; }
@@ -773,7 +784,7 @@
   .service-price { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold-light); }
   .service-arrow {
     position: absolute; top: 2.2rem; right: 2rem;
-    font-size: 0.75rem; color: rgba(201,168,76,0.3);
+    font-size: 0.75rem; color: rgba(201,168,76,0.5);
     transition: color 0.3s, transform 0.3s;
   }
   .service-card:hover .service-arrow { color: var(--gold); transform: translateX(3px); }
@@ -845,19 +856,7 @@
   .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   @media (max-width: 760px) { .results-grid { grid-template-columns: 1fr; max-width: 400px; } }
 
-  .result-card { position: relative; overflow: hidden; background: var(--forest); cursor: pointer; }
-  /* Small overlay label so skim readers catch the before+after framing on the
-     composite image without having to read the alt text. */
-  .result-card-tag {
-    position: absolute; top: 0.85rem; left: 0.85rem; z-index: 5;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--cream);
-    background: rgba(6, 16, 10, 0.7);
-    border: 1px solid rgba(244, 240, 230, 0.35);
-    padding: 0.32rem 0.7rem;
-    pointer-events: none;
-  }
+  .result-card { position: relative; overflow: hidden; background: var(--forest); }
   .result-card-img {
     aspect-ratio: 3/4;
     background: linear-gradient(160deg, var(--forest) 0%, var(--deep) 100%);
@@ -866,12 +865,26 @@
     font-style: italic; font-size: 0.85rem; letter-spacing: 0.15em;
     position: relative; overflow: hidden;
   }
+  /* Photo zoom on hover lets the result image hold the moment;
+     transition lives on the img so the inline width/height styles
+     stay untouched. */
+  .result-card-img img {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .result-card:hover .result-card-img img {
+    transform: scale(1.03);
+  }
+  /* Quieter gradient at rest (photo holds more presence); darkens on
+     hover so the label stays legible while the image zooms beneath it. */
   .result-card-img::after {
     content: ''; position: absolute; bottom:0; left:0; right:0; height: 55%;
-    background: linear-gradient(to top, rgba(6,16,10,0.95), transparent);
+    background: linear-gradient(to top, rgba(6,16,10,0.7), transparent);
+    transition: background 0.4s ease;
+  }
+  .result-card:hover .result-card-img::after {
+    background: linear-gradient(to top, rgba(6,16,10,0.88), transparent);
   }
   .result-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; }
-  .result-card-service { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.3rem; }
   .result-card-label { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: var(--cream); line-height: 1.25; }
   .result-cta-wrap { margin-top: 2.25rem; text-align: center; }
 
@@ -1075,13 +1088,9 @@
     }
   }
 
-  /* Drag-hint pulse on the first slide handle, fades after interaction (delight) */
-  @keyframes ba-handle-pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 2px 12px rgba(0,0,0,0.5); }
-    50% { transform: translate(-50%, -50%) scale(1.16); box-shadow: 0 2px 24px rgba(201,168,76,0.45); }
-  }
-  .ba-handle.has-hint { animation: ba-handle-pulse 1.6s ease-in-out 0.8s 3; }
-  @media (prefers-reduced-motion: reduce) { .ba-handle.has-hint { animation: none; } }
+  /* First-paint affordance hint for the handle is JS-driven (briefly
+     toggles .is-active 3× on first paint to teach the drag affordance
+     before the handle settles into its quiet outline-only rest state). */
 </style>
 
 <script type="application/ld+json">
@@ -1435,7 +1444,7 @@
   <div class="hero-inner">
 
     <p class="hero-eyebrow">
-      Murray, Utah <span>•</span> Regenerative Esthetics
+      Murray, Utah <span>•</span> Aesthetic Wellness
     </p>
 
     <h1 class="hero-h1">
@@ -1444,15 +1453,10 @@
     </h1>
 
     <p class="hero-sub">
-      Where the Restorative Buccal Facial, manual lymphatic drainage, and the Facial Architecture Ritual meet. Salt Lake Valley's regenerative fascia studio.
+      Where the Restorative Buccal Facial, manual lymphatic drainage, and facial architecture meet. Salt Lake Valley's regenerative fascia studio.
     </p>
 
     <p class="hero-glossary"><em>Fascia work</em> softens the connective tissue beneath the skin that holds your face in its shape, so the natural lift returns. No needles, no downtime.</p>
-
-    <div class="hero-cta-row" aria-label="Primary actions">
-      <a href="/book" class="hero-cta hero-cta-primary">Reserve</a>
-      <a href="/results" class="hero-cta hero-cta-ghost">See Results →</a>
-    </div>
 
   </div>
 </section>
@@ -1837,7 +1841,7 @@
         <span class="eyebrow">The Altru Radiance Approach</span>
         <h2 class="section-heading">Fascia is the<br><em>architecture of everything.</em></h2>
         <div class="gold-rule left"></div>
-        <p>At Altru Radiance, we work with the body as a whole system, not a collection of isolated features. Every line on the face, every tension pattern in the body, traces back to how the fascia is held and how the nervous system carries it.</p>
+        <p>At Altru Radiance, we work with the skin as a whole system, not a collection of isolated features. Every line on the face, every tension pattern in the body, traces back to how the fascia is held and how the nervous system carries it.</p>
         <div class="philosophy-pillars">
           <div class="pillar">
             <span class="pillar-marker" aria-hidden="true">I</span>
@@ -1879,7 +1883,7 @@
     </div>
     <div class="results-grid">
       <div class="result-card">
-        <div class="result-card-img"><span class="result-card-tag">Before / After</span><img
+        <div class="result-card-img"><img
             src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635549/buccal-massage-facial-lift-lymphatic-before-after-murray-utah-altru-radiance_i9romw.jpg"
             alt="Before and after buccal release lymphatic drainage facial lift at Altru Radiance Murray Utah, visible jawline definition and lymphatic decongestion in one session"
             width="600"
@@ -1887,12 +1891,11 @@
             loading="lazy"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" decoding="async"></div>
         <div class="result-card-info">
-          <span class="result-card-service">Lymphatic Drainage</span>
-          <div class="result-card-label">Facial Lift & Lymphatic Support · 1 Session</div>
+          <div class="result-card-label">Tissue Lift & Lymphatic Support</div>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-card-img"><span class="result-card-tag">Before / After</span><img
+        <div class="result-card-img"><img
             src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635530/structural-integration-cervical-jaw-decompression-before-after-murray-utah-altru-radiance_b7jlt0.jpg"
             alt="Before and after the Facial Architecture Ritual at Altru Radiance Murray Utah, neck elongation and submental definition visible in one session"
             width="600"
@@ -1900,12 +1903,11 @@
             loading="lazy"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" decoding="async"></div>
         <div class="result-card-info">
-          <span class="result-card-service">Facial Architecture Ritual</span>
-          <div class="result-card-label">Cervical Softening & Jaw Release · 1 Session</div>
+          <div class="result-card-label">Profile Architecture & Buccal Support</div>
         </div>
       </div>
       <div class="result-card">
-        <div class="result-card-img"><span class="result-card-tag">Before / After</span><img
+        <div class="result-card-img"><img
             src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635496/buccal-massage-fascia-hydration-skin-vitality-before-after-murray-utah-altru-radiance_sf7xzc.jpg"
             alt="Before and after the Restorative Buccal Facial at Altru Radiance Murray Utah, luminosity restored and visible radiance in one session"
             width="600"
@@ -1913,13 +1915,12 @@
             loading="lazy"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" decoding="async"></div>
         <div class="result-card-info">
-          <span class="result-card-service">Fascia Hydration</span>
-          <div class="result-card-label">Skin Vitality & Visible Radiance · 1 Session</div>
+          <div class="result-card-label">Skin Vitality & Fascia Support</div>
         </div>
       </div>
     </div>
     <div class="result-cta-wrap">
-      <p style="font-size:0.7rem;color:rgba(244, 240, 230, 0.65);letter-spacing:0.08em;margin-bottom:1rem;">All results shown are from real clients of our signature Restorative Buccal Facial at Altru Radiance.</p>
+      <p style="font-size:0.7rem;color:rgba(244, 240, 230, 0.65);letter-spacing:0.08em;margin-bottom:1rem;">All results shown are from real clients of our signature Restorative Buccal Facial at Altru Radiance after 1 session.</p>
     </div>
   </div>
 </section>
@@ -2165,10 +2166,33 @@
     let startX = 0;
     let startY = 0;
     const DRAG_THRESHOLD = 4;
+    const handle = panel.querySelector('.ba-handle');
+
+    // Active-state lifecycle. Handle is outline-only at rest (CSS default);
+    // gains .is-active during hover/drag, then lingers 800ms after the
+    // interaction ends before the CSS transition fades it back to outline.
+    const LINGER_MS = 800;
+    let lingerTimer = null;
+    function activateHandle() {
+      if (!handle) return;
+      if (lingerTimer) { clearTimeout(lingerTimer); lingerTimer = null; }
+      handle.classList.add('is-active');
+      panel.classList.add('is-active');
+    }
+    function scheduleDeactivate() {
+      if (!handle) return;
+      if (lingerTimer) clearTimeout(lingerTimer);
+      lingerTimer = setTimeout(() => {
+        handle.classList.remove('is-active');
+        panel.classList.remove('is-active');
+      }, LINGER_MS);
+    }
 
     function setSplit(pct) {
       const clamped = Math.min(Math.max(pct, 5), 95);
       panel.style.setProperty('--split', clamped + '%');
+      // Unitless mirror so CSS calc() can drive label opacity from --split.
+      panel.style.setProperty('--split-num', clamped);
       const before = panel.querySelector('.ba-before');
       if (before) before.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
       const divider = panel.querySelector('.ba-divider');
@@ -2185,6 +2209,7 @@
       startY = e.clientY;
       dragging = false;
       try { panel.setPointerCapture(e.pointerId); } catch (err) {}
+      activateHandle();
     });
 
     panel.addEventListener('pointermove', e => {
@@ -2196,28 +2221,53 @@
       if (dragging) {
         e.preventDefault();
         setSplit(getPercent(e));
+        activateHandle();
       }
     });
 
-    panel.addEventListener('pointerup',     () => { dragging = false; });
-    panel.addEventListener('pointercancel', () => { dragging = false; });
+    panel.addEventListener('pointerup',     () => { dragging = false; scheduleDeactivate(); });
+    panel.addEventListener('pointercancel', () => { dragging = false; scheduleDeactivate(); });
 
     // Also allow a single click anywhere on the panel to snap the divider
     // to that location (better discoverability than drag-only)
     panel.addEventListener('click', e => {
-      if (!dragging) setSplit(getPercent(e));
+      if (!dragging) {
+        setSplit(getPercent(e));
+        activateHandle();
+        scheduleDeactivate();
+      }
     });
 
     setSplit(50);
   });
-  // Drag-hint: pulse first slide handle on load, remove on first interaction
+  // First-paint affordance hint: briefly flash the first slide's handle
+  // into its active state 3× so visitors learn the drag affordance before
+  // it settles into its quiet outline rest state.
   (function() {
     var firstHandle = document.querySelector('.slide-1 .ba-handle');
-    var firstPanel = document.querySelector('.slide-1 .ba-split');
+    var firstPanel  = document.querySelector('.slide-1 .ba-split');
     if (!firstHandle || !firstPanel) return;
-    firstHandle.classList.add('has-hint');
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var blips = 0;
+    var maxBlips = 3;
+    function blip() {
+      if (blips >= maxBlips) return;
+      firstHandle.classList.add('is-active');
+      firstPanel.classList.add('is-active');
+      setTimeout(function () {
+        firstHandle.classList.remove('is-active');
+        firstPanel.classList.remove('is-active');
+        blips++;
+        if (blips < maxBlips) setTimeout(blip, 700);
+      }, 550);
+    }
+    setTimeout(blip, 800);
+
+    // First real user interaction cancels any remaining blips so the JS
+    // pulse doesn't compete with the user's own dragging.
     firstPanel.addEventListener('pointerdown', function() {
-      firstHandle.classList.remove('has-hint');
+      blips = maxBlips;
     }, { once: true });
   })();
 
@@ -2282,6 +2332,9 @@
     function applySplit(pct) {
       var clamped = Math.min(Math.max(pct, 0), 100);
       panel.style.setProperty('--split', clamped + '%');
+      // Keep --split-num in sync so CSS label-fade math works under
+      // keyboard navigation too, not just pointer drag.
+      panel.style.setProperty('--split-num', clamped);
       var before = panel.querySelector('.ba-before');
       if (before) before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
       var divider = panel.querySelector('.ba-divider');
@@ -2414,7 +2467,7 @@
   var firstPlay = videos[0].play();
   if (firstPlay && typeof firstPlay.catch === 'function') firstPlay.catch(function () {});
 
-  // Cycle every 3 seconds (skip under prefers-reduced-motion — accessibility)
+  // Cycle every 9 seconds (skip under prefers-reduced-motion — accessibility)
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced || videos.length < 2) return;
 
@@ -2437,7 +2490,7 @@
       try { videos[prev].pause(); } catch (e) {}
     }, 1500);
     current = next;
-  }, 3000);
+  }, 9000);
 })();
 </script>
 
