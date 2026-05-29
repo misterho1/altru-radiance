@@ -55,3 +55,11 @@ A site-wide URL-rewrite script (Python regex pass over all `*.html`) is the clea
 ### L7 — Use git mv for file renames to preserve history
 
 `git mv old.html new.html` preserves git's rename detection so `git log --follow new.html` shows the full history pre-rename. `rm old.html && cp old.html new.html` does not.
+
+### L8 — Shared assets under `immutable` caching MUST carry a version query string
+
+`_headers` sets `/assets/*`, `/*.css`, `/*.js` to `Cache-Control: public, max-age=31536000, immutable`. `immutable` tells browsers the file will NEVER change — they won't even revalidate for a year. This is correct for content-hashed filenames (`app.a1b2c3.js`) but a footgun for any shared asset with a STABLE name (e.g. `/assets/js/ba-carousel.js`).
+
+Symptom observed 2026-05-29: created `ba-carousel.css/js` (v1), then updated them in a later commit (v2) under the same URL. Cloudflare/edge served v2 correctly (curl confirmed), but every browser that had loaded v1 kept serving it from cache and never re-fetched — so the live site looked broken even though the deploy was correct. Diagnosis required comparing `fetch(url)` (cached) vs `fetch(url, {cache:'reload'})` (fresh) in the browser console.
+
+Rule: any stable-named file under `/assets/` that you will edit after first deploy MUST be referenced with a version query string (`/assets/js/ba-carousel.js?v=20260529`) and the version BUMPED on every content change. The `?v=` acts as the cache key the immutable strategy otherwise lacks. Verifying a deploy with `curl` alone is NOT sufficient — curl ignores browser cache; confirm in an actual browser (or check `_headers` cache policy) when "deployed but not showing."
