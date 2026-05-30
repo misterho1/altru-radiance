@@ -37,6 +37,37 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Chrome font-family lock ──
+   Nav, footer, and the mobile menu always render in Figtree, even on
+   journal pages where the article body is set to Jost inline. The
+   Cormorant wordmarks (.nav-brand-name, .footer-brand-name, .nav-logo,
+   .footer-logo-mark, .mobile-menu-links a) have explicit font-family
+   rules and keep Cormorant via specificity. */
+nav,
+footer,
+.mobile-menu {
+  font-family: 'Figtree', sans-serif;
+}
+
+/* ── Header + footer label weight ──
+   The small uppercase, letter-spaced chrome labels (nav links, brand
+   sub, CTAs, and the footer headings/links/hours/copy/legal) inherit
+   the body's 300. In humanist Figtree at label scale that reads thin,
+   so bump just the labels to 400 for crispness. Body copy, the
+   Cormorant wordmarks, and the footer description/address stay at 300.
+   Includes the mobile menu's Reserve CTA (same label family). */
+.nav-brand-sub,
+.nav-links a,
+.nav-cta,
+.footer-col-heading,
+.footer-links a,
+.footer-hours-row,
+.footer-copy,
+.footer-legal-links a,
+.mobile-menu-cta {
+  font-weight: 400;
+}
+
 /* ── Focus indicators (WCAG 2.4.7) ──
    Keyboard users see a clear gold ring. Mouse users keep the
    no-outline experience the original :focus rules were trying
@@ -64,6 +95,148 @@ body {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 }
+
+/* ────────────────────────────────────────────────────────────
+   FOOTER
+   Canonical footer styles, lifted from index.html on 2026-05-30
+   per the per-page footer-CSS audit which surfaced three drift
+   families:
+     • 9-page journal/programs treatment with deep-green bg and
+       mist-grey column headings instead of gold.
+     • 3 Thanks pages with a 3-col CSS grid against 4-col markup
+       (Hours wrapped to a second row, full-width).
+     • results.html with selector/markup mismatches that left
+       column headings + legal links silently unstyled.
+   With the rules living here, the per-page inline footer CSS is
+   stripped from every page — drift is now architecturally
+   impossible because there's one source.
+
+   NOTE: the `.container` wrapper (max-width: 1180px) is still
+   defined per-page inline. That's a separate consolidation
+   candidate; leave it untouched here.
+   ──────────────────────────────────────────────────────────── */
+
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.footer-logo-wrap {
+  display: flex; align-items: center;
+  gap: 0.85rem; margin-bottom: 1.1rem;
+}
+.footer-logo-mark {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--forest);
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.footer-brand-desc {
+  font-size: 0.74rem;
+  line-height: 1.7;
+  color: rgba(244,240,230,0.65);
+  margin-bottom: 1.5rem;
+}
+.footer-address {
+  font-size: 0.7rem;
+  line-height: 1.75;
+  color: rgba(244,240,230,0.65);
+  font-style: normal;
+}
+.footer-address strong {
+  color: rgba(244,240,230,0.65);
+  font-weight: 400;
+}
+
+.footer-col-heading {
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.footer-links a {
+  font-size: 0.72rem;
+  color: rgba(244,240,230,0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.04em;
+}
+.footer-links a:hover { color: var(--cream); }
+
+.footer-hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.68rem;
+  color: rgba(244,240,230,0.65);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.footer-hours-row span:first-child { color: rgba(244,240,230,0.65); }
+.hours-closed { color: rgba(244,240,230,0.65) !important; }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  color: rgba(244,240,230,0.65);
+}
+.footer-legal-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.footer-legal-links a {
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244,240,230,0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-legal-links a:hover { color: var(--cream); }
 
 /* ── Touch target sizing for mobile (WCAG 2.5.5 AAA, 44px floor).
        Expands the tap area for link lists without changing visual size. ── */

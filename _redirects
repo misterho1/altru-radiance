@@ -16,7 +16,8 @@
 # Legacy journal article slugs (had a `blog-` prefix that didn't match
 # the canonical URL in the article's <link rel="canonical"> tag).
 # Files were renamed; redirects preserve external links + indexed URLs.
-/journal/blog-what-is-buccal-massage          /journal/what-is-buccal-release            301
+# Pre-flattened to the current slug to avoid 301→301 chains.
+/journal/blog-what-is-buccal-massage          /journal/what-is-buccal-manipulation       301
 /journal/blog-tmj-relief-facial-massage       /journal/tmj-relief-facial-release         301
 /journal/blog-natural-alternatives-to-botox   /journal/hands-first-facial-alternatives   301
 /journal/blog-how-breathing-shapes-your-face  /journal/how-breathing-shapes-your-face    301
@@ -27,11 +28,20 @@
 /journal/natural-alternatives-to-botox        /journal/hands-first-facial-alternatives   301
 
 # Homepage typo legacy — `-murray-utah` suffix that matched no file.
-/journal/what-is-buccal-massage-murray-utah   /journal/what-is-buccal-release            301
+# Flattened straight to the current slug.
+/journal/what-is-buccal-massage-murray-utah   /journal/what-is-buccal-manipulation       301
 
 # Utah Master Esthetician scope compliance (2026-05-19): "massage" rebranded
 # to "release" across the site. Preserves external links + indexed URLs
 # pointing at the old massage-suffixed slugs.
-/journal/what-is-buccal-massage               /journal/what-is-buccal-release            301
+# The "buccal massage" slug now jumps straight to the current "manipulation"
+# slug (see below) to avoid a 301 chain.
+/journal/what-is-buccal-massage               /journal/what-is-buccal-manipulation       301
 /journal/tmj-relief-facial-massage            /journal/tmj-relief-facial-release         301
 /services/restorative-buccal-massage          /services/restorative-buccal-release       301
+
+# Terminology shift (2026-05-30): "buccal release" rebranded to "buccal
+# manipulation" on the journal article. Service slug stays. Preserves
+# external links, social shares, Google-indexed URLs, and any Google Ads
+# landing-page URLs that still point at the old slug.
+/journal/what-is-buccal-release               /journal/what-is-buccal-manipulation       301

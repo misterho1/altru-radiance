@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel=&#39;stylesheet&#39;"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/base.css?v=20260530">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -176,31 +176,6 @@
   .btn-gold { display: inline-block; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 14px 32px; text-decoration: none; transition: background 0.25s; white-space: nowrap; }
   .btn-gold:hover { background: var(--gold-light); }
 
-  /* ─── FOOTER ─────────────────────────────────────────────────── */
-  footer { background: var(--deep); border-top: 1px solid rgba(201,168,76,0.08); padding: 64px 0 0; }
-  footer .container { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
-  .footer-inner,
-  .footer-grid { max-width: 1180px; margin: 0 auto; padding: 0 0 3rem; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 3rem; }
-  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
-  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
-  .footer-brand-sub { font-size: 0.46rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
-  .footer-desc,
-  .footer-brand-desc { font-size: 0.78rem; line-height: 1.7; color: rgba(244, 240, 230, 0.65); max-width: 260px; margin-bottom: 1.25rem; }
-  .footer-address { font-size: 0.74rem; line-height: 1.75; color: rgba(244, 240, 230, 0.65); font-style: normal; }
-  .footer-address strong { color: rgba(244, 240, 230, 0.65); font-weight: 400; }
-  .footer-hours-row span:first-child { color: rgba(244, 240, 230, 0.65); }
-  .footer-col-heading { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-  .footer-links a { font-size: 0.72rem; color: rgba(244, 240, 230, 0.65); text-decoration: none; transition: color 0.25s; letter-spacing: 0.03em; }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-hours-row { display: flex; justify-content: space-between; font-size: 0.68rem; color: rgba(244, 240, 230, 0.65); padding: 0.3rem 0; border-bottom: 1px solid rgba(201,168,76,0.06); letter-spacing: 0.02em; }
-  .hours-closed { color: rgba(244, 240, 230, 0.65); }
-  .footer-bottom { max-width: 1180px; margin: 0 auto; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.06); }
-  .footer-copy { font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244, 240, 230, 0.65); }
-  .footer-legal-links { display: flex; gap: 1.5rem; list-style: none; }
-  .footer-legal-links a { font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244, 240, 230, 0.65); text-decoration: none; transition: color 0.25s; }
-  .footer-legal-links a:hover { color: var(--gold); }
-
   /* ─── RESPONSIVE ─────────────────────────────────────────────── */
   @media (max-width: 860px) {
     .journal-featured-card { grid-template-columns: 1fr; }
@@ -210,8 +185,6 @@
     .cta-strip-inner { grid-template-columns: 1fr; text-align: center; }
     .cta-divider { display: none; }
     .cta-action { align-items: center; }
-    .footer-inner,
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
   @media (max-width: 640px) {
     nav { padding: 0 1rem; height: 60px; }
@@ -224,9 +197,6 @@
     .journal-featured-body { padding: 1.75rem 1.4rem; }
     .cta-strip { padding: 60px 0; }
     .cta-strip-inner { padding: 0 1.25rem; }
-    .footer-inner,
-    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-bottom { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
   }
   /* Honor users who request reduced motion */
   @media (prefers-reduced-motion: reduce) {
@@ -317,7 +287,7 @@
   <div class="container">
 
     <!-- Featured Article: Article 1 -->
-    <a href="/journal/what-is-buccal-release" class="journal-featured-card" aria-label="Read: What Is the Restorative Buccal Facial? The Face-Lifting Technique That Works From the Inside Out">
+    <a href="/journal/what-is-buccal-manipulation" class="journal-featured-card" aria-label="Read: What Is the Restorative Buccal Facial? The Face-Lifting Technique That Works From the Inside Out">
       <div class="journal-featured-image">
         <img src="/assets/journal/buccal-massage-intraoral.webp" alt="Licensed esthetician performing buccal release intraoral facial treatment at Altru Radiance in Murray, Utah" loading="eager" fetchpriority="high" decoding="async">
         <div class="journal-featured-svg" aria-hidden="true">
@@ -588,7 +558,7 @@
   "url": "https://altruradiance.com/journal",
   "publisher": { "@type": "BeautySalon", "name": "Altru Radiance", "url": "https://altruradiance.com", "address": { "@type": "PostalAddress", "addressLocality": "Murray", "addressRegion": "UT", "addressCountry": "US" } },
   "blogPost": [
-    { "@type": "BlogPosting", "headline": "What Is the Restorative Buccal Facial? The Face-Lifting Technique That Works From the Inside Out", "url": "https://altruradiance.com/journal/what-is-buccal-release", "datePublished": "2026-04-01", "author": { "@type": "Person", "name": "Mechelle" } },
+    { "@type": "BlogPosting", "headline": "What Is the Restorative Buccal Facial? The Face-Lifting Technique That Works From the Inside Out", "url": "https://altruradiance.com/journal/what-is-buccal-manipulation", "datePublished": "2026-04-01", "author": { "@type": "Person", "name": "Mechelle" } },
     { "@type": "BlogPosting", "headline": "Hands-First Facial Alternatives: What Actually Works (and What Doesn't)", "url": "https://altruradiance.com/journal/hands-first-facial-alternatives", "datePublished": "2026-04-08", "author": { "@type": "Person", "name": "Mechelle" } },
     { "@type": "BlogPosting", "headline": "Why the Lower Face Reads Heavier: Jaw Tension, Facial Architecture, and What the Restorative Buccal Facial Does", "url": "https://altruradiance.com/journal/tmj-relief-facial-release", "datePublished": "2026-04-15", "author": { "@type": "Person", "name": "Mechelle" } }
   ]

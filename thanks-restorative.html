@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/base.css?v=20260530">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -96,22 +96,6 @@
   .cta-btn-primary:hover { background: var(--gold-light); }
   .cta-btn-ghost { display: inline-flex; align-items: center; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,240,230,0.65); border: 1px solid rgba(244,240,230,0.4); padding: 0.95rem 2.4rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; min-height: 48px; }
   .cta-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* ─── FOOTER ─── */
-  footer { background: var(--black); border-top: 1px solid rgba(201,168,76,0.1); padding: 50px 0 28px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
-  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
-  .footer-logo-wrap { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem; }
-  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
-  .footer-brand-desc { font-size: 0.74rem; line-height: 1.7; color: rgba(244,240,230,0.65); margin-bottom: 1.4rem; }
-  .footer-address { font-size: 0.7rem; line-height: 1.75; color: rgba(244,240,230,0.65); font-style: normal; }
-  .footer-address strong { color: rgba(244,240,230,0.65); font-weight: 400; }
-  .footer-col-heading { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .footer-links a { font-size: 0.72rem; color: rgba(244,240,230,0.65); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
-  .footer-links a:hover { color: var(--cream); }
-  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.8rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; }
-  .footer-copy { font-size: 0.56rem; letter-spacing: 0.12em; color: rgba(244,240,230,0.65); }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

@@ -63,3 +63,15 @@ A site-wide URL-rewrite script (Python regex pass over all `*.html`) is the clea
 Symptom observed 2026-05-29: created `ba-carousel.css/js` (v1), then updated them in a later commit (v2) under the same URL. Cloudflare/edge served v2 correctly (curl confirmed), but every browser that had loaded v1 kept serving it from cache and never re-fetched — so the live site looked broken even though the deploy was correct. Diagnosis required comparing `fetch(url)` (cached) vs `fetch(url, {cache:'reload'})` (fresh) in the browser console.
 
 Rule: any stable-named file under `/assets/` that you will edit after first deploy MUST be referenced with a version query string (`/assets/js/ba-carousel.js?v=20260529`) and the version BUMPED on every content change. The `?v=` acts as the cache key the immutable strategy otherwise lacks. Verifying a deploy with `curl` alone is NOT sufficient — curl ignores browser cache; confirm in an actual browser (or check `_headers` cache policy) when "deployed but not showing."
+
+### L9 — Minimize "intraoral / inside the cheek-or-mouth / deep" in public copy (Utah esthetician SCOPE)
+
+Andrew's standing rule (2026-05-29): an esthetician publicly describing **"intraoral"** work, work **"inside the cheek/mouth,"** or going **"deep"** (deep tissue/muscle/manual) is a Utah professional-scope sensitivity. Reframe toward **"buccal manipulation / buccal release / buccal technique"** (the service name "Restorative Buccal Facial" is approved). Keep "buccal" (cheek); avoid "intraoral" and "inside the mouth."
+
+How to apply (do NOT blind find-replace — triage by category):
+1. **Visible body copy** — revise freely toward buccal framing; flag the change, don't invent claims.
+2. **Image alt text** — revise wording where easy; lower priority.
+3. **Image filenames** (e.g. `buccal-massage-intraoral.webp`) — do NOT rename; they're hosted assets and renaming breaks references.
+4. **SEO meta / `<meta keywords>` / JSON-LD schema** — "intraoral buccal facial Utah" is a deliberate SEARCH TERM. Stripping it can cost ranking. Treat as an SEO decision requiring Andrew's explicit per-page sign-off; flag, don't auto-remove.
+
+When a new/edited page would introduce "intraoral"/"inside the cheek or mouth"/"deep [muscle/tissue]", flag it and propose buccal-framed wording instead. Audit baseline (2026-05-29): heaviest pages are `restorative-facial.html` and `foundation-package.html`; also present on book, index, results, membership, journal.html + 3 journal articles, welcome-bundle.
