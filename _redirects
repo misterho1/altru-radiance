@@ -1,3 +1,7 @@
+# === TEMP TEST — domain-level redirect from screenshot advice. REMOVE AFTER. ===
+https://altru-radiance.pages.dev/*  https://altruradiance.com/:splat  301
+# === END TEMP TEST ===
+
 # Cloudflare Pages serves /foo when requesting /foo.html by default and
 # 301-redirects /foo.html -> /foo. Rules below cover only the cases that
 # default behavior does not handle.
