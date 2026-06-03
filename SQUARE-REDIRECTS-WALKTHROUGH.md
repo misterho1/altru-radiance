@@ -14,8 +14,8 @@ Three services on altru-radiance.pages.dev each have their own thank-you page wi
 
 | Service | Price | Duration | Thank-you URL |
 |---|---|---|---|
-| Restorative Facial + Buccal Release | 250 | 110 min | https://altru-radiance.pages.dev/thanks-restorative |
-| Soothe Lymphatic Drainage | 250 | 110 min | https://altru-radiance.pages.dev/thanks-soothe |
+| Restorative Facial + Buccal Release | 250 | 90 min | https://altru-radiance.pages.dev/thanks-restorative |
+| Soothe Lymphatic Drainage | 250 | 90 min | https://altru-radiance.pages.dev/thanks-soothe |
 | Procell Microchanneling | 300 | 100 min | https://altru-radiance.pages.dev/thanks-procell |
 
 When a customer finishes booking on Square, Square needs to send their browser to the correct one of those three URLs. The thank-you page loads, the Google Ads tag fires, and the conversion is recorded against the correct service and campaign.

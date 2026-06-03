@@ -42,8 +42,8 @@ Vertical stack, `max-width: 1180px` centered. Substrate alternates per The Paper
 │       Welcome Bundle · 2 sessions · 400                 │
 │       Foundation Package · 3 sessions · 700             │
 │    "Single Sessions"                                    │
-│       I.   Restorative Buccal Facial · 110m · 250       │
-│       II.  Soothe Lymphatic Drainage · 110m · 250       │
+│       I.   Restorative Buccal Facial · 90m · 250       │
+│       II.  Soothe Lymphatic Drainage · 90m · 250       │
 │       III. Procell Microchanneling · 100m · 300         │
 │       IV.  Facial Architecture Ritual · 50m · 140       │
 │       V.   Aqua Peel · 60m · 200                        │

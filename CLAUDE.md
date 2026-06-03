@@ -12,7 +12,7 @@
 ### Services Offered
 
 #### Signature Regenerative Services (Fascial Focus)
-- **Restorative Buccal Facial** — Signature 110-minute service, $250. Combines intraoral buccal release, lymphatic drainage, and myofascial release. (Consolidated rename — was previously "Restorative Facial + Buccal Release" / "Buccal Release"; both legacy names now point to this single service.)
+- **Restorative Buccal Facial** — Signature 90-minute service, $250. Combines intraoral buccal release, lymphatic drainage, and myofascial release. (Consolidated rename — was previously "Restorative Facial + Buccal Release" / "Buccal Release"; both legacy names now point to this single service.)
 - **Soothe Lymphatic Drainage** — Clearing the fluid within the Hydrated Foundation to reduce inflammation and stagnant "puffiness."
 - **Facial Architecture Ritual** — A targeted session focusing on the facial "architecture" and fascial planes to restore symmetry and lift. (Renamed from "Structural Integration Facial" to stay clearly within Master Esthetician scope; file renamed to `services/facial-architecture-ritual.html`. Old slug `/services/structural-integration-salt-lake-city` no longer exists.)
 

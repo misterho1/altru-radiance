@@ -8,7 +8,7 @@
 ## Post 1 — Week of May 18, 2026
 **Type:** Treatment spotlight
 **Headline (optional):** A facial that works from the inside out.
-**Body:** Our Restorative Facial pairs buccal release with external fascia work. Inside-mouth pressure softens jaw tension you cannot reach from the surface. 110 minutes. The lift you see is structural.
+**Body:** Our Restorative Facial pairs buccal release with external fascia work. Inside-mouth pressure softens jaw tension you cannot reach from the surface. 90 minutes. The lift you see is structural.
 **CTA button:** Book — https://altruradiance.com/services/restorative-facial-buccal
 **Suggested image direction:** Overhead shot of Mechelle's gloved hands cradling a client's jawline in warm low light, cream linen, brass tray softly out of focus.
 

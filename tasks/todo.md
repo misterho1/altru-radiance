@@ -143,6 +143,25 @@ Legend: ⬜ pending · 🔄 in review · ✅ approved/done · ⏸ no changes nee
 
 ---
 
+## Site-wide data edits (cross-cutting)
+
+> For changes that touch one fact across many pages (durations, prices, address, phone, hours).
+> Not part of the per-page loop. Reusable loop: **INTAKE** (what fact, old → new) → **PLAN**
+> (grep a full catalog of every hit; classify change / leave / flag; pick prose wording) →
+> **IMPLEMENT** (encoding-safe byte pass scoped to the catalog; never `.brainstorm` scratch) →
+> **VERIFY** (re-grep zero old tokens; spot-check schema, meta, cards) → **FLAG** external stores
+> (Square backend, GBP, Google Ads) → stage, no deploy. To start the next one, hand me the fact + old → new.
+
+- [x] **Edit 1 — Service duration 110 → 90 min** *(2026-06-03)*. Restorative Buccal Facial +
+  Soothe Lymphatic Drainage 110 → 90; Welcome Bundle prose total → "Three hours" (180 min);
+  Foundation per-session → 90 min. **71 replacements across 21 files** (15 live + 6 reference docs).
+  Prose set to flat "90 minutes" (Option A). Spec: `tasks/duration-90-edit-2026-06-03.md`.
+  Flagged for manual update: Square booking backend, live GBP posts, live Google Ads.
+  **Done in working tree — awaiting Andrew's commit/deploy.**
+- [ ] **Edit 2 — (next)**: hand me the fact + old → new.
+
+---
+
 # Archived passes
 
 ## Archived: Journal broken-link audit (completed 2026-05-19)

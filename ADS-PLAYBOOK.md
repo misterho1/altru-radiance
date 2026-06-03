@@ -358,8 +358,8 @@ GBP often out-converts paid ads for local intent. Treat this as critical, not op
 
 ### Services (each as a separate offering with description + price)
 
-- [ ] Restorative Facial + Buccal Release — $250 · 110 min
-- [ ] Soothe Lymphatic Drainage — $250 · 110 min
+- [ ] Restorative Facial + Buccal Release — $250 · 90 min
+- [ ] Soothe Lymphatic Drainage — $250 · 90 min
 - [ ] Procell Microchanneling — $300 · 100 min
 - [ ] Structural Integration Facial — $140 · 60 min
 

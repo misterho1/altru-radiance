@@ -75,3 +75,24 @@ How to apply (do NOT blind find-replace — triage by category):
 4. **SEO meta / `<meta keywords>` / JSON-LD schema** — "intraoral buccal facial Utah" is a deliberate SEARCH TERM. Stripping it can cost ranking. Treat as an SEO decision requiring Andrew's explicit per-page sign-off; flag, don't auto-remove.
 
 When a new/edited page would introduce "intraoral"/"inside the cheek or mouth"/"deep [muscle/tissue]", flag it and propose buccal-framed wording instead. Audit baseline (2026-05-29): heaviest pages are `restorative-facial.html` and `foundation-package.html`; also present on book, index, results, membership, journal.html + 3 journal articles, welcome-bundle.
+
+### L10 — Site-wide data edits: catalog first, exclude scratch, update drifting reference docs, flag external stores
+
+A single fact (a service duration, price, address, phone) is duplicated across many surfaces:
+visible HTML, JSON-LD `description`/FAQ text, meta/OG/Twitter tags, ARIA labels, the booking-menu
+rows, and non-site reference files. For a one-fact change, grep a FULL catalog first, classify each
+hit (change / leave / flag), then run one encoding-safe byte-level pass scoped to that catalog — do
+not blind-replace repo-wide. Use ordered tokens so substrings can't collide (`110 minutes` before
+`110 min`).
+
+Traps observed during the 110→90 duration edit (2026-06-03):
+1. **`.brainstorm/*.html` scratch files** carry stale service markup (durations, prices). A naive
+   repo-wide replace would "fix" them. They're excluded (see todo inventory) — leave them.
+2. **Non-site reference files drift silently** and must be updated in the same pass or the old value
+   creeps back: `CLAUDE.md` (service definitions), `DESIGN.json` (component samples — was *already*
+   showing stale 60/75-min durations), `ADS-PLAYBOOK.md`, `SQUARE-REDIRECTS-WALKTHROUGH.md`,
+   `gbp-posts.md`. Their drift won't show on the live site but will mislead the next build.
+3. **Durations are PROSE, not ISO-8601 (`PT…M`)**, and bundles round them ("~2 hrs", "Four hours").
+   Recalculate rounded/derived totals from the new value and confirm the wording — don't guess.
+4. **External stores you can't reach from the repo** — Square booking durations, live GBP posts,
+   live Google Ads copy — must be FLAGGED for manual update; the repo edit alone doesn't change them.
