@@ -2189,8 +2189,9 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function startAuto() {
-    if (prefersReducedMotion.matches) return;
-    autoTimer = setInterval(() => goTo(current + 1), 8000);
+    /* Auto-rotation disabled — drag-to-see-the-change IS the proof;
+       auto-advance interrupted dwell time. Dots and arrows remain.
+       (Matches Foundation Package behavior.) */
   }
 
   // Initial sizing: defer with rAF so layout has settled (the carousel

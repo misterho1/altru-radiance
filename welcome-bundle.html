@@ -1360,7 +1360,7 @@
   if(next) next.addEventListener('click', function(){ clearInterval(autoTimer); goTo(cur+1); startAuto(); });
   dots.forEach(function(d){ d.addEventListener('click', function(){ clearInterval(autoTimer); goTo(+d.dataset.index); startAuto(); }); });
 
-  function startAuto(){ autoTimer = setInterval(function(){ goTo(cur+1); }, 12000); }
+  function startAuto(){ /* Auto-rotation disabled — drag IS the proof; dots and arrows remain. */ }
 
   setSizes();
   var rTimer;
@@ -1419,7 +1419,7 @@
   if(next) next.addEventListener('click', function(){ clearInterval(autoTimer); goTo(cur+1); startAuto(); });
   dots.forEach(function(d){ d.addEventListener('click', function(){ clearInterval(autoTimer); goTo(+d.dataset.index); startAuto(); }); });
 
-  function startAuto(){ autoTimer = setInterval(function(){ goTo(cur+1); }, 12000); }
+  function startAuto(){ /* Auto-rotation disabled — drag IS the proof; dots and arrows remain. */ }
 
   setSizes();
   var rTimer;
