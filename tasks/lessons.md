@@ -13,6 +13,14 @@
 - **No fabricated content.** No invented credentials, certifications, team members, or testimonials.
 - **Don't auto-fix anything the user has flagged as intentional state** (see `feedback_intentional_states.md` in user memory). Ask first when in doubt.
 
+## Scope-of-practice copy rules (Utah Master Esthetician — added 2026-06-09)
+
+- **Never edit client Google review TEXT.** The quote is the client's words — leave verbatim. Review service **tags/labels** (e.g. "Structural Integration + Lymphatic · Google Review") ARE editable when off-scope; reword the tag, never the quote.
+- **Massage-therapy scope words to avoid** when describing hands-on work: "deep", "deeper", "deep tissue", "bodywork", "massage" (implies a separate massage-therapy license). EXCEPTION: "deep" is fine in **skin context** — "deep hydration", "deep cleansing". "manual lymphatic drainage" stays (named service); "lymphatic massage" would not.
+- **`var(--deep)` is a brand CSS color token.** When grepping `deep` for a scope audit, exclude `var(--deep)` / `--deep:` or the real copy hits drown in CSS noise.
+- **Reframe pattern (therapeutic → cosmetic):** verbs release/decompress/restore/remodel/treat/heal → soften/ease/lighten/lift/define/support; nouns nervous system / lymphatic clearance / structural / postural → the body / puffiness / jawline / balance / appearance. Anchor "cosmetic, not medical." Condition names (TMJ, bruxism) → appearance + "see your dentist/physician" referral. "Intraoral" → "buccal / through the cheek".
+- **Audit each page live before editing.** Don't trust a prior bulk audit's line numbers — re-grep + read the current file (line numbers drift as edits land).
+
 ## Lessons captured
 
 ### L1 — Internal-link audit needs a manifest, not glob-comparison
