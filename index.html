@@ -35,7 +35,7 @@
   body {
     background: var(--black);
     color: var(--cream);
-    font-family: 'Figtree', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
   }
@@ -351,7 +351,7 @@
 
   /* Subheadline */
   .hero-sub {
-    font-family: 'Figtree', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: clamp(0.9rem, 1.95vw, 1.05rem);
     letter-spacing: 0.02em; color: rgba(244,240,230,0.7);
     line-height: 1.75; max-width: 620px; margin: 0 auto 1.4rem;
@@ -377,7 +377,7 @@
      Caption-weight by design — the breathing room around it carries
      the emphasis, not the type itself. Fade-in on first paint (P5). */
   .hero-glossary {
-    font-family: 'Figtree', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: clamp(0.88rem, 1.6vw, 0.98rem);
     font-weight: 300;
     line-height: 1.75;
@@ -438,7 +438,7 @@
   .slide-service-badge {
     font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
-    padding: 0.3rem 0.9rem; display: inline-block;
+    padding: 3px 8px; display: inline-block;
     margin-bottom: 0.9rem;
     background: rgba(6,16,10,0.6);
   }
@@ -859,7 +859,7 @@
     line-height: 1.2; margin-bottom: 0.6rem;
   }
   .service-hook {
-    font-family: 'Figtree', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 300;
     font-size: 0.9rem; color: rgba(244, 240, 230, 0.8);
     line-height: 1.7; font-style: normal; margin-bottom: 1.4rem; flex: 1;
@@ -926,14 +926,14 @@
     height: 40%; background: linear-gradient(to top, var(--deep), transparent);
   }
   .philosophy-text .section-heading { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 1.5rem; }
-  .philosophy-text p { font-family: 'Figtree', sans-serif; font-size: 0.85rem; line-height: 1.8; color: rgba(244,240,230,0.7); margin-bottom: 1.25rem; }
+  .philosophy-text p { font-family: 'Jost', sans-serif; font-size: 0.85rem; line-height: 1.8; color: rgba(244,240,230,0.7); margin-bottom: 1.25rem; }
   .philosophy-pillars { margin: 2.5rem 0 1rem; display: flex; flex-direction: column; gap: 1.5rem; }
   .pillar { display: grid; grid-template-columns: 64px 1fr; align-items: start; gap: 1.5rem; max-width: 540px; }
   .pillar.pillar-indent { margin-left: 1.25rem; max-width: 525px; }
   .pillar.pillar-indent-deeper { margin-left: 2.5rem; max-width: 510px; }
   .pillar-marker { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; font-style: italic; color: var(--gold-light); letter-spacing: 0.04em; line-height: 1; }
   .pillar-heading { font-family: 'Figtree', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201,168,76,0.18); }
-  .pillar-detail { font-family: 'Figtree', sans-serif; font-size: 0.77rem; line-height: 1.7; color: rgba(244, 240, 230, 0.7); }
+  .pillar-detail { font-family: 'Jost', sans-serif; font-size: 0.77rem; line-height: 1.7; color: rgba(244, 240, 230, 0.7); }
 
   /* Staggered scroll-reveal for the approach pillars — gentle rise+fade as the
      group enters view. Hidden state applies only when motion is allowed, so
@@ -1166,6 +1166,8 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+    /* Explicitly still the hero gold line's breathing loop */
+    .hero-line { animation: none; }
   }
 
   /* First-paint affordance hint for the handle is JS-driven (briefly
