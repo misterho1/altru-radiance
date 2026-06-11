@@ -89,10 +89,10 @@ export async function onRequestGet({ env, request }) {
 
     if (includeReviews) {
       payload.reviews = (result.reviews || []).slice(0, 5).map((r) => ({
-        author: r.author_name,
-        rating: r.rating,
+        author: r.author_name || "Anonymous",
+        rating: r.rating || 0,
         relativeTime: r.relative_time_description,
-        text: r.text,
+        text: r.text || "",
         time: r.time,
       }));
     }
