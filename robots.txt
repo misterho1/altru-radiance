@@ -1,6 +1,3 @@
-User-agent: *
-Allow: /
-
 Disallow: /.brainstorm/
 Disallow: /.claude/
 
