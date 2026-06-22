@@ -131,118 +131,23 @@
     .lp-final { padding-bottom: calc(5rem + 56px); }
   }
 
-  /* ─── LANDING HERO ─── */
-  .lp-hero { padding: 140px 0 80px; position: relative; overflow: hidden; background: linear-gradient(to bottom, rgba(6,16,10,0.55) 0%, rgba(10,24,16,0.35) 50%, rgba(6,16,10,0.98) 100%), radial-gradient(ellipse at 65% 35%, #1e3d28 0%, #0d2015 50%, #06100a 100%); border-bottom: 1px solid rgba(201, 168, 76, 0.1); }
-  .lp-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
-  .lp-hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 68px; background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5)); }
+  /* ─── LANDING HERO ─── full-bleed banner behind the text */
+  .lp-hero { padding: 140px 0 80px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 65% 35%, #1e3d28 0%, #0d2015 50%, #06100a 100%); border-bottom: 1px solid rgba(201, 168, 76, 0.1); }
+  /* Banner image — full-bleed background of the hero, behind text + scrim. */
+  .lp-hero-banner { position: absolute; inset: 0; z-index: 0; }
+  .lp-hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  /* Flat dark scrim, left-weighted, for cream-on-dark legibility. */
+  .lp-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(6,16,10,0.78) 0%, rgba(6,16,10,0.62) 55%, rgba(6,16,10,0.5) 100%); pointer-events: none; }
+  .lp-hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
+  .lp-hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 68px; background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5)); z-index: 2; }
   .lp-hero-inner {
-    position: relative; z-index: 1;
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    position: relative; z-index: 2;
   }
   .lp-hero-text { max-width: 640px; }
   .lp-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.4vw, 3.6rem); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 1rem; }
   .lp-hero h1 em { font-style: italic; color: var(--gold-light); }
   .lp-hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid rgba(201, 168, 76, 0.12); }
 
-  /* Hero portrait — companion to the headline, not a co-star. Set in a
-     narrow vertical frame with a soft gold edge and a forest-toned
-     gradient that lets the bottom dissolve into the page background. */
-  .lp-hero-portrait {
-    position: relative;
-    aspect-ratio: 4/5;
-    max-height: 540px;
-    border: 1px solid rgba(201, 168, 76, 0.18);
-    overflow: hidden;
-    background: linear-gradient(160deg, rgba(22, 43, 28, 0.5) 0%, rgba(6, 16, 10, 0.85) 100%);
-  }
-  .lp-hero-portrait img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
-    display: block;
-  }
-  .lp-hero-portrait::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, transparent 55%, rgba(6, 16, 10, 0.4) 100%);
-    pointer-events: none;
-  }
-  @media (max-width: 860px) {
-    .lp-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .lp-hero-portrait { aspect-ratio: 5/4; max-height: 420px; order: -1; }
-  }
-
-  /* ─── PROOF BLOCK ─── single before/after photograph + editorial caption.
-     Image-led: photo is 10% wider than the caption to establish primacy
-     without overwhelming the words. Stacks on mobile, photo on top. */
-  .lp-proof {
-    background: var(--black);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
-    padding: 5rem 0;
-  }
-  .lp-proof-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 3.25rem;
-    align-items: center;
-  }
-  .lp-proof-figure {
-    margin: 0;
-    border: 1px solid rgba(201, 168, 76, 0.18);
-    overflow: hidden;
-    background: var(--deep);
-    aspect-ratio: 16/9;
-  }
-  .lp-proof-figure img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  .lp-proof-caption h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 300;
-    line-height: 1.12;
-    color: var(--cream);
-    margin: 0.4rem 0 1.25rem;
-  }
-  .lp-proof-caption h2 em { font-style: italic; color: var(--gold-light); }
-  .lp-proof-caption .body-text {
-    font-size: 0.92rem; line-height: 1.78;
-    color: rgba(244, 240, 230, 0.7);
-    margin-bottom: 1.5rem;
-  }
-  .lp-proof-link {
-    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.4);
-    padding-bottom: 0.35rem;
-    transition: letter-spacing 0.3s, border-color 0.25s;
-    display: inline-block;
-  }
-  .lp-proof-link:hover { letter-spacing: 0.28em; border-bottom-color: var(--gold); }
-  @media (max-width: 860px) {
-    .lp-proof { padding: 3.5rem 0; }
-    .lp-proof-inner { grid-template-columns: 1fr; gap: 2rem; }
-  }
-
-  /* ─── WHAT-IS section banner image (slot C) ─── treatment-in-progress
-     photograph placed full-width above the two-column text explainer.
-     Anchors the section visually without crowding the side-by-side copy. */
-  .lp-what-is-img {
-    margin: 0 0 3.25rem;
-    aspect-ratio: 21/9;
-    max-height: 440px;
-    border: 1px solid rgba(201, 168, 76, 0.14);
-    overflow: hidden;
-    background: var(--deep);
-  }
-  .lp-what-is-img img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center;
-    display: block;
-  }
-  @media (max-width: 860px) {
-    .lp-what-is-img { aspect-ratio: 16/9; margin-bottom: 2.25rem; }
-  }
   .lp-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
   .lp-meta-label { font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist); }
   .lp-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--gold-light); letter-spacing: 0.02em; line-height: 1; }
@@ -429,6 +334,245 @@
   .lp-final-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem 2.5rem; margin-top: 2.5rem; font-size: 0.72rem; color: rgba(244, 240, 230, 0.65); letter-spacing: 0.06em; }
   .lp-final-meta strong { color: var(--gold-light); font-weight: 400; }
 
+  /* ─── BEFORE/AFTER CAROUSEL ─────────────────────────────── */
+  .carousel-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 2.4rem;
+  }
+
+  .carousel-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(244,240,230,0.82);
+    letter-spacing: 0.02em; line-height: 1.5;
+    margin-bottom: 1.4rem; text-align: center;
+  }
+
+  /* Service badge above each slide */
+  .slide-service-badge {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.3rem 0.9rem; display: inline-block;
+    margin-bottom: 0.9rem;
+    background: rgba(6,16,10,0.6);
+  }
+
+  .carousel-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .carousel-track {
+    display: flex;
+    will-change: transform;
+    transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* Each slide — width set by JS to exact wrap pixel width */
+  .carousel-slide {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .slide-header {
+    text-align: center;
+    padding: 1rem 1rem 0;
+    background: rgba(6,16,10,0.92);
+  }
+
+  /* Split panel */
+  .ba-split {
+    position: relative;
+    aspect-ratio: unset;
+    height: 480px;
+    width: 100%;
+    overflow: hidden;
+    cursor: col-resize;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+    background: #0a1810;
+  }
+
+  .ba-before,
+  .ba-after {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #0a1810;
+  }
+
+  .ba-before {
+    clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+    z-index: 2;
+  }
+
+  .ba-after {
+    z-index: 1;
+  }
+
+  .ba-before img,
+  .ba-after img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
+    background: transparent;
+  }
+
+  /* Slide 2 — Facial Architecture Ritual (side profile): center to show full posture */
+  .slide-2 .ba-before img,
+  .slide-2 .ba-after img {
+    object-position: center center;
+  }
+
+  /* Draggable divider — dimmed at rest, full gold during interaction
+     so the chrome harmonizes with the quiet handle below. */
+  .ba-divider {
+    position: absolute; top: 0; bottom: 0;
+    left: var(--split, 50%);
+    transform: translateX(-50%);
+    width: 2px;
+    background: rgba(201, 168, 76, 0.6);
+    z-index: 10;
+    pointer-events: none;
+    transition: background 1s ease;
+  }
+  .ba-split:hover .ba-divider,
+  .ba-split.is-active .ba-divider {
+    background: var(--gold);
+    transition: background 0.25s ease;
+  }
+  /* Handle — default = outline only (barely detectable).
+     Active (hover, drag, focus) = 30% gold fill with the ↔ symbol visible.
+     Slow ease back to rest (~1s) lets the image hold the moment after
+     interaction; fast snap (~0.25s) on activation keeps it responsive. */
+  .ba-handle {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.05em;
+    background: transparent;
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    color: transparent; /* hides the ↔ symbol */
+    box-shadow: none;
+    transition: background 1s ease, border-color 1s ease, color 1s ease;
+  }
+  .ba-split:hover .ba-handle,
+  .ba-handle.is-active,
+  .ba-handle:focus-visible {
+    background: rgba(201, 168, 76, 0.3);
+    border-color: transparent;
+    color: var(--black);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Before / After labels on the image.
+     Opacity tracks --split-num (a unitless mirror of --split set by JS)
+     so each label fades out as the divider passes over it — clearer
+     which image the user is seeing at the extremes. */
+  .ba-label {
+    position: absolute; bottom: 1rem;
+    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.32rem 0.85rem;
+    background: rgba(6,16,10,0.75);
+    z-index: 8; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .ba-label-before {
+    left: 0.85rem;
+    color: rgba(244,240,230,0.65);
+    border: 1px solid rgba(244, 240, 230, 0.65);
+    opacity: clamp(0, calc((var(--split-num, 50) - 18) / 12), 1);
+  }
+  .ba-label-after {
+    right: 0.85rem;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    opacity: clamp(0, calc((82 - var(--split-num, 50)) / 12), 1);
+  }
+
+  /* Slide footer (result note) */
+  .slide-footer {
+    background: rgba(6,16,10,0.95);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 1rem 1.2rem 1.1rem;
+  }
+  .slide-result-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-style: italic; font-weight: 400;
+    color: var(--cream); line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+  .slide-result-note {
+    font-size: 0.78rem; letter-spacing: 0.06em;
+    color: rgba(244,240,230,0.65); line-height: 1.7;
+    margin-bottom: 0.65rem;
+  }
+  .slide-tags {
+    display: none;
+  }
+  .slide-tag {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.25);
+    padding: 0.25rem 0.65rem; background: rgba(201,168,76,0.06);
+  }
+  .slide-tag-muted {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244, 240, 230, 0.65); border: 1px solid rgba(244, 240, 230, 0.65);
+    padding: 0.25rem 0.65rem;
+  }
+
+  /* Carousel controls */
+  .carousel-controls {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.75rem; margin-top: 1rem;
+  }
+  .carousel-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(201,168,76,0.3); border: none;
+    cursor: pointer; padding: 0;
+    position: relative;
+    transition: background 0.3s, transform 0.3s;
+  }
+  /* Expand carousel dot tap target to 44×44px without changing visual size */
+  .carousel-dot::after {
+    content: ''; position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px; height: 44px;
+  }
+  .carousel-dot.active { background: var(--gold); transform: scale(1.4); }
+  .carousel-arrow {
+    background: none; border: 1px solid rgba(201,168,76,0.25);
+    color: rgba(201,168,76,0.6); cursor: pointer;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; transition: border-color 0.25s, color 0.25s;
+  }
+  .carousel-arrow:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Studio-lighting disclaimer beneath the carousel */
+  .carousel-disclaimer {
+    font-size: 0.78rem;
+    color: rgba(244, 240, 230, 0.6);
+    text-align: center;
+    margin-top: 0.6rem;
+  }
+
+  /* Mobile carousel */
+  @media (max-width: 640px) {
+    .ba-split { max-width: 100%; cursor: default; }
+    .ba-handle { width: 26px; height: 26px; font-size: 0.5rem; }
+    .carousel-headline { font-size: 1rem; margin-bottom: 1rem; }
+  }
+
 </style>
 
 <!-- ─── STRUCTURED DATA (SEO + GEO + AEO) ─── -->
@@ -583,8 +727,15 @@
   <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="mobile-menu-cta" data-book-cta data-service="restorative-facial-mobile-nav" target="_blank" rel="noopener">Reserve</a>
 </div>
 
-<!-- ─── HERO ─── -->
+<!-- ─── HERO ─── full-bleed banner behind the text -->
 <section class="lp-hero" aria-labelledby="lp-h1">
+  <div class="lp-hero-banner" aria-hidden="true">
+    <img src="/assets/journal/restorative-facial-banner.webp"
+         alt=""
+         loading="eager" fetchpriority="high" decoding="async"
+         width="1584" height="672">
+  </div>
+  <div class="lp-hero-scrim" aria-hidden="true"></div>
   <div class="lp-hero-line" aria-hidden="true"></div>
   <div class="container lp-hero-inner">
     <div class="lp-hero-text">
@@ -618,13 +769,6 @@
           <span class="lp-meta-value">Murray, UT</span>
         </div>
       </div>
-    </div>
-
-    <div class="lp-hero-portrait" aria-hidden="true">
-      <img src="/assets/journal/restorative-facial-hero.webp"
-           alt="Close-up of buccal Restorative Buccal Facial technique at Altru Radiance: licensed esthetician's black-gloved fingertip working along the lip line of a serene client in Murray, Utah"
-           loading="eager" fetchpriority="high" decoding="async"
-           width="928" height="1152">
     </div>
   </div>
 </section>
@@ -680,33 +824,120 @@
 })();
 </script>
 
-<!-- ─── PROOF BLOCK (single before/after, links to full gallery) ─── -->
-<section class="lp-proof" aria-label="Before and after, one session">
-  <div class="container lp-proof-inner">
-    <figure class="lp-proof-figure">
-      <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_1200,c_fill/results_buccal-massage-before-after-fascial-release-sculpted-features_tuh9jc"
-           alt="Before and after a single Restorative Buccal Facial at Altru Radiance: visible lift, jawline definition, and lymphatic clarity"
-           loading="lazy" decoding="async"
-           width="1200" height="675">
-    </figure>
-    <div class="lp-proof-caption">
-      <span class="eyebrow">After one session</span>
-      <h2>The shift<br><em>you can see.</em></h2>
-      <p class="body-text">Every client photographed in studio lighting, no filters, no digital alteration. One Restorative Buccal Facial moves fascia, softens jaw and cheek tension, and supports lymphatic flow. The change shows up immediately, then deepens across a series.</p>
-      <a href="/results" class="lp-proof-link">See the full results gallery →</a>
-    </div>
-  </div>
-</section>
-
 <!-- ─── WHAT IS BUCCAL RELEASE (AEO direct answer) ─── -->
 <section class="lp-what-is" aria-labelledby="lp-what-is-h">
   <div class="container">
-    <figure class="lp-what-is-img">
-      <img src="/assets/journal/restorative-facial-banner.webp"
-           alt="Licensed esthetician cradling a relaxed client's face with black nitrile gloves during a Restorative Buccal Facial at Altru Radiance studio in Murray, Utah"
-           loading="lazy" decoding="async"
-           width="1584" height="672">
-    </figure>
+
+    <div class="carousel-section">
+
+      <p class="carousel-headline">
+        Real change, after one session. Drag to compare.
+      </p>
+
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="carousel-slide slide-1">
+            <div class="slide-header">
+              <span class="slide-service-badge">Restorative Buccal Facial</span>
+            </div>
+            <div class="ba-split" data-split="50">
+              <div class="ba-after">
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png"
+                     alt="After 1 Restorative Buccal Facial session at Altru Radiance Murray Utah, lifted cheekbones, defined jawline, reduced facial puffiness, radiant skin tone"
+                     width="1200" height="800" loading="eager" decoding="async" fetchpriority="high">
+              </div>
+              <div class="ba-before">
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-before-1-session-sculpting-lifting-murray-utah-altru-radiance_bnnla0.png"
+                     alt="Before the Restorative Buccal Facial at Altru Radiance Murray Utah, facial tension, held lymphatic flow, undefined jawline"
+                     width="1200" height="800" loading="eager" decoding="async" fetchpriority="high">
+              </div>
+              <span class="ba-label ba-label-before">Before</span>
+              <span class="ba-label ba-label-after">After</span>
+              <div class="ba-divider"><div class="ba-handle">↔</div></div>
+            </div>
+            <div class="slide-footer">
+              <p class="slide-result-headline">Lift, definition & lymphatic drainage. One session.</p>
+              <p class="slide-result-note">Facial puffiness softened, cheekbone architecture more visible, and lymphatic flow supported through buccal fascia work. No needles. No downtime. Results visible same day.</p>
+              <div class="slide-tags">
+                <span class="slide-tag">Restorative Buccal Facial</span>
+                <span class="slide-tag">1 Session</span>
+                <span class="slide-tag-muted">Murray, Utah · Altru Radiance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide slide-2">
+            <div class="slide-header">
+              <span class="slide-service-badge">Restorative Buccal Facial</span>
+            </div>
+            <div class="ba-split" data-split="50">
+              <div class="ba-after">
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1780532345/buccal-facial-after-1-session-murray-utah-altru-radiance_r97zba.png"
+                       alt="After one Restorative Buccal Facial at Altru Radiance Murray Utah — softer jawline, lifted lower face"
+                       width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="ba-before">
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1780532344/buccal-facial-before-session-1-murray-utah-altru-radiance_qnd1yi.png"
+                       alt="Before the Restorative Buccal Facial at Altru Radiance Murray Utah — held jaw tension, heavier lower face"
+                       width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <span class="ba-label ba-label-before">Before</span>
+              <span class="ba-label ba-label-after">After</span>
+              <div class="ba-divider"><div class="ba-handle">↔</div></div>
+            </div>
+            <div class="slide-footer">
+              <p class="slide-result-headline">Neck elongated. Jaw line softer. Lower face lifted.</p>
+              <p class="slide-result-note">Forward head posture pulls the lower face down and slows lymphatic flow — the jaw line softens, fluid pools, the face starts to read tired. Hands-on fascia work and surface cervical work let the head re-stack and the lymph move. Same face, less weight on it.</p>
+              <div class="slide-tags">
+                <span class="slide-tag">Facial Architecture Ritual</span>
+                <span class="slide-tag">Cervical & Jaw</span>
+                <span class="slide-tag-muted">Salt Lake Valley · Altru Radiance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide slide-3">
+            <div class="slide-header">
+              <span class="slide-service-badge">Restorative Buccal Facial</span>
+            </div>
+            <div class="ba-split" data-split="50">
+              <div class="ba-after">
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635269/tmj-buccal-massage-after-1-session-murray-utah-altru-radiance_o8p8aa.png"
+                       alt="After the Restorative Buccal Facial at Altru Radiance Murray Utah, softer jaw tension, more facial symmetry, lymphatic flow supported"
+                       width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <div class="ba-before">
+                <img src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1774635277/tmj-buccal-massage-before-murray-utah-altru-radiance_mkctwn.png"
+                       alt="Before the Restorative Buccal Facial at Altru Radiance, held jaw tension, facial asymmetry, held lymphatic flow"
+                       width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <span class="ba-label ba-label-before">Before</span>
+              <span class="ba-label ba-label-after">After</span>
+              <div class="ba-divider"><div class="ba-handle">↔</div></div>
+            </div>
+            <div class="slide-footer">
+              <p class="slide-result-headline">Jaw tension softened. More symmetry. Skin awakened.</p>
+              <p class="slide-result-note">Held jaw-tension patterns softened through facial fascia work. Symmetry and skin luminosity improve — a face visibly at ease.</p>
+              <div class="slide-tags">
+                <span class="slide-tag">Held Jaw Patterns</span>
+                <span class="slide-tag">1 Session</span>
+                <span class="slide-tag-muted">Murray, Utah · Altru Radiance</span>
+              </div>
+            </div>
+          </div>
+
+        </div></div><div class="carousel-controls">
+        <button class="carousel-arrow" id="prevBtn" aria-label="Previous slide">←</button>
+        <button class="carousel-dot active" data-index="0" aria-label="Restorative Buccal Facial result"></button>
+        <button class="carousel-dot" data-index="1" aria-label="Facial Architecture Ritual result"></button>
+        <button class="carousel-dot" data-index="2" aria-label="Held Jaw Patterns result"></button>
+        <button class="carousel-arrow" id="nextBtn" aria-label="Next slide">→</button>
+      </div>
+      <p class="carousel-disclaimer">Every client photographed in studio lighting — no filters, no digital alteration.</p>
+
+    </div>
+
     <div class="lp-grid">
       <div>
         <h2 id="lp-what-is-h">What is the <em>Restorative Buccal Facial</em>?</h2>
@@ -1226,6 +1457,211 @@
   window.addEventListener('resize', onScroll, { passive: true });
   update();
 })();
+</script>
+
+<script>
+  // Carousel navigation — pixel-based translation
+  const track  = document.getElementById('carouselTrack');
+  const dots   = document.querySelectorAll('.carousel-dot');
+  const slides = document.querySelectorAll('.carousel-slide');
+  let current  = 0;
+  let autoTimer;
+
+  function getWrapWidth() {
+    return track.parentElement.offsetWidth;
+  }
+
+  function setSlideWidths() {
+    const w = getWrapWidth();
+    slides.forEach(s => s.style.width = w + 'px');
+  }
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    const w = getWrapWidth();
+    track.style.transform = `translateX(-${current * w}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    clearInterval(autoTimer); goTo(current - 1); startAuto();
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    clearInterval(autoTimer); goTo(current + 1); startAuto();
+  });
+  dots.forEach(dot => dot.addEventListener('click', () => {
+    clearInterval(autoTimer); goTo(+dot.dataset.index); startAuto();
+  }));
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function startAuto() {
+    /* Auto-rotation disabled — drag-to-see-the-change IS the proof;
+       auto-advance interrupted dwell time. Dots and arrows remain.
+       (Matches Foundation Package behavior.) */
+  }
+
+  // Initial sizing: defer with rAF so layout has settled (the carousel
+  // moved into its own section below a 100vh hero, so the parent may
+  // not have computed its width yet when this script runs).
+  function safeSize() {
+    setSlideWidths();
+    goTo(current);
+  }
+  requestAnimationFrame(() => requestAnimationFrame(safeSize));
+
+  // ResizeObserver re-measures whenever the carousel-wrap's actual size
+  // changes (font load shifts, async image loads, viewport resize, etc.).
+  // Fallback to window resize listener for legacy browsers.
+  if (typeof ResizeObserver !== 'undefined' && track.parentElement) {
+    const ro = new ResizeObserver(() => safeSize());
+    ro.observe(track.parentElement);
+  } else {
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(safeSize, 100);
+    });
+  }
+  // Also re-measure once after window load (images, fonts done loading)
+  window.addEventListener('load', safeSize);
+
+  startAuto();
+
+  // Pause autoplay on hover, on focus, or while the user is dragging the BA divider
+  const carouselSection = track.closest('.carousel-section') || track.parentElement;
+  if (carouselSection) {
+    const pause = () => clearInterval(autoTimer);
+    const resume = () => startAuto();
+    carouselSection.addEventListener('mouseenter', pause);
+    carouselSection.addEventListener('mouseleave', resume);
+    carouselSection.addEventListener('focusin', pause);
+    carouselSection.addEventListener('focusout', e => {
+      if (!carouselSection.contains(e.relatedTarget)) resume();
+    });
+    carouselSection.addEventListener('pointerdown', pause);
+    carouselSection.addEventListener('pointerup', resume);
+  }
+  prefersReducedMotion.addEventListener('change', () => {
+    clearInterval(autoTimer);
+    if (!prefersReducedMotion.matches) startAuto();
+  });
+
+  // Before/After draggable divider — synchronous Pointer Events API.
+  // Kept deliberately simple: no rAF batching, no cached rect, no race
+  // window between pointerup and a queued frame. setSplit runs inline on
+  // every pointermove. On modern hardware, this comfortably handles 120Hz
+  // pointer streams without dropped frames.
+  document.querySelectorAll('.ba-split').forEach(panel => {
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    const DRAG_THRESHOLD = 4;
+    const handle = panel.querySelector('.ba-handle');
+
+    // Active-state lifecycle. Handle is outline-only at rest (CSS default);
+    // gains .is-active during hover/drag, then lingers 800ms after the
+    // interaction ends before the CSS transition fades it back to outline.
+    const LINGER_MS = 800;
+    let lingerTimer = null;
+    function activateHandle() {
+      if (!handle) return;
+      if (lingerTimer) { clearTimeout(lingerTimer); lingerTimer = null; }
+      handle.classList.add('is-active');
+      panel.classList.add('is-active');
+    }
+    function scheduleDeactivate() {
+      if (!handle) return;
+      if (lingerTimer) clearTimeout(lingerTimer);
+      lingerTimer = setTimeout(() => {
+        handle.classList.remove('is-active');
+        panel.classList.remove('is-active');
+      }, LINGER_MS);
+    }
+
+    function setSplit(pct) {
+      const clamped = Math.min(Math.max(pct, 5), 95);
+      panel.style.setProperty('--split', clamped + '%');
+      // Unitless mirror so CSS calc() can drive label opacity from --split.
+      panel.style.setProperty('--split-num', clamped);
+      const before = panel.querySelector('.ba-before');
+      if (before) before.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
+      const divider = panel.querySelector('.ba-divider');
+      if (divider) divider.style.left = clamped + '%';
+    }
+
+    function getPercent(e) {
+      const rect = panel.getBoundingClientRect();
+      return ((e.clientX - rect.left) / rect.width) * 100;
+    }
+
+    panel.addEventListener('pointerdown', e => {
+      startX = e.clientX;
+      startY = e.clientY;
+      dragging = false;
+      try { panel.setPointerCapture(e.pointerId); } catch (err) {}
+      activateHandle();
+    });
+
+    panel.addEventListener('pointermove', e => {
+      const dx = Math.abs(e.clientX - startX);
+      const dy = Math.abs(e.clientY - startY);
+      if (!dragging && dx > DRAG_THRESHOLD && dx > dy) {
+        dragging = true;
+      }
+      if (dragging) {
+        e.preventDefault();
+        setSplit(getPercent(e));
+        activateHandle();
+      }
+    });
+
+    panel.addEventListener('pointerup',     () => { dragging = false; scheduleDeactivate(); });
+    panel.addEventListener('pointercancel', () => { dragging = false; scheduleDeactivate(); });
+
+    // Also allow a single click anywhere on the panel to snap the divider
+    // to that location (better discoverability than drag-only)
+    panel.addEventListener('click', e => {
+      if (!dragging) {
+        setSplit(getPercent(e));
+        activateHandle();
+        scheduleDeactivate();
+      }
+    });
+
+    setSplit(50);
+  });
+  // First-paint affordance hint: briefly flash the first slide's handle
+  // into its active state 3× so visitors learn the drag affordance before
+  // it settles into its quiet outline rest state.
+  (function() {
+    var firstHandle = document.querySelector('.slide-1 .ba-handle');
+    var firstPanel  = document.querySelector('.slide-1 .ba-split');
+    if (!firstHandle || !firstPanel) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var blips = 0;
+    var maxBlips = 3;
+    function blip() {
+      if (blips >= maxBlips) return;
+      firstHandle.classList.add('is-active');
+      firstPanel.classList.add('is-active');
+      setTimeout(function () {
+        firstHandle.classList.remove('is-active');
+        firstPanel.classList.remove('is-active');
+        blips++;
+        if (blips < maxBlips) setTimeout(blip, 700);
+      }, 550);
+    }
+    setTimeout(blip, 800);
+
+    // First real user interaction cancels any remaining blips so the JS
+    // pulse doesn't compete with the user's own dragging.
+    firstPanel.addEventListener('pointerdown', function() {
+      blips = maxBlips;
+    }, { once: true });
+  })();
+
 </script>
 
 <script defer src="/assets/js/book-conversion.js?v=20260531"></script>
