@@ -136,14 +136,32 @@
   /* Banner image — full-bleed background of the hero, behind text + scrim. */
   .lp-hero-banner { position: absolute; inset: 0; z-index: 0; }
   .lp-hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-  /* Flat dark scrim, left-weighted, for cream-on-dark legibility. */
-  .lp-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(6,16,10,0.78) 0%, rgba(6,16,10,0.62) 55%, rgba(6,16,10,0.5) 100%); pointer-events: none; }
+  /* Flat dark scrim, strengthened so the centered, contained text stays legible
+     over the banner on wide monitors (text no longer hugs the far left edge). */
+  .lp-hero-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(6,16,10,0.86) 0%, rgba(6,16,10,0.74) 55%, rgba(6,16,10,0.64) 100%); pointer-events: none; }
   .lp-hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
   .lp-hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 68px; background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.5)); z-index: 2; }
   .lp-hero-inner {
     position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    min-height: 460px;
   }
-  .lp-hero-text { max-width: 640px; }
+  /* Cap the hero content and anchor it within the centered container so the
+     text stays balanced on wide monitors rather than stranded at the far left. */
+  .lp-hero-text { max-width: 640px; width: 100%; }
+  /* Compact live-proof line inside the hero, directly below the CTA row. */
+  .lp-hero-trust {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem;
+    margin-top: 1.5rem;
+    font-size: 0.72rem; letter-spacing: 0.04em; line-height: 1.5;
+    color: rgba(244, 240, 230, 0.62);
+  }
+  .lp-hero-trust .lp-hero-trust-stars { color: var(--gold); letter-spacing: 0.08em; }
+  .lp-hero-trust .lp-hero-trust-rating { color: var(--gold-light); font-weight: 500; }
+  .lp-hero-trust .lp-hero-trust-sep { color: rgba(201, 168, 76, 0.55); }
+  @media (max-width: 640px) {
+    .lp-hero-inner { min-height: 0; }
+  }
   .lp-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.4vw, 3.6rem); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 1rem; }
   .lp-hero h1 em { font-style: italic; color: var(--gold-light); }
   .lp-hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid rgba(201, 168, 76, 0.12); }
@@ -157,6 +175,13 @@
   .lp-phone-cta strong { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--gold); font-weight: 400; }
   .lp-phone-cta:hover { color: var(--gold); }
   @media (max-width: 640px) { .lp-hero { padding: 110px 0 60px; } .lp-hero-meta { gap: 1.25rem 1.75rem; } .lp-meta-divider { display: none; } }
+
+  /* ─── PROMISE STRIP ─── thin solid band directly below the hero */
+  .lp-promise-strip { background: var(--deep); border-bottom: 1px solid rgba(201, 168, 76, 0.1); padding: 0.95rem 0; }
+  .lp-promise-strip .lp-promise-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem 1rem; text-align: center; }
+  .lp-promise-strip .lp-promise-row span { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244, 240, 230, 0.72); }
+  .lp-promise-strip .lp-promise-row span[aria-hidden="true"] { color: var(--gold); letter-spacing: 0; }
+  @media (max-width: 640px) { .lp-promise-strip { padding: 0.85rem 0; } .lp-promise-strip .lp-promise-row { gap: 0.4rem 0.7rem; } .lp-promise-strip .lp-promise-row span { font-size: 0.52rem; letter-spacing: 0.18em; } }
 
   /* ─── 2-COL: WHAT IS / DIFFERENTIATOR ─── */
   .lp-what-is { background: var(--black); }
@@ -741,11 +766,19 @@
     <div class="lp-hero-text">
       <span class="eyebrow">Restorative Buccal Facial · Murray, Utah</span>
       <h1 id="lp-h1">Restorative Buccal Facial in <em>Murray, Utah</em></h1>
-      <p class="ad-promise">A 90-minute regenerative facial that works where conventional skincare can't reach: the fascia, the facial muscles, and the jaw tension that shapes how your face holds itself.</p>
+      <p class="ad-promise">A 90-minute regenerative facial that reaches where skincare can't — fascia, facial muscles, and held tension that shapes your face.</p>
 
       <div class="lp-cta-row">
         <a href="https://app.squareup.com/appointments/book/62fawhakgtnp54/LBEQ7Y1WP6HN1/start" class="btn-primary" data-book-cta data-service="restorative-facial-hero" target="_blank" rel="noopener">Reserve Your Session</a>
         <a href="tel:+18016608933" class="lp-phone-cta" data-book-cta data-service="restorative-facial-hero-call">Or call <strong>(801) 660-8933</strong></a>
+      </div>
+
+      <div class="lp-hero-trust" aria-label="Rating and credentials">
+        <span class="lp-hero-trust-stars" id="trust-stars-display" aria-hidden="true">★★★★★</span>
+        <span class="lp-hero-trust-rating" id="trust-rating">5.0</span>
+        <span>· <span id="trust-review-count">54</span> Google reviews</span>
+        <span class="lp-hero-trust-sep" aria-hidden="true">·</span>
+        <span>Licensed Master Esthetician</span>
       </div>
 
       <div class="lp-hero-meta" role="group" aria-label="Session details">
@@ -760,11 +793,6 @@
         </div>
         <div class="lp-meta-divider" aria-hidden="true"></div>
         <div class="lp-meta-item">
-          <span class="lp-meta-label">Practitioner</span>
-          <span class="lp-meta-value">Mechelle, LME</span>
-        </div>
-        <div class="lp-meta-divider" aria-hidden="true"></div>
-        <div class="lp-meta-item">
           <span class="lp-meta-label">Location</span>
           <span class="lp-meta-value">Murray, UT</span>
         </div>
@@ -773,27 +801,9 @@
   </div>
 </section>
 
-<!-- ─── TRUST STRIP (proof row + promise band) ─── -->
-<section class="trust-strip" aria-label="Practitioner credentials and reviews">
-  <div class="trust-strip-glow" aria-hidden="true"></div>
-  <div class="container trust-proof">
-    <a href="#author" class="trust-practitioner" aria-label="About Mechelle, Licensed Master Esthetician">
-      <img class="trust-face" src="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto,w_180,h_180,c_fill,g_face/studio_mechelle-performing-buccal-massage-intraoral-murray-utah_gmrqpi" alt="Mechelle, Licensed Master Esthetician at Altru Radiance" loading="lazy" decoding="async" width="72" height="72">
-      <span class="trust-byline">
-        <span class="trust-byline-name">Mechelle</span>
-        <span class="trust-byline-title">Licensed Master Esthetician · Utah</span>
-      </span>
-    </a>
-    <a class="trust-rating" href="https://www.google.com/maps/search/?api=1&query=Altru+Radiance+164+E+5900+S+Murray+UT+84107" target="_blank" rel="noopener" aria-label="Read Altru Radiance reviews on Google">
-      <span class="trust-rating-stars" id="trust-stars-display" aria-hidden="true">★★★★★</span>
-      <span class="trust-rating-number" id="trust-rating">5.0</span>
-      <span class="trust-rating-source">
-        on <span id="trust-google">Google</span>
-        <span class="trust-rating-count"><span id="trust-review-count">54</span> reviews</span>
-      </span>
-    </a>
-  </div>
-  <div class="container trust-promise" aria-label="Studio context">
+<!-- ─── PROMISE STRIP (solid band below the hero) ─── -->
+<section class="lp-promise-strip" aria-label="Studio context">
+  <div class="container lp-promise-row">
     <span>No needles</span>
     <span aria-hidden="true">·</span>
     <span>No downtime</span>
@@ -935,6 +945,7 @@
         <button class="carousel-arrow" id="nextBtn" aria-label="Next slide">→</button>
       </div>
       <p class="carousel-disclaimer">Every client photographed in studio lighting — no filters, no digital alteration.</p>
+      <p class="carousel-results-link" style="text-align:center;margin-top:0.7rem;"><a href="/results" style="color:var(--gold-light);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.35);padding-bottom:3px;">See the full results gallery →</a></p>
 
     </div>
 
@@ -1221,10 +1232,11 @@
   <div class="container">
     <div class="lp-author-grid">
       <div>
-        <h2 id="lp-author-h">Trained in fascia. <em>Licensed in Utah.</em></h2>
+        <h2 id="lp-author-h">Focused on Fascia. <em>Licensed in Utah.</em></h2>
         <div class="gold-rule"></div>
-        <p class="body-text">Mechelle is a Utah-licensed Master Esthetician based in Murray, offering the Restorative Buccal Facial, manual lymphatic drainage, and the Facial Architecture Ritual. She built Altru Radiance as a single-practitioner studio so every client receives the full hands-on session, every time. No tech handoff, no upsell, no fluorescent rooms.</p>
-        <p class="body-text" style="margin-top:0.95rem;">Her training combines licensed esthetics with advanced training in fascia-informed technique, lymphatic technique, and many other holistic regenerative skin modalities. She works with clients across the Salt Lake Valley including Murray, Salt Lake City, Holladay, Cottonwood Heights, Sandy, and Draper.</p>
+        <p class="body-text">Mechelle is a Utah-licensed Master Esthetician based in Murray, offering the <em>Restorative Buccal Facial</em>, <em>Lymphatic Drainage</em>, and the <em>Facial Architecture Ritual</em>. She built Altru Radiance as a single-practitioner studio so every client receives the full hands-on session, every time. No tech handoff, no upsell, no fluorescent rooms.</p>
+        <p class="body-text" style="margin-top:0.95rem;">Her training combines licensed esthetics with advanced fascia-informed and lymphatic technique, alongside other holistic restorative skin modalities. She works with clients across the Salt Lake Valley including Murray, Salt Lake City, Holladay, Cottonwood Heights, Sandy, and Draper.</p>
+        <p class="body-text" style="margin-top:0.95rem;">The goal isn't a quick glow. It's helping the skin and the structure beneath it regenerate — so your aesthetics come from restored architecture, not a temporary finish.</p>
         <p class="lp-author-sig">Mechelle</p>
         <p class="lp-author-title">Licensed Master Esthetician · Altru Radiance</p>
       </div>
