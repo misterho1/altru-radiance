@@ -1525,7 +1525,7 @@
     <div class="hero-center">
       <h1 class="hero-h1">
         <span class="hero-headline">Regenerative Fascia<br class="break-mobile"> Studio</span>
-        <span class="hero-tagline">Sculpting the Body · Illuminating the Face</span>
+        <span class="hero-tagline">Restorative Buccal Facial · Sculpting the Body · Illuminating the Face</span>
       </h1>
     </div>
 
@@ -1806,7 +1806,7 @@
       <div class="reviews-footer">
         <span class="google-badge">
           <span class="google-g">G</span>
-          Verified Google Reviews · 54 total · 5.0 average
+          Verified Google Reviews · <span id="reviews-footer-count">54</span> total · <span id="reviews-footer-avg">5.0</span> average
         </span>
         <p class="reviews-policy-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,230,0.5);text-align:center;margin-top:0.85rem;">
           <a href="/policies#reviews" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.25);padding-bottom:1px;">About these reviews &rarr;</a>
@@ -2492,6 +2492,10 @@
       if (linkEl && data.placeUrl) {
         linkEl.href = data.placeUrl;
       }
+      var fCount = document.getElementById('reviews-footer-count');
+      if (fCount && typeof data.total === 'number') fCount.textContent = data.total.toLocaleString();
+      var fAvg = document.getElementById('reviews-footer-avg');
+      if (fAvg && typeof data.rating === 'number') fAvg.textContent = data.rating.toFixed(1);
     })
     .catch(function () {
       // Silent fallback — hardcoded baseline stays visible
