@@ -45,3 +45,8 @@
 # external links, social shares, Google-indexed URLs, and any Google Ads
 # landing-page URLs that still point at the old slug.
 /journal/what-is-buccal-release               /journal/what-is-buccal-manipulation       301
+
+# 2026-07-03: consolidate duplicate buccal-facial + about pages to their canonical
+# (fixes GSC "Duplicate, Google chose different canonical than user")
+/restorative-facial                           /services/restorative-buccal-release       301
+/small-video-about                            /about                                     301
