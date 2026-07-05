@@ -2028,9 +2028,13 @@ try {
      still + caption, no pin) ─── -->
 <section class="soothe-arc" aria-label="What a session at Altru Radiance feels like">
   <div class="arc-stage">
-    <img class="arc-frame is-active" src="/assets/scenes/soothe-arc-4-1920.v1.webp"
-         alt="Client resting serene in candlelight after a facial session at Altru Radiance"
-         width="1920" height="1072" loading="lazy" decoding="async">
+    <picture>
+      <!-- Phones show only this final frame (no scrub) — serve the 9:16 cut. -->
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-4-portrait-1080.v1.webp">
+      <img class="arc-frame is-active" src="/assets/scenes/soothe-arc-4-1920.v1.webp"
+           alt="Client resting serene in candlelight after a facial session at Altru Radiance"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
     <img class="arc-frame" src="/assets/scenes/soothe-arc-1-1920.v1.webp"
          alt="Candlelit treatment room at Altru Radiance in Murray, Utah"
          width="1920" height="1072" loading="lazy" decoding="async">

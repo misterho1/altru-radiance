@@ -138,8 +138,14 @@ try {
     check('mobile: counter hidden', !state.counterVisible);
     check('mobile: Arc NOT pinned (no scrub)', !state.pinSpacer);
     check('mobile: Arc shows final still + caption', state.arcActive === 0 && state.idx === '04', 'idx=' + state.idx);
+    check('mobile: hero poster is the portrait cut',
+      await page.evaluate(() => ((document.querySelector('img.hero-poster') || {}).currentSrc || '').includes('portrait')));
+    // The arc image is lazy — scroll it into view before reading its source.
     await page.evaluate(() => document.querySelector('.soothe-arc').scrollIntoView({ block: 'center' }));
-    await sleep(1200);
+    await sleep(1600);
+    const arcSrc = await page.evaluate(() =>
+      ((document.querySelector('.arc-frame.is-active') || {}).currentSrc || '').split('/').pop());
+    check('mobile: Arc final frame is the portrait cut', arcSrc.includes('portrait'), arcSrc);
     await page.screenshot({ path: SHOTS + '/cine-arc-mobile.png' });
     await page.close();
   }
