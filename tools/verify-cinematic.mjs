@@ -150,20 +150,25 @@ try {
     const state = await page.evaluate(() => ({
       counterVisible: getComputedStyle(document.querySelector('.scroll-progress')).display !== 'none',
       pinSpacer: !!document.querySelector('.pin-spacer'),
-      arcActive: [...document.querySelectorAll('.arc-frame')].findIndex(f => f.classList.contains('is-active')),
       idx: document.querySelector('.arc-index').textContent.trim(),
+      grain: !!document.querySelector('.cine-grain'),
     }));
-    check('mobile: counter hidden', !state.counterVisible);
-    check('mobile: Arc NOT pinned (no scrub)', !state.pinSpacer);
-    check('mobile: Arc shows final still + caption', state.arcActive === 0 && state.idx === '04', 'idx=' + state.idx);
+    check('mobile: counter visible (full tier)', state.counterVisible);
+    check('mobile: Arc pinned + scrub armed', state.pinSpacer);
+    check('mobile: Arc seated at stage 1', state.idx === '01', 'idx=' + state.idx);
+    check('mobile: film grain present', state.grain);
     check('mobile: hero poster is the portrait cut',
       await page.evaluate(() => ((document.querySelector('img.hero-poster') || {}).currentSrc || '').includes('portrait')));
-    // The arc image is lazy — scroll it into view before reading its source.
+    // The arc images are lazy — scroll the stage into view, then confirm
+    // the ACTIVE stage-1 frame serves its portrait cut.
     await page.evaluate(() => document.querySelector('.soothe-arc').scrollIntoView({ block: 'center' }));
-    await sleep(1600);
-    const arcSrc = await page.evaluate(() =>
-      ((document.querySelector('.arc-frame.is-active') || {}).currentSrc || '').split('/').pop());
-    check('mobile: Arc final frame is the portrait cut', arcSrc.includes('portrait'), arcSrc);
+    let arcSrc = '';
+    for (let i = 0; i < 10 && !arcSrc; i++) {
+      await sleep(700);
+      arcSrc = await page.evaluate(() =>
+        ((document.querySelector('.arc-frame.is-active') || {}).currentSrc || '').split('/').pop());
+    }
+    check('mobile: active Arc stage serves its portrait cut', arcSrc.includes('portrait'), arcSrc || 'never loaded');
     await page.screenshot({ path: SHOTS + '/cine-arc-mobile.png' });
     await page.close();
   }

@@ -1220,7 +1220,7 @@
   }
   html.cine-on .scroll-progress { display: block; }
   @media (max-width: 768px) {
-    html.cine-on .scroll-progress { display: none; }
+    html.cine-on .scroll-progress { top: 74px; right: 16px; font-size: 0.66rem; }
   }
 
   /* The Soothe Arc — pinned four-frame sequence */
@@ -1606,7 +1606,7 @@
 
 <script>
 /* Cinematic gate: add the class that arms initial hidden states BEFORE
-   first paint, and only when motion is allowed. cinematic.v2.js removes
+   first paint, and only when motion is allowed. cinematic.v3.js removes
    it again if GSAP is missing. No JS → static page, everything visible. */
 try {
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -2072,26 +2072,34 @@ try {
 
 
 <!-- ─── THE SOOTHE ARC: pinned cinematic sequence (scroll scrubs through
-     four stages of a session; mobile and reduced-motion get the final
-     still + caption, no pin) ─── -->
+     four stages of a session on every device; portrait phones get 9:16
+     cuts of each stage; reduced-motion/no-JS get the final still) ─── -->
 <section class="soothe-arc" aria-label="What a session at Altru Radiance feels like">
   <div class="arc-stage">
     <picture>
-      <!-- Phones show only this final frame (no scrub) — serve the 9:16 cut. -->
       <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-4-portrait-1080.v1.webp">
       <img class="arc-frame is-active" src="/assets/scenes/soothe-arc-4-1920.v1.webp"
            alt="Client resting serene in candlelight after a facial session at Altru Radiance"
            width="1920" height="1072" loading="lazy" decoding="async">
     </picture>
-    <img class="arc-frame" src="/assets/scenes/soothe-arc-1-1920.v1.webp"
-         alt="Candlelit treatment room at Altru Radiance in Murray, Utah"
-         width="1920" height="1072" loading="lazy" decoding="async">
-    <img class="arc-frame" src="/assets/scenes/soothe-arc-2-1920.v1.webp"
-         alt="Golden botanical oil pooled on deep green stone"
-         width="1920" height="1072" loading="lazy" decoding="async">
-    <img class="arc-frame" src="/assets/scenes/soothe-arc-3-1920.v1.webp"
-         alt="Esthetician's hands mid-stroke during a facial massage"
-         width="1920" height="1072" loading="lazy" decoding="async">
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-1-portrait-1080.v1.webp">
+      <img class="arc-frame" src="/assets/scenes/soothe-arc-1-1920.v1.webp"
+           alt="Candlelit treatment room at Altru Radiance in Murray, Utah"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-2-portrait-1080.v1.webp">
+      <img class="arc-frame" src="/assets/scenes/soothe-arc-2-1920.v1.webp"
+           alt="Golden botanical oil pooled on deep green stone"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-3-portrait-1080.v1.webp">
+      <img class="arc-frame" src="/assets/scenes/soothe-arc-3-1920.v1.webp"
+           alt="Esthetician's hands mid-stroke during a facial massage"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
     <div class="arc-scrim"></div>
     <span class="arc-eyebrow">One Session · Four Movements</span>
     <div class="arc-captions">
@@ -2813,7 +2821,7 @@ try {
 <script src="/assets/js/vendor/gsap.min.js" defer></script>
 <script src="/assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/js/vendor/lenis.min.js" defer></script>
-<script src="/assets/js/cinematic.v2.js" defer></script>
+<script src="/assets/js/cinematic.v3.js" defer></script>
 
 </body>
 </html>

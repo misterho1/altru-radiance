@@ -10,8 +10,9 @@
      lands → the page is fully static and fully visible.
    - A `cine-safe` timer below force-reveals everything 4s after load
      even if GSAP failed mid-flight.
-   - Mobile (≤768px) gets entry reveals only: no Lenis, no pin/scrub,
-     no counter — the Arc shows its final frame as a static image.
+   - Phones run the FULL cinematic tier (Andrew, 2026-07-05) with 9:16
+     stage cuts; the only desktop-only piece is Lenis smooth scroll —
+     touch scrolling stays native. Reduced-motion stays fully static.
 
    Motion law (Altru): slow, organic, breathing. Nothing snappy, no
    bounce, no elastic. Durations 1.2–1.6s, sine/power2 easing only.
@@ -39,9 +40,9 @@
     gsap.ticker.lagSmoothing(0);
   }
 
-  /* ── Scroll-progress counter (desktop only) ── */
+  /* ── Scroll-progress counter ── */
   var pctEl = document.getElementById('scrollPct');
-  if (pctEl && !isMobile) {
+  if (pctEl) {
     ScrollTrigger.create({
       start: 0,
       end: function () { return ScrollTrigger.maxScroll(window); },
@@ -86,7 +87,7 @@
 
   /* ── Hero drift: headline eases up + fades as the visitor leaves ── */
   var heroInner = document.querySelector('.hero-inner');
-  if (heroInner && !isMobile) {
+  if (heroInner) {
     gsap.to(heroInner, {
       yPercent: -12,
       opacity: 0.25,
@@ -110,13 +111,7 @@
     // still. ORDER maps narrative stage -> DOM index: room, oil, hands, final.
     var ORDER = [1, 2, 3, 0];
 
-    if (isMobile) {
-      // Static final state: strongest frame + caption, no pin.
-      var last = ORDER[3];
-      frames.forEach(function (f, i) { f.classList.toggle('is-active', i === last); });
-      captions.forEach(function (c, i) { c.classList.toggle('is-active', i === last); });
-      if (idxEl) idxEl.textContent = '04';
-    } else if (frames.length === 4) {
+    if (frames.length === 4) {
       // JS owns the sequence from here; start at stage one (the room).
       var setStage = function (n) {
         var d = ORDER[n];
@@ -150,7 +145,7 @@
 
   /* ── Philosophy scroll-fill: words brighten as you read down ── */
   var mission = document.querySelector('.philosophy-text > p');
-  if (mission && !isMobile) {
+  if (mission) {
     var words = mission.textContent.trim().split(/\s+/);
     mission.textContent = '';
     words.forEach(function (w, i) {
@@ -217,37 +212,33 @@
   }
 
   /* ── Section-heading line masks: each heading rises out of a clip.
-     Desktop only; every .section-heading sits below the fold, and the
-     cine-safe timer force-clears the transform if anything fails. ── */
-  if (!isMobile) {
-    gsap.utils.toArray('.section-heading, .cta-heading').forEach(function (h) {
-      var inner = document.createElement('span');
-      inner.className = 'cine-mask-inner';
-      while (h.firstChild) inner.appendChild(h.firstChild);
-      h.appendChild(inner);
-      h.classList.add('cine-mask');
-      gsap.fromTo(inner, { yPercent: 112 }, {
-        yPercent: 0,
-        duration: 1.25,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: h, start: 'top 86%', once: true }
-      });
+     Every .section-heading sits below the fold, and the cine-safe
+     timer force-clears the transform if anything fails. ── */
+  gsap.utils.toArray('.section-heading, .cta-heading').forEach(function (h) {
+    var inner = document.createElement('span');
+    inner.className = 'cine-mask-inner';
+    while (h.firstChild) inner.appendChild(h.firstChild);
+    h.appendChild(inner);
+    h.classList.add('cine-mask');
+    gsap.fromTo(inner, { yPercent: 112 }, {
+      yPercent: 0,
+      duration: 1.25,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: h, start: 'top 86%', once: true }
     });
-  }
+  });
 
-  /* ── Film grain: fixed cinematic texture, desktop only ── */
-  if (!isMobile) {
-    var grain = document.createElement('div');
-    grain.className = 'cine-grain';
-    grain.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(grain);
-  }
+  /* ── Film grain: fixed cinematic texture ── */
+  var grain = document.createElement('div');
+  grain.className = 'cine-grain';
+  grain.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(grain);
 
   /* ── Loading-reveal intro: wordmark rises, hairline draws, curtain
-     lifts. Desktop, once per session; injected by JS so no-JS and
+     lifts. Once per session; injected by JS so no-JS and
      reduced-motion visitors never see a curtain at all. ── */
   try {
-    if (!isMobile && !sessionStorage.getItem('cineIntroSeen')) {
+    if (!sessionStorage.getItem('cineIntroSeen')) {
       sessionStorage.setItem('cineIntroSeen', '1');
       var intro = document.createElement('div');
       intro.className = 'cine-intro';
