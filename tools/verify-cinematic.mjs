@@ -114,6 +114,24 @@ try {
     check('desktop: GA untouched', inv.ga);
     check('desktop: canonical untouched', inv.canonical === 'https://altruradiance.com/', inv.canonical);
 
+    // v2 effects
+    const fx = await page.evaluate(() => ({
+      grain: !!document.querySelector('.cine-grain'),
+      introGone: !document.querySelector('.cine-intro'),
+      maskedHeadings: document.querySelectorAll('.section-heading.cine-mask .cine-mask-inner').length,
+      stat: (document.getElementById('trust-clients') || {}).textContent,
+      rule: (() => {
+        const r = document.querySelector('.gold-rule');
+        const t = getComputedStyle(r).transform;
+        return t === 'none' || /matrix\(1[,)]/.test(t) || /matrix\(0\.9\d/.test(t);
+      })(),
+    }));
+    check('desktop: film grain overlay present', fx.grain);
+    check('desktop: intro played and removed', fx.introGone);
+    check('desktop: headings line-masked', fx.maskedHeadings >= 5, String(fx.maskedHeadings));
+    check('desktop: trust stat counted up to 200+', fx.stat === '200+', fx.stat);
+    check('desktop: first gold rule drawn', fx.rule);
+
     await page.evaluate(() => document.querySelector('.soothe-arc').scrollIntoView({ block: 'start' }));
     await sleep(1500);
     await page.screenshot({ path: SHOTS + '/cine-arc-desktop.png' });

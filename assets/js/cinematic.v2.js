@@ -138,6 +138,13 @@
           if (stage !== current) { current = stage; setStage(stage); }
         }
       });
+      // Ken Burns across the pin: the whole scene settles from 1.06 to 1,
+      // scrubbed with scroll — barely-there drift that keeps frames alive.
+      gsap.fromTo(frames, { scale: 1.06 }, {
+        scale: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: arc, start: 'top top', end: '+=280%', scrub: true }
+      });
     }
   }
 
@@ -176,4 +183,95 @@
       scrollTrigger: { trigger: '.cta-strip', start: 'top 80%', once: true }
     });
   }
+
+  /* ── Gold rules draw themselves on entry (existing elements, all below
+     the fold, so the pre-animation state never flashes) ── */
+  gsap.utils.toArray('.gold-rule').forEach(function (r) {
+    gsap.fromTo(r, { scaleX: 0 }, {
+      scaleX: 1,
+      duration: 1.4,
+      ease: 'sine.out',
+      transformOrigin: r.classList.contains('left') ? 'left center' : 'center center',
+      scrollTrigger: { trigger: r, start: 'top 90%', once: true }
+    });
+  });
+
+  /* ── Trust stat counts up on first sight ── */
+  var stat = document.getElementById('trust-clients');
+  if (stat && /^\d+\+$/.test(stat.textContent.trim())) {
+    var target = parseInt(stat.textContent, 10);
+    var tally = { n: 0 };
+    ScrollTrigger.create({
+      trigger: stat,
+      start: 'top 92%',
+      once: true,
+      onEnter: function () {
+        gsap.to(tally, {
+          n: target,
+          duration: 1.8,
+          ease: 'power2.out',
+          onUpdate: function () { stat.textContent = Math.round(tally.n) + '+'; }
+        });
+      }
+    });
+  }
+
+  /* ── Section-heading line masks: each heading rises out of a clip.
+     Desktop only; every .section-heading sits below the fold, and the
+     cine-safe timer force-clears the transform if anything fails. ── */
+  if (!isMobile) {
+    gsap.utils.toArray('.section-heading, .cta-heading').forEach(function (h) {
+      var inner = document.createElement('span');
+      inner.className = 'cine-mask-inner';
+      while (h.firstChild) inner.appendChild(h.firstChild);
+      h.appendChild(inner);
+      h.classList.add('cine-mask');
+      gsap.fromTo(inner, { yPercent: 112 }, {
+        yPercent: 0,
+        duration: 1.25,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: h, start: 'top 86%', once: true }
+      });
+    });
+  }
+
+  /* ── Film grain: fixed cinematic texture, desktop only ── */
+  if (!isMobile) {
+    var grain = document.createElement('div');
+    grain.className = 'cine-grain';
+    grain.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(grain);
+  }
+
+  /* ── Loading-reveal intro: wordmark rises, hairline draws, curtain
+     lifts. Desktop, once per session; injected by JS so no-JS and
+     reduced-motion visitors never see a curtain at all. ── */
+  try {
+    if (!isMobile && !sessionStorage.getItem('cineIntroSeen')) {
+      sessionStorage.setItem('cineIntroSeen', '1');
+      var intro = document.createElement('div');
+      intro.className = 'cine-intro';
+      intro.setAttribute('aria-hidden', 'true');
+      var mask = document.createElement('span');
+      mask.className = 'cine-intro__mask';
+      var mark = document.createElement('span');
+      mark.className = 'cine-intro__mark';
+      mark.textContent = 'Altru Radiance';
+      mask.appendChild(mark);
+      var line = document.createElement('span');
+      line.className = 'cine-intro__line';
+      intro.appendChild(mask);
+      intro.appendChild(line);
+      document.body.appendChild(intro);
+      gsap.timeline()
+        .fromTo(mark, { yPercent: 110 }, { yPercent: 0, duration: 0.7, ease: 'power3.out' }, 0.1)
+        .fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: 'sine.out' }, 0.25)
+        .to(intro, {
+          autoAlpha: 0,
+          duration: 0.6,
+          ease: 'power2.inOut',
+          onComplete: function () { intro.remove(); }
+        }, 1.15);
+    }
+  } catch (e) {}
 })();
