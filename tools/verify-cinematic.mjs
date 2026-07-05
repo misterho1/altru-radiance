@@ -155,7 +155,7 @@ try {
       })(),
       arcCaptionWords: document.querySelectorAll('.arc-caption .cw > span').length,
     }));
-    check('desktop: hero runs the oil loop (abstract, not literal)', fx4.heroSrc.includes('soothe-glow'), fx4.heroSrc);
+    check('desktop: hero runs the oil loop (abstract, not literal)', fx4.heroSrc.includes('soothe-touch'), fx4.heroSrc);
     check('desktop: hero headline entrance completed', fx4.headlineShown);
     check('desktop: cursor halo mounted', fx4.halo);
     check('desktop: ghost band drifting', fx4.ghost);
