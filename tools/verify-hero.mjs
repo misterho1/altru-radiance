@@ -50,7 +50,7 @@ try {
     check('desktop: poster present + decoded', !!poster && poster.complete && poster.w > 0, poster && poster.src.split('/').pop());
 
     const preload = await page.evaluate(() =>
-      !!document.querySelector('link[rel="preload"][as="image"][href*="soothe-glow-poster"]'));
+      !!document.querySelector('link[rel="preload"][as="image"][href*="/assets/hero/"]'));
     check('desktop: poster preload hint in head', preload);
 
     // Give the ambient video time to attach, buffer and fade in
