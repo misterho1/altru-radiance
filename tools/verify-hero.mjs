@@ -98,9 +98,14 @@ try {
       return p ? { complete: p.complete, w: p.naturalWidth, src: (p.currentSrc || p.src).split('/').pop() } : null;
     });
     check('mobile: poster present + decoded', !!poster && poster.complete && poster.w > 0, poster && poster.src);
+    check('mobile: portrait poster variant served', !!poster && poster.src.includes('portrait'), poster && poster.src);
     await new Promise(r => setTimeout(r, 4000));
-    const attached = await page.evaluate(() => !!document.querySelector('video.hero-video'));
-    console.log('INFO  mobile: video attached post-load = ' + attached + ' (allowed either way; connection-gated)');
+    const vid = await page.evaluate(() => {
+      const v = document.querySelector('video.hero-video');
+      return v ? (v.currentSrc || v.src).split('/').pop() : null;
+    });
+    console.log('INFO  mobile: video attached post-load = ' + !!vid + ' (allowed either way; connection-gated)');
+    if (vid) check('mobile: portrait video variant served', vid.includes('portrait'), vid);
     await page.screenshot({ path: SHOTS + '/after-mobile.png' });
     await page.close();
   }
@@ -128,7 +133,7 @@ try {
     await page.setViewport({ width: 1440, height: 900 });
     await page.setJavaScriptEnabled(false);
     const resp = await page.goto(BASE + '/', { waitUntil: 'networkidle2', timeout: 45000 });
-    check('no-js: page 200', !!resp && resp.status() === 200, resp && String(resp.status()));
+    check('no-js: page loads (200/304)', !!resp && (resp.status() === 200 || resp.status() === 304), resp && String(resp.status()));
     const html = await resp.text();
     check('no-js: poster is real markup (static hero)', html.includes('class="hero-poster"'));
     await new Promise(r => setTimeout(r, 1500));

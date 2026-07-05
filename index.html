@@ -23,7 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" as="image" href="/assets/hero/soothe-facial-poster-2560.v1.webp" imagesrcset="/assets/hero/soothe-facial-poster-1280.v1.webp 1280w, /assets/hero/soothe-facial-poster-2560.v1.webp 2560w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/hero/soothe-facial-poster-2560.v1.webp" imagesrcset="/assets/hero/soothe-facial-poster-1280.v1.webp 1280w, /assets/hero/soothe-facial-poster-2560.v1.webp 2560w" imagesizes="100vw" fetchpriority="high" media="(orientation: landscape)">
+<link rel="preload" as="image" href="/assets/hero/soothe-facial-poster-portrait-1080.v1.webp" fetchpriority="high" media="(orientation: portrait)">
 <link rel="preload" as="image" href="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/base.css?v=20260530">
@@ -190,6 +191,19 @@
   }
   @media (max-width: 640px) {
     .hero { padding: 5rem 1.25rem 3rem; }
+  }
+  /* Portrait phones: the copy sits directly over the subject, so the
+     scrim needs a firmer middle for legibility. Desktop untouched. */
+  @media (orientation: portrait) and (max-width: 768px) {
+    .hero-bg {
+      background: linear-gradient(
+        to bottom,
+        rgba(6,16,10,0.48) 0%,
+        rgba(10,24,16,0.40) 30%,
+        rgba(10,24,16,0.55) 60%,
+        rgba(6,16,10,0.88) 100%
+      );
+    }
   }
 
   /* Derived-frame hero: the static poster <img> is the LCP and the no-JS /
@@ -1606,11 +1620,16 @@ try {
 </div>
 
 <section class="hero">
-  <img class="hero-poster"
-       src="/assets/hero/soothe-facial-poster-2560.v1.webp"
-       srcset="/assets/hero/soothe-facial-poster-1280.v1.webp 1280w, /assets/hero/soothe-facial-poster-2560.v1.webp 2560w"
-       sizes="100vw" alt="" aria-hidden="true"
-       fetchpriority="high" decoding="async">
+  <picture>
+    <!-- Portrait phones get a purpose-framed 9:16 cut of the same scene;
+         the landscape 16:9 crop reads wrong on a tall screen. -->
+    <source media="(orientation: portrait)" srcset="/assets/hero/soothe-facial-poster-portrait-1080.v1.webp">
+    <img class="hero-poster"
+         src="/assets/hero/soothe-facial-poster-2560.v1.webp"
+         srcset="/assets/hero/soothe-facial-poster-1280.v1.webp 1280w, /assets/hero/soothe-facial-poster-2560.v1.webp 2560w"
+         sizes="100vw" alt="" aria-hidden="true"
+         fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
 
@@ -2667,8 +2686,12 @@ try {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var VIDEO_SRC = '/assets/hero/soothe-facial-loop-1080.v1.mp4';
+  // Same take, portrait-framed 9:16 cut — window matches the portrait
+  // poster exactly, so the fade-in stays seamless on phones.
+  var VIDEO_SRC_PORTRAIT = '/assets/hero/soothe-facial-loop-portrait.v1.mp4';
 
   function attach() {
+    var portrait = window.matchMedia && window.matchMedia('(orientation: portrait)').matches;
     var v = document.createElement('video');
     v.className = 'hero-video';
     v.muted = true;
@@ -2679,7 +2702,7 @@ try {
     v.autoplay = true;
     v.preload = 'auto';
     v.setAttribute('aria-hidden', 'true');
-    v.src = VIDEO_SRC;
+    v.src = portrait ? VIDEO_SRC_PORTRAIT : VIDEO_SRC;
     // Fade in only when the buffer can carry the whole loop, so the
     // poster never hands off to a video that immediately rebuffers.
     v.addEventListener('canplaythrough', function () {
