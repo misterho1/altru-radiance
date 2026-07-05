@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="image" href="/assets/hero/soothe-glow-poster-1920.v1.webp" imagesrcset="/assets/hero/soothe-glow-poster-960.v1.webp 960w, /assets/hero/soothe-glow-poster-1920.v1.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" href="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/base.css?v=20260530">
@@ -191,21 +192,25 @@
     .hero { padding: 5rem 1.25rem 3rem; }
   }
 
-  /* Video stack: 5 stacked <video> elements, JS cycles which is opaque */
-  .hero-video-stack {
+  /* Derived-frame hero: the static poster <img> is the LCP and the no-JS /
+     reduced-motion hero; one ambient video (first frame = poster frame)
+     fades in over it once it can play through. */
+  .hero-poster,
+  .hero-video {
     position: absolute; inset: 0; z-index: 0;
-    overflow: hidden;
+    width: 100%; height: 100%;
+    object-fit: cover;
     pointer-events: none;
   }
   .hero-video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
     opacity: 0;
-    transition: opacity 1500ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1800ms cubic-bezier(0.4, 0, 0.2, 1);
     will-change: opacity;
   }
-  .hero-video.is-active { opacity: 1; }
+  .hero-video.is-playing { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+  }
 
   /* Darkening scrim over the video for text readability — lighter at top
      so the video shines through, heavier at bottom for text legibility */
@@ -1469,6 +1474,11 @@
 </div>
 
 <section class="hero">
+  <img class="hero-poster"
+       src="/assets/hero/soothe-glow-poster-1920.v1.webp"
+       srcset="/assets/hero/soothe-glow-poster-960.v1.webp 960w, /assets/hero/soothe-glow-poster-1920.v1.webp 1920w"
+       sizes="100vw" alt="" aria-hidden="true"
+       fetchpriority="high" decoding="async">
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
 
@@ -2473,128 +2483,62 @@
 </script>
 
 <script>
-/* ─── HERO VIDEO STACK ──────────────────────────────────────────────
-   Builds 5 stacked <video> elements behind .hero-bg scrim and cycles
-   which one is opaque every 3 seconds with a 1.5s crossfade.
-   Total loop: 5 × 3s = 15s.
+/* ─── HERO AMBIENT VIDEO ────────────────────────────────────────────
+   Derived-frame unveil. The static poster (.hero-poster, real markup)
+   is the LCP and the complete hero for no-JS and reduced-motion users.
+   This script lazily attaches ONE self-hosted ambient loop (Seedance
+   render, ping-pong encoded for a seamless native loop, first frame =
+   the poster frame) and fades it in once it can play through — so the
+   photo appears to start breathing rather than being swapped out.
 
-   - Videos rendered by Higgsfield (seedance_2_0), 720p 16:9, hosted on
-     CloudFront. Permanent URLs, no signing.
-   - JS injects the stack so users with JS disabled get the static
-     fallback radial-gradient — no broken hero.
-   - Honors prefers-reduced-motion: still shows the first video, but
-     skips the cycler so the user never has motion forced on them.
-   - Mobile autoplay requires muted + playsinline + autoplay attrs.
+   - Desktop: attach immediately.
+   - Mobile: attach after window load, and only on fast connections
+     with Save-Data off — the poster alone carries slow connections.
+   - prefers-reduced-motion: never attach (CSS also hides .hero-video).
    ─────────────────────────────────────────────────────────────────── */
 (function () {
   var hero = document.querySelector('.hero');
-  if (!hero) return;
+  var poster = hero && hero.querySelector('.hero-poster');
+  if (!hero || !poster) return;
 
-  // ── Hero pacing ──────────────────────────────────────────────────
-  // Clips are ~4.09s @ 24fps. Play each clip ONCE (no loop), slowed to
-  // ~0.63x so one play-through lasts ~6.5s: a calm, breathing pace that
-  // never repeats the same clip. A new clip begins every ~5s (clips
-  // overlap during the 1.5s crossfade), so the full 5-clip cycle ≈ 25s.
-  var PLAYBACK_RATE = 0.63;
-  var CROSSFADE_MS = 1500;        // must match .hero-video opacity transition
-  var FALLBACK_NATIVE_S = 4.09;   // used only until a clip's real duration loads
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  var VIDEO_URLS = [
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014711_bddec64a-2bac-4c6f-b6cf-d9287515ab56.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014715_ca8f17ad-e31a-40fd-afcc-0df639b7051a.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014719_1755764a-7d0d-4514-b2f9-5e89066ea8f6.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014723_e72dbc77-2e4f-4801-9f97-fcee9277e193.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014727_f6cbcbe5-a43d-4e62-afdf-e02baf2e5128.mp4'
-  ];
+  var VIDEO_SRC = '/assets/hero/soothe-glow-loop-1080.v1.mp4';
 
-  var stack = document.createElement('div');
-  stack.className = 'hero-video-stack';
-  stack.setAttribute('aria-hidden', 'true');
-  hero.insertBefore(stack, hero.firstChild);
-
-  var videos = VIDEO_URLS.map(function (url, i) {
+  function attach() {
     var v = document.createElement('video');
-    v.className = 'hero-video' + (i === 0 ? ' is-active' : '');
-    v.src = url;
+    v.className = 'hero-video';
     v.muted = true;
-    // No per-clip loop. Each clip plays through exactly once, then we
-    // crossfade to the next. Looping a ~4s clip inside a longer display
-    // window made the SAME clip visibly restart mid-window — which read
-    // as the hero "repeating". Slowed playback (below) fills the calm,
-    // slow window with a single play-through instead of a loop.
-    v.loop = false;
-    v.playbackRate = PLAYBACK_RATE;
+    v.setAttribute('muted', '');       // property alone doesn't satisfy autoplay policy in all engines
+    v.loop = true;
     v.playsInline = true;
-    // Only the first video autoplays. Others are played explicitly when
-    // it's their turn — playing all 5 simultaneously costs ~5x CPU and
-    // makes the page feel unresponsive (carousel drag lags, etc.).
-    v.autoplay = i === 0;
-    v.preload = i === 0 ? 'auto' : 'metadata';
-    // Browsers may reset playbackRate when media loads; re-assert it.
-    v.addEventListener('loadedmetadata', function () { v.playbackRate = PLAYBACK_RATE; });
+    v.setAttribute('playsinline', '');
+    v.autoplay = true;
+    v.preload = 'auto';
     v.setAttribute('aria-hidden', 'true');
-    stack.appendChild(v);
-    return v;
-  });
-
-  // Kick off the first video only (slowed, single play-through)
-  videos[0].playbackRate = PLAYBACK_RATE;
-  if (videos[1]) videos[1].preload = 'auto';   // warm the next clip ahead of time
-  var firstPlay = videos[0].play();
-  if (firstPlay && typeof firstPlay.catch === 'function') firstPlay.catch(function () {});
-
-  // Skip the cycle under prefers-reduced-motion (accessibility): the first
-  // clip plays through once, then holds — no looping, no rotation.
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced || videos.length < 2) return;
-
-  var current = 0;
-
-  // ms a clip stays solo before we begin crossfading to the next. Derived
-  // from the clip's REAL (slowed) duration so it stays correct if clips are
-  // ever swapped for different lengths. We begin the crossfade CROSSFADE_MS
-  // before the clip ends so the incoming clip is already in motion as the
-  // outgoing one finishes — motion-to-motion, never a frozen frame.
-  function holdMs(i) {
-    var native = videos[i].duration;
-    if (!native || isNaN(native)) native = FALLBACK_NATIVE_S;
-    return Math.max((native / PLAYBACK_RATE) * 1000 - CROSSFADE_MS, 1200);
-  }
-
-  function advance() {
-    var prev = current;
-    var next = (current + 1) % videos.length;
-
-    // Start the incoming clip from its first frame, at the slow rate.
-    try { videos[next].currentTime = 0; } catch (e) {}
-    videos[next].playbackRate = PLAYBACK_RATE;
-    var p = videos[next].play();
-    if (p && typeof p.catch === 'function') p.catch(function () {});
-    videos[next].classList.add('is-active');
-
-    // Warm the clip after next so it's buffered before its turn.
-    var upcoming = (next + 1) % videos.length;
-    if (videos[upcoming].preload !== 'auto') videos[upcoming].preload = 'auto';
-
-    // After the crossfade completes, hide AND pause the outgoing clip so it
-    // isn't decoding frames in the background (keeps ~one video active).
-    setTimeout(function () {
-      videos[prev].classList.remove('is-active');
-      try { videos[prev].pause(); } catch (e) {}
-    }, CROSSFADE_MS);
-
-    current = next;
-    setTimeout(advance, holdMs(current));
-  }
-
-  // Start the cycle once the first clip's real duration is known, so the
-  // very first hold uses the true length rather than the fallback.
-  if (videos[0].duration) {
-    setTimeout(advance, holdMs(0));
-  } else {
-    videos[0].addEventListener('loadedmetadata', function () {
-      setTimeout(advance, holdMs(0));
+    v.src = VIDEO_SRC;
+    // Fade in only when the buffer can carry the whole loop, so the
+    // poster never hands off to a video that immediately rebuffers.
+    v.addEventListener('canplaythrough', function () {
+      v.classList.add('is-playing');
     }, { once: true });
+    poster.insertAdjacentElement('afterend', v);
+    var p = v.play();
+    if (p && typeof p.catch === 'function') p.catch(function () {});
+  }
+
+  var isSmall = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+  if (!isSmall) {
+    attach();
+    return;
+  }
+  var conn = navigator.connection || {};
+  if (conn.saveData) return;
+  if (conn.effectiveType && conn.effectiveType !== '4g') return;
+  if (document.readyState === 'complete') {
+    setTimeout(attach, 400);
+  } else {
+    window.addEventListener('load', function () { setTimeout(attach, 400); }, { once: true });
   }
 })();
 </script>
