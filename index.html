@@ -2707,14 +2707,23 @@ try {
     v.preload = 'auto';
     v.setAttribute('aria-hidden', 'true');
     v.src = portrait ? VIDEO_SRC_PORTRAIT : VIDEO_SRC;
-    // Fade in only when the buffer can carry the whole loop, so the
-    // poster never hands off to a video that immediately rebuffers.
-    v.addEventListener('canplaythrough', function () {
+    // Fade in only on ACTUAL playback ('playing'), never on readiness:
+    // when autoplay is blocked (iOS Low Power Mode), a video revealed on
+    // canplaythrough sits paused and the OS paints a play glyph over it.
+    // Blocked playback now leaves the video invisible — poster carries.
+    v.addEventListener('playing', function () {
       v.classList.add('is-playing');
     }, { once: true });
     poster.insertAdjacentElement('afterend', v);
     var p = v.play();
     if (p && typeof p.catch === 'function') p.catch(function () {});
+    // A user gesture lifts the autoplay block; retry once on first touch.
+    window.addEventListener('touchstart', function () {
+      if (v.paused) {
+        var p2 = v.play();
+        if (p2 && typeof p2.catch === 'function') p2.catch(function () {});
+      }
+    }, { once: true, passive: true });
   }
 
   var isSmall = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
