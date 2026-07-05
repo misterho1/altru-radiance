@@ -112,12 +112,51 @@
     var ORDER = [1, 2, 3, 0];
 
     if (frames.length === 4) {
+      // Each caption's words go into overflow masks so stage changes can
+      // rise word-by-word instead of a flat fade. <em> survives intact.
+      captions.forEach(function (cap) {
+        Array.prototype.slice.call(cap.childNodes).forEach(function (node) {
+          if (node.nodeType === 3) {
+            var frag = document.createDocumentFragment();
+            node.textContent.split(/(\s+)/).forEach(function (part) {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+              var mask = document.createElement('span');
+              mask.className = 'cw';
+              var inner = document.createElement('span');
+              inner.textContent = part;
+              mask.appendChild(inner);
+              frag.appendChild(mask);
+            });
+            cap.replaceChild(frag, node);
+          } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+            var mask = document.createElement('span');
+            mask.className = 'cw';
+            var inner = document.createElement('span');
+            cap.insertBefore(mask, node);
+            inner.appendChild(node);
+            mask.appendChild(inner);
+          }
+        });
+      });
+
       // JS owns the sequence from here; start at stage one (the room).
       var setStage = function (n) {
         var d = ORDER[n];
         frames.forEach(function (f, i) { f.classList.toggle('is-active', i === d); });
         captions.forEach(function (c, i) { c.classList.toggle('is-active', i === d); });
-        if (idxEl) idxEl.textContent = '0' + (n + 1);
+        var words = captions[d].querySelectorAll('.cw > span');
+        if (words.length) {
+          gsap.fromTo(words, { yPercent: 112 }, {
+            yPercent: 0, duration: 0.9, ease: 'power3.out', stagger: 0.07, overwrite: true
+          });
+        }
+        if (idxEl) {
+          idxEl.textContent = '0' + (n + 1);
+          gsap.fromTo(idxEl, { yPercent: 55, autoAlpha: 0 }, {
+            yPercent: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out', overwrite: true
+          });
+        }
       };
       setStage(0);
       var current = 0;
@@ -133,12 +172,13 @@
           if (stage !== current) { current = stage; setStage(stage); }
         }
       });
-      // Ken Burns across the pin: the whole scene settles from 1.06 to 1,
-      // scrubbed with scroll — barely-there drift that keeps frames alive.
-      gsap.fromTo(frames, { scale: 1.06 }, {
-        scale: 1,
-        ease: 'none',
-        scrollTrigger: { trigger: arc, start: 'top top', end: '+=280%', scrub: true }
+      // Alternating Ken Burns: odd frames breathe in while even frames
+      // settle out, so every cut lands with different cinematography.
+      frames.forEach(function (f, i) {
+        gsap.fromTo(f,
+          { scale: i % 2 ? 1 : 1.07 },
+          { scale: i % 2 ? 1.07 : 1, ease: 'none',
+            scrollTrigger: { trigger: arc, start: 'top top', end: '+=280%', scrub: true } });
       });
     }
   }
@@ -214,7 +254,7 @@
   /* ── Section-heading line masks: each heading rises out of a clip.
      Every .section-heading sits below the fold, and the cine-safe
      timer force-clears the transform if anything fails. ── */
-  gsap.utils.toArray('.section-heading, .cta-heading').forEach(function (h) {
+  gsap.utils.toArray('.section-heading, .cta-heading, .carousel-headline').forEach(function (h) {
     var inner = document.createElement('span');
     inner.className = 'cine-mask-inner';
     while (h.firstChild) inner.appendChild(h.firstChild);
@@ -237,8 +277,10 @@
   /* ── Loading-reveal intro: wordmark rises, hairline draws, curtain
      lifts. Once per session; injected by JS so no-JS and
      reduced-motion visitors never see a curtain at all. ── */
+  var introPlays = false;
   try {
     if (!sessionStorage.getItem('cineIntroSeen')) {
+      introPlays = true;
       sessionStorage.setItem('cineIntroSeen', '1');
       var intro = document.createElement('div');
       intro.className = 'cine-intro';
@@ -265,4 +307,70 @@
         }, 1.15);
     }
   } catch (e) {}
+
+  /* ── Hero entrance: type choreography replaces the CSS fades. The
+     headline rises out of a mask off the back of the intro; the gold
+     line draws down; eyebrow, tagline, sub and glossary cascade. ── */
+  (function () {
+    var eyebrow = document.querySelector('.hero-eyebrow');
+    var headline = document.querySelector('.hero-headline');
+    var tagline = document.querySelector('.hero-tagline');
+    var sub = document.querySelector('.hero-sub');
+    var glossary = document.querySelector('.hero-glossary');
+    var line = document.querySelector('.hero-line');
+    if (!headline) return;
+    // The headline paints via background-clip:text, so its TEXT must stay
+    // inside the element — wrap the element itself in the overflow mask
+    // and translate the whole headline, never its children.
+    var hMask = document.createElement('span');
+    hMask.style.display = 'block';
+    hMask.style.overflow = 'hidden';
+    headline.parentNode.insertBefore(hMask, headline);
+    hMask.appendChild(headline);
+    gsap.set(headline, { display: 'block' });
+    var tl = gsap.timeline({ delay: introPlays ? 1.15 : 0.2 });
+    if (line) tl.fromTo(line, { scaleY: 0, transformOrigin: 'top center' }, { scaleY: 1, duration: 1.1, ease: 'sine.out' }, 0);
+    if (eyebrow) tl.fromTo(eyebrow, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 0.1);
+    tl.fromTo(headline, { yPercent: 112 }, { yPercent: 0, duration: 1.35, ease: 'power3.out' }, 0.25);
+    if (tagline) tl.fromTo(tagline, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 1.0, ease: 'power2.out' }, 0.75);
+    if (sub) tl.fromTo(sub, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 1.0, ease: 'power2.out' }, 0.95);
+    if (glossary) tl.fromTo(glossary, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.1, ease: 'power2.out' }, 1.15);
+  })();
+
+  /* ── Cursor halo: candlelight trails the pointer with lag ── */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    var halo = document.createElement('div');
+    halo.className = 'cine-halo';
+    halo.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(halo);
+    gsap.set(halo, { autoAlpha: 0 });
+    var hxTo = gsap.quickTo(halo, 'x', { duration: 0.9, ease: 'power3.out' });
+    var hyTo = gsap.quickTo(halo, 'y', { duration: 0.9, ease: 'power3.out' });
+    window.addEventListener('pointermove', function (e) {
+      gsap.to(halo, { autoAlpha: 1, duration: 0.6, overwrite: 'auto' });
+      hxTo(e.clientX);
+      hyTo(e.clientY);
+    }, { passive: true });
+  }
+
+  /* ── Ghost band: the wordmark drifts, slow as breath ── */
+  var ghostTrack = document.querySelector('.ghost-band__track');
+  if (ghostTrack) {
+    gsap.to(ghostTrack, { xPercent: -50, ease: 'none', duration: 55, repeat: -1 });
+  }
+
+  /* ── Editorial parallax: media drifts inside its frames ── */
+  var philImg = document.querySelector('.philosophy-image-wrap img');
+  if (philImg) {
+    gsap.fromTo(philImg, { yPercent: -6, scale: 1.14 }, {
+      yPercent: 6, scale: 1.14, ease: 'none',
+      scrollTrigger: { trigger: '.philosophy-image-parallax', start: 'top bottom', end: 'bottom top', scrub: 1 }
+    });
+  }
+  gsap.utils.toArray('.result-card-img img').forEach(function (img, i) {
+    gsap.fromTo(img, { yPercent: i % 2 ? -4 : -8, scale: 1.14 }, {
+      yPercent: i % 2 ? 7 : 4, scale: 1.14, ease: 'none',
+      scrollTrigger: { trigger: img.closest('.result-card'), start: 'top bottom', end: 'bottom top', scrub: 1 }
+    });
+  });
 })();

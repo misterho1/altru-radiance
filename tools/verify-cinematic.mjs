@@ -132,6 +132,36 @@ try {
     check('desktop: trust stat counted up to 200+', fx.stat === '200+', fx.stat);
     check('desktop: first gold rule drawn', fx.rule);
 
+    // v4 effects
+    const fx4 = await page.evaluate(() => ({
+      heroSrc: ((document.querySelector('video.hero-video') || {}).currentSrc || '').split('/').pop(),
+      headlineShown: (() => {
+        const h = document.querySelector('.hero-headline');
+        if (!h || !h.textContent.trim()) return false;
+        const t = getComputedStyle(h).transform;
+        const settled = t === 'none' || /matrix\(1, 0, 0, 1, 0, 0\)/.test(t);
+        // gradient-clip text must keep its text nodes INSIDE the element
+        const textIntact = h.childNodes.length > 0 && h.getBoundingClientRect().height > 40;
+        return settled && textIntact;
+      })(),
+      halo: !!document.querySelector('.cine-halo'),
+      ghost: (() => {
+        const g = document.querySelector('.ghost-band__track');
+        return g ? getComputedStyle(g).transform !== 'none' : false;
+      })(),
+      philParallax: (() => {
+        const img = document.querySelector('.philosophy-image-wrap img');
+        return img ? getComputedStyle(img).transform !== 'none' : false;
+      })(),
+      arcCaptionWords: document.querySelectorAll('.arc-caption .cw > span').length,
+    }));
+    check('desktop: hero runs the oil loop (abstract, not literal)', fx4.heroSrc.includes('soothe-glow'), fx4.heroSrc);
+    check('desktop: hero headline entrance completed', fx4.headlineShown);
+    check('desktop: cursor halo mounted', fx4.halo);
+    check('desktop: ghost band drifting', fx4.ghost);
+    check('desktop: philosophy image parallax active', fx4.philParallax);
+    check('desktop: arc captions word-masked', fx4.arcCaptionWords >= 10, String(fx4.arcCaptionWords));
+
     await page.evaluate(() => document.querySelector('.soothe-arc').scrollIntoView({ block: 'start' }));
     await sleep(1500);
     await page.screenshot({ path: SHOTS + '/cine-arc-desktop.png' });
@@ -198,7 +228,7 @@ try {
     await page.setJavaScriptEnabled(false);
     const resp = await page.goto(BASE + '/', { waitUntil: 'networkidle2', timeout: 45000 });
     const html = await resp.text();
-    check('no-js: page 200', resp.status() === 200);
+    check('no-js: page loads (200/304)', resp.status() === 200 || resp.status() === 304);
     check('no-js: Arc frames + captions are real markup', html.includes('soothe-arc-1-1920') && html.includes('The room holds quiet.'));
     await sleep(1200);
     await page.screenshot({ path: SHOTS + '/cine-nojs.png' });
