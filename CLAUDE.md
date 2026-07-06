@@ -29,6 +29,19 @@
 
 ---
 
+## Content Marketing (YouTube + Freebie Funnel)
+
+Separate workstream from the website, in **[content/](content/)**. YouTube channel (@altruradiance), "The Tech Neck Reset" freebie lead magnet, and a monthly Journal + video digest — funneling viewers to booking.
+
+- **[content/CONTENT-PLAN.md](content/CONTENT-PLAN.md)** — THE executable 6-month plan (phases 0–5, tasks with acceptance criteria, weekly rhythm, operator protocol). Any AI running content work day-to-day starts here.
+- **[content/README.md](content/README.md)** — strategy + established decisions: 12-video launch plan, SEO/AEO/CRO system, channel profile, newsletter model, liability posture.
+- **[content/youtube-scripts.md](content/youtube-scripts.md)** — full production kit: scripts (V1–3), outlines (V4–5), SEO title/tag blocks, description template, thumbnails, disclaimer templates.
+- **[content/tech-neck-reset-freebie.pdf](content/tech-neck-reset-freebie.pdf)** — designed one-page freebie. NOT yet wired to the site email signup (footer YouTube link + attorney review still pending — see Open Items in README).
+
+Video/spoken content uses a warmer spoken register (em dashes, contractions) but the same SCOPE.md compliance line as the site. Disclaimers and the client media-release requirement are ATTORNEY-REVIEW-PENDING — don't publish before that.
+
+---
+
 ## Design Context
 
 Strategic design canon lives in **[PRODUCT.md](PRODUCT.md)** (strategy) and **[DESIGN.md](DESIGN.md)** (visual system). Auto-loaded by every `/impeccable` command.
@@ -215,6 +228,13 @@ See `docs/superpowers/specs/2026-05-23-google-reviews-widget-design.md` for full
 - **SMAS (Superficial Musculoaponeurotic System)** — the specific fascial layer that defines facial lift
 
 ---
+
+## Repo & Workflow Facts
+
+- Static HTML on Cloudflare Pages. Production deploys from `origin/main` via the `cloudflare-deploy.yml` Action — use `/ship` for any deploy; it owns the method. Local `main` is stale by convention: work happens on feature branches (`scope-buccal-language`, `local-pages-pilot`, ...) pushed as `<branch>:main`. Check which branch is current before assuming edits reach prod.
+- **Imagery scope (hard rule):** esthetician facial work only — never massage-table or back-massage visuals. Mechelle is a Master Esthetician, not an LMT; wrong imagery is a scope violation, not a style choice.
+- **Generated media:** Seedance video gens always use `generate_audio: false` — `true` trips NSFW false-flags on this brand's imagery. Animation register is slow, organic, breathing — never snappy.
+- Hero revert path if the cinematic hero must come down: git tag `hero-pre-cinematic` + backup at `~/altru/hero-backup-2026-07-05`.
 
 ## Content Don'ts
 - Don't promise permanent results — always frame as cumulative and maintained with sessions
