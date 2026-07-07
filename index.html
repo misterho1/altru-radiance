@@ -23,6 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="image" href="/assets/hero/soothe-touch-poster-1920.v1.webp" imagesrcset="/assets/hero/soothe-touch-poster-960.v1.webp 960w, /assets/hero/soothe-touch-poster-1920.v1.webp 1920w" imagesizes="100vw" fetchpriority="high" media="(orientation: landscape)">
+<link rel="preload" as="image" href="/assets/hero/soothe-touch-poster-portrait-1080.v1.webp" fetchpriority="high" media="(orientation: portrait)">
 <link rel="preload" as="image" href="https://res.cloudinary.com/dec9xzaxl/image/upload/f_auto,q_auto/v1778074196/buccal-massage-after-1-session-sculpting-lifting-murray-utah-altru-radiance._ts6icz.png">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/base.css?v=20260530">
@@ -190,22 +192,39 @@
   @media (max-width: 640px) {
     .hero { padding: 5rem 1.25rem 3rem; }
   }
+  /* Portrait phones: the copy sits directly over the subject, so the
+     scrim needs a firmer middle for legibility. Desktop untouched. */
+  @media (orientation: portrait) and (max-width: 768px) {
+    .hero-bg {
+      background: linear-gradient(
+        to bottom,
+        rgba(6,16,10,0.48) 0%,
+        rgba(10,24,16,0.40) 30%,
+        rgba(10,24,16,0.55) 60%,
+        rgba(6,16,10,0.88) 100%
+      );
+    }
+  }
 
-  /* Video stack: 5 stacked <video> elements, JS cycles which is opaque */
-  .hero-video-stack {
+  /* Derived-frame hero: the static poster <img> is the LCP and the no-JS /
+     reduced-motion hero; one ambient video (first frame = poster frame)
+     fades in over it once it can play through. */
+  .hero-poster,
+  .hero-video {
     position: absolute; inset: 0; z-index: 0;
-    overflow: hidden;
+    width: 100%; height: 100%;
+    object-fit: cover;
     pointer-events: none;
   }
   .hero-video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
     opacity: 0;
-    transition: opacity 1500ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1800ms cubic-bezier(0.4, 0, 0.2, 1);
     will-change: opacity;
   }
-  .hero-video.is-active { opacity: 1; }
+  .hero-video.is-playing { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+  }
 
   /* Darkening scrim over the video for text readability — lighter at top
      so the video shines through, heavier at bottom for text legibility */
@@ -1171,6 +1190,233 @@
   /* First-paint affordance hint for the handle is JS-driven (briefly
      toggles .is-active 3× on first paint to teach the drag affordance
      before the handle settles into its quiet outline-only rest state). */
+  /* ─── CINEMATIC LAYER (scroll choreography) ─────────────────────
+     All initial hidden states are gated on html.cine-on, which a tiny
+     head script adds only when JS runs and reduced-motion is off. A
+     cine-safe class force-reveals everything 4s after load as a last
+     resort. No JS → fully static, fully visible page. */
+  html.cine-on .cine-reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    will-change: opacity, transform;
+  }
+  html.cine-safe .cine-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 0.8s ease;
+  }
+
+  /* Scroll-progress counter — desktop only, quiet gold numerals */
+  .scroll-progress {
+    position: fixed;
+    top: 84px; right: 26px;
+    z-index: 700;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    color: rgba(201,168,76,0.55);
+    pointer-events: none;
+    display: none;
+  }
+  html.cine-on .scroll-progress { display: block; }
+  @media (max-width: 768px) {
+    html.cine-on .scroll-progress { top: 74px; right: 16px; font-size: 0.66rem; }
+  }
+
+  /* The Soothe Arc — pinned four-frame sequence */
+  .soothe-arc {
+    position: relative;
+    background: var(--black);
+  }
+  .arc-stage {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .arc-frame {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .arc-frame.is-active { opacity: 1; }
+  .arc-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(6,16,10,0.55) 0%,
+      rgba(6,16,10,0.05) 40%,
+      rgba(6,16,10,0.15) 70%,
+      rgba(6,16,10,0.82) 100%);
+    pointer-events: none;
+  }
+  .arc-captions {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem 14vh;
+    text-align: center;
+    display: grid;
+  }
+  .arc-caption {
+    grid-area: 1 / 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.7rem, 3.4vw, 2.9rem);
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1200ms ease, transform 1200ms ease;
+  }
+  .arc-caption em { font-style: italic; color: var(--gold-light); }
+  .arc-caption.is-active { opacity: 1; transform: translateY(0); }
+  .arc-index {
+    position: absolute;
+    top: 96px; right: 28px;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: rgba(201,168,76,0.5);
+  }
+  .arc-eyebrow {
+    position: absolute;
+    top: 96px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(244,240,230,0.6);
+  }
+
+  /* Philosophy scroll-fill words */
+  html.cine-on .philosophy-text > p .fill-word { opacity: 0.22; }
+  html.cine-safe .philosophy-text > p .fill-word { opacity: 1 !important; }
+
+  /* CTA gold hairline, drawn on entry */
+  .cine-hairline {
+    display: block;
+    width: min(420px, 60%);
+    height: 1px;
+    margin: 0 auto 34px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.6), transparent);
+    transform-origin: center;
+  }
+
+  /* Film grain — JS-injected fixed overlay; no-JS and reduced-motion never see it */
+  .cine-grain {
+    position: fixed; inset: -100px; z-index: 1500;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    animation: cine-grain-jitter 1.2s steps(6) infinite;
+  }
+  @keyframes cine-grain-jitter {
+    0%   { transform: translate(0, 0); }
+    20%  { transform: translate(-30px, 20px); }
+    40%  { transform: translate(20px, -25px); }
+    60%  { transform: translate(-25px, -10px); }
+    80%  { transform: translate(15px, 25px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* Loading-reveal intro — JS-injected, once per session, ~1.6s total */
+  .cine-intro {
+    position: fixed; inset: 0; z-index: 3000;
+    background: var(--black);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1.1rem;
+  }
+  .cine-intro__mask { overflow: hidden; }
+  .cine-intro__mark {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    letter-spacing: 0.42em;
+    text-indent: 0.42em; /* optically recenters tracked uppercase */
+    color: var(--gold);
+    text-transform: uppercase;
+    transform: translateY(110%);
+  }
+  .cine-intro__line {
+    width: min(280px, 46vw); height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.7), transparent);
+    transform: scaleX(0);
+  }
+
+  /* Section-heading line masks — inner span rises out of an overflow clip */
+  .cine-mask { display: block; overflow: hidden; }
+  .cine-mask-inner { display: block; will-change: transform; }
+  html.cine-safe .cine-mask-inner { transform: none !important; }
+
+  /* Hero entrance is GSAP-owned when the cinematic layer runs: the old
+     CSS keyframe rises are disabled so the timeline can choreograph the
+     lines. No-JS keeps the original CSS animations. */
+  html.cine-on .hero-eyebrow,
+  html.cine-on .hero-headline,
+  html.cine-on .hero-tagline,
+  html.cine-on .hero-sub,
+  html.cine-on .hero-glossary { animation: none; }
+
+  /* Cursor halo — candlelight that trails the pointer (fine pointers only) */
+  .cine-halo {
+    position: fixed;
+    top: 0; left: 0;
+    width: 520px; height: 520px;
+    margin: -260px 0 0 -260px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1400;
+    background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, rgba(201,168,76,0.04) 38%, transparent 68%);
+    mix-blend-mode: screen;
+  }
+
+  /* Ghost band — oversized drifting wordmark between chapters */
+  .ghost-band {
+    overflow: hidden;
+    padding: 3.5rem 0 3rem;
+    background: var(--black);
+    white-space: nowrap;
+  }
+  .ghost-band__track { display: inline-flex; will-change: transform; }
+  .ghost-band__text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(4.4rem, 11vw, 9.5rem);
+    line-height: 1;
+    color: rgba(201,168,76,0.07);
+    -webkit-text-stroke: 1px rgba(201,168,76,0.16);
+    padding-right: 0.4em;
+  }
+
+  /* Micro-interactions — hover states that answer the hand */
+  .service-card { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease; }
+  .service-card:hover { transform: translateY(-7px); border-color: rgba(201,168,76,0.45); }
+  .service-card .service-arrow { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .service-card:hover .service-arrow { transform: translateX(7px); }
+  .journal-card-image { overflow: hidden; }
+  .journal-card-image img { transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1); }
+  .journal-card:hover .journal-card-image img { transform: scale(1.05); }
+  .result-card { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .result-card:hover { transform: translateY(-6px); }
+
+  /* Arc caption word masks + rolling stage index */
+  .arc-caption .cw { display: inline-block; overflow: hidden; vertical-align: bottom; }
+  .arc-caption .cw > span { display: inline-block; }
+  html.cine-safe .arc-caption .cw > span { transform: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arc-frame, .arc-caption { transition: none; }
+    .cine-grain, .cine-intro, .cine-halo { display: none !important; }
+    .ghost-band__track { transform: none !important; }
+  }
 </style>
 
 <script type="application/ld+json">
@@ -1259,49 +1505,7 @@
     "name": "Mechelle To",
     "jobTitle": "Licensed Master Esthetician",
     "description": "Mechelle To is the founder and licensed esthetician behind Altru Radiance, offering the Restorative Buccal Facial, the Facial Architecture Ritual, and manual lymphatic drainage."
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Chelsea McBee" },
-      "datePublished": "2024-10-10",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "name": "Restorative Buccal Facial",
-      "reviewBody": "My face and soul have never felt so good! I got to enjoy her Buccal Release facial and I can't say enough good things. She explained all the lymphatic, muscle toning and skin benefits of the treatment. I felt so relaxed during the treatment and my skin is GLOWING! My sinuses are clearer, my eyes are brighter and my soul feels more calm."
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Yara Neu" },
-      "datePublished": "2024-06-15",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "name": "Restorative Buccal Facial",
-      "reviewBody": "I opted for the buccal facial because it releases tension in the jaw and facial muscles due to stress. My face showed visible lifting and contouring. I thought it was better than the 80-min full body massage I had done the day prior. I'll definitely be returning for future treatments."
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Michele Renee" },
-      "datePublished": "2025-01-09",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "name": "Facial Architecture Ritual + Lymphatic",
-      "reviewBody": "She had an intuitive touch and found all my hot spots without me pointing them out! After the session I felt refreshed, energized and with far less tension in my face, neck and head. Can't wait to come back for more lymphatic work!"
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Kate Gensler" },
-      "datePublished": "2025-02-10",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "name": "Restorative Buccal Facial",
-      "reviewBody": "I got the Restorative Facial + Buccal Intra-Oral Release and it was amazing. We had a great chat after about continued self care and my energy points to focus on. If that alone didn't make me a return customer, her kindness, time, and understanding for sure did."
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": "Sasi" },
-      "datePublished": "2024-06-12",
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "name": "Restorative Buccal Facial",
-      "reviewBody": "She went as far as getting into my diet, lifestyle, and living environment to help me identify what PREVENTION I could do, which is huge because so many estheticians just fix problems instead of working individually to address root causes. I never had my skin so clear afterwards."
-    }
-  ]
+  }
 }
 </script>
 
@@ -1319,11 +1523,11 @@
       "position": 1,
       "item": {
         "@type": "Service",
-        "@id": "https://altruradiance.com/restorative-facial",
+        "@id": "https://altruradiance.com/services/restorative-buccal-release",
         "name": "Restorative Buccal Facial",
         "alternateName": ["Buccal Release", "Restorative Facial"],
         "description": "A 90-minute non-invasive facial combining intraoral fascia work, manual lymphatic drainage, face sculpting, and surface facial manipulation. Supports a softer, more lifted facial architecture from the inside out.",
-        "url": "https://altruradiance.com/restorative-facial",
+        "url": "https://altruradiance.com/services/restorative-buccal-release",
         "provider": { "@id": "https://altruradiance.com/#business" },
         "areaServed": { "@type": "City", "name": "Murray, Utah" },
         "offers": {
@@ -1458,8 +1662,25 @@
   gtag('config', 'AW-18164308166');
 </script>
 
+<script>
+/* Cinematic gate: add the class that arms initial hidden states BEFORE
+   first paint, and only when motion is allowed. cinematic.v4.js removes
+   it again if GSAP is missing. No JS → static page, everything visible. */
+try {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('cine-on');
+    // The 4s force-reveal lives HERE, inline, not in the loadable JS:
+    // if cinematic.v4.js ever fails to arrive, armed hidden states must
+    // still release without it.
+    setTimeout(function () {
+      document.documentElement.classList.add('cine-safe');
+    }, 4000);
+  }
+} catch (e) {}
+</script>
 </head>
 <body>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollPct">00</span>&thinsp;/&thinsp;100</div>
 
 <nav>
   <a href="/" class="nav-brand">
@@ -1511,6 +1732,16 @@
 </div>
 
 <section class="hero">
+  <picture>
+    <!-- Portrait phones get a purpose-framed 9:16 cut of the same scene;
+         the landscape 16:9 crop reads wrong on a tall screen. -->
+    <source media="(orientation: portrait)" srcset="/assets/hero/soothe-touch-poster-portrait-1080.v1.webp">
+    <img class="hero-poster"
+         src="/assets/hero/soothe-touch-poster-1920.v1.webp"
+         srcset="/assets/hero/soothe-touch-poster-960.v1.webp 960w, /assets/hero/soothe-touch-poster-1920.v1.webp 1920w"
+         sizes="100vw" alt="" aria-hidden="true"
+         fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
 
@@ -1829,7 +2060,7 @@
 
     <div class="services-grid">
 
-      <a class="service-card" href="/restorative-facial">
+      <a class="service-card" href="/services/restorative-buccal-release">
         <span class="service-badge">Signature Regenerative</span>
         <span class="service-arrow">→</span>
         <div class="service-name">Restorative<br>Buccal Facial</div>
@@ -1900,6 +2131,48 @@
     <div class="services-cta">
       <a href="/services" class="btn-ghost">View All Services →</a>
     </div>
+  </div>
+</section>
+
+
+<!-- ─── THE SOOTHE ARC: pinned cinematic sequence (scroll scrubs through
+     four stages of a session on every device; portrait phones get 9:16
+     cuts of each stage; reduced-motion/no-JS get the final still) ─── -->
+<section class="soothe-arc" aria-label="What a session at Altru Radiance feels like">
+  <div class="arc-stage">
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-4-portrait-1080.v2.webp">
+      <img class="arc-frame is-active" src="/assets/scenes/soothe-arc-4-1920.v2.webp"
+           alt="Client seated in a robe after a facial session at Altru Radiance, skin glowing in candlelight"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-1-portrait-1080.v1.webp">
+      <img class="arc-frame" src="/assets/scenes/soothe-arc-1-1920.v1.webp"
+           alt="Candlelit treatment room at Altru Radiance in Murray, Utah"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-2-portrait-1080.v1.webp">
+      <img class="arc-frame" src="/assets/scenes/soothe-arc-2-1920.v1.webp"
+           alt="Golden botanical oil pooled on deep green stone"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-3-portrait-1080.v2.webp">
+      <img class="arc-frame" src="/assets/scenes/soothe-arc-3-1920.v2.webp"
+           alt="Esthetician's hands at the temples mid facial-massage stroke, seen from above"
+           width="1920" height="1072" loading="lazy" decoding="async">
+    </picture>
+    <div class="arc-scrim"></div>
+    <span class="arc-eyebrow">One Session · Four Movements</span>
+    <div class="arc-captions">
+      <p class="arc-caption is-active"><em>Radiance,</em> restored.</p>
+      <p class="arc-caption">The room holds quiet.</p>
+      <p class="arc-caption">Warm botanical oil.</p>
+      <p class="arc-caption">Slow, deliberate hands.</p>
+    </div>
+    <span class="arc-index" aria-hidden="true">04</span>
   </div>
 </section>
 
@@ -2009,6 +2282,14 @@
 </section>
 
 
+<!-- ─── GHOST BAND: drifting editorial wordmark between chapters ─── -->
+<section class="ghost-band" aria-hidden="true">
+  <div class="ghost-band__track">
+    <span class="ghost-band__text">the Soothe · Restorative Buccal Facial · the Soothe · Restorative Buccal Facial ·&nbsp;</span><span class="ghost-band__text">the Soothe · Restorative Buccal Facial · the Soothe · Restorative Buccal Facial ·&nbsp;</span>
+  </div>
+</section>
+
+
 <section class="journal-section">
   <div class="container">
     <div class="journal-header">
@@ -2065,6 +2346,7 @@
 
 <section class="cta-strip" style="padding:0;">
   <div class="cta-strip-inner" style="padding-top:56px;padding-bottom:64px;">
+    <span class="cine-hairline" aria-hidden="true"></span>
     <div>
       <span class="eyebrow">Murray, Utah · By Appointment</span>
       <h2 class="cta-heading">Ready to begin?<br><em>Your structure is waiting.</em></h2>
@@ -2104,7 +2386,7 @@
       <div>
         <div class="footer-col-heading">Services</div>
         <ul class="footer-links">
-          <li><a href="/restorative-facial">Restorative Buccal Facial</a></li>
+          <li><a href="/services/restorative-buccal-release">Restorative Buccal Facial</a></li>
           <li><a href="/services/lymphatic-drainage-murray-utah">Lymphatic Drainage</a></li>
           <li><a href="/services/facial-architecture-ritual">Facial Architecture Ritual</a></li>
           <li><a href="/services/microneedling-murray-utah">Microneedling</a></li>
@@ -2147,6 +2429,17 @@
       </ul>
     </div>
   </div>
+<div style="background:var(--black);border-top:1px solid rgba(201,168,76,0.08);padding:48px 0;">
+  <div style="max-width:1180px;margin:0 auto;padding:0 3rem;">
+    <div style="font-size:0.52rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--mist);margin-bottom:1.1rem;">Serving Nearby Communities</div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+      <a href="/facials-in-salt-lake-city" style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,230,0.55);border:1px solid rgba(201,168,76,0.18);padding:0.4rem 0.9rem;text-decoration:none;transition:color 0.2s,border-color 0.2s;">Facials in Salt Lake City</a>
+      <a href="/facials-in-holladay" style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,230,0.55);border:1px solid rgba(201,168,76,0.18);padding:0.4rem 0.9rem;text-decoration:none;transition:color 0.2s,border-color 0.2s;">Facials in Holladay</a>
+      <a href="/facials-in-cottonwood-heights" style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,230,0.55);border:1px solid rgba(201,168,76,0.18);padding:0.4rem 0.9rem;text-decoration:none;transition:color 0.2s,border-color 0.2s;">Facials in Cottonwood Heights</a>
+      <a href="/facials-in-sandy" style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,230,0.55);border:1px solid rgba(201,168,76,0.18);padding:0.4rem 0.9rem;text-decoration:none;transition:color 0.2s,border-color 0.2s;">Facials in Sandy</a>
+    </div>
+  </div>
+</div>
 </footer>
 
 <div style="background:var(--black);border-top:1px solid rgba(201,168,76,0.08);padding:48px 0;">
@@ -2515,128 +2808,75 @@
 </script>
 
 <script>
-/* ─── HERO VIDEO STACK ──────────────────────────────────────────────
-   Builds 5 stacked <video> elements behind .hero-bg scrim and cycles
-   which one is opaque every 3 seconds with a 1.5s crossfade.
-   Total loop: 5 × 3s = 15s.
+/* ─── HERO AMBIENT VIDEO ────────────────────────────────────────────
+   Derived-frame unveil. The static poster (.hero-poster, real markup)
+   is the LCP and the complete hero for no-JS and reduced-motion users.
+   This script lazily attaches ONE self-hosted ambient loop (Seedance
+   render, ping-pong encoded for a seamless native loop, first frame =
+   the poster frame) and fades it in once it can play through — so the
+   photo appears to start breathing rather than being swapped out.
 
-   - Videos rendered by Higgsfield (seedance_2_0), 720p 16:9, hosted on
-     CloudFront. Permanent URLs, no signing.
-   - JS injects the stack so users with JS disabled get the static
-     fallback radial-gradient — no broken hero.
-   - Honors prefers-reduced-motion: still shows the first video, but
-     skips the cycler so the user never has motion forced on them.
-   - Mobile autoplay requires muted + playsinline + autoplay attrs.
+   - Desktop: attach immediately.
+   - Mobile: attach after window load, and only on fast connections
+     with Save-Data off — the poster alone carries slow connections.
+   - prefers-reduced-motion: never attach (CSS also hides .hero-video).
    ─────────────────────────────────────────────────────────────────── */
 (function () {
   var hero = document.querySelector('.hero');
-  if (!hero) return;
+  var poster = hero && hero.querySelector('.hero-poster');
+  if (!hero || !poster) return;
 
-  // ── Hero pacing ──────────────────────────────────────────────────
-  // Clips are ~4.09s @ 24fps. Play each clip ONCE (no loop), slowed to
-  // ~0.63x so one play-through lasts ~6.5s: a calm, breathing pace that
-  // never repeats the same clip. A new clip begins every ~5s (clips
-  // overlap during the 1.5s crossfade), so the full 5-clip cycle ≈ 25s.
-  var PLAYBACK_RATE = 0.63;
-  var CROSSFADE_MS = 1500;        // must match .hero-video opacity transition
-  var FALLBACK_NATIVE_S = 4.09;   // used only until a clip's real duration loads
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  var VIDEO_URLS = [
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014711_bddec64a-2bac-4c6f-b6cf-d9287515ab56.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014715_ca8f17ad-e31a-40fd-afcc-0df639b7051a.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014719_1755764a-7d0d-4514-b2f9-5e89066ea8f6.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014723_e72dbc77-2e4f-4801-9f97-fcee9277e193.mp4',
-    'https://d8j0ntlcm91z4.cloudfront.net/user_3D9I46IbFQY7SJYjG1zLXFSWYSZ/hf_20260515_014727_f6cbcbe5-a43d-4e62-afdf-e02baf2e5128.mp4'
-  ];
+  var VIDEO_SRC = '/assets/hero/soothe-touch-loop-1080.v1.mp4';
+  // Same take, portrait-framed 9:16 cut — window matches the portrait
+  // poster exactly, so the fade-in stays seamless on phones.
+  var VIDEO_SRC_PORTRAIT = '/assets/hero/soothe-touch-loop-portrait.v1.mp4';
 
-  var stack = document.createElement('div');
-  stack.className = 'hero-video-stack';
-  stack.setAttribute('aria-hidden', 'true');
-  hero.insertBefore(stack, hero.firstChild);
-
-  var videos = VIDEO_URLS.map(function (url, i) {
+  function attach() {
+    var portrait = window.matchMedia && window.matchMedia('(orientation: portrait)').matches;
     var v = document.createElement('video');
-    v.className = 'hero-video' + (i === 0 ? ' is-active' : '');
-    v.src = url;
+    v.className = 'hero-video';
     v.muted = true;
-    // No per-clip loop. Each clip plays through exactly once, then we
-    // crossfade to the next. Looping a ~4s clip inside a longer display
-    // window made the SAME clip visibly restart mid-window — which read
-    // as the hero "repeating". Slowed playback (below) fills the calm,
-    // slow window with a single play-through instead of a loop.
-    v.loop = false;
-    v.playbackRate = PLAYBACK_RATE;
+    v.setAttribute('muted', '');       // property alone doesn't satisfy autoplay policy in all engines
+    v.loop = true;
     v.playsInline = true;
-    // Only the first video autoplays. Others are played explicitly when
-    // it's their turn — playing all 5 simultaneously costs ~5x CPU and
-    // makes the page feel unresponsive (carousel drag lags, etc.).
-    v.autoplay = i === 0;
-    v.preload = i === 0 ? 'auto' : 'metadata';
-    // Browsers may reset playbackRate when media loads; re-assert it.
-    v.addEventListener('loadedmetadata', function () { v.playbackRate = PLAYBACK_RATE; });
+    v.setAttribute('playsinline', '');
+    v.autoplay = true;
+    v.preload = 'auto';
     v.setAttribute('aria-hidden', 'true');
-    stack.appendChild(v);
-    return v;
-  });
-
-  // Kick off the first video only (slowed, single play-through)
-  videos[0].playbackRate = PLAYBACK_RATE;
-  if (videos[1]) videos[1].preload = 'auto';   // warm the next clip ahead of time
-  var firstPlay = videos[0].play();
-  if (firstPlay && typeof firstPlay.catch === 'function') firstPlay.catch(function () {});
-
-  // Skip the cycle under prefers-reduced-motion (accessibility): the first
-  // clip plays through once, then holds — no looping, no rotation.
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced || videos.length < 2) return;
-
-  var current = 0;
-
-  // ms a clip stays solo before we begin crossfading to the next. Derived
-  // from the clip's REAL (slowed) duration so it stays correct if clips are
-  // ever swapped for different lengths. We begin the crossfade CROSSFADE_MS
-  // before the clip ends so the incoming clip is already in motion as the
-  // outgoing one finishes — motion-to-motion, never a frozen frame.
-  function holdMs(i) {
-    var native = videos[i].duration;
-    if (!native || isNaN(native)) native = FALLBACK_NATIVE_S;
-    return Math.max((native / PLAYBACK_RATE) * 1000 - CROSSFADE_MS, 1200);
-  }
-
-  function advance() {
-    var prev = current;
-    var next = (current + 1) % videos.length;
-
-    // Start the incoming clip from its first frame, at the slow rate.
-    try { videos[next].currentTime = 0; } catch (e) {}
-    videos[next].playbackRate = PLAYBACK_RATE;
-    var p = videos[next].play();
-    if (p && typeof p.catch === 'function') p.catch(function () {});
-    videos[next].classList.add('is-active');
-
-    // Warm the clip after next so it's buffered before its turn.
-    var upcoming = (next + 1) % videos.length;
-    if (videos[upcoming].preload !== 'auto') videos[upcoming].preload = 'auto';
-
-    // After the crossfade completes, hide AND pause the outgoing clip so it
-    // isn't decoding frames in the background (keeps ~one video active).
-    setTimeout(function () {
-      videos[prev].classList.remove('is-active');
-      try { videos[prev].pause(); } catch (e) {}
-    }, CROSSFADE_MS);
-
-    current = next;
-    setTimeout(advance, holdMs(current));
-  }
-
-  // Start the cycle once the first clip's real duration is known, so the
-  // very first hold uses the true length rather than the fallback.
-  if (videos[0].duration) {
-    setTimeout(advance, holdMs(0));
-  } else {
-    videos[0].addEventListener('loadedmetadata', function () {
-      setTimeout(advance, holdMs(0));
+    v.src = portrait ? VIDEO_SRC_PORTRAIT : VIDEO_SRC;
+    // Fade in only on ACTUAL playback ('playing'), never on readiness:
+    // when autoplay is blocked (iOS Low Power Mode), a video revealed on
+    // canplaythrough sits paused and the OS paints a play glyph over it.
+    // Blocked playback now leaves the video invisible — poster carries.
+    v.addEventListener('playing', function () {
+      v.classList.add('is-playing');
     }, { once: true });
+    poster.insertAdjacentElement('afterend', v);
+    var p = v.play();
+    if (p && typeof p.catch === 'function') p.catch(function () {});
+    // A user gesture lifts the autoplay block; retry once on first touch.
+    window.addEventListener('touchstart', function () {
+      if (v.paused) {
+        var p2 = v.play();
+        if (p2 && typeof p2.catch === 'function') p2.catch(function () {});
+      }
+    }, { once: true, passive: true });
+  }
+
+  var isSmall = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+  if (!isSmall) {
+    attach();
+    return;
+  }
+  var conn = navigator.connection || {};
+  if (conn.saveData) return;
+  if (conn.effectiveType && conn.effectiveType !== '4g') return;
+  if (document.readyState === 'complete') {
+    setTimeout(attach, 400);
+  } else {
+    window.addEventListener('load', function () { setTimeout(attach, 400); }, { once: true });
   }
 })();
 </script>
@@ -2660,6 +2900,11 @@
   obs.observe(inner);
 })();
 </script>
+
+<script src="/assets/js/vendor/gsap.min.js" defer></script>
+<script src="/assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/vendor/lenis.min.js" defer></script>
+<script src="/assets/js/cinematic.v4.js" defer></script>
 
 </body>
 </html>
