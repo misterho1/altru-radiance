@@ -1,6 +1,6 @@
 # Altru Radiance — Google Ads Editor Bulk Import
 
-This directory contains a Google Ads Editor bulk-upload CSV that will create all four Search campaigns from `ADS-PLAYBOOK.md` Section 2 in the Altru Radiance Google Ads account in seconds.
+This directory contains a Google Ads Editor bulk-upload CSV that will create all four Search campaigns from `../ADS-PLAYBOOK.md` Section 2 in the Altru Radiance Google Ads account in seconds.
 
 - **Account ID:** 857-072-1509 (Mechelle, mechelle@altruradiance.com)
 - **Conversion ID:** AW-18164308166

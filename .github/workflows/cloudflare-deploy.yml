@@ -34,6 +34,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # wrangler pages deploy does NOT honor .assetsignore for this Direct
+      # Upload project (verified 2026-07-06: /CLAUDE.md was publicly served).
+      # Strip internal docs from the runner workspace before upload so the
+      # deploy bundle contains only the public site.
+      - name: Exclude internal files from deploy bundle
+        run: |
+          rm -rf docs tasks marketing content .cursor .claude .superpowers .brainstorm
+          rm -f README.md CLAUDE.md SCOPE.md PRODUCT.md DESIGN.md DESIGN.json .assetsignore .gitignore serve.py image-inventory.csv
+          rm -rf .github
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
