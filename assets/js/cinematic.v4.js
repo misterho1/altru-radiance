@@ -1,8 +1,13 @@
 /* ─── ALTRU CINEMATIC LAYER ─────────────────────────────────────────
    Scroll choreography for the homepage: entry reveals, the pinned
    Soothe Arc sequence, the philosophy scroll-fill, hero drift, and the
-   scroll-progress counter. GSAP + ScrollTrigger, Lenis smooth scroll
-   on desktop.
+   scroll-progress counter. GSAP + ScrollTrigger on NATIVE scroll.
+
+   Scrolling stays native (Andrew, 2026-07-11): a smooth-scroll lib
+   that rewrites scrollTop every frame breaks keyboard scrolling
+   (Space/PageDown/arrows/Home/End) and #hash anchor links. CSS
+   `scroll-behavior: smooth` supplies the glide instead — do not
+   reintroduce Lenis or any scroll hijacker.
 
    Fail-safe contract (site rule: JS may never hide content for good):
    - The `cine-on` class (added by a tiny head script) gates ALL initial
@@ -10,12 +15,14 @@
      lands → the page is fully static and fully visible.
    - A `cine-safe` timer below force-reveals everything 4s after load
      even if GSAP failed mid-flight.
-   - Phones run the FULL cinematic tier (Andrew, 2026-07-05) with 9:16
-     stage cuts; the only desktop-only piece is Lenis smooth scroll —
-     touch scrolling stays native. Reduced-motion stays fully static.
+   - Phones run the cinematic tier with 9:16 stage cuts, but the Soothe
+     Arc pin is desktop-only — on touch the four movements render as
+     normal stacked stills. Reduced-motion stays fully static.
 
    Motion law (Altru): slow, organic, breathing. Nothing snappy, no
-   bounce, no elastic. Durations 1.2–1.6s, sine/power2 easing only.
+   bounce, no elastic. Sine/power2 easing only. Ambient/decorative
+   motion runs 1.2–1.6s, but entry reveals must beat the scroll — keep
+   them 0.4–0.6s or content crosses the viewport still half-faded.
    ─────────────────────────────────────────────────────────────────── */
 (function () {
   var docEl = document.documentElement;
@@ -29,28 +36,6 @@
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
-
-  var isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-  /* ── Lenis smooth scroll (desktop only) ── */
-  if (!isMobile && window.Lenis) {
-    var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-    gsap.ticker.lagSmoothing(0);
-  }
-
-  /* ── Scroll-progress counter ── */
-  var pctEl = document.getElementById('scrollPct');
-  if (pctEl) {
-    ScrollTrigger.create({
-      start: 0,
-      end: function () { return ScrollTrigger.maxScroll(window); },
-      onUpdate: function (self) {
-        pctEl.textContent = String(Math.round(self.progress * 100)).padStart(2, '0');
-      }
-    });
-  }
 
   /* ── Entry reveals: rise + fade, gentle stagger ── */
   var REVEAL_SELECTORS = [
@@ -69,15 +54,15 @@
   var targets = gsap.utils.toArray(REVEAL_SELECTORS);
   targets.forEach(function (el) { el.classList.add('cine-reveal'); });
   ScrollTrigger.batch(targets, {
-    start: 'top 88%',
+    start: 'top 95%',
     once: true,
     onEnter: function (batch) {
       gsap.to(batch, {
         opacity: 1,
         y: 0,
-        duration: 1.4,
+        duration: 0.5,
         ease: 'power2.out',
-        stagger: 0.12,
+        stagger: 0.06,
         overwrite: true
       });
     }
@@ -85,23 +70,28 @@
   // Anything already inside the first viewport reveals immediately.
   ScrollTrigger.refresh();
 
-  /* ── Hero drift: headline eases up + fades as the visitor leaves ── */
+  /* ── Hero drift: headline eases up + fades as the visitor leaves.
+     The fade spans the hero's FULL height and holds opacity at 1 for
+     the first 40% of it, so the headline stays readable well past the
+     first few wheel ticks. ── */
   var heroInner = document.querySelector('.hero-inner');
   if (heroInner) {
-    gsap.to(heroInner, {
-      yPercent: -12,
-      opacity: 0.25,
-      ease: 'none',
+    gsap.timeline({
       scrollTrigger: {
         trigger: '.hero',
         start: 'top top',
-        end: 'bottom 30%',
-        scrub: 1.2
+        end: 'bottom top',
+        scrub: true
       }
-    });
+    })
+      .to(heroInner, { yPercent: -10, ease: 'none', duration: 1 }, 0)
+      .to(heroInner, { opacity: 0.3, ease: 'none', duration: 0.6 }, 0.4);
   }
 
-  /* ── The Soothe Arc: pinned four-frame sequence ── */
+  /* ── The Soothe Arc: four-frame sequence — pinned scrub on wide
+     fine-pointer screens, plain stacked stills (pure CSS) on touch
+     and narrow viewports. gsap.matchMedia re-picks the variant on
+     resize/rotation and reverts each one's triggers itself. ── */
   var arc = document.querySelector('.soothe-arc');
   if (arc) {
     var frames = gsap.utils.toArray('.soothe-arc .arc-frame');
@@ -112,73 +102,89 @@
     var ORDER = [1, 2, 3, 0];
 
     if (frames.length === 4) {
-      // Each caption's words go into overflow masks so stage changes can
-      // rise word-by-word instead of a flat fade. <em> survives intact.
-      captions.forEach(function (cap) {
-        Array.prototype.slice.call(cap.childNodes).forEach(function (node) {
-          if (node.nodeType === 3) {
-            var frag = document.createDocumentFragment();
-            node.textContent.split(/(\s+)/).forEach(function (part) {
-              if (!part) return;
-              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+      var mm = gsap.matchMedia();
+
+      // Touch and narrow viewports skip the pin — a multi-viewport
+      // scroll lock reads as a dead zone on touch (pointer: coarse
+      // catches tablets and landscape phones wider than 768px). The
+      // .arc-stacked CSS restacks the movements into narrative order.
+      mm.add('(max-width: 768px), (pointer: coarse)', function () {
+        arc.classList.add('arc-stacked');
+        return function () { arc.classList.remove('arc-stacked'); };
+      });
+
+      mm.add('(min-width: 769px) and (pointer: fine)', function () {
+        // Each caption's words go into overflow masks so stage changes
+        // can rise word-by-word instead of a flat fade. <em> survives
+        // intact. Wrap once — this context re-runs on breakpoint
+        // changes, and the masks persist across them.
+        captions.forEach(function (cap) {
+          if (cap.querySelector('.cw')) return;
+          Array.prototype.slice.call(cap.childNodes).forEach(function (node) {
+            if (node.nodeType === 3) {
+              var frag = document.createDocumentFragment();
+              node.textContent.split(/(\s+)/).forEach(function (part) {
+                if (!part) return;
+                if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+                var mask = document.createElement('span');
+                mask.className = 'cw';
+                var inner = document.createElement('span');
+                inner.textContent = part;
+                mask.appendChild(inner);
+                frag.appendChild(mask);
+              });
+              cap.replaceChild(frag, node);
+            } else if (node.nodeType === 1 && node.tagName !== 'BR') {
               var mask = document.createElement('span');
               mask.className = 'cw';
               var inner = document.createElement('span');
-              inner.textContent = part;
+              cap.insertBefore(mask, node);
+              inner.appendChild(node);
               mask.appendChild(inner);
-              frag.appendChild(mask);
+            }
+          });
+        });
+
+        // JS owns the sequence from here; start at stage one (the room).
+        var setStage = function (n) {
+          var d = ORDER[n];
+          frames.forEach(function (f, i) { f.classList.toggle('is-active', i === d); });
+          captions.forEach(function (c, i) { c.classList.toggle('is-active', i === d); });
+          var words = captions[d].querySelectorAll('.cw > span');
+          if (words.length) {
+            gsap.fromTo(words, { yPercent: 112 }, {
+              yPercent: 0, duration: 0.9, ease: 'power3.out', stagger: 0.07, overwrite: true
             });
-            cap.replaceChild(frag, node);
-          } else if (node.nodeType === 1 && node.tagName !== 'BR') {
-            var mask = document.createElement('span');
-            mask.className = 'cw';
-            var inner = document.createElement('span');
-            cap.insertBefore(mask, node);
-            inner.appendChild(node);
-            mask.appendChild(inner);
+          }
+          if (idxEl) {
+            idxEl.textContent = '0' + (n + 1);
+            gsap.fromTo(idxEl, { yPercent: 55, autoAlpha: 0 }, {
+              yPercent: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out', overwrite: true
+            });
+          }
+        };
+        setStage(0);
+        var current = 0;
+        ScrollTrigger.create({
+          trigger: arc,
+          start: 'top top',
+          end: '+=180%',
+          pin: true,
+          anticipatePin: 1,
+          scrub: true,
+          onUpdate: function (self) {
+            var stage = Math.min(3, Math.floor(self.progress * 4));
+            if (stage !== current) { current = stage; setStage(stage); }
           }
         });
-      });
-
-      // JS owns the sequence from here; start at stage one (the room).
-      var setStage = function (n) {
-        var d = ORDER[n];
-        frames.forEach(function (f, i) { f.classList.toggle('is-active', i === d); });
-        captions.forEach(function (c, i) { c.classList.toggle('is-active', i === d); });
-        var words = captions[d].querySelectorAll('.cw > span');
-        if (words.length) {
-          gsap.fromTo(words, { yPercent: 112 }, {
-            yPercent: 0, duration: 0.9, ease: 'power3.out', stagger: 0.07, overwrite: true
-          });
-        }
-        if (idxEl) {
-          idxEl.textContent = '0' + (n + 1);
-          gsap.fromTo(idxEl, { yPercent: 55, autoAlpha: 0 }, {
-            yPercent: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out', overwrite: true
-          });
-        }
-      };
-      setStage(0);
-      var current = 0;
-      ScrollTrigger.create({
-        trigger: arc,
-        start: 'top top',
-        end: '+=280%',
-        pin: true,
-        anticipatePin: 1,
-        scrub: true,
-        onUpdate: function (self) {
-          var stage = Math.min(3, Math.floor(self.progress * 4));
-          if (stage !== current) { current = stage; setStage(stage); }
-        }
-      });
-      // Alternating Ken Burns: odd frames breathe in while even frames
-      // settle out, so every cut lands with different cinematography.
-      frames.forEach(function (f, i) {
-        gsap.fromTo(f,
-          { scale: i % 2 ? 1 : 1.07 },
-          { scale: i % 2 ? 1.07 : 1, ease: 'none',
-            scrollTrigger: { trigger: arc, start: 'top top', end: '+=280%', scrub: true } });
+        // Alternating Ken Burns: odd frames breathe in while even frames
+        // settle out, so every cut lands with different cinematography.
+        frames.forEach(function (f, i) {
+          gsap.fromTo(f,
+            { scale: i % 2 ? 1 : 1.07 },
+            { scale: i % 2 ? 1.07 : 1, ease: 'none',
+              scrollTrigger: { trigger: arc, start: 'top top', end: '+=180%', scrub: true } });
+        });
       });
     }
   }
@@ -262,9 +268,9 @@
     h.classList.add('cine-mask');
     gsap.fromTo(inner, { yPercent: 112 }, {
       yPercent: 0,
-      duration: 1.25,
+      duration: 0.7,
       ease: 'power3.out',
-      scrollTrigger: { trigger: h, start: 'top 86%', once: true }
+      scrollTrigger: { trigger: h, start: 'top 95%', once: true }
     });
   });
 
@@ -367,10 +373,25 @@
       scrollTrigger: { trigger: '.philosophy-image-parallax', start: 'top bottom', end: 'bottom top', scrub: 1 }
     });
   }
-  gsap.utils.toArray('.result-card-img img').forEach(function (img, i) {
-    gsap.fromTo(img, { yPercent: i % 2 ? -4 : -8, scale: 1.14 }, {
-      yPercent: i % 2 ? 7 : 4, scale: 1.14, ease: 'none',
-      scrollTrigger: { trigger: img.closest('.result-card'), start: 'top bottom', end: 'bottom top', scrub: 1 }
+  // Result-card photos get NO drift/zoom (Andrew, 2026-07-11): they are
+  // before/after evidence composites whose 3:4 frame matches the photo
+  // exactly, so any scale or yPercent shift crops the faces — the proof
+  // must stay fully readable. Parallax belongs on mood imagery only.
+
+  /* ── Scroll-progress counter. Created LAST, after every pinned
+     trigger, and refreshed after all pins (refreshPriority: -1), so
+     its range includes the Soothe Arc's pin spacing — otherwise it
+     reads 100 with two viewports of page still below. ── */
+  var pctEl = document.getElementById('scrollPct');
+  if (pctEl) {
+    ScrollTrigger.create({
+      start: 0,
+      end: function () { return ScrollTrigger.maxScroll(window); },
+      refreshPriority: -1,
+      onUpdate: function (self) {
+        pctEl.textContent = String(Math.round(self.progress * 100)).padStart(2, '0');
+      }
     });
-  });
+  }
+  ScrollTrigger.refresh();
 })();

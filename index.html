@@ -1197,7 +1197,7 @@
      resort. No JS → fully static, fully visible page. */
   html.cine-on .cine-reveal {
     opacity: 0;
-    transform: translateY(26px);
+    transform: translateY(18px);
     will-change: opacity, transform;
   }
   html.cine-safe .cine-reveal {
@@ -1292,6 +1292,64 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(244,240,230,0.6);
+  }
+
+  /* Soothe Arc, unpinned (.arc-stacked, toggled by gsap.matchMedia on
+     touch/narrow viewports): the four movements restack into normal
+     flow, each caption under its still. Pure CSS — flex `order`
+     resequences the final-frame-first DOM into narrative order and
+     `display: contents` lifts the captions into the same flex flow —
+     so toggling the class fully reverses it when the pinned variant
+     comes back on a breakpoint change. */
+  .soothe-arc.arc-stacked .arc-stage {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* base .arc-stage sets align-items: flex-end (for the pinned
+       caption layout); in the stacked column that would shrink every
+       picture to its content width — stretch restores full-bleed. */
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: visible;
+  }
+  .soothe-arc.arc-stacked .arc-stage > picture { display: block; }
+  .soothe-arc.arc-stacked .arc-frame {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+  }
+  /* Narrative order: room, oil, hands, final (DOM leads with final so
+     no-JS visitors see the strongest still). Odd orders = stills,
+     even = their captions. */
+  .soothe-arc.arc-stacked .arc-stage > picture:nth-of-type(2) { order: 1; }
+  .soothe-arc.arc-stacked .arc-stage > picture:nth-of-type(3) { order: 3; }
+  .soothe-arc.arc-stacked .arc-stage > picture:nth-of-type(4) { order: 5; }
+  .soothe-arc.arc-stacked .arc-stage > picture:nth-of-type(1) { order: 7; }
+  .soothe-arc.arc-stacked .arc-captions { display: contents; }
+  .soothe-arc.arc-stacked .arc-caption:nth-child(2) { order: 2; }
+  .soothe-arc.arc-stacked .arc-caption:nth-child(3) { order: 4; }
+  .soothe-arc.arc-stacked .arc-caption:nth-child(4) { order: 6; }
+  .soothe-arc.arc-stacked .arc-caption:nth-child(1) { order: 8; }
+  .soothe-arc.arc-stacked .arc-caption {
+    opacity: 1;
+    transform: none;
+    padding: 1.1rem 1.5rem 2rem;
+    text-align: center;
+  }
+  /* Word-mask spans may carry leftover inline transforms from the
+     pinned variant's stage tweens — neutralize them here. */
+  .soothe-arc.arc-stacked .arc-caption .cw > span { transform: none !important; }
+  .soothe-arc.arc-stacked .arc-scrim,
+  .soothe-arc.arc-stacked .arc-index { display: none; }
+  .soothe-arc.arc-stacked .arc-eyebrow {
+    position: static;
+    order: -1;
+    display: block;
+    transform: none;
+    text-align: center;
+    padding: 2.4rem 1rem 1.4rem;
   }
 
   /* Philosophy scroll-fill words */
@@ -2141,25 +2199,25 @@ try {
 <section class="soothe-arc" aria-label="What a session at Altru Radiance feels like">
   <div class="arc-stage">
     <picture>
-      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-4-portrait-1080.v2.webp">
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-4-portrait-1080.v2.webp" width="1080" height="1920">
       <img class="arc-frame is-active" src="/assets/scenes/soothe-arc-4-1920.v2.webp"
            alt="Client seated in a robe after a facial session at Altru Radiance, skin glowing in candlelight"
            width="1920" height="1072" loading="lazy" decoding="async">
     </picture>
     <picture>
-      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-1-portrait-1080.v1.webp">
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-1-portrait-1080.v1.webp" width="1080" height="1920">
       <img class="arc-frame" src="/assets/scenes/soothe-arc-1-1920.v1.webp"
            alt="Candlelit treatment room at Altru Radiance in Murray, Utah"
            width="1920" height="1072" loading="lazy" decoding="async">
     </picture>
     <picture>
-      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-2-portrait-1080.v1.webp">
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-2-portrait-1080.v1.webp" width="1080" height="1920">
       <img class="arc-frame" src="/assets/scenes/soothe-arc-2-1920.v1.webp"
            alt="Golden botanical oil pooled on deep green stone"
            width="1920" height="1072" loading="lazy" decoding="async">
     </picture>
     <picture>
-      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-3-portrait-1080.v2.webp">
+      <source media="(orientation: portrait) and (max-width: 768px)" srcset="/assets/scenes/soothe-arc-3-portrait-1080.v2.webp" width="1080" height="1920">
       <img class="arc-frame" src="/assets/scenes/soothe-arc-3-1920.v2.webp"
            alt="Esthetician's hands at the temples mid facial-massage stroke, seen from above"
            width="1920" height="1072" loading="lazy" decoding="async">
@@ -2285,7 +2343,7 @@ try {
 <!-- ─── GHOST BAND: drifting editorial wordmark between chapters ─── -->
 <section class="ghost-band" aria-hidden="true">
   <div class="ghost-band__track">
-    <span class="ghost-band__text">the Soothe · Restorative Buccal Facial · the Soothe · Restorative Buccal Facial ·&nbsp;</span><span class="ghost-band__text">the Soothe · Restorative Buccal Facial · the Soothe · Restorative Buccal Facial ·&nbsp;</span>
+    <span class="ghost-band__text">Soothe Lymphatic Drainage · Restorative Buccal Facial · Soothe Lymphatic Drainage · Restorative Buccal Facial ·&nbsp;</span><span class="ghost-band__text">Soothe Lymphatic Drainage · Restorative Buccal Facial · Soothe Lymphatic Drainage · Restorative Buccal Facial ·&nbsp;</span>
   </div>
 </section>
 
@@ -2903,7 +2961,6 @@ try {
 
 <script src="/assets/js/vendor/gsap.min.js" defer></script>
 <script src="/assets/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/js/vendor/lenis.min.js" defer></script>
 <script src="/assets/js/cinematic.v4.js" defer></script>
 
 </body>
