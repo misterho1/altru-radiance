@@ -1722,13 +1722,13 @@
 
 <script>
 /* Cinematic gate: add the class that arms initial hidden states BEFORE
-   first paint, and only when motion is allowed. cinematic.v4.js removes
+   first paint, and only when motion is allowed. cinematic.v5.js removes
    it again if GSAP is missing. No JS → static page, everything visible. */
 try {
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('cine-on');
     // The 4s force-reveal lives HERE, inline, not in the loadable JS:
-    // if cinematic.v4.js ever fails to arrive, armed hidden states must
+    // if cinematic.v5.js ever fails to arrive, armed hidden states must
     // still release without it.
     setTimeout(function () {
       document.documentElement.classList.add('cine-safe');
@@ -2961,7 +2961,7 @@ try {
 
 <script src="/assets/js/vendor/gsap.min.js" defer></script>
 <script src="/assets/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/js/cinematic.v4.js" defer></script>
+<script src="/assets/js/cinematic.v5.js" defer></script>
 
 </body>
 </html>
